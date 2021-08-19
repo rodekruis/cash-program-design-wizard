@@ -1,0 +1,9 @@
+# See: https://prettier.io/docs/en/ignore.html
+# See .gitignore
+
+# Generated build artefacts
+coverage
+dist
+
+# Ionic related files
+www
