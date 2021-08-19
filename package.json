@@ -1,0 +1,31 @@
+{
+  "name": "cash-program-design-wizard",
+  "homepage": "https://github.com/rodekruis/cash-program-design-wizard#readme",
+  "scripts": {
+    "fix:syntax": "prettier --write .",
+    "lint": "prettier --check .",
+    "test": "npm run lint",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodekruis/cash-program-design-wizard.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rodekruis/cash-program-design-wizard/issues"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "devDependencies": {
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
+    "prettier-plugin-organize-imports": "^2.3.3"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

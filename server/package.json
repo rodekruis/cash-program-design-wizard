@@ -1,0 +1,12 @@
+{
+  "name": "cash-program-design-wizard-server",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodekruis/cash-program-design-wizard.git",
+    "directory": "server"
+  },
+  "scripts": {
+    "lint": "npx prettier --check .",
+    "test": "npm run lint"
+  }
+}

@@ -23,6 +23,13 @@ To set up a local development-environment:
 
         nvm install && nvm install-latest-npm
 
+### Install client/server app/development dependencies
+
+Run `npm install` from this directory. Or:
+
+- `npm install --workspace client` for the front-end only
+- `npm install --workspace server` for the back-end only
+
 ## License
 
 Released under the Apache 2.0 License. See [LICENSE](LICENSE).
