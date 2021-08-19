@@ -1,0 +1,16 @@
+# Editors / IDEs / Local/personal tools
+.vscode
+.idea
+
+# Node/NPM temporary/third-party files
+node_modules
+.npm
+npm-debug.log*
+
+# Generated files
+coverage
+dist
+www
+
+# (Global) Configuration files
+.env

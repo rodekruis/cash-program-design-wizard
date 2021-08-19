@@ -1,1 +1,28 @@
-# cash-program-design-wizard
+# Cash Program Design Wizard
+
+> The Cash Program Design Wizard tries to help Aid Workers who want to set up best practice Cash Programs for People Affected in multiple contexts.
+
+## Status
+
+Latest releases and notable changes are in the [CHANGELOG](CHANGELOG.md).
+
+## Getting Started
+
+To set up a local development-environment:
+
+- Install Node.js: <https://nodejs.org/en/download/>
+
+  Install the version specified in the [`.node-version`](.node-version)-file.  
+  To prevent conflicts it is recommended to use a 'version manager'.
+
+  - [`fnm`](https://github.com/Schniz/fnm#readme) (for Windows/macOS/Linux) After installing, run in this directory:
+
+        fnm use
+
+  - [NVM - Node Version Manager](http://nvm.sh/) (for macOS/Linux) After installing, run in this directory:
+
+        nvm install && nvm install-latest-npm
+
+## License
+
+Released under the Apache 2.0 License. See [LICENSE](LICENSE).
