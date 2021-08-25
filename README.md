@@ -30,6 +30,12 @@ Run `npm install` from this directory. Or:
 - `npm install --workspace client` for the front-end only
 - `npm install --workspace server` for the back-end only
 
+To finish you local set-up, run:
+
+    npx husky install
+
+To set-up running all relevant lint/test scripts with their related git actions.
+
 ## Tests
 
 Automated tests are configured and can be run with:
