@@ -36,7 +36,13 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install --workspaces
 
-      - name: Test
-        run: npm test
+      - name: Lint
+        run: npm run lint
+        
+      - name: Test Client
+        run: npm test --workspace client
+        
+      - name: Test Server
+        run: npm test --workspace server
