@@ -44,7 +44,7 @@ jobs:
         run: node --version && npm --version
 
       - name: Install Dependencies
-        run: npm install --workspaces
+        run: npm install
 
       - name: Lint
         run: npm run lint
