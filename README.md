@@ -55,6 +55,12 @@ After this initial set-up, you can start with:
 The front-end client should be running at: <http://localhost:4200/>
 The back-end server should be running at: <http://localhost:3000/>
 
+### Recommended code-editor/IDE tools/extensions
+
+- [Workspace recommendations for VS Code](.vscode/extensions.json)
+  When you use [VS Code](https://code.visualstudio.com/) and go to: "_Extensions_" and use the filter: "_Recommended_";  
+  A list should be shown and each extension can be installed individually.
+
 ### Testing
 
 During development, tests can be run continuously with:
