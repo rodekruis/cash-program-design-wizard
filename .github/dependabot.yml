@@ -10,3 +10,6 @@ updates:
     schedule:
       interval: "weekly"
     versioning-strategy: increase-if-necessary
+    ignore:
+      - dependency-name: typescript
+        versions: ['>= 3.3.0']
