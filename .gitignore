@@ -1,6 +1,8 @@
-# Editors / IDEs / Local/personal tools
+# OS / Editors / IDEs / Local/personal tools
 .vscode
 .idea
+.DS_Store
+Thumbs.db
 
 # Node/NPM temporary/third-party files
 node_modules

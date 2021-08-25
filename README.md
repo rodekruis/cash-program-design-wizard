@@ -30,6 +30,32 @@ Run `npm install` from this directory. Or:
 - `npm install --workspace client` for the front-end only
 - `npm install --workspace server` for the back-end only
 
+## Tests
+
+Automated tests are configured and can be run with:
+
+- `npm test` - for both client & server
+- `npm run test:client` - for the front-end only
+- `npm run test:server` - for the back-end only
+
+## Local Development
+
+After this initial set-up, you can start with:
+
+- `npm start` - for both client & server
+- `npm run start:client` - for the front-end only
+- `npm run start:server` - for the back-end only
+
+The front-end client should be running at: <http://localhost:4200/>
+The back-end server should be running at: <http://localhost:3000/>
+
+### Testing
+
+During development, tests can be run continuously with:
+
+- `npm run watch:test --workspace client` - for the front-end only
+- `npm run watch:test --workspace server` - for the back-end only
+
 ## License
 
 Released under the Apache 2.0 License. See [LICENSE](LICENSE).
