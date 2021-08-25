@@ -9,8 +9,7 @@
     "test:server": "npm test --workspace server",
     "start": "npm-run-all --print-label --parallel start:client start:server",
     "start:client": "npm start --workspace client",
-    "start:server": "npm start --workspace server",
-    "prepare": "husky install"
+    "start:server": "npm start --workspace server"
   },
   "repository": {
     "type": "git",
