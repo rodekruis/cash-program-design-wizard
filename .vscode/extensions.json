@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "dotiful.dotfiles-syntax-highlighting",
+    "ban.spellright",
+    "redhat.vscode-yaml",
+    "eg2.vscode-npm-script",
+    "esbenp.prettier-vscode",
+    "tombonnike.vscode-status-bar-format-toggle",
+    "dbaeumer.vscode-eslint",
+    "whtouche.vscode-js-console-utils",
+    "anteprimorac.html-end-tag-labels",
+    "gencer.html-slim-scss-css-class-completion",
+    "angular.ng-template",
+    "lokalise.i18n-ally",
+  ]
+}
