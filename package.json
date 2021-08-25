@@ -2,9 +2,14 @@
   "name": "cash-program-design-wizard",
   "homepage": "https://github.com/rodekruis/cash-program-design-wizard#readme",
   "scripts": {
-    "fix:syntax": "prettier --write .",
-    "lint": "prettier --check .",
-    "test": "npm run lint",
+    "fix:syntax": "npm run lint -- --write",
+    "lint": "prettier --check --ignore-unknown './{*,!(client/*),!(server/*)}'",
+    "test": "npm-run-all --print-label --sequential lint test:client test:server",
+    "test:client": "npm test --workspace client",
+    "test:server": "npm test --workspace server",
+    "start": "npm-run-all --print-label --parallel start:client start:server",
+    "start:client": "npm start --workspace client",
+    "start:server": "npm start --workspace server",
     "prepare": "husky install"
   },
   "repository": {
@@ -22,6 +27,7 @@
   "devDependencies": {
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.3.2",
     "prettier-plugin-organize-imports": "^2.3.3"
   },

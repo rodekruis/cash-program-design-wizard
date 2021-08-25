@@ -1,9 +1,13 @@
 # See: https://prettier.io/docs/en/ignore.html
 # See .gitignore
 
+# IDE / Editor config
+.vscode
+
 # Generated build artefacts
 coverage
 dist
 
-# Ionic related files
+# Angular/Ionic related files
 www
+client/src/test.ts

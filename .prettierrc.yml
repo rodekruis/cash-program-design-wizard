@@ -1,3 +1,4 @@
 # See: https://prettier.io/docs/en/configuration.html
-trailingComma: "es5"
+trailingComma: 'es5'
+singleQuote: true
 semi: true

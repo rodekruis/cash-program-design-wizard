@@ -1,0 +1,7 @@
+{
+  "name": "cash-program-design-wizard",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

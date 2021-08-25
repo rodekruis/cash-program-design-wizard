@@ -1,0 +1,5 @@
+# See: https://prettier.io/docs/en/ignore.html
+
+# Angular/Ionic related files
+www
+src/test.ts
