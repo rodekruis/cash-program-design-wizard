@@ -53,7 +53,7 @@ After this initial set-up, you can start with:
 - `npm run start:server` - for the back-end only
 
 The front-end client should be running at: <http://localhost:4200/>.  
-The back-end server should be running at: <http://localhost:3000/>.  
+The back-end server should be running at: <http://localhost:3000/>.
 
 ### Recommended code-editor/IDE tools/extensions
 
