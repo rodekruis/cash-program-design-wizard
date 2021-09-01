@@ -6,6 +6,8 @@
 
 Latest releases and notable changes are in the [CHANGELOG](CHANGELOG.md).
 
+A preview of the latest (development) version of the front-end/client app can be seen on: <https://orange-grass-0aefaa103.azurestaticapps.net/>
+
 ## Getting Started
 
 To set up a local development-environment:
