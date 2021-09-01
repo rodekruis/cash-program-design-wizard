@@ -11,6 +11,6 @@ export class ProgramPage implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.params.id;
   }
 }
