@@ -23,6 +23,10 @@
     "client",
     "server"
   ],
+  "engines": {
+    "node": "v16.6.1",
+    "npm": "7.20.3"
+  },
   "devDependencies": {
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
