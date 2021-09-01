@@ -4,4 +4,33 @@
   </app-header>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content class="ion-padding">
+  <h2>About</h2>
+  <p>
+    This is a preview of the development of the Cash Program Design Wizard.<br />
+    See for more details on GitHub:
+    <a
+      href="https://github.com/rodekruis/cash-program-design-wizard"
+      target="_blank"
+      rel="external noopener noreferrer"
+      >rodekruis/cash-program-design-wizard</a
+    >
+  </p>
+  <h2>Demo</h2>
+  <ul>
+    <li>
+      <a routerLink="/home">/home</a> - This page, used as a starting point.
+    </li>
+    <li>
+      <a routerLink="/program">/program</a> - The 'detail'-page for each Cash
+      Program form/document
+
+      <ul class="ion-margin-vertical">
+        <li>
+          <a routerLink="/program/123/">/program/123/*</a> - The
+          program/document ID is in the URL-path.
+        </li>
+      </ul>
+    </li>
+  </ul>
+</ion-content>
