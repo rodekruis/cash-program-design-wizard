@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build": "ng build",
+    "build:production": "ng build --prod",
     "lint": "npx prettier --check . && ng lint",
     "ng": "ng",
     "start": "ng serve",

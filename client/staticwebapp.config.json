@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "route": "/assets/i18n/*.json",
+      "headers": {
+        "cache-control": "must-revalidate, max-age=15770000"
+      }
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html",
+    "exclude": ["/assets/*.{png,jpg,gif,json}", "/svg/*.svg"]
+  },
+  "responseOverrides": {
+    "404": {
+      "redirect": "/"
+    }
+  }
+}
