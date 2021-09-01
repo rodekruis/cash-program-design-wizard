@@ -15,8 +15,8 @@
     "watch:test": "ng test"
   },
   "engines": {
-    "node": "v16.6.1",
-    "npm": "7.20.3"
+    "node": "^16.6.1",
+    "npm": "^7.20.3"
   },
   "dependencies": {
     "@angular/common": "~12.2.2",
