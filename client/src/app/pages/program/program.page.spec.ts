@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ProgramPage } from './program.page';
 
@@ -11,6 +12,12 @@ describe('ProgramPage', () => {
       TestBed.configureTestingModule({
         declarations: [ProgramPage],
         imports: [IonicModule.forRoot()],
+        providers: [
+          {
+            provide: ActivatedRoute,
+            useValue: { snapshot: { params: { id: 1 } } },
+          },
+        ],
       }).compileComponents();
 
       fixture = TestBed.createComponent(ProgramPage);
