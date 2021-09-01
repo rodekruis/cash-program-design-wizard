@@ -7,12 +7,16 @@
   },
   "scripts": {
     "build": "ng build",
-    "build:production": "ng build --prod",
+    "build:production": "ng build --configuration production",
     "lint": "npx prettier --check . && ng lint",
     "ng": "ng",
     "start": "ng serve",
     "test": "npm run lint && ng test --no-watch --browsers=ChromeHeadless",
     "watch:test": "ng test"
+  },
+  "engines": {
+    "node": "~16.7.0",
+    "npm": "~7.20.6"
   },
   "dependencies": {
     "@angular/common": "~12.2.2",
