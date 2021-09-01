@@ -16,10 +16,24 @@
       >rodekruis/cash-program-design-wizard</a
     >
   </p>
+
   <h2>Demo</h2>
   <ul>
     <li>
       <a routerLink="/home">/home</a> - This page, used as a starting point.
+
+      <ul class="ion-margin-vertical">
+        <li>
+          <a routerLink="/home" [queryParams]="{ role: 'IF' }">/home?role=IF</a>
+          - Sets the filters to a defined role.
+        </li>
+        <li>
+          <a routerLink="/home" [queryParams]="{ role: 'HQ', topic: 'cash' }"
+            >/home?role=HQ&topic=cash</a
+          >
+          - Sets the filters to a defined role + topic.
+        </li>
+      </ul>
     </li>
     <li>
       <a routerLink="/program">/program</a> - The 'detail'-page for each Cash
@@ -33,4 +47,17 @@
       </ul>
     </li>
   </ul>
+
+  <hr class="ion-margin-vertical" style="border-top-width: 1px" />
+
+  <h2>Debug information</h2>
+  <pre
+    id="debug-container"
+    class="ion-padding"
+    style="border: 1px dashed hotpink"
+  >
+State:
+filters: {{ state.filters|json }}
+viewMode: {{ state.viewMode }}
+  </pre>
 </ion-content>
