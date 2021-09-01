@@ -11,8 +11,8 @@ import { ProgramPage } from './program.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProgramPageRoutingModule,
     SharedModule,
+    ProgramPageRoutingModule,
   ],
   declarations: [ProgramPage],
 })

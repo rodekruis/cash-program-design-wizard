@@ -1,12 +1,29 @@
-<ion-grid>
-  <ion-row class="ion-align-items-center">
-    <ion-col>
-      <ion-title>Cash Program Design Wizard</ion-title>
-    </ion-col>
-    <ion-col>
-      <ion-row class="ion-justify-content-end">
-        <ion-icon name="person-circle" size="large"></ion-icon>
-      </ion-row>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button
+      href="/home"
+      routerDirection="root"
+      title="Home"
+      aria-label="Home"
+    >
+      <ion-icon
+        name="home-sharp"
+        slot="icon-only"
+        size="small"
+        aria-hidden="true"
+      ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <ng-content></ng-content>
+
+  <ion-buttons slot="end">
+    <ion-button [disabled]="true" title="User menu" aria-label="User menu">
+      <ion-icon
+        name="person-circle"
+        slot="icon-only"
+        aria-hidden="true"
+      ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>

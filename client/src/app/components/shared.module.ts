@@ -4,8 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from '../components/header/header.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
   imports: [CommonModule, IonicModule],
-  exports: [HeaderComponent],
+  declarations: [HeaderComponent],
+  exports: [CommonModule, IonicModule, HeaderComponent],
 })
 export class SharedModule {}
