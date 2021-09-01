@@ -4,4 +4,10 @@
   </app-header>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-card *ngIf="!id">
+    <ion-card-header>
+      <ion-card-title>No program found</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
