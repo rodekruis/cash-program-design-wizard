@@ -8,14 +8,14 @@ const routes: Routes = [
       import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'program/:id',
+    path: 'program',
     loadChildren: () =>
       import('./pages/program/program.module').then((m) => m.ProgramPageModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
 ];
 

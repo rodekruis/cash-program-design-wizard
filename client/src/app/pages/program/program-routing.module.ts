@@ -4,7 +4,11 @@ import { ProgramPage } from './program.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
+    component: ProgramPage,
+  },
+  {
+    path: '**',
     component: ProgramPage,
   },
 ];

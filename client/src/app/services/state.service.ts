@@ -28,9 +28,13 @@ export class StateService {
     this.route.queryParams.subscribe((queryParams) => {
       if (queryParams.role && Role[queryParams.role]) {
         this.filters.role = queryParams.role;
+      } else {
+        this.filters.role = '';
       }
       if (queryParams.topic && Topic[queryParams.topic]) {
         this.filters.topic = queryParams.topic;
+      } else {
+        this.filters.topic = '';
       }
     });
   }

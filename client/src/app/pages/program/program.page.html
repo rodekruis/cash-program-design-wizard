@@ -1,7 +1,13 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>program {{ id }} </ion-title>
-  </ion-toolbar>
+  <app-header>
+    <ion-title>Program: {{ id }} </ion-title>
+  </app-header>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-card *ngIf="!id">
+    <ion-card-header>
+      <ion-card-title>No program found</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

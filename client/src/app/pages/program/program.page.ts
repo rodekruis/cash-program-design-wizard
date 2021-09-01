@@ -7,7 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./program.page.scss'],
 })
 export class ProgramPage implements OnInit {
-  id: string;
+  public id: string;
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {

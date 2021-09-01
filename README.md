@@ -67,6 +67,15 @@ The back-end server should be running at: <http://localhost:3000/>.
   When you use [VS Code](https://code.visualstudio.com/) and go to: "_Extensions_" and use the filter: "_Recommended_";  
   A list should be shown and each extension can be installed individually.
 
+### Libraries in use in front-end/client app
+
+- [Ionic v5+](https://ionicframework.com/docs/)
+- [Angular v12](https://v12.angular.io/docs/)
+
+### Libraries/frameworks in use in the back-end/server API
+
+- T.B.D
+
 ### Testing
 
 During development, tests can be run continuously with:
