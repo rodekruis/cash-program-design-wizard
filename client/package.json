@@ -15,7 +15,7 @@
     "watch:test": "ng test"
   },
   "engines": {
-    "node": "~16.0.0",
+    "node": "~16.6.1",
     "npm": "~7.0.0"
   },
   "dependencies": {
