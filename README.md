@@ -71,6 +71,7 @@ The back-end server should be running at: <http://localhost:3000/>.
 
 - [Ionic v5+](https://ionicframework.com/docs/)
 - [Angular v12](https://v12.angular.io/docs/)
+- [`ngx-translate`](https://github.com/ngx-translate/core#readme)
 
 ### Libraries/frameworks in use in the back-end/server API
 

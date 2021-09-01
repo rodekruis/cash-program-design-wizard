@@ -3,8 +3,8 @@
     <ion-button
       href="/home"
       routerDirection="root"
-      title="Home"
-      aria-label="Home"
+      [attr.title]="'app-header.home' | translate"
+      [attr.aria-label]="'app-header.home' | translate"
     >
       <ion-icon
         name="home-sharp"
@@ -18,7 +18,11 @@
   <ng-content></ng-content>
 
   <ion-buttons slot="end">
-    <ion-button [disabled]="true" title="User menu" aria-label="User menu">
+    <ion-button
+      [disabled]="true"
+      [attr.title]="'app-header.user-menu' | translate"
+      [attr.aria-label]="'app-header.user-menu' | translate"
+    >
       <ion-icon
         name="person-circle"
         slot="icon-only"
