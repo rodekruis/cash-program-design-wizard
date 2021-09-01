@@ -12,6 +12,11 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'program/:id',
+    loadChildren: () =>
+      import('./pages/program/program.module').then((m) => m.ProgramPageModule),
+  },
 ];
 
 @NgModule({
