@@ -3,9 +3,27 @@
   "_docs": "https://docs.microsoft.com/en-us/azure/static-web-apps/configuration",
   "routes": [
     {
+      "route": "/*.js",
+      "headers": {
+        "cache-control": "immutable, no-transform, max-age=31536000"
+      }
+    },
+    {
+      "route": "/*.css",
+      "headers": {
+        "cache-control": "immutable, no-transform, max-age=31536000"
+      }
+    },
+    {
       "route": "/assets/i18n/*.json",
       "headers": {
-        "cache-control": "must-revalidate, max-age=15770000"
+        "cache-control": "no-transform, must-revalidate, max-age=86400"
+      }
+    },
+    {
+      "route": "/svg/*.svg",
+      "headers": {
+        "cache-control": "no-transform, max-age=31536000"
       }
     }
   ],
