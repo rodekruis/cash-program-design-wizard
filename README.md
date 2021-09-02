@@ -6,7 +6,7 @@
 
 Latest releases and notable changes are in the [CHANGELOG](CHANGELOG.md).
 
-A preview of the latest (development) version of the front-end/client app can be seen on: <https://orange-grass-0aefaa103.azurestaticapps.net/>
+Preview of the latest (development) version: <https://orange-grass-0aefaa103.azurestaticapps.net/> (front-end/client app only)
 
 [![CI Tests](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml)
 [![CodeQL](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml)
@@ -83,6 +83,25 @@ During development, tests can be run continuously with:
 
 - `npm run watch:test --workspace client` - for the front-end only
 - `npm run watch:test --workspace server` - for the back-end only
+
+## Deployment(s)
+
+### How to deploy the front-end/client app
+
+The front-end/client app can be deployed as a static single-page-app or PWA.
+
+- Run: (from the root-folder)
+
+      npm run build:production --workspace client
+
+- This will generate a folder with all HTML, JS, JSON and SVG assets: [`client/www`](./client/www/)
+- This can be deployed to any hosting-solution (supporting HTTPS), using [this server configuration](https://angular.io/guide/deployment#server-configuration).
+- The development-preview is automatically deployed using:
+  - GitHub-Actions
+    - The workflow is defined in: [`.github/workflows/azure-static-web-apps-....yml`](.github/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)
+  - And the [Azure Static Web App service](https://azure.microsoft.com/en-us/services/app-service/static/).
+    - The configuration used is in: [`staticwebapp.config.json`](client/staticwebapp.config.json)
+    - See documentation about the format in [this example configuration file](https://docs.microsoft.com/en-us/azure/static-web-apps/configuration#example-configuration-file)
 
 ## License
 
