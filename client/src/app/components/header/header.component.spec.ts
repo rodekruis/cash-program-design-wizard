@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -10,7 +11,7 @@ describe('HeaderComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [HeaderComponent],
-        imports: [IonicModule.forRoot()],
+        imports: [IonicModule.forRoot(), TranslateModule.forRoot()],
       }).compileComponents();
 
       fixture = TestBed.createComponent(HeaderComponent);

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from 'src/app/components/shared.module';
 import { ProgramPage } from './program.page';
 
@@ -12,7 +13,11 @@ describe('ProgramPage', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [ProgramPage],
-        imports: [IonicModule.forRoot(), SharedModule],
+        imports: [
+          IonicModule.forRoot(),
+          TranslateModule.forRoot(),
+          SharedModule,
+        ],
         providers: [
           {
             provide: ActivatedRoute,

@@ -15,8 +15,8 @@
     "watch:test": "ng test"
   },
   "engines": {
-    "node": "v16.6.1",
-    "npm": "7.20.3"
+    "node": "^16.6.1",
+    "npm": "^7.20.3"
   },
   "dependencies": {
     "@angular/common": "~12.2.2",
@@ -32,6 +32,8 @@
     "@capacitor/keyboard": "1.0.2",
     "@capacitor/status-bar": "1.0.2",
     "@ionic/angular": "^5.5.2",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

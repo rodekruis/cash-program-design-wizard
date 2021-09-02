@@ -1,0 +1,12 @@
+{
+  "_dir": "ltr",
+  "app-header": {
+    "app-name": "Cash Program Design Wizard",
+    "home": "Home",
+    "user-menu": "User menu"
+  },
+  "program": {
+    "page-title": "Program: {{id}}",
+    "not-found": "No program found."
+  }
+}
