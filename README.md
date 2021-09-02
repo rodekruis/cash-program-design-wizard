@@ -90,6 +90,11 @@ During development, tests can be run continuously with:
 
 The front-end/client app can be deployed as a static single-page-app or PWA.
 
+- Prepare the correct configuration in the `.env`-file, based on the example: [.env.example](./.env.example).  
+  For more information, see: [`dotenv`](https://www.npmjs.com/package/dotenv).
+
+      cp .env.example .env
+
 - Run: (from the root-folder)
 
       npm run build:production --workspace client
