@@ -6,8 +6,10 @@
     "directory": "client"
   },
   "scripts": {
+    "set-env-variables": "node ./_set-env-variables.js",
+    "prebuild": "npm run set-env-variables",
     "build": "ng build",
-    "build:production": "ng build --configuration production",
+    "build:production": "npm run build -- --configuration production",
     "lint": "npx prettier --check . && ng lint",
     "ng": "ng",
     "start": "ng serve",
@@ -54,6 +56,7 @@
     "@types/node": "^16.6.2",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
+    "dotenv": "^10.0.0",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "36.0.8",

@@ -5,7 +5,11 @@
 export const environment = {
   production: false,
 
+  // Configuration/Feature-switches:
   defaultLanguage: 'en',
+
+  // URLS:
+  apiUrl: 'https://localhost:3000/api',
 };
 
 /*

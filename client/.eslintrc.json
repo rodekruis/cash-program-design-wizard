@@ -42,6 +42,10 @@
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
+    },
+    {
+      "files": ["*.js"],
+      "extends": ["plugin:@angular-eslint/template/recommended"]
     }
   ]
 }
