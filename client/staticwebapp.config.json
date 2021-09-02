@@ -1,4 +1,6 @@
 {
+  "_schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "_docs": "https://docs.microsoft.com/en-us/azure/static-web-apps/configuration",
   "routes": [
     {
       "route": "/assets/i18n/*.json",
