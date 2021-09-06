@@ -12,6 +12,9 @@
     "build:production": "npm run build -- --configuration production",
     "lint": "npx prettier --check . && ng lint",
     "ng": "ng",
+    "preserve-static": "cp www/index.html www/404.html",
+    "serve-static": "npx http-server ./www/ -c-0",
+    "start:production": "npm run build:production && npm run serve-static",
     "start": "ng serve",
     "test": "npm run lint && ng test --no-watch --browsers=ChromeHeadless",
     "watch:test": "ng test"
