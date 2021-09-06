@@ -5,6 +5,7 @@
 name: CD Azure Static Web App - development
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -40,6 +41,8 @@ jobs:
           app_build_command: 'npm run build:production --workspace client'
           output_location: 'client/www'
           ###### End of Repository/Build Configurations ######
+        env:
+          NG_ENV_NAME: 'development'
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
