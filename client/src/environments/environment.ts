@@ -6,6 +6,10 @@ export const environment = {
   production: false,
 
   // Configuration/Feature-switches:
+
+  // Optional label to show which version is used
+  envName: '',
+  // The language that will be loaded first and used as a fallback
   defaultLanguage: 'en',
 
   // URLS:
