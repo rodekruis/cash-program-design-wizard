@@ -1,13 +1,47 @@
 <ion-header>
   <app-header>
-    <ion-title>{{ 'program.page-title'|translate:{ id: id } }} </ion-title>
+    <ion-title>{{ 'program.page-title' | translate: { id: id } }} </ion-title>
   </app-header>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="!id">
-    <ion-card-header>
-      <ion-card-title>{{ 'program.not-found'|translate }}</ion-card-title>
-    </ion-card-header>
-  </ion-card>
+  <div class="frame">
+    <div class="frame--sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="frame--contents">
+      <!--
+
+      -->
+      <ion-card *ngIf="!id">
+        <ion-card-header>
+          <ion-card-title>{{ 'program.not-found' | translate }}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+      <ng-container *ngIf="id">
+        <div class="debug--placeholder">
+          <pre class="ion-text-center">[ ProgramPhases ]</pre>
+        </div>
+        <div class="debug--placeholder">
+          <pre>[ Filters ]</pre>
+        </div>
+        <div class="debug--placeholder">
+          <pre>
+[ Content: QuestionSection(s) ]
+
+
+
+
+          </pre>
+        </div>
+        <div class="debug--placeholder">
+          <pre class="ion-text-end">[ Actions: (Nav)Progress) ]</pre>
+        </div>
+      </ng-container>
+      <!--
+
+      -->
+    </div>
+  </div>
 </ion-content>

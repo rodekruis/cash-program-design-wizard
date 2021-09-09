@@ -2,3 +2,7 @@
 trailingComma: 'es5'
 singleQuote: true
 semi: true
+overrides:
+  - files: ['*.html']
+    options:
+      parser: 'angular'

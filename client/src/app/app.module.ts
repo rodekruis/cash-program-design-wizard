@@ -19,7 +19,10 @@ export const createTranslateLoader = (http: HttpClient) =>
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      mode: 'md',
+      animated: false,
+    }),
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
