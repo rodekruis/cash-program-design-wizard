@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { SharedModule } from '../components/shared.module';
 import { Role } from '../models/role.enum';
-import { Topic } from '../models/topic.enum';
+import { Tag } from '../models/tag.enum';
 import { HomePage } from './home.page';
 
 describe('HomePage', () => {
@@ -15,7 +15,7 @@ describe('HomePage', () => {
 
   const mockParams = {
     role: Role.HQ,
-    topic: Topic.data,
+    tag: Tag.data,
   };
 
   beforeEach(

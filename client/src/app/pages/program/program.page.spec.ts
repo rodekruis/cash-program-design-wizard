@@ -2,12 +2,20 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { of } from 'rxjs';
 import { SharedModule } from 'src/app/components/shared.module';
+import { Role } from 'src/app/models/role.enum';
+import { Tag } from 'src/app/models/tag.enum';
 import { ProgramPage } from './program.page';
 
 describe('ProgramPage', () => {
   let component: ProgramPage;
   let fixture: ComponentFixture<ProgramPage>;
+
+  const mockParams = {
+    role: Role.HQ,
+    tag: Tag.data,
+  };
 
   beforeEach(
     waitForAsync(() => {
@@ -21,7 +29,12 @@ describe('ProgramPage', () => {
         providers: [
           {
             provide: ActivatedRoute,
-            useValue: { snapshot: { params: { id: 1 } } },
+            useValue: {
+              snapshot: {
+                params: { id: 1 },
+              },
+              queryParams: of(mockParams),
+            },
           },
         ],
       }).compileComponents();

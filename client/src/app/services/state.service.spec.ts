@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { Role } from '../models/role.enum';
-import { Topic } from '../models/topic.enum';
+import { Tag } from '../models/tag.enum';
 import { StateService } from './state.service';
 
 describe('StateService', () => {
@@ -13,7 +13,7 @@ describe('StateService', () => {
 
   const mockParams = {
     role: Role.HQ,
-    topic: Topic.data,
+    tag: Tag.data,
   };
 
   beforeEach(() => {
@@ -40,7 +40,7 @@ describe('StateService', () => {
     expect(service.filters.role).toBe(Role.HQ);
   });
 
-  it('should set the "topic"-filter to the predefined value', () => {
-    expect(service.filters.topic).toBe(Topic.data);
+  it('should set the "tag"-filter to the predefined value', () => {
+    expect(service.filters.tag).toBe(Tag.data);
   });
 });

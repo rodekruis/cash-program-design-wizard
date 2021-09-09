@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Role } from '../models/role.enum';
-import { Topic } from '../models/topic.enum';
+import { Tag } from '../models/tag.enum';
 import { ViewMode } from '../models/view-mode.enum';
 
 @Injectable({
@@ -12,10 +12,10 @@ export class StateService {
 
   public filters: {
     role: Role | '';
-    topic: Topic | '';
+    tag: Tag | '';
   } = {
     role: '',
-    topic: '',
+    tag: '',
   };
 
   public viewMode: ViewMode = ViewMode.view;
@@ -31,10 +31,10 @@ export class StateService {
       } else {
         this.filters.role = '';
       }
-      if (queryParams.topic && Topic[queryParams.topic]) {
-        this.filters.topic = queryParams.topic;
+      if (queryParams.tag && Tag[queryParams.tag]) {
+        this.filters.tag = queryParams.tag;
       } else {
-        this.filters.topic = '';
+        this.filters.tag = '';
       }
     });
   }

@@ -28,14 +28,16 @@
 
       <ul class="ion-margin-vertical">
         <li>
-          <a routerLink="/home" [queryParams]="{ role: 'IF' }">/home?role=IF</a>
-          - Sets the filters to a defined role.
+          <a routerLink="/home" [queryParams]="{ tag: 'people' }"
+            >/home?tag=people</a
+          >
+          - Sets the filters to a defined tag.
         </li>
         <li>
-          <a routerLink="/home" [queryParams]="{ role: 'HQ', topic: 'cash' }"
-            >/home?role=HQ&topic=cash</a
+          <a routerLink="/home" [queryParams]="{ role: 'HQ', tag: 'cash' }"
+            >/home?role=HQ&tag=cash</a
           >
-          - Sets the filters to a defined role + topic.
+          - Sets the filters to a defined role + tag.
         </li>
       </ul>
     </li>
@@ -54,12 +56,10 @@
 
   <hr class="ion-margin-vertical" style="border-top-width: 1px" />
 
-  <h2>Debug information</h2>
-  <pre
-    id="debug-container"
-    class="ion-padding"
-    style="border: 1px dashed hotpink"
-  >
+  <pre class="debug--container">
+DEBUG INFO:
+-----------
+
 State:
 filters: {{ state.filters | json }}
 viewMode: {{ state.viewMode }}
