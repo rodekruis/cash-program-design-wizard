@@ -6,12 +6,14 @@
     "directory": "client"
   },
   "scripts": {
+    "ng": "ng",
     "set-env-variables": "node ./_set-env-variables.js",
     "prebuild": "npm run set-env-variables",
     "build": "ng build",
     "build:production": "npm run build -- --configuration production",
-    "lint": "npx prettier --check . && ng lint",
-    "ng": "ng",
+    "lint": "npm run lint:syntax && ng lint",
+    "lint:syntax": "npx prettier --check .",
+    "fix:syntax": "npm run lint:syntax -- --write",
     "preserve-static": "cp www/index.html www/404.html",
     "serve-static": "npx http-server ./www/ -c-0",
     "start:production": "npm run build:production && npm run serve-static",
