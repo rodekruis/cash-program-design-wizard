@@ -9,7 +9,9 @@
     "test:server": "npm test --workspace server",
     "start": "npm-run-all --print-label --parallel start:client start:server",
     "start:client": "npm start --workspace client",
-    "start:server": "npm start --workspace server"
+    "start:server": "npm-run-all --print-label --parallel start:service start:database",
+    "start:service": "npm run start:dev --workspace server",
+    "start:database": "cd server && docker-compose --project-directory .. up -d --build"
   },
   "repository": {
     "type": "git",
