@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,9 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   constructor(private translate: TranslateService) {
+    if (!!environment.envName) {
+      document.title += ` [ ${environment.envName} ]`;
+    }
     // Update language + text-direction for the full interface
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       document.documentElement.lang = event.lang;

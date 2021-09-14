@@ -8,5 +8,9 @@
   "program": {
     "page-title": "Program: {{id}}",
     "not-found": "No program found."
+  },
+  "report": {
+    "page-title": "Report for program: {{id}}",
+    "not-found": "No report found."
   }
 }

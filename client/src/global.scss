@@ -20,7 +20,38 @@
 
 /* Optional CSS utils that can be commented out */
 @import '~@ionic/angular/css/padding.css';
-@import '~@ionic/angular/css/float-elements.css';
+// @import '~@ionic/angular/css/float-elements.css';
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+/****************************************************************************
+ * Generic Lay-out:
+ */
+
+.frame {
+  display: flex;
+  justify-content: stretch;
+  align-content: stretch;
+  align-items: stretch;
+}
+.frame--sidebar {
+  flex: 0 0 auto;
+}
+.frame--contents {
+  flex: 1 1 auto;
+}
+
+/****************************************************************************
+ * Development / Debugging ONLY:
+ */
+
+.debug--container {
+  outline: 1px dotted hotpink;
+  padding: 0.5em;
+}
+
+.debug--placeholder {
+  outline: 1px dashed hotpink;
+  padding: 0.33em;
+}

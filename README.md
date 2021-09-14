@@ -96,6 +96,10 @@ During development, tests can be run continuously with:
 - `npm run watch:test --workspace client` - for the front-end only
 - `npm run watch:test --workspace server` - for the back-end only
 
+To simulate a production-environment locally and be able to use all (offline) features, use:
+
+    npm run start:production --workspace client
+
 ## Deployment(s)
 
 ### How to deploy the front-end/client app

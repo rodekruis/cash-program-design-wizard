@@ -1,6 +1,6 @@
 <ion-header>
   <app-header>
-    <ion-title>{{ 'program.page-title' | translate: { id: id } }} </ion-title>
+    <ion-title>{{ 'report.page-title' | translate: { id: id } }} </ion-title>
   </app-header>
 </ion-header>
 
@@ -12,10 +12,10 @@
     <div class="frame--contents">
       <!--
 
-      -->
+       -->
       <ion-card *ngIf="!id">
         <ion-card-header>
-          <ion-card-title>{{ 'program.not-found' | translate }}</ion-card-title>
+          <ion-card-title>{{ 'report.not-found' | translate }}</ion-card-title>
         </ion-card-header>
       </ion-card>
 
@@ -24,32 +24,15 @@
           <pre class="ion-text-center">[ ProgramPhases ]</pre>
         </div>
         <div class="debug--placeholder">
-          <pre>[ Filters ]</pre>
+          <pre>[ Content: ReportSection(s) ]</pre>
         </div>
         <div class="debug--placeholder">
-          <pre>
-[ Content: QuestionSection(s) ]
-
-
-
-
-          </pre>
-        </div>
-        <div class="debug--placeholder">
-          <pre class="ion-text-end">[ Actions: (Nav)Progress) ]</pre>
+          <pre class="ion-text-end">[ Actions: (Nav)Progrss </pre>
         </div>
       </ng-container>
       <!--
 
-      -->
+       -->
     </div>
   </div>
-  <pre class="debug--container ion-margin">
-DEBUG INFO:
------------
-
-State:
-filters: {{ state.filters | json }}
-viewMode: {{ state.viewMode }}
-  </pre>
 </ion-content>
