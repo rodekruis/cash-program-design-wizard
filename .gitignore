@@ -15,3 +15,5 @@ www
 
 # (Global) Configuration files
 .env
+# Explicitly include the symlink from the server to the root:
+!server/.env

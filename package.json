@@ -12,9 +12,7 @@
     "test:server": "npm test --prefix server",
     "start": "npm-run-all --print-label --parallel start:client start:server",
     "start:client": "npm start --prefix client",
-    "start:server": "npm-run-all --print-label --parallel start:service start:database",
-    "start:service": "npm run start:dev --prefix server",
-    "start:database": "cd server && docker-compose --project-directory .. up -d --build"
+    "start:server": "npm start --prefix server"
   },
   "repository": {
     "type": "git",
