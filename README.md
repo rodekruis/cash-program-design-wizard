@@ -31,7 +31,7 @@ To set up a local development-environment:
 
   - After installing, run in this directory:
 
-    nvm use
+        nvm use
 
 - Install Docker
   - On macOS, install Docker Desktop: <https://docs.docker.com/docker-for-mac/install/>
