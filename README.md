@@ -44,8 +44,8 @@ To set up a local development-environment:
 
 Run `npm install` from this directory. Or:
 
-- `npm install --workspace client` for the front-end only
-- `npm install --workspace server` for the back-end only
+- `npm run install:client` for the front-end only
+- `npm run install:server` for the back-end only
 
 To finish you local set-up, run:
 
@@ -93,12 +93,12 @@ The back-end server should be running at: <http://localhost:3000/api>.
 
 During development, tests can be run continuously with:
 
-- `npm run watch:test --workspace client` - for the front-end only
-- `npm run watch:test --workspace server` - for the back-end only
+- `npm run watch:test --prefix client` - for the front-end only
+- `npm run watch:test --prefix server` - for the back-end only
 
 To simulate a production-environment locally and be able to use all (offline) features, use:
 
-    npm run start:production --workspace client
+    npm run start:production --prefix client
 
 ## Deployment(s)
 
@@ -113,7 +113,7 @@ The front-end/client app can be deployed as a static single-page-app or PWA.
 
 - Run: (from the root-folder)
 
-      npm run build:production --workspace client
+      npm run build:production --prefix client
 
 - This will generate a folder with all HTML, JS, JSON and SVG assets: [`client/www`](./client/www/)
 - This can be deployed to any hosting-solution (supporting HTTPS), using [this server configuration](https://angular.io/guide/deployment#server-configuration).

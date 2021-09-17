@@ -9,7 +9,9 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write .",
+    "prestart": "npm run start:database",
     "start": "nest start",
+    "start:database": "docker-compose up -d --build",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -18,8 +20,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "lint": "npx prettier --check .",
-    "test": "npm run lint && npm run test:e2e",
-    "watch:test": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+    "test": "npm run lint && npm run test:e2e"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -37,8 +38,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "swagger-ui-express": "^4.1.6",
-    "typeorm": "^0.2.37",
-    "watch:test": "echo 'No watcher(s) specified yet.' && exit 0"
+    "typeorm": "^0.2.37"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
