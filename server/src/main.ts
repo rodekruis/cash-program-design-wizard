@@ -1,9 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { APP_TITLE } from './config';
+import { APP_TITLE, PORT } from './config';
 
 async function bootstrap() {
+  console.log('process.env.POSTGRES_USERNAME: ', process.env.POSTGRES_USERNAME);
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder()
     .setTitle(APP_TITLE)
@@ -17,6 +18,6 @@ async function bootstrap() {
       operationsSorter: 'alpha',
     },
   });
-  await app.listen(3000);
+  await app.listen(PORT);
 }
 bootstrap();

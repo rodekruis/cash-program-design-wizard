@@ -27,5 +27,7 @@
   ],
   "i18n-ally.localesPaths": ["client/src/assets/i18n"],
   "i18n-ally.enabledFrameworks": ["ngx-translate"],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.keystyle": "nested",
+  "appService.defaultWebAppToDeploy": "/subscriptions/b2d243bd-7fab-4a8a-8261-a725ee0e3b47/resourceGroups/510Global/providers/Microsoft.Web/sites/CPDW-Development",
+  "appService.deploySubpath": "server"
 }

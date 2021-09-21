@@ -9,12 +9,12 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write .",
-    "prestart": "npm run start:database",
-    "start": "nest start",
+    "start": "node dist/src/main.js",
     "start:database": "docker-compose up -d --build",
-    "start:dev": "nest start --watch",
+    "start:dev": "npm-run-all --print-label --sequential start:database start:dev:nest",
+    "start:dev:nest": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:no-watch": "nest start",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
@@ -23,6 +23,7 @@
     "test": "npm run lint && npm run test:e2e"
   },
   "dependencies": {
+    "@nestjs/cli": "^8.0.0",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^1.0.1",
     "@nestjs/core": "^8.0.0",
@@ -33,6 +34,7 @@
     "class-validator": "^0.13.1",
     "fastify-swagger": "^4.11.0",
     "jsonwebtoken": "^8.5.1",
+    "npm-run-all": "^4.1.5",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
@@ -41,7 +43,6 @@
     "typeorm": "^0.2.37"
   },
   "devDependencies": {
-    "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
     "@types/bcrypt": "^5.0.0",

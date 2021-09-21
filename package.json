@@ -12,7 +12,7 @@
     "test:server": "npm test --prefix server",
     "start": "npm-run-all --print-label --parallel start:client start:server",
     "start:client": "npm start --prefix client",
-    "start:server": "npm start --prefix server"
+    "start:server": "npm run start:dev --prefix server"
   },
   "repository": {
     "type": "git",
