@@ -42,7 +42,7 @@ describe('ProgramPage', () => {
       fixture = TestBed.createComponent(ProgramPage);
       component = fixture.componentInstance;
       fixture.detectChanges();
-    })
+    }),
   );
 
   it('should create', () => {

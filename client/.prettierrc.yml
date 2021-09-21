@@ -2,3 +2,7 @@
 trailingComma: 'all'
 singleQuote: true
 semi: true
+overrides:
+  - files: ['*.html']
+    options:
+      parser: 'angular'
