@@ -54,4 +54,4 @@ jobs:
         run: npm test --prefix client
 
       - name: Test Server
-        run: npm test --prefix server
+        run: npm run lint --prefix server && npm run test:cov --prefix server
