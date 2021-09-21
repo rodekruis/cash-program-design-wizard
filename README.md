@@ -18,7 +18,7 @@ To set up a local development-environment:
 
 - Install Node.js: <https://nodejs.org/en/download/>
 
-  Install the version specified in the [`.node-version`](.node-version)-file.  
+  Install the version specified in the [`.node-version`](.node-version)-file.
   To prevent conflicts it is recommended to use a 'version manager'.
 
   - [`fnm`](https://github.com/Schniz/fnm#readme) (for Windows/macOS/Linux) After installing, run in this directory:
@@ -29,12 +29,23 @@ To set up a local development-environment:
 
         nvm install && nvm install-latest-npm
 
+  - After installing, run in this directory:
+
+        nvm use
+
+- Install Docker
+  - On macOS, install Docker Desktop: <https://docs.docker.com/docker-for-mac/install/>
+  - On Windows, install Docker Desktop: <https://docs.docker.com/docker-for-windows/install/>
+  - On Linux:
+    - Install Docker Engine: <https://docs.docker.com/engine/install/>
+    - Install Docker Compose: <https://docs.docker.com/compose/install/#install-compose-on-linux-systems>
+
 ### Install client/server app/development dependencies
 
 Run `npm install` from this directory. Or:
 
-- `npm install --workspace client` for the front-end only
-- `npm install --workspace server` for the back-end only
+- `npm run install:client` for the front-end only
+- `npm run install:server` for the back-end only
 
 To finish you local set-up, run:
 
@@ -58,13 +69,13 @@ After this initial set-up, you can start with:
 - `npm run start:client` - for the front-end only
 - `npm run start:server` - for the back-end only
 
-The front-end client should be running at: <http://localhost:4200/>.  
-The back-end server should be running at: <http://localhost:3000/>.
+The front-end client should be running at: <http://localhost:4200/>.
+The back-end server should be running at: <http://localhost:3000/api>.
 
 ### Recommended code-editor/IDE tools/extensions
 
-- [Workspace recommendations for VS Code](.vscode/extensions.json)  
-  When you use [VS Code](https://code.visualstudio.com/) and go to: "_Extensions_" and use the filter: "_Recommended_";  
+- [Workspace recommendations for VS Code](.vscode/extensions.json)
+  When you use [VS Code](https://code.visualstudio.com/) and go to: "_Extensions_" and use the filter: "_Recommended_";
   A list should be shown and each extension can be installed individually.
 
 ### Libraries in use in front-end/client app
@@ -75,18 +86,19 @@ The back-end server should be running at: <http://localhost:3000/>.
 
 ### Libraries/frameworks in use in the back-end/server API
 
-- T.B.D
+- [NestJS](https://nestjs.com/)
+- [TypeORM](https://typeorm.io/#/)
 
 ### Testing
 
 During development, tests can be run continuously with:
 
-- `npm run watch:test --workspace client` - for the front-end only
-- `npm run watch:test --workspace server` - for the back-end only
+- `npm run watch:test --prefix client` - for the front-end only
+- `npm run watch:test --prefix server` - for the back-end only
 
 To simulate a production-environment locally and be able to use all (offline) features, use:
 
-    npm run start:production --workspace client
+    npm run start:production --prefix client
 
 ## Deployment(s)
 
@@ -94,14 +106,14 @@ To simulate a production-environment locally and be able to use all (offline) fe
 
 The front-end/client app can be deployed as a static single-page-app or PWA.
 
-- Prepare the correct configuration in the `.env`-file, based on the example: [.env.example](./.env.example).  
+- Prepare the correct configuration in the `.env`-file, based on the example: [.env.example](./.env.example).
   For more information, see: [`dotenv`](https://www.npmjs.com/package/dotenv).
 
       cp .env.example .env
 
 - Run: (from the root-folder)
 
-      npm run build:production --workspace client
+      npm run build:production --prefix client
 
 - This will generate a folder with all HTML, JS, JSON and SVG assets: [`client/www`](./client/www/)
 - This can be deployed to any hosting-solution (supporting HTTPS), using [this server configuration](https://angular.io/guide/deployment#server-configuration).

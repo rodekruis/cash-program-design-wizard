@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Check version(s)
-        run: node --version && npm --version
+        run: node --version && npm --version && printenv
 
       - name: Install Dependencies
         run: npm install
@@ -51,7 +51,7 @@ jobs:
         run: npm run lint
 
       - name: Test Client
-        run: npm test --workspace client
+        run: npm test --prefix client
 
       - name: Test Server
-        run: npm test --workspace server
+        run: npm run lint --prefix server && npm run test:cov --prefix server

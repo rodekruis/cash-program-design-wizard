@@ -3,13 +3,16 @@
   "homepage": "https://github.com/rodekruis/cash-program-design-wizard#readme",
   "scripts": {
     "fix:syntax": "npm run lint -- --write",
+    "postinstall": "npm-run-all --print-label --sequential install:client install:server",
+    "install:client": "npm install --prefix client",
+    "install:server": "npm install --prefix server",
     "lint": "prettier --check --ignore-unknown './{*,!(client/*),!(server/*)}'",
     "test": "npm-run-all --print-label --sequential lint test:client test:server",
-    "test:client": "npm test --workspace client",
-    "test:server": "npm test --workspace server",
+    "test:client": "npm test --prefix client",
+    "test:server": "npm test --prefix server",
     "start": "npm-run-all --print-label --parallel start:client start:server",
-    "start:client": "npm start --workspace client",
-    "start:server": "npm start --workspace server"
+    "start:client": "npm start --prefix client",
+    "start:server": "npm run start:dev --prefix server"
   },
   "repository": {
     "type": "git",
@@ -19,10 +22,6 @@
   "bugs": {
     "url": "https://github.com/rodekruis/cash-program-design-wizard/issues"
   },
-  "workspaces": [
-    "client",
-    "server"
-  ],
   "engines": {
     "node": "^16.6.1",
     "npm": "^7.20.3"
@@ -31,8 +30,7 @@
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.2",
-    "prettier-plugin-organize-imports": "^2.3.3"
+    "prettier": "^2.3.2"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
