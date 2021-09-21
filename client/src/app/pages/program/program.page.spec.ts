@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
@@ -24,6 +25,7 @@ describe('ProgramPage', () => {
         imports: [
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
+          RouterTestingModule,
           SharedModule,
         ],
         providers: [
