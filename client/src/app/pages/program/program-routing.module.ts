@@ -4,8 +4,12 @@ import { ProgramPage } from './program.page';
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: ':id/overview',
     component: ProgramPage,
+  },
+  {
+    path: ':id',
+    redirectTo: ':id/overview',
   },
   {
     path: '**',

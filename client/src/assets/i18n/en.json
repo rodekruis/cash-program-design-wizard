@@ -5,6 +5,17 @@
     "home": "Home",
     "user-menu": "User menu"
   },
+  "phases": {
+    "overview": "Program overview",
+    "design": "Design",
+    "registration": "Registration",
+    "validation": "Validation",
+    "inclusion": "Inclusion",
+    "review-inclusion": "Review inclusion",
+    "payment": "Payment",
+    "monitoring-evaluation": "Monitoring & evaluation",
+    "report": "Narrative report"
+  },
   "program": {
     "page-title": "Program: {{id}}",
     "not-found": "No program found."

@@ -20,7 +20,8 @@
       </ion-card>
 
       <ng-container *ngIf="id">
-        <app-program-phase programId="{{ id }}"></app-program-phase>
+        <app-program-phase [programId]="id"></app-program-phase>
+
         <div class="debug--placeholder">
           <pre>[ Filters ]</pre>
         </div>

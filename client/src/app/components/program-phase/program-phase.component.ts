@@ -1,15 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-program-phase',
   templateUrl: './program-phase.component.html',
   styleUrls: ['./program-phase.component.scss'],
 })
-export class ProgramPhaseComponent implements OnInit {
+export class ProgramPhaseComponent {
   @Input()
   programId: string;
 
   constructor() {}
-
-  ngOnInit() {}
 }
