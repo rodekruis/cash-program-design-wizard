@@ -24,20 +24,20 @@
   <h2>Demo</h2>
   <ul>
     <li>
-      <a routerLink="/home">/home</a> - This page, used as a starting point.
+      <a routerLink="/home">/home</a> - This page, used as a starting point
 
       <ul class="ion-margin-vertical">
         <li>
           <a routerLink="/home" [queryParams]="{ tag: 'people' }"
             >/home?tag=people</a
           >
-          - Sets the filters to a defined tag.
+          - Sets the filters to a defined tag
         </li>
         <li>
           <a routerLink="/home" [queryParams]="{ role: 'HQ', tag: 'cash' }"
             >/home?role=HQ&tag=cash</a
           >
-          - Sets the filters to a defined role + tag.
+          - Sets the filters to a defined role + tag
         </li>
       </ul>
     </li>
@@ -47,12 +47,12 @@
 
       <ul class="ion-margin-vertical">
         <li>
-          <a routerLink="/program/123/">/program/123/*</a> - The
-          program/document ID is in the URL-path.
+          <a routerLink="/program/123/overview">/program/123/overview</a> - The
+          "input/edit"-view
         </li>
         <li>
           <a routerLink="/program/123/report">/program/123/report</a> - The
-          report/document ID is in the URL-path.
+          "print"-view
         </li>
       </ul>
     </li>
