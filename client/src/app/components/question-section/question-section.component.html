@@ -1,0 +1,9 @@
+<h3>{{ section?.label }}</h3>
+
+<ion-card
+  class="ion-margin ion-padding"
+  *ngFor="let question of section?.questions"
+>
+  {{ question.label }}<br />
+  <code>{{ question.type }}</code>
+</ion-card>
