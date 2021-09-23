@@ -3,20 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
-import { of } from 'rxjs';
 import { SharedModule } from '../components/shared.module';
-import { Role } from '../models/role.enum';
-import { Tag } from '../models/tag.enum';
 import { HomePage } from './home.page';
 
 describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
-
-  const mockParams = {
-    role: Role.HQ,
-    tag: Tag.data,
-  };
 
   beforeEach(
     waitForAsync(() => {
@@ -33,7 +25,6 @@ describe('HomePage', () => {
             provide: ActivatedRoute,
             useValue: {
               params: { id: 1 },
-              queryParams: of(mockParams),
             },
           },
         ],
