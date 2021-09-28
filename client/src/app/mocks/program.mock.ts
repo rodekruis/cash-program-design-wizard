@@ -20,6 +20,7 @@ export const mockProgram: Program = {
           type: QuestionType.text,
           label: 'Question for Text-input',
           tags: [Tag.data],
+          comment: 'Comment on this question',
         },
         {
           id: 101,
@@ -30,12 +31,23 @@ export const mockProgram: Program = {
         {
           id: 102,
           type: QuestionType.select1,
-          label: 'Question for Numeric-input',
+          label: 'Question for Select-1 from the options',
           tags: [Tag.data],
           options: [
-            { id: 1000, label: 'option A' },
-            { id: 1001, label: 'option B' },
-            { id: 1002, label: 'option C' },
+            { id: 1001, label: 'option A' },
+            { id: 1002, label: 'option B' },
+            { id: 1003, label: 'option C' },
+          ],
+        },
+        {
+          id: 103,
+          type: QuestionType.selectN,
+          label: 'Question for Select-Multiple from the options',
+          tags: [Tag.data],
+          options: [
+            { id: 1024, label: 'option X' },
+            { id: 1025, label: 'option Y' },
+            { id: 1026, label: 'option Z' },
           ],
         },
       ],
@@ -48,7 +60,7 @@ export const mockProgram: Program = {
       label: 'Section 2',
       questions: [
         {
-          id: 103,
+          id: 110,
           type: QuestionType.text,
           label: 'Question for Text-input B',
           tags: [Tag.cash],

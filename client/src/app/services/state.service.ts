@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { mockProgram } from '../mocks/program.mock';
 import { Tag } from '../models/tag.enum';
 import { ViewMode } from '../models/view-mode.enum';
@@ -24,11 +24,16 @@ export class StateService {
 
   private sections: QuestionSection[];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.updateFilters();
 
     this.getSections();
-    this.setActiveSection(this.getFirstPendingSection());
+
+    this.updateActiveSectionFromUrl();
+
+    if (!this.activeSection) {
+      this.setActiveSection(this.getFirstPendingSection());
+    }
   }
 
   public goPrevSection() {
@@ -50,8 +55,20 @@ export class StateService {
     });
   }
 
+  private async updateActiveSectionFromUrl() {
+    this.route.queryParams.subscribe((queryParams) => {
+      if (queryParams.section) {
+        this.setActiveSection(this.getSectionBySlug(queryParams.section));
+      }
+    });
+  }
+
   private getSections() {
     this.sections = mockProgram.sections;
+  }
+
+  private getSectionBySlug(slug: string) {
+    return this.sections.find((section) => section.slug === slug);
   }
 
   private getFirstPendingSection(): QuestionSection {
@@ -59,12 +76,20 @@ export class StateService {
   }
 
   private setActiveSection(section: QuestionSection) {
+    // Translate text-strings: (when applicable)
     section.label = this.getTranslationsOf(section.label);
     section.questions = section.questions.map((question) => {
       question.label = this.getTranslationsOf(question.label);
       return question;
     });
+
     this.activeSection = section;
+
+    // Store the active section in the URL:
+    this.router.navigate([], {
+      queryParams: { section: section.slug },
+      queryParamsHandling: 'merge',
+    });
   }
 
   private getTranslationsOf(inputObject: string | TranslatableString): string {
