@@ -5,7 +5,6 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { SharedModule } from 'src/app/components/shared.module';
-import { Role } from 'src/app/models/role.enum';
 import { Tag } from 'src/app/models/tag.enum';
 import { ReportPage } from './report.page';
 
@@ -14,7 +13,6 @@ describe('ReportPage', () => {
   let fixture: ComponentFixture<ReportPage>;
 
   const mockParams = {
-    role: Role.HQ,
     tag: Tag.data,
   };
 
