@@ -20,6 +20,17 @@
     "page-title": "Program: {{id}}",
     "not-found": "No program found."
   },
+  "question-section": {
+    "fields": {
+      "select-1": {
+        "placeholder": "Select 1 from the list"
+      },
+      "select-n": {
+        "placeholder": "Select 1 or more from the list"
+      }
+    },
+    "comments": "Comment(s):"
+  },
   "report": {
     "page-title": "Report for program: {{id}}",
     "not-found": "No report found."

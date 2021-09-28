@@ -43,6 +43,25 @@
         <li>
           <a routerLink="/program/123/overview">/program/123/overview</a> - The
           "input/edit"-view
+
+          <ul class="ion-margin-vertical">
+            <li>
+              Deep-link to:
+              <a
+                routerLink="/program/123/overview"
+                [queryParams]="{ section: 'test1' }"
+                >section 1</a
+              >
+            </li>
+            <li>
+              Deep-link to:
+              <a
+                routerLink="/program/123/overview"
+                [queryParams]="{ section: 'test2' }"
+                >section 2</a
+              >
+            </li>
+          </ul>
         </li>
         <li>
           <a routerLink="/program/123/report">/program/123/report</a> - The
