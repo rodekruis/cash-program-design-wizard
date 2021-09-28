@@ -1,9 +1,75 @@
 <h3>{{ section?.label }}</h3>
 
-<ion-card
-  class="ion-margin ion-padding"
-  *ngFor="let question of section?.questions"
->
-  {{ question.label }}<br />
-  <code>{{ question.type }}</code>
-</ion-card>
+<ol class="ion-padding ion-no-margin">
+  <li class="ion-margin-vertical" *ngFor="let question of section?.questions">
+    <ion-item>
+      <ion-label position="stacked">
+        {{ question.label }}
+      </ion-label>
+      <ng-container [ngSwitch]="question.type">
+        <ng-container *ngSwitchCase="questionTypes.select1">
+          <ion-select
+            [placeholder]="
+              'question-section.fields.select-1.placeholder' | translate
+            "
+            [multiple]="false"
+          >
+            <ion-select-option
+              *ngFor="let option of question.options"
+              [value]="option.value"
+              >{{ option.label }}</ion-select-option
+            >
+          </ion-select>
+        </ng-container>
+        <ng-container *ngSwitchCase="questionTypes.selectN">
+          <ion-select
+            [placeholder]="
+              'question-section.fields.select-n.placeholder' | translate
+            "
+            [multiple]="true"
+          >
+            <ion-select-option
+              *ngFor="let option of question.options"
+              [value]="option.value"
+              >{{ option.label }}</ion-select-option
+            >
+          </ion-select>
+        </ng-container>
+        <ng-container *ngSwitchCase="questionTypes.numeric">
+          <ion-input
+            type="number"
+            inputmode="decimal"
+            pattern="[0-9]+"
+          ></ion-input>
+        </ng-container>
+        <ng-container *ngSwitchCase="questionTypes.textLong">
+          <ion-textarea
+            rows="2"
+            [autoGrow]="true"
+            [spellcheck]="true"
+            autocorrect="on"
+            autocapitalize="on"
+          ></ion-textarea>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <ion-input
+            type="text"
+            [spellcheck]="true"
+            autocorrect="on"
+            autocapitalize="on"
+          ></ion-input>
+        </ng-container>
+      </ng-container>
+    </ion-item>
+
+    <div *ngIf="question.comment" class="ion-margin-vertical">
+      <strong>{{ 'question-section.comments' | translate }}</strong>
+      <div
+        class="ion-padding"
+        style="color: var(--ion-color-medium); border: 1px solid currentColor"
+      >
+        {{ question.comment }}
+      </div>
+    </div>
+  </li>
+</ol>

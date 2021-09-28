@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { QuestionType } from 'src/app/types/question-input.type';
 import { QuestionSection } from 'src/app/types/question-section.type';
 
 @Component({
@@ -9,6 +10,8 @@ import { QuestionSection } from 'src/app/types/question-section.type';
 export class QuestionSectionComponent {
   @Input()
   section: QuestionSection;
+
+  public questionTypes = QuestionType;
 
   constructor() {}
 }

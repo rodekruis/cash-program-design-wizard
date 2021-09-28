@@ -3,9 +3,10 @@ import { TranslatableString } from './translatable-string.type';
 
 export enum QuestionType {
   text = 'text',
+  textLong = 'text-long',
   numeric = 'numeric',
-  select1 = 'select1',
-  selectN = 'selectN',
+  select1 = 'select-1',
+  selectN = 'select-n',
 }
 export interface QuestionInput {
   id: number;
@@ -13,9 +14,11 @@ export interface QuestionInput {
   label: string | TranslatableString;
   tags: Tag[];
   options?: OptionChoice[];
+  comment?: string;
 }
 
 export interface OptionChoice {
   id: number;
   label: string | TranslatableString;
+  value: string;
 }
