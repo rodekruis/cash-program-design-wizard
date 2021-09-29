@@ -1,7 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+  <app-header>
+    <ion-title>Login</ion-title>
+  </app-header>
 </ion-header>
-
-<ion-content> </ion-content>
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="6" size-xl="4">
+        <app-login-form></app-login-form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

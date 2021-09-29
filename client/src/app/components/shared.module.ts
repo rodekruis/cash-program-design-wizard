@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from '../components/header/header.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 import { ProgramPhaseComponent } from './program-phase/program-phase.component';
 import { QuestionSectionComponent } from './question-section/question-section.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -15,6 +16,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SidebarComponent,
     ProgramPhaseComponent,
     QuestionSectionComponent,
+    LoginFormComponent,
   ],
   exports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SidebarComponent,
     ProgramPhaseComponent,
     QuestionSectionComponent,
+    LoginFormComponent,
   ],
 })
 export class SharedModule {}
