@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from 'src/app/components/shared.module';
 import { LoginPage } from './login.page';
 
@@ -12,6 +13,7 @@ describe('LoginPage', () => {
       TestBed.configureTestingModule({
         declarations: [LoginPage],
         imports: [IonicModule.forRoot(), SharedModule],
+        providers: [TranslateModule],
       }).compileComponents();
 
       fixture = TestBed.createComponent(LoginPage);
