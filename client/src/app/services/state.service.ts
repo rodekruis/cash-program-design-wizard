@@ -4,7 +4,7 @@ import { mockProgram } from '../mocks/program.mock';
 import { Tag } from '../models/tag.enum';
 import { ViewMode } from '../models/view-mode.enum';
 import { QuestionSection } from '../types/question-section.type';
-import { TranslatableString } from '../types/translatable-string.type';
+import { TranslatableStringService } from './translatable-string.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,11 @@ export class StateService {
 
   private sections: QuestionSection[];
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private translatableString: TranslatableStringService,
+  ) {
     this.updateFilters();
 
     this.getSections();
@@ -76,14 +80,12 @@ export class StateService {
   }
 
   private setActiveSection(section: QuestionSection) {
-    // Translate text-strings: (when applicable)
-    section.label = this.getTranslationsOf(section.label);
-    section.questions = section.questions.map((question) => {
-      question.label = this.getTranslationsOf(question.label);
-      return question;
-    });
+    if (!section || typeof section === 'undefined') {
+      console.warn('Not a valid section!', section);
+      return;
+    }
 
-    this.activeSection = section;
+    this.activeSection = this.translateLabels(section);
 
     // Store the active section in the URL:
     this.router.navigate([], {
@@ -92,10 +94,12 @@ export class StateService {
     });
   }
 
-  private getTranslationsOf(inputObject: string | TranslatableString): string {
-    if (typeof inputObject === 'string') {
-      return inputObject;
-    }
-    return inputObject.en ? inputObject.en : '';
+  private translateLabels(section: QuestionSection): QuestionSection {
+    section.label = this.translatableString.get(section.label);
+    section.questions = section.questions.map((question) => {
+      question.label = this.translatableString.get(question.label);
+      return question;
+    });
+    return section;
   }
 }
