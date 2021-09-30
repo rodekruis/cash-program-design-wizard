@@ -12,8 +12,11 @@ describe('LoginPage', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [LoginPage],
-        imports: [IonicModule.forRoot(), SharedModule],
-        providers: [TranslateModule],
+        imports: [
+          IonicModule.forRoot(),
+          SharedModule,
+          TranslateModule.forRoot(),
+        ],
       }).compileComponents();
 
       fixture = TestBed.createComponent(LoginPage);
