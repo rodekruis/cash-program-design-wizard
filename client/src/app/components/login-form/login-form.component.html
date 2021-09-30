@@ -7,7 +7,7 @@
       [(ngModel)]="model.email"
       name="email"
       type="email"
-      pattern="[a-zA-Z0-9\.\-\_]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+"
+      pattern="[a-zA-Z0-9.-_]+@[a-z0-9.-]+\.[a-z0-9]+"
       required
       inputmode="email"
       autocomplete="email username"
@@ -29,8 +29,15 @@
       clearOnEdit="false"
     ></ion-input>
   </ion-item>
-  <ion-button buttonType="button" type="submit" expand="block">
+  <ion-button type="submit" expand="block" [disabled]="inProgress">
     {{ 'login-form.button.label' | translate }}
     <ion-icon slot="end" name="enter" aria-hidden="true"></ion-icon>
   </ion-button>
+
+  <ion-text *ngIf="logInError" color="warning">
+    <p class="ion-text-center">
+      <ion-icon name="warning" size="large" aria-hidden="true"></ion-icon><br />
+      {{ 'login-form.error' | translate }} <code>{{ statusText }}</code>
+    </p>
+  </ion-text>
 </form>
