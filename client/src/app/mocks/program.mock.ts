@@ -18,7 +18,10 @@ export const mockProgram: Program = {
         {
           id: 100,
           type: QuestionType.text,
-          label: 'Question for Text-input',
+          label: {
+            en: 'Question for Text-input',
+            nl: 'Vraag met Tekst-invoer',
+          },
           tags: [Tag.data],
           comment: 'A comment on this question',
         },

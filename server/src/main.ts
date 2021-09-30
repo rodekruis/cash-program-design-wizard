@@ -4,8 +4,8 @@ import { AppModule } from './app.module';
 import { APP_TITLE, PORT } from './config';
 
 async function bootstrap() {
-  console.log('process.env.POSTGRES_USERNAME: ', process.env.POSTGRES_USERNAME);
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
+
   const options = new DocumentBuilder()
     .setTitle(APP_TITLE)
     .addBearerAuth()

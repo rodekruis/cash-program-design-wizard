@@ -1,6 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
+  "reportUnusedDisableDirectives": true,
   "overrides": [
     {
       "files": ["*.ts"],
