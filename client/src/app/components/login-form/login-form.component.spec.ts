@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 import { LoginFormComponent } from './login-form.component';
 
 describe('LoginFormComponent', () => {
@@ -11,7 +12,7 @@ describe('LoginFormComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [LoginFormComponent],
-        imports: [IonicModule, FormsModule],
+        imports: [IonicModule, FormsModule, TranslateModule.forRoot()],
       }).compileComponents();
 
       fixture = TestBed.createComponent(LoginFormComponent);

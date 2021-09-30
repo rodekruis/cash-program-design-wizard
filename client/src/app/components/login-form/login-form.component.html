@@ -1,20 +1,25 @@
-<form (ngSubmit)="onSubmit()" class="login-form">
+<form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="login-form">
   <ion-item>
-    <ion-label position="stacked">E-mail</ion-label>
+    <ion-label position="stacked">{{
+      'login-form.e-mail.label' | translate
+    }}</ion-label>
     <ion-input
+      [(ngModel)]="model.email"
       name="email"
       type="email"
       required
       inputmode="email"
-      pattern="[a-zA-Z0-9\.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+"
       autocomplete="email username"
       clearInput="true"
       data-test="input-user"
     ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Password</ion-label>
+    <ion-label position="stacked">{{
+      'login-form.password.label' | translate
+    }}</ion-label>
     <ion-input
+      [(ngModel)]="model.password"
       name="password"
       type="password"
       required
@@ -33,6 +38,6 @@
     data-test="login-button"
   >
     Log In
-    <ion-icon slot="end" name="enter"></ion-icon>
+    <ion-icon slot="end" name="enter" aria-hidden="true"></ion-icon>
   </ion-button>
 </form>

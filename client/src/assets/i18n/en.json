@@ -34,5 +34,13 @@
   "report": {
     "page-title": "Report for program: {{id}}",
     "not-found": "No report found."
+  },
+  "login-form": {
+    "e-mail": {
+      "label": "Email"
+    },
+    "password": {
+      "label": "Password"
+    }
   }
 }

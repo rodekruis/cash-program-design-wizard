@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
@@ -10,7 +11,13 @@ import { QuestionSectionComponent } from './question-section/question-section.co
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  imports: [CommonModule, IonicModule, TranslateModule, RouterModule],
+  imports: [
+    CommonModule,
+    IonicModule,
+    TranslateModule,
+    RouterModule,
+    FormsModule,
+  ],
   declarations: [
     HeaderComponent,
     SidebarComponent,
@@ -28,6 +35,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     ProgramPhaseComponent,
     QuestionSectionComponent,
     LoginFormComponent,
+    FormsModule,
   ],
 })
 export class SharedModule {}
