@@ -1,9 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { Tag } from '../models/tag.enum';
 import { StateService } from './state.service';
+import { TranslatableStringService } from './translatable-string.service';
 
 describe('StateService', () => {
   let service: StateService;
@@ -16,7 +18,7 @@ describe('StateService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, TranslateModule.forRoot()],
       providers: [
         {
           provide: ActivatedRoute,
@@ -24,6 +26,7 @@ describe('StateService', () => {
             queryParams: of(mockParams),
           },
         },
+        TranslatableStringService,
       ],
     });
     route = TestBed.inject(ActivatedRoute);

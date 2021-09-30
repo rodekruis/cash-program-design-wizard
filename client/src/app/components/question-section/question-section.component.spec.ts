@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { StateService } from 'src/app/services/state.service';
+import { TranslateModule } from '@ngx-translate/core';
 import { QuestionSectionComponent } from './question-section.component';
 
 describe('QuestionSectionComponent', () => {
@@ -11,8 +11,7 @@ describe('QuestionSectionComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [QuestionSectionComponent],
-        imports: [IonicModule.forRoot()],
-        providers: [StateService],
+        imports: [IonicModule.forRoot(), TranslateModule.forRoot()],
       }).compileComponents();
 
       fixture = TestBed.createComponent(QuestionSectionComponent);
