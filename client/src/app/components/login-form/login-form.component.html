@@ -1,4 +1,4 @@
-<form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="login-form">
+<form #loginForm="ngForm" (ngSubmit)="onSubmit()">
   <ion-item>
     <ion-label position="stacked">{{
       'login-form.e-mail.label' | translate
@@ -12,7 +12,6 @@
       inputmode="email"
       autocomplete="email username"
       clearInput="true"
-      data-test="input-user"
     ></ion-input>
   </ion-item>
   <ion-item>
@@ -28,17 +27,10 @@
       minlength="4"
       clearInput="true"
       clearOnEdit="false"
-      data-test="input-password"
     ></ion-input>
   </ion-item>
-  <ion-button
-    buttonType="button"
-    type="submit"
-    class="login-button"
-    expand="block"
-    data-test="login-button"
-  >
-    Log In
+  <ion-button buttonType="button" type="submit" expand="block">
+    {{ 'login-form.button.label' | translate }}
     <ion-icon slot="end" name="enter" aria-hidden="true"></ion-icon>
   </ion-button>
 </form>

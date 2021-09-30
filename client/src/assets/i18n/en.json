@@ -41,6 +41,9 @@
     },
     "password": {
       "label": "Password"
+    },
+    "button": {
+      "label": "Log In"
     }
   }
 }
