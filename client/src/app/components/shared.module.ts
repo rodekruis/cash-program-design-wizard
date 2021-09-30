@@ -9,33 +9,36 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ProgramPhaseComponent } from './program-phase/program-phase.component';
 import { QuestionSectionComponent } from './question-section/question-section.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { UserStateComponent } from './user-state/user-state.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    IonicModule,
-    TranslateModule,
-    RouterModule,
     FormsModule,
+    IonicModule,
+    RouterModule,
+    TranslateModule,
   ],
   declarations: [
     HeaderComponent,
-    SidebarComponent,
+    LoginFormComponent,
     ProgramPhaseComponent,
     QuestionSectionComponent,
-    LoginFormComponent,
+    SidebarComponent,
+    UserStateComponent,
   ],
   exports: [
     CommonModule,
-    IonicModule,
-    TranslateModule,
-    RouterModule,
+    FormsModule,
     HeaderComponent,
-    SidebarComponent,
+    IonicModule,
+    LoginFormComponent,
     ProgramPhaseComponent,
     QuestionSectionComponent,
-    LoginFormComponent,
-    FormsModule,
+    RouterModule,
+    SidebarComponent,
+    TranslateModule,
+    UserStateComponent,
   ],
 })
 export class SharedModule {}

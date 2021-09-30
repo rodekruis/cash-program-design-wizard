@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -25,6 +26,7 @@ describe('ProgramPage', () => {
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
           RouterTestingModule,
+          HttpClientTestingModule,
           SharedModule,
         ],
         providers: [
