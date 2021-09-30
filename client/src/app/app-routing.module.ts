@@ -18,6 +18,11 @@ const routes: Routes = [
       import('./pages/program/program.module').then((m) => m.ProgramPageModule),
   },
   {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginPageModule),
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',
