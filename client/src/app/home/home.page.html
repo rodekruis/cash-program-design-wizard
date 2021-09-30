@@ -73,6 +73,30 @@
 
   <hr class="ion-margin-vertical" style="border-top-width: 1px" />
 
+  <div style="display: flex; max-width: 10em" class="ion-align-items-center">
+    <strong>Set Language:</strong>
+
+    <ion-segment
+      (ionChange)="changeLanguage($event)"
+      value="en"
+      color="secondary"
+      [swipeGesture]="false"
+    >
+      <ion-segment-button value="en">
+        <ion-label>EN</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="nl">
+        <ion-label>NL</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <br />
+
+  <ion-button (click)="apiTestGet()">API: GET /</ion-button>
+
+  <hr class="ion-margin-vertical" style="border-top-width: 1px" />
+
   <pre class="debug--container">
 DEBUG INFO:
 -----------
