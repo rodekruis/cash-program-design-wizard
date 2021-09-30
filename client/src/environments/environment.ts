@@ -13,7 +13,7 @@ export const environment = {
   defaultLanguage: 'en',
 
   // URLS:
-  apiUrl: 'https://localhost:3000/api',
+  apiUrl: 'http://localhost:3001',
 };
 
 /*

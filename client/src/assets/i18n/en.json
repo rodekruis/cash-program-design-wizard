@@ -37,13 +37,19 @@
   },
   "login-form": {
     "e-mail": {
-      "label": "Email"
+      "label": "E-mail"
     },
     "password": {
       "label": "Password"
     },
     "button": {
-      "label": "Log In"
-    }
+      "label": "Log in"
+    },
+    "error": "Log in failed:"
+  },
+  "user-state": {
+    "log-in": "Log in",
+    "logged-in-as": "Logged in as",
+    "log-out": "Log out"
   }
 }

@@ -1,0 +1,37 @@
+<ng-container *ngIf="!isLoggedIn">
+  <ion-button
+    type="button"
+    [title]="'user-state.log-in' | translate"
+    [attr.aria-label]="'user-state.log-in' | translate"
+    size="small"
+    fill="clear"
+    routerLink="/login"
+    routerLinkActive
+    #rlaLogin="routerLinkActive"
+    [hidden]="rlaLogin.isActive"
+  >
+    <span class="ion-hide-sm-down">{{ 'user-state.log-in' | translate }}</span>
+    <ion-icon name="log-in" slot="end"></ion-icon>
+  </ion-button>
+</ng-container>
+<ng-container *ngIf="isLoggedIn">
+  <span style="display: inline-block">
+    {{ 'user-state.logged-in-as' | translate }}:
+    <br />
+    <ion-note class="ion-text-nowrap">{{ userName }}</ion-note>
+  </span>
+
+  &nbsp;
+
+  <ion-button
+    type="button"
+    [title]="'user-state.log-out' | translate"
+    [attr.aria-label]="'user-state.log-out' | translate"
+    size="small"
+    fill="clear"
+    (click)="doLogout()"
+  >
+    <span class="ion-hide-sm-down">{{ 'user-state.log-out' | translate }}</span>
+    <ion-icon name="log-out" slot="end"></ion-icon>
+  </ion-button>
+</ng-container>

@@ -83,6 +83,7 @@ The back-end server should be running at: <http://localhost:3001/api/>.
 - [Ionic v5+](https://ionicframework.com/docs/)
 - [Angular v12](https://v12.angular.io/docs/)
 - [`ngx-translate`](https://github.com/ngx-translate/core#readme)
+- [`@auth0/angular-jwt`](https://www.npmjs.com/package/@auth0/angular-jwt)
 
 ### Libraries/frameworks in use in the back-end/server API
 
