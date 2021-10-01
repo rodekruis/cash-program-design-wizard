@@ -29,7 +29,10 @@
         "placeholder": "Select 1 or more from the list"
       }
     },
-    "comments": "Comment(s):"
+    "comments": "Comment(s):",
+    "save-answers": {
+      "label": "Save answers"
+    }
   },
   "report": {
     "page-title": "Report for program: {{id}}",
