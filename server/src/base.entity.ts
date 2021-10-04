@@ -1,12 +1,26 @@
-import { Column, getConnection, Index, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeUpdate,
+  Column,
+  getConnection,
+  Index,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 export class BaseCpdwEntity {
-  @PrimaryGeneratedColumn()
-  public id: number;
+  @PrimaryGeneratedColumn('uuid')
+  public id: string;
 
   @Index()
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   public created: Date;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  public updated: Date;
+
+  @BeforeUpdate()
+  public updateTimestamp(): void {
+    this.updated = new Date();
+  }
 }
 
 export class CascadeDeleteEntity extends BaseCpdwEntity {

@@ -1,3 +1,7 @@
+import { AnswersModule } from './answers/answers.module';
+import { QuestionsModule } from './questions/questions.module';
+import { ProgramsModule } from './programs/programs.module';
+import { ScriptsModule } from './scripts/scripts.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -5,7 +9,7 @@ import { join } from 'path';
 import { Connection } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
+import { UserModule } from './users/user.module';
 
 @Module({
   imports: [
@@ -30,6 +34,10 @@ import { UserModule } from './user/user.module';
       synchronize: true,
     }),
     UserModule,
+    AnswersModule,
+    ScriptsModule,
+    ProgramsModule,
+    QuestionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
