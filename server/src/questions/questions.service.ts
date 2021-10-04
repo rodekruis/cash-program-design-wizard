@@ -15,7 +15,7 @@ export class QuestionsService {
       .select([
         'question.name AS name',
         'question.id AS id',
-        'type',
+        '"type"',
         'question.label AS label',
         'section.name',
         'section.id',
@@ -25,8 +25,11 @@ export class QuestionsService {
       ])
       .leftJoin('question.section', 'section')
       .leftJoin('question.answers', 'answers')
-      .leftJoin('answers.program', 'program')
-      .where('program.id = :programId', { programId: programId });
+      .leftJoin('answers.program', 'program', 'program.id = :programId', {
+        programId: programId,
+      });
+    const q = qb.getQuery();
+    console.log('q: ', q);
     const questions = await qb.getRawMany();
 
     return {
