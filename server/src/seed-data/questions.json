@@ -1,0 +1,10 @@
+[
+  {
+    "name": "number-of-person-affected",
+    "label": {
+      "en": "What is total number of people you want to help?"
+    },
+    "orderPriority": 1000,
+    "section": "market"
+  }
+]

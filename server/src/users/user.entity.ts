@@ -1,12 +1,13 @@
 import * as bcrypt from 'bcrypt';
-import { BeforeInsert, Column, Entity, Index } from 'typeorm';
+import { BeforeInsert, Column, Entity, Index, OneToMany } from 'typeorm';
 import { CascadeDeleteEntity } from '../base.entity';
+import { ProgramUserAssignmentEntity } from '../programs/program-user-assignment.entity';
 
 @Entity('user')
 export class UserEntity extends CascadeDeleteEntity {
   @Index({ unique: true })
   @Column({ nullable: true })
-  public username: string;
+  public userName: string;
 
   @Column({ select: false })
   public password: string;
@@ -18,4 +19,10 @@ export class UserEntity extends CascadeDeleteEntity {
       parseInt(process.env.SALT),
     );
   }
+
+  @OneToMany(
+    () => ProgramUserAssignmentEntity,
+    (programAssignment) => programAssignment.user,
+  )
+  public programAssignments: ProgramUserAssignmentEntity[];
 }
