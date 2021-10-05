@@ -5,7 +5,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { AssignUserDto } from './dto/assign-user.dto';
 
-@ApiBearerAuth()
 @ApiTags('users')
 @Controller('users')
 export class UserController {
@@ -21,7 +20,6 @@ export class UserController {
     return this.userService.create(userData.userName, userData.password);
   }
 
-  @ApiBearerAuth()
   @ApiOperation({ summary: 'Login user' })
   @Post('/login')
   public async login(@Body() userData: LoginUserDto): Promise<any> {
