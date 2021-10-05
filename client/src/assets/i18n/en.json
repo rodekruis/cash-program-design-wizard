@@ -51,5 +51,10 @@
     "log-in": "Log in",
     "logged-in-as": "Logged in as",
     "log-out": "Log out"
+  },
+  "nav-progress": {
+    "save-answers": {
+      "label": "Save answers"
+    }
   }
 }
