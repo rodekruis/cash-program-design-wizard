@@ -1,7 +1,6 @@
-import { Controller, Post, Body, Res, HttpStatus } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
 import { ApiOperation, ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
-import { Connection } from 'typeorm';
 import SeedDemoProgram from './seed-program-demo';
 
 enum SeedScript {

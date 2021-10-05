@@ -1,16 +1,11 @@
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Roles } from '../auth/roles.decorator';
+import { User } from '../users/user.decorator';
 import { RolesGuard } from './../auth/roles.guard';
 import { UserRoleEnum } from './../users/enum/user-role.enum';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiParam,
-  ApiTags,
-} from '@nestjs/swagger';
-import { Controller, Get, UseGuards } from '@nestjs/common';
-import { ProgramsService } from './programs.service';
 import { ProgramsRO } from './program.interface';
-import { User } from '../users/user.decorator';
-import { Roles } from '../auth/roles.decorator';
+import { ProgramsService } from './programs.service';
 
 @ApiBearerAuth()
 @ApiTags('programs')
