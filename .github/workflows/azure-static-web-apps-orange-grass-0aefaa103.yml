@@ -24,6 +24,7 @@ jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
+    environment: 'development'
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v2
@@ -42,7 +43,8 @@ jobs:
           output_location: 'www'
           ###### End of Repository/Build Configurations ######
         env:
-          NG_ENV_NAME: 'development'
+          ENV_NAME: ${{ secrets.ENV_NAME }}
+          API_URL: ${{ secrets.API_URL }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
