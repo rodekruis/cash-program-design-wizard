@@ -33,8 +33,6 @@ export class SeedDemoProgram implements InterfaceScript {
     await this.createUsers(program);
     await this.seedSections();
     await this.seedQuestions();
-
-    // ***** CREATE ADMIN USER *****
   }
 
   public async truncateAll(): Promise<void> {
