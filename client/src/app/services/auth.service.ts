@@ -38,11 +38,11 @@ export class AuthService {
     return requiredRoles.some((role) => user.roles.includes(role));
   }
 
-  public async login(username: string, password: string): Promise<any> {
+  public async login(userName: string, password: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this.apiService
         .post(ApiPath.login, {
-          userName: username,
+          userName,
           password,
         })
         .subscribe(
@@ -103,13 +103,13 @@ export class AuthService {
       return null;
     }
 
-    if (!user || !user.username) {
+    if (!user || !user.userName) {
       console.warn('AuthService: No valid user');
       return null;
     }
 
     return {
-      username: user.username,
+      userName: user.userName,
       roles: user.roles,
     };
   }

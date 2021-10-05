@@ -6,8 +6,7 @@ import { environment } from 'src/environments/environment';
 
 export enum ApiPath {
   test = '',
-  user = 'user',
-  login = 'user/login',
+  login = 'users/login',
 }
 
 @Injectable({

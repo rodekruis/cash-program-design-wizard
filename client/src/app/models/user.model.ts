@@ -1,11 +1,11 @@
 export enum UserRole {
   admin = 'admin',
   edit = 'edit',
-  review = 'review',
+  view = 'view',
 }
 
 export interface User {
   token?: string;
-  username: string;
+  userName: string;
   roles: UserRole[];
 }
