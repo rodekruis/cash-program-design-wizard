@@ -15,7 +15,7 @@ export class QuestionsService {
       .select([
         'question.name AS name',
         'question.id AS id',
-        '"type"',
+        'question.type AS type',
         'question.label AS label',
         'section.name',
         'section.id',

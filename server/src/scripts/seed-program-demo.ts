@@ -97,7 +97,7 @@ export class SeedDemoProgram implements InterfaceScript {
       const question = new QuestionEntity();
       question.label = JSON.stringify(rawQuestion.label);
       question.name = rawQuestion.name;
-      question.orderPriority = rawQuestion.orderPriority;
+      question.type = rawQuestion.type;
       question.orderPriority = rawQuestion.orderPriority;
 
       question.section = await this.sectionRepository.findOne({

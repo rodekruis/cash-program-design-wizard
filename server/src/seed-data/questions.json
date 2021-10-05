@@ -6,5 +6,41 @@
     },
     "orderPriority": 1000,
     "section": "market"
+  },
+  {
+    "name": "test-text-1",
+    "type": "text",
+    "label": {
+      "en": "Question for Text-input"
+    },
+    "orderPriority": 1000,
+    "section": "test1"
+  },
+  {
+    "name": "test-text-long",
+    "type": "text-long",
+    "label": {
+      "en": "Question for Longer Text-input"
+    },
+    "orderPriority": 1000,
+    "section": "test1"
+  },
+  {
+    "name": "test-numeric",
+    "type": "numeric",
+    "label": {
+      "en": "Question for Numeric-input"
+    },
+    "orderPriority": 1000,
+    "section": "test1"
+  },
+  {
+    "name": "test-text-2",
+    "type": "text",
+    "label": {
+      "en": "Question for Text-input"
+    },
+    "orderPriority": 1000,
+    "section": "test2"
   }
 ]
