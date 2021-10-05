@@ -29,10 +29,7 @@
         "placeholder": "Select 1 or more from the list"
       }
     },
-    "comments": "Comment(s):",
-    "save-answers": {
-      "label": "Save answers"
-    }
+    "comments": "Comment(s):"
   },
   "report": {
     "page-title": "Report for program: {{id}}",
@@ -54,5 +51,10 @@
     "log-in": "Log in",
     "logged-in-as": "Logged in as",
     "log-out": "Log out"
+  },
+  "nav-progress": {
+    "save-answers": {
+      "label": "Save answers"
+    }
   }
 }

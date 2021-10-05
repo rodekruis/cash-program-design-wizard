@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StateService } from 'src/app/services/state.service';
 
 @Component({
@@ -7,10 +7,11 @@ import { StateService } from 'src/app/services/state.service';
   styleUrls: ['./nav-progress.component.scss'],
 })
 export class NavProgressComponent implements OnInit {
-  @Input()
-  state: StateService;
-
-  constructor() {}
+  constructor(public state: StateService) {}
 
   ngOnInit() {}
+
+  onSave() {
+    console.log('save');
+  }
 }
