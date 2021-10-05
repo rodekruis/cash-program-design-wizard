@@ -1,7 +1,7 @@
-import { ProgramUserAssignmentEntity } from './../programs/program-user-assignment.entity';
-import { ProgramEntity } from './../programs/program.entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProgramUserAssignmentEntity } from './../programs/program-user-assignment.entity';
+import { ProgramEntity } from './../programs/program.entity';
 import { UserController } from './user.controller';
 import { UserEntity } from './user.entity';
 import { UserService } from './user.service';

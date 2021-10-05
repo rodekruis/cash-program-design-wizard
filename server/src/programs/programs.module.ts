@@ -1,10 +1,10 @@
-import { UserModule } from './../users/user.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
-import { ProgramEntity } from './program.entity';
-import { ProgramsService } from './programs.service';
-import { ProgramsController } from './programs.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './../users/user.module';
 import { ProgramUserAssignmentEntity } from './program-user-assignment.entity';
+import { ProgramEntity } from './program.entity';
+import { ProgramsController } from './programs.controller';
+import { ProgramsService } from './programs.service';
 
 @Module({
   imports: [

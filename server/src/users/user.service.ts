@@ -1,5 +1,3 @@
-import { ProgramUserAssignmentEntity } from '../programs/program-user-assignment.entity';
-import { ProgramEntity } from './../programs/program.entity';
 import {
   BadRequestException,
   HttpException,
@@ -7,12 +5,14 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { getRepository, Repository } from 'typeorm';
-import { UserEntity } from './user.entity';
-import jwt = require('jsonwebtoken');
 import * as bcrypt from 'bcrypt';
-import { UserRO } from './user.interface';
+import { getRepository, Repository } from 'typeorm';
+import { ProgramUserAssignmentEntity } from '../programs/program-user-assignment.entity';
+import { ProgramEntity } from './../programs/program.entity';
 import { AssignUserDto } from './dto/assign-user.dto';
+import { UserEntity } from './user.entity';
+import { UserRO } from './user.interface';
+import jwt = require('jsonwebtoken');
 
 @Injectable()
 export class UserService {

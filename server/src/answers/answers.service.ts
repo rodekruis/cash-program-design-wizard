@@ -1,7 +1,7 @@
-import { AnswerEntity } from './answer.entity';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { AnswerEntity } from './answer.entity';
 import { AnswerDto } from './dto/answer.dto';
 
 @Injectable()

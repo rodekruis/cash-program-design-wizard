@@ -1,7 +1,7 @@
-import { AnswerEntity } from '../answers/answer.entity';
-import { ProgramUserAssignmentEntity } from './program-user-assignment.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
+import { AnswerEntity } from '../answers/answer.entity';
 import { CascadeDeleteEntity } from '../base.entity';
+import { ProgramUserAssignmentEntity } from './program-user-assignment.entity';
 
 @Entity('program')
 export class ProgramEntity extends CascadeDeleteEntity {

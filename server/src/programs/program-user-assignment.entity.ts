@@ -1,6 +1,5 @@
 import { Column, Entity, ManyToOne } from 'typeorm';
 import { CascadeDeleteEntity } from '../base.entity';
-
 import { UserRoleEnum } from '../users/enum/user-role.enum';
 import { UserEntity } from '../users/user.entity';
 import { ProgramEntity } from './program.entity';

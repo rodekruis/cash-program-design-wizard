@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsEmail } from 'class-validator';
+import { IsEmail, IsNotEmpty } from 'class-validator';
 
 export class AnswerDto {
   @ApiProperty({ example: '150778b8-20b8-41e7-92b4-58501e8d1043' })
