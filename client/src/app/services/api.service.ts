@@ -8,6 +8,7 @@ import { JwtService } from './jwt.service';
 export enum ApiPath {
   test = '',
   login = 'users/login',
+  userPrograms = 'programs',
 }
 
 @Injectable({
