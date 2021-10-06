@@ -10,6 +10,8 @@ import { TranslatableStringService } from '../services/translatable-string.servi
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public apiTestInProgress = false;
+
   constructor(
     public state: StateService,
     private apiService: ApiService,
@@ -24,7 +26,9 @@ export class HomePage {
   }
 
   public apiTestGet() {
+    this.apiTestInProgress = true;
     this.apiService.get(ApiPath.test).subscribe((response) => {
+      this.apiTestInProgress = false;
       window.alert(this.translatableString.get(response));
     });
   }
