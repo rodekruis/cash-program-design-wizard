@@ -13,6 +13,7 @@
       inputmode="email"
       autocomplete="email username"
       clearInput="true"
+      [disabled]="inProgress"
     ></ion-input>
   </ion-item>
   <ion-item>
@@ -28,6 +29,7 @@
       minlength="4"
       clearInput="true"
       clearOnEdit="false"
+      [disabled]="inProgress"
     ></ion-input>
   </ion-item>
   <ion-button
