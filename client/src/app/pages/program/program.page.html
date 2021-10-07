@@ -21,10 +21,13 @@
 
       <ng-container *ngIf="id">
         <app-program-phase [programId]="id"></app-program-phase>
+        <ion-row>
+          <ion-col>
+            <app-filters></app-filters>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
 
-        <div class="debug--placeholder">
-          <pre>[ Filters ]</pre>
-        </div>
         <div class="ion-margin-vertical ion-padding">
           <app-question-section
             [section]="state.activeSection"
