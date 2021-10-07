@@ -6,11 +6,18 @@
 
 Latest releases and notable changes are in the [CHANGELOG](CHANGELOG.md).
 
-Preview of the latest (development) version: <https://orange-grass-0aefaa103.azurestaticapps.net/> (front-end/client app only)
+Preview of the latest (development) versions:
+
+- Front-end/client app: <https://orange-grass-0aefaa103.azurestaticapps.net/>
+- Back-end/server API: <https://cpdw-development.azurewebsites.net/api/>
+
+---
 
 [![CI Tests](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml)
 [![CodeQL](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml)
 [![CD Azure Static Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)
+
+---
 
 ## Getting Started
 

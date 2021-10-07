@@ -94,7 +94,9 @@
 
   <br />
 
-  <ion-button (click)="apiTestGet()">API: GET /</ion-button>
+  <ion-button (click)="apiTestGet()" [disabled]="apiTestInProgress">
+    API: GET /
+  </ion-button>
 
   <hr class="ion-margin-vertical" style="border-top-width: 1px" />
 

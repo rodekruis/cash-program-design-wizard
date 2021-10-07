@@ -3,17 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { JwtService } from './jwt.service';
 
 export enum ApiPath {
   test = '',
   login = 'users/login',
+  userPrograms = 'programs',
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private jwtService: JwtService, private http: HttpClient) {}
 
   public get(
     path: ApiPath,
@@ -63,7 +65,7 @@ export class ApiService {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json',
     });
-    const token = 'test';
+    const token = this.jwtService.getToken();
 
     return headers.set('Authorization', `Token ${token}`);
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiPath, ApiService } from 'src/app/services/api.service';
 import { StateService } from 'src/app/services/state.service';
 
 @Component({
@@ -10,9 +11,27 @@ import { StateService } from 'src/app/services/state.service';
 export class ProgramPage implements OnInit {
   public id: string;
 
-  constructor(private route: ActivatedRoute, public state: StateService) {}
+  constructor(
+    private route: ActivatedRoute,
+    public state: StateService,
+    private apiService: ApiService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
+
+    if (!this.id) {
+      this.apiService.get(ApiPath.userPrograms).subscribe((response) => {
+        if (
+          response.programs &&
+          response.programs[0] &&
+          response.programs[0].id
+        ) {
+          this.id = response.programs[0].id;
+          this.router.navigate(['program', this.id]);
+        }
+      });
+    }
   }
 }
