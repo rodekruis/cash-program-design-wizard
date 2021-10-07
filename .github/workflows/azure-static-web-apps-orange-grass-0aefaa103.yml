@@ -16,6 +16,7 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+      - '!dependabot/*'
     paths:
       - .github/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml
       - client/**
