@@ -43,9 +43,9 @@ jobs:
         run: npm run lint
 
       - name: Test Client
-        if: contains(steps.changed-files.outputs.all_changed_and_modified_files, ' client/')
+        if: contains(steps.changed-files.outputs.all_changed_and_modified_files, 'client/')
         run: npm test --prefix client
 
       - name: Test Server
-        if: contains(steps.changed-files.outputs.all_changed_and_modified_files, ' server/')
+        if: contains(steps.changed-files.outputs.all_changed_and_modified_files, 'server/')
         run: npm test --prefix server
