@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Tag } from 'src/app/models/tag.enum';
 import { StateService } from 'src/app/services/state.service';
 
 @Component({
@@ -7,27 +9,51 @@ import { StateService } from 'src/app/services/state.service';
   styleUrls: ['./filters.component.scss'],
 })
 export class FiltersComponent implements OnInit {
-  public topics = ['people', 'cash', 'data', 'all'];
-  public state: StateService;
-  public tagCount: any;
+  public tags: Tag | string[] = ['all', ...Object.values(Tag)];
+  public tagCount: any = { all: 0 };
+  public startingTag: string;
 
-  constructor(state: StateService) {
-    this.state = state;
-  }
+  constructor(
+    public state: StateService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
-  ngOnInit() {
-    if (!this.state) {
+  public ngOnInit() {
+    if (!this.state || !this.route.snapshot.queryParamMap) {
       return;
     }
+    this.updateStartingTag();
+    this.updateTagCount();
+  }
 
-    const tags = [];
+  public onChange(event: any) {
+    let tag: any = event.detail.value;
+    if (tag === 'all') {
+      tag = null;
+    }
+
+    this.router.navigate([], {
+      queryParams: { tag },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  private updateStartingTag() {
+    this.startingTag = this.route.snapshot.queryParamMap.get('tag');
+  }
+
+  private updateTagCount() {
+    const questionTags = [];
 
     this.state.activeSection.questions.forEach((question) =>
-      tags.push(...question.tags),
+      questionTags.push(...question.tags),
     );
 
-    this.tagCount = { all: tags.length };
+    this.tagCount.all = questionTags.length;
 
-    tags.forEach((tag) => (this.tagCount[tag] = this.tagCount[tag] + 1 || 1));
+    questionTags.forEach(
+      (tag) => (this.tagCount[tag] = this.tagCount[tag] + 1 || 1),
+    );
   }
 }

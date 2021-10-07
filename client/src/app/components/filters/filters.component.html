@@ -1,11 +1,11 @@
-<ion-segment value="all">
-  <ion-segment-button *ngFor="let topic of topics" value="{{ topic }}">
+<ion-segment [value]="startingTag || 'all'" (ionChange)="onChange($event)">
+  <ion-segment-button *ngFor="let tag of tags" [value]="tag">
     <ion-row>
       <ion-label class="ion-padding-vertical">
-        {{ topic }}
+        {{ tag }}
       </ion-label>
       <ion-badge class="ion-padding-horizontal ion-margin" color="medium">{{
-        tagCount[topic]
+        tagCount[tag]
       }}</ion-badge>
     </ion-row>
   </ion-segment-button>
