@@ -10,6 +10,9 @@ export class SectionEntity extends CascadeDeleteEntity {
   @Column({ nullable: true })
   public label: string;
 
+  @Column({ nullable: true })
+  public orderPriority: number;
+
   @OneToMany(() => QuestionEntity, (question) => question.section)
   public questions: QuestionEntity[];
 }

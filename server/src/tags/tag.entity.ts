@@ -7,6 +7,6 @@ export class TagEntity extends CascadeDeleteEntity {
   @Column()
   public name: string;
 
-  @ManyToMany(() => QuestionEntity, (question) => question.answers)
-  public question: QuestionEntity;
+  @ManyToMany(() => QuestionEntity, (question) => question.tags)
+  public questions: QuestionEntity[];
 }

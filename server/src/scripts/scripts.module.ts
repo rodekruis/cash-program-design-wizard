@@ -1,3 +1,4 @@
+import { TagEntity } from './../tags/tag.entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProgramEntity } from '../programs/program.entity';
@@ -9,7 +10,12 @@ import SeedDemoProgram from './seed-program-demo';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([ProgramEntity, SectionEntity, QuestionEntity]),
+    TypeOrmModule.forFeature([
+      ProgramEntity,
+      TagEntity,
+      SectionEntity,
+      QuestionEntity,
+    ]),
     UserModule,
   ],
   providers: [SeedDemoProgram],
