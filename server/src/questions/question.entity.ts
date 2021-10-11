@@ -1,4 +1,3 @@
-import { TagEntity } from './../tags/tag.entity';
 import {
   Column,
   Entity,
@@ -10,6 +9,7 @@ import {
 import { AnswerEntity } from '../answers/answer.entity';
 import { CascadeDeleteEntity } from '../base.entity';
 import { SectionEntity } from './../sections/section.entity';
+import { TagEntity } from './../tags/tag.entity';
 
 @Entity('question')
 export class QuestionEntity extends CascadeDeleteEntity {

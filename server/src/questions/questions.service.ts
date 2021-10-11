@@ -1,4 +1,3 @@
-import { TagEntity } from './../tags/tag.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -63,7 +62,7 @@ export class QuestionsService {
         })
         .addGroupBy('tags_filter');
     }
-    const q = qb.getQuery();
+
     const questions = await qb.getRawMany();
 
     return {

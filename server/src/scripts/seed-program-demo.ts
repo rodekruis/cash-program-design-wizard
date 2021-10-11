@@ -1,4 +1,3 @@
-import { TagEntity } from './../tags/tag.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
@@ -9,6 +8,7 @@ import { UserService } from '../users/user.service';
 import { ProgramEntity } from './../programs/program.entity';
 import { QuestionEntity } from './../questions/question.entity';
 import { SectionEntity } from './../sections/section.entity';
+import { TagEntity } from './../tags/tag.entity';
 import { UserRoleEnum } from './../users/enum/user-role.enum';
 import { InterfaceScript } from './scripts.module';
 
