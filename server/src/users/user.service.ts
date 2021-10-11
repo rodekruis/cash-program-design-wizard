@@ -50,11 +50,17 @@ export class UserService {
   }
 
   private buildUserRO(user: UserEntity): UserRO {
+    const roles = {};
+    if (user.programAssignments) {
+      for (const assignment of user.programAssignments) {
+        roles[assignment.id] = assignment.role;
+      }
+    }
     const userRO = {
       id: user.id,
       userName: user.userName,
       token: this.generateJWT(user),
-      roles: user.programAssignments,
+      roles: roles,
     };
     return { user: userRO };
   }
@@ -135,7 +141,9 @@ export class UserService {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
-    const returnUser = await this.userRepository.findOne(user.id);
+    const returnUser = await this.userRepository.findOne(user.id, {
+      relations: ['programAssignments'],
+    });
     return this.buildUserRO(returnUser);
   }
 }
