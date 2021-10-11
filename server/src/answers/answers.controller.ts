@@ -19,7 +19,7 @@ export class AnswersController {
   @ApiBearerAuth()
   @UseGuards(RolesGuard)
   @ApiOperation({ summary: 'Post an answer (overwrites)' })
-  @Roles(UserRoleEnum.edit, UserRoleEnum.view)
+  @Roles(UserRoleEnum.edit)
   @Post()
   public async post(@Body() answerPost: AnswerDto): Promise<void> {
     return await this.answerService.post(answerPost);

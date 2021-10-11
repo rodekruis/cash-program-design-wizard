@@ -5,9 +5,10 @@ import {
   ApiBearerAuth,
   ApiOperation,
   ApiParam,
+  ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
-import { Body, Controller, Get, Param, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { QuestionsRO } from './question.interfaces';
 import { Roles } from '../auth/roles.decorator';
@@ -24,10 +25,17 @@ export class QuestionsController {
   @ApiBearerAuth()
   @UseGuards(RolesGuard)
   @ApiParam({ name: 'programId', required: true, type: 'string' })
+  @ApiQuery({
+    name: 'section',
+    required: false,
+  })
   @ApiOperation({ summary: 'Get all questions and answers for program' })
   @RolesProgram(UserRoleEnum.edit, UserRoleEnum.view)
   @Get('programs/:programId/questions')
-  public async findAll(@Param() params): Promise<QuestionsRO> {
-    return await this.questionService.findAll(params.programId);
+  public async findAll(
+    @Param() params,
+    @Query('section') section: string,
+  ): Promise<QuestionsRO> {
+    return await this.questionService.findAll(params.programId, section);
   }
 }

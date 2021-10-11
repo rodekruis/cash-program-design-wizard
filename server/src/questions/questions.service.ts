@@ -9,8 +9,11 @@ export class QuestionsService {
   @InjectRepository(QuestionEntity)
   private readonly questionRepository: Repository<QuestionEntity>;
 
-  public async findAll(programId: string): Promise<QuestionsRO> {
-    const qb = await this.questionRepository
+  public async findAll(
+    programId: string,
+    section: string,
+  ): Promise<QuestionsRO> {
+    let qb = await this.questionRepository
       .createQueryBuilder('question')
       .select([
         'question.name AS name',
@@ -28,8 +31,11 @@ export class QuestionsService {
       .leftJoin('answers.program', 'program', 'program.id = :programId', {
         programId: programId,
       });
-    const q = qb.getQuery();
-    console.log('q: ', q);
+    if (section) {
+      qb = qb.where('section.id = :section', {
+        section: section,
+      });
+    }
     const questions = await qb.getRawMany();
 
     return {
