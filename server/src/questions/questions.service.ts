@@ -9,8 +9,12 @@ export class QuestionsService {
   @InjectRepository(QuestionEntity)
   private readonly questionRepository: Repository<QuestionEntity>;
 
-  public async findAll(programId: string): Promise<QuestionsRO> {
-    const qb = await this.questionRepository
+  public async findAll(
+    programId: string,
+    section: string,
+    tags: string[] | string,
+  ): Promise<QuestionsRO> {
+    let qb = await this.questionRepository
       .createQueryBuilder('question')
       .select([
         'question.name AS name',
@@ -25,11 +29,40 @@ export class QuestionsService {
       ])
       .leftJoin('question.section', 'section')
       .leftJoin('question.answers', 'answers')
+      // .leftJoin('question.tags', 'tags')
       .leftJoin('answers.program', 'program', 'program.id = :programId', {
         programId: programId,
+      })
+      .leftJoin('question.tags', 'tags')
+      .groupBy('question.id')
+      .addGroupBy('question.name')
+      .addGroupBy('question.type')
+      .addGroupBy('question.label')
+      .addGroupBy('section.name')
+      .addGroupBy('section.id')
+      .addGroupBy('section.label')
+      .addGroupBy('answers.text')
+      .addGroupBy('answers.updated')
+      .addSelect(`string_agg(tags.name::character varying, ', ')`, 'tags')
+      .orderBy('section.orderPriority', 'ASC')
+      .addOrderBy('question.orderPriority', 'ASC');
+    if (section) {
+      qb = qb.where('section.id = :section', {
+        section: section,
       });
-    const q = qb.getQuery();
-    console.log('q: ', q);
+    }
+    if (tags) {
+      if (typeof tags === 'string') {
+        tags = [tags];
+      }
+      qb = qb
+        .leftJoin('question.tags', 'tags_filter')
+        .where('tags_filter.name IN (:...tags)', {
+          tags: tags,
+        })
+        .addGroupBy('tags_filter');
+    }
+
     const questions = await qb.getRawMany();
 
     return {

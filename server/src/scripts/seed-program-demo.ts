@@ -8,6 +8,7 @@ import { UserService } from '../users/user.service';
 import { ProgramEntity } from './../programs/program.entity';
 import { QuestionEntity } from './../questions/question.entity';
 import { SectionEntity } from './../sections/section.entity';
+import { TagEntity } from './../tags/tag.entity';
 import { UserRoleEnum } from './../users/enum/user-role.enum';
 import { InterfaceScript } from './scripts.module';
 
@@ -22,6 +23,9 @@ export class SeedDemoProgram implements InterfaceScript {
   @InjectRepository(QuestionEntity)
   private readonly questionRepository: Repository<QuestionEntity>;
 
+  @InjectRepository(TagEntity)
+  private readonly tagRepository: Repository<TagEntity>;
+
   public constructor(
     private readonly userService: UserService,
     private readonly connection: Connection,
@@ -33,6 +37,7 @@ export class SeedDemoProgram implements InterfaceScript {
     await this.createUsers(program);
     await this.seedSections();
     await this.seedQuestions();
+    console.log('Done');
   }
 
   public async truncateAll(): Promise<void> {
@@ -82,6 +87,7 @@ export class SeedDemoProgram implements InterfaceScript {
     const sections = [];
     for (const rawSection of sectionsSeed) {
       const section = new SectionEntity();
+      section.orderPriority = rawSection.orderPriority;
       section.label = rawSection.label
         ? JSON.stringify(rawSection.label)
         : null;
@@ -99,6 +105,7 @@ export class SeedDemoProgram implements InterfaceScript {
       question.name = rawQuestion.name;
       question.type = rawQuestion.type;
       question.orderPriority = rawQuestion.orderPriority;
+      question.tags = await this.createOrGetTags(rawQuestion.tags);
 
       question.section = await this.sectionRepository.findOne({
         where: { name: rawQuestion.section },
@@ -106,6 +113,22 @@ export class SeedDemoProgram implements InterfaceScript {
       questions.push(question);
     }
     await this.questionRepository.save(questions);
+  }
+
+  private async createOrGetTags(tags: string[]): Promise<TagEntity[]> {
+    const tagEntities = [];
+    for (const tag of tags) {
+      let tagEntity = await this.tagRepository.findOne({
+        where: { name: tag },
+      });
+      if (!tagEntity) {
+        tagEntity = new TagEntity();
+        tagEntity.name = tag;
+        tagEntity = await this.tagRepository.save(tagEntity);
+      }
+      tagEntities.push(tagEntity);
+    }
+    return tagEntities;
   }
 }
 

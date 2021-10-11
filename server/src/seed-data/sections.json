@@ -1,18 +1,21 @@
 [
   {
     "name": "market",
-    "label": null
+    "label": null,
+    "orderPriority": 10
   },
   {
     "name": "test1",
     "label": {
       "en": "Test Section 1"
-    }
+    },
+    "orderPriority": 1
   },
   {
     "name": "test2",
     "label": {
       "en": "Test Section 2"
-    }
+    },
+    "orderPriority": 5
   }
 ]

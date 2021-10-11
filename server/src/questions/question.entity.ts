@@ -1,7 +1,15 @@
-import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { AnswerEntity } from '../answers/answer.entity';
 import { CascadeDeleteEntity } from '../base.entity';
 import { SectionEntity } from './../sections/section.entity';
+import { TagEntity } from './../tags/tag.entity';
 
 @Entity('question')
 export class QuestionEntity extends CascadeDeleteEntity {
@@ -22,4 +30,8 @@ export class QuestionEntity extends CascadeDeleteEntity {
 
   @OneToMany(() => AnswerEntity, (answer) => answer.question)
   public answers: AnswerEntity[];
+
+  @ManyToMany(() => TagEntity, (tag) => tag.questions)
+  @JoinTable()
+  public tags: TagEntity[];
 }
