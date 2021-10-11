@@ -5,12 +5,13 @@
 
 version: 2
 updates:
-  - package-ecosystem: github-actions
+  - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'weekly'
+    versioning-strategy: increase-if-necessary
   - package-ecosystem: 'npm'
-    directory: '/' # Location of package manifests
+    directory: 'client/'
     schedule:
       interval: 'weekly'
     versioning-strategy: increase-if-necessary
@@ -38,3 +39,12 @@ updates:
         update-types:
           - 'version-update:semver-major'
           - 'version-update:semver-minor'
+  - package-ecosystem: 'npm'
+    directory: 'server/'
+    schedule:
+      interval: 'weekly'
+    versioning-strategy: increase-if-necessary
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - 'version-update:semver-major'

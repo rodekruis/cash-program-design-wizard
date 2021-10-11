@@ -1,4 +1,5 @@
 <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+  <input type="submit" hidden /><!-- Make ENTER-to-submit work -->
   <ion-item>
     <ion-label position="stacked">{{
       'login-form.e-mail.label' | translate
@@ -12,6 +13,7 @@
       inputmode="email"
       autocomplete="email username"
       clearInput="true"
+      [disabled]="inProgress"
     ></ion-input>
   </ion-item>
   <ion-item>
@@ -27,9 +29,14 @@
       minlength="4"
       clearInput="true"
       clearOnEdit="false"
+      [disabled]="inProgress"
     ></ion-input>
   </ion-item>
-  <ion-button type="submit" expand="block" [disabled]="inProgress">
+  <ion-button
+    type="submit"
+    expand="block"
+    [disabled]="loginForm.invalid || inProgress"
+  >
     {{ 'login-form.button.label' | translate }}
     <ion-icon slot="end" name="enter" aria-hidden="true"></ion-icon>
   </ion-button>

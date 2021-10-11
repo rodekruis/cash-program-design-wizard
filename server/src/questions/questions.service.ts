@@ -1,8 +1,8 @@
-import { QuestionsRO } from './question.interfaces';
-import { QuestionEntity } from './question.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { getRepository, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
+import { QuestionEntity } from './question.entity';
+import { QuestionsRO } from './question.interfaces';
 
 @Injectable()
 export class QuestionsService {
@@ -18,7 +18,7 @@ export class QuestionsService {
       .select([
         'question.name AS name',
         'question.id AS id',
-        '"type"',
+        'question.type AS type',
         'question.label AS label',
         'section.name',
         'section.id',

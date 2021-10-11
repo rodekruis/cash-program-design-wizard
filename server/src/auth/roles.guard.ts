@@ -1,15 +1,15 @@
 import {
-  Injectable,
   CanActivate,
   ExecutionContext,
   HttpException,
   HttpStatus,
+  Injectable,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
+import { UserRoleEnum } from '../users/enum/user-role.enum';
 import { UserEntity } from '../users/user.entity';
 import { UserService } from '../users/user.service';
 import jwt = require('jsonwebtoken');
-import { UserRoleEnum } from '../users/enum/user-role.enum';
 
 @Injectable()
 export class RolesGuard implements CanActivate {

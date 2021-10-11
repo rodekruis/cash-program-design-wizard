@@ -1,6 +1,3 @@
-import { RolesProgram } from './../auth/roles-program.decorator';
-import { RolesGuard } from '../auth/roles.guard';
-import { UserRoleEnum } from '../users/enum/user-role.enum';
 import {
   ApiBearerAuth,
   ApiOperation,
@@ -10,8 +7,10 @@ import {
 } from '@nestjs/swagger';
 import { Body, Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
+import { RolesGuard } from '../auth/roles.guard';
+import { UserRoleEnum } from '../users/enum/user-role.enum';
+import { RolesProgram } from './../auth/roles-program.decorator';
 import { QuestionsRO } from './question.interfaces';
-import { Roles } from '../auth/roles.decorator';
 
 @ApiBearerAuth()
 @ApiTags('questions')

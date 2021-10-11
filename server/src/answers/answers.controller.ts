@@ -1,11 +1,10 @@
-import { AnswerDto } from './dto/answer.dto';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Roles } from '../auth/roles.decorator';
 import { RolesGuard } from '../auth/roles.guard';
 import { UserRoleEnum } from '../users/enum/user-role.enum';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { Body, Controller, UseGuards } from '@nestjs/common';
 import { AnswersService } from './answers.service';
-import { Roles } from '../auth/roles.decorator';
-import { Post } from '@nestjs/common';
+import { AnswerDto } from './dto/answer.dto';
 
 @ApiBearerAuth()
 @ApiTags('answers')

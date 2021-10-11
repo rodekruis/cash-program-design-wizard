@@ -2,5 +2,17 @@
   {
     "name": "market",
     "label": null
+  },
+  {
+    "name": "test1",
+    "label": {
+      "en": "Test Section 1"
+    }
+  },
+  {
+    "name": "test2",
+    "label": {
+      "en": "Test Section 2"
+    }
   }
 ]

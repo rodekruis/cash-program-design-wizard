@@ -94,17 +94,8 @@
 
   <br />
 
-  <ion-button (click)="apiTestGet()">API: GET /</ion-button>
-
-  <br />
-
-  <ion-button (click)="apiFakeLogIn()">
-    API: Fake log-in
-    <ion-icon name="enter" slot="end" aria-hidden="true"></ion-icon>
-  </ion-button>
-  <ion-button (click)="apiFakeLogOut()">
-    API: Fake log-out
-    <ion-icon name="exit" slot="end" aria-hidden="true"></ion-icon>
+  <ion-button (click)="apiTestGet()" [disabled]="apiTestInProgress">
+    API: GET /
   </ion-button>
 
   <hr class="ion-margin-vertical" style="border-top-width: 1px" />

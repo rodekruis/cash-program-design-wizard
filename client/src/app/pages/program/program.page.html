@@ -21,25 +21,19 @@
 
       <ng-container *ngIf="id">
         <app-program-phase [programId]="id"></app-program-phase>
+        <ion-row>
+          <ion-col>
+            <app-filters></app-filters>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
 
-        <div class="debug--placeholder">
-          <pre>[ Filters ]</pre>
-        </div>
         <div class="ion-margin-vertical ion-padding">
           <app-question-section
             [section]="state.activeSection"
           ></app-question-section>
         </div>
-        <div class="debug--placeholder">
-          <ion-button (click)="state.goPrevSection()">
-            <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
-          </ion-button>
-          <ion-button (click)="state.goNextSection()">
-            <ion-icon name="chevron-forward" slot="icon-only"></ion-icon>
-          </ion-button>
-
-          <pre class="ion-text-end">[ Actions: (Nav)Progress) ]</pre>
-        </div>
+        <app-nav-progress></app-nav-progress>
       </ng-container>
       <!--
 

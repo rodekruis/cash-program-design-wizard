@@ -1,6 +1,6 @@
-import { QuestionEntity } from './../questions/question.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { CascadeDeleteEntity } from '../base.entity';
+import { QuestionEntity } from './../questions/question.entity';
 
 @Entity('section')
 export class SectionEntity extends CascadeDeleteEntity {

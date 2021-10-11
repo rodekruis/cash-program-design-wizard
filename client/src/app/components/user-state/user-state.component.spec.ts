@@ -13,7 +13,7 @@ describe('UserStateComponent', () => {
 
   const mockUser: User = {
     token: 'test',
-    username: 'test@example.org',
+    userName: 'test@example.org',
     roles: [UserRole.admin],
   };
   const authServiceMock = {
@@ -48,6 +48,6 @@ describe('UserStateComponent', () => {
   });
 
   it('should show the e-mail address of a logged-in user', () => {
-    expect(fixture.nativeElement.innerHTML).toContain(mockUser.username);
+    expect(fixture.nativeElement.innerHTML).toContain(mockUser.userName);
   });
 });

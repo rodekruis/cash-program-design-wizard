@@ -1,0 +1,27 @@
+<ion-grid class="ion-padding">
+  <ion-row>
+    <ion-col class="ion-text-start">
+      <ion-button color="medium" size="small" (click)="onSave()">
+        {{ 'nav-progress.save-answers.label' | translate }}
+      </ion-button>
+    </ion-col>
+    <ion-col class="ion-text-end">
+      <ion-button
+        (click)="state.goPrevSection()"
+        [disabled]="state.activeSection?.id === 1"
+        color="medium"
+        size="small"
+      >
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button
+        (click)="state.goNextSection()"
+        [disabled]="state.activeSection?.id === state.sections.length"
+        color="medium"
+        size="small"
+      >
+        <ion-icon name="chevron-forward" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

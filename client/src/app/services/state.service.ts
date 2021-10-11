@@ -22,7 +22,7 @@ export class StateService {
 
   public activeSection: QuestionSection;
 
-  private sections: QuestionSection[];
+  public sections: QuestionSection[];
 
   constructor(
     private route: ActivatedRoute,

@@ -1,17 +1,15 @@
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Connection, Repository } from 'typeorm';
+import * as programDemo from '../seed-data/program-demo.json';
+import * as questionsSeed from '../seed-data/questions.json';
+import * as sectionsSeed from '../seed-data/sections.json';
+import { UserService } from '../users/user.service';
+import { ProgramEntity } from './../programs/program.entity';
 import { QuestionEntity } from './../questions/question.entity';
 import { SectionEntity } from './../sections/section.entity';
 import { UserRoleEnum } from './../users/enum/user-role.enum';
-import { AssignUserDto } from './../users/dto/assign-user.dto';
-import { ProgramEntity } from './../programs/program.entity';
-import { Injectable } from '@nestjs/common';
 import { InterfaceScript } from './scripts.module';
-import { Connection, Repository } from 'typeorm';
-
-import { UserService } from '../users/user.service';
-import * as programDemo from '../seed-data/program-demo.json';
-import * as sectionsSeed from '../seed-data/sections.json';
-import * as questionsSeed from '../seed-data/questions.json';
-import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class SeedDemoProgram implements InterfaceScript {
@@ -35,8 +33,6 @@ export class SeedDemoProgram implements InterfaceScript {
     await this.createUsers(program);
     await this.seedSections();
     await this.seedQuestions();
-
-    // ***** CREATE ADMIN USER *****
   }
 
   public async truncateAll(): Promise<void> {
@@ -101,7 +97,7 @@ export class SeedDemoProgram implements InterfaceScript {
       const question = new QuestionEntity();
       question.label = JSON.stringify(rawQuestion.label);
       question.name = rawQuestion.name;
-      question.orderPriority = rawQuestion.orderPriority;
+      question.type = rawQuestion.type;
       question.orderPriority = rawQuestion.orderPriority;
 
       question.section = await this.sectionRepository.findOne({

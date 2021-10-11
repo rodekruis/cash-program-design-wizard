@@ -5,8 +5,6 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../components/shared.module';
 import { ApiService } from '../services/api.service';
-import { AuthService } from '../services/auth.service';
-import { JwtService } from '../services/jwt.service';
 import { StateService } from '../services/state.service';
 import { TranslatableStringService } from '../services/translatable-string.service';
 import { HomePage } from './home.page';
@@ -26,13 +24,7 @@ describe('HomePage', () => {
           RouterTestingModule,
           HttpClientTestingModule,
         ],
-        providers: [
-          StateService,
-          ApiService,
-          TranslatableStringService,
-          JwtService,
-          AuthService,
-        ],
+        providers: [StateService, ApiService, TranslatableStringService],
       }).compileComponents();
 
       fixture = TestBed.createComponent(HomePage);

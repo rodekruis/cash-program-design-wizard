@@ -12,7 +12,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,27 +22,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Check changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v10
 
       - name: Set-up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - name: Check version(s)
-        run: node --version && npm --version && printenv
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Install Dependencies
         run: npm install
@@ -51,7 +43,9 @@ jobs:
         run: npm run lint
 
       - name: Test Client
+        if: contains(steps.changed-files.outputs.all_changed_and_modified_files, 'client/')
         run: npm test --prefix client
 
       - name: Test Server
-        run: npm run lint --prefix server && npm run test:cov --prefix server
+        if: contains(steps.changed-files.outputs.all_changed_and_modified_files, 'server/')
+        run: npm test --prefix server
