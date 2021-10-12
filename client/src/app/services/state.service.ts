@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivationStart, Router } from '@angular/router';
 import { mockProgram } from '../mocks/program.mock';
 import { Tag } from '../models/tag.enum';
 import { ViewMode } from '../models/view-mode.enum';
@@ -29,6 +29,7 @@ export class StateService {
     private router: Router,
     private translatableString: TranslatableStringService,
   ) {
+    this.updateProgramId();
     this.updateFilters();
 
     this.getSections();
@@ -52,6 +53,15 @@ export class StateService {
     this.router.navigate([], {
       queryParams: { section: section.slug },
       queryParamsHandling: 'merge',
+    });
+  }
+
+  private updateProgramId() {
+    // Take the ProgramId from the URL (when/if available)
+    this.router.events.subscribe((event: ActivationStart) => {
+      if (event.snapshot && event.snapshot.params && event.snapshot.params.id) {
+        this.programId = event.snapshot.params.id;
+      }
     });
   }
 
@@ -82,7 +92,8 @@ export class StateService {
   }
 
   private getFirstPendingSection(): QuestionSection {
-    return this.sections.find((section) => section.state === 'pending');
+    // Don't take the real state into account yet...
+    return this.sections[0];
   }
 
   private translateLabels(section: QuestionSection): QuestionSection {

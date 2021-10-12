@@ -63,7 +63,7 @@ export class AuthService {
               this.router.navigate([this.redirectUrl]);
               this.redirectUrl = null;
             } else {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/program']);
             }
             return resolve('');
           },
