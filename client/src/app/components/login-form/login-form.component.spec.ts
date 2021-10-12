@@ -16,7 +16,7 @@ describe('LoginFormComponent', () => {
       TestBed.configureTestingModule({
         declarations: [LoginFormComponent],
         imports: [
-          IonicModule,
+          IonicModule.forRoot(),
           FormsModule,
           TranslateModule.forRoot(),
           RouterTestingModule,
