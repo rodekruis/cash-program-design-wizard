@@ -45,6 +45,7 @@ jobs:
           output_location: 'www'
           ###### End of Repository/Build Configurations ######
         env:
+          DEBUG: ${{ secrets.DEBUG }}
           ENV_NAME: ${{ secrets.ENV_NAME }}
           API_URL: ${{ secrets.API_URL }}
 
