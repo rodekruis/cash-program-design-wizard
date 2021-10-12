@@ -1,12 +1,13 @@
 [
   {
     "name": "number-of-person-affected",
+    "type": "numeric",
     "label": {
       "en": "What is total number of people you want to help?"
     },
     "orderPriority": 1000,
     "section": "market",
-    "tags": ["market", "cash"]
+    "tags": ["cash"]
   },
   {
     "name": "test-text-1",
@@ -16,7 +17,7 @@
     },
     "orderPriority": 900,
     "section": "test1",
-    "tags": ["test"]
+    "tags": ["cash"]
   },
   {
     "name": "test-text-long",
@@ -26,7 +27,7 @@
     },
     "orderPriority": 1000,
     "section": "test1",
-    "tags": ["test"]
+    "tags": ["people"]
   },
   {
     "name": "test-numeric",
@@ -36,7 +37,7 @@
     },
     "orderPriority": 1000,
     "section": "test1",
-    "tags": ["test"]
+    "tags": ["data"]
   },
   {
     "name": "test-text-2",
@@ -46,6 +47,6 @@
     },
     "orderPriority": 1000,
     "section": "test2",
-    "tags": ["test"]
+    "tags": ["data"]
   }
 ]

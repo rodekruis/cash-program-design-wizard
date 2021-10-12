@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiPath, ApiService } from 'src/app/services/api.service';
 import { StateService } from 'src/app/services/state.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-program',
@@ -9,6 +10,7 @@ import { StateService } from 'src/app/services/state.service';
   styleUrls: ['./program.page.scss'],
 })
 export class ProgramPage implements OnInit {
+  public isDebug = environment.debug;
   public id: string;
 
   constructor(

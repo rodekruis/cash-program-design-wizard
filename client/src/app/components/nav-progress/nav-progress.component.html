@@ -7,16 +7,16 @@
     </ion-col>
     <ion-col class="ion-text-end">
       <ion-button
-        (click)="state.goPrevSection()"
-        [disabled]="state.activeSection?.id === 1"
+        (click)="goPrevSection()"
+        [disabled]="!hasPrevSection()"
         color="medium"
         size="small"
       >
         <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
       </ion-button>
       <ion-button
-        (click)="state.goNextSection()"
-        [disabled]="state.activeSection?.id === state.sections.length"
+        (click)="goNextSection()"
+        [disabled]="!hasNextSection()"
         color="medium"
         size="small"
       >

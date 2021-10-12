@@ -18,7 +18,7 @@ export class ApiService {
   constructor(private jwtService: JwtService, private http: HttpClient) {}
 
   public get(
-    path: ApiPath,
+    path: ApiPath | string,
     params?:
       | HttpParams
       | {
