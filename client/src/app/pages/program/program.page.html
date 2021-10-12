@@ -40,19 +40,17 @@
       -->
     </div>
   </div>
-  <section>
+  <section *ngIf="isDebug">
     <pre class="debug--container ion-margin">
 DEBUG INFO:
 -----------
 
-State:
 programId: {{ state.programId }}
 filters: {{ state.filters | json }}
-viewMode: {{ state.viewMode }}
     </pre>
     <details class="debug--container ion-padding ion-margin">
       <summary>
-        Active Section: <code>{{ state.activeSection?.slug }}</code>
+        Active Section: <code>{{ state.activeSection?.name }}</code>
       </summary>
       <pre>{{ state.activeSection | json }}</pre>
     </details>

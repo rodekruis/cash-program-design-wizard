@@ -8,7 +8,7 @@
     <ion-col class="ion-text-end">
       <ion-button
         (click)="goPrevSection()"
-        [disabled]="hasPrevSection()"
+        [disabled]="!hasPrevSection()"
         color="medium"
         size="small"
       >
@@ -16,7 +16,7 @@
       </ion-button>
       <ion-button
         (click)="goNextSection()"
-        [disabled]="hasNextSection()"
+        [disabled]="!hasNextSection()"
         color="medium"
         size="small"
       >

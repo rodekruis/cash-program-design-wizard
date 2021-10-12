@@ -6,6 +6,7 @@ export const environment = {
   production: false,
 
   // Configuration/Feature-switches:
+  debug: true,
 
   // Optional label to show which version is used
   envName: '',

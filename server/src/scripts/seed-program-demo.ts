@@ -37,7 +37,7 @@ export class SeedDemoProgram implements InterfaceScript {
     await this.createUsers(program);
     await this.seedSections();
     await this.seedQuestions();
-    console.log('Done');
+    console.log('Run SeedDemoProgram: done');
   }
 
   public async truncateAll(): Promise<void> {

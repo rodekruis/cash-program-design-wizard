@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
@@ -17,6 +18,7 @@ describe('NavProgressComponent', () => {
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
           RouterTestingModule,
+          HttpClientTestingModule,
         ],
         providers: [StateService],
       }).compileComponents();

@@ -3,12 +3,12 @@ import { Program } from '../types/program.type';
 import { QuestionType } from '../types/question-input.type';
 
 export const mockProgram: Program = {
-  id: 123,
+  id: '123',
   label: '',
   sections: [
     {
-      id: 1,
-      slug: 'test1',
+      id: '1',
+      name: 'test1',
       order: 0,
       label: {
         en: 'Section 1',
@@ -66,8 +66,8 @@ export const mockProgram: Program = {
       state: 'pending',
     },
     {
-      id: 2,
-      slug: 'test2',
+      id: '2',
+      name: 'test2',
       order: 0,
       label: 'Section 2',
       questions: [
