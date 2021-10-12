@@ -40,13 +40,19 @@ export class StateService {
     }
   }
 
-  public goPrevSection() {
-    const prevSectionIndex = this.sections.indexOf(this.activeSection) - 1;
-    this.setActiveSection(this.sections[prevSectionIndex]);
-  }
-  public goNextSection() {
-    const nextSectionIndex = this.sections.indexOf(this.activeSection) + 1;
-    this.setActiveSection(this.sections[nextSectionIndex]);
+  public setActiveSection(section: QuestionSection) {
+    if (!section || typeof section === 'undefined') {
+      console.warn('Not a valid section!', section);
+      return;
+    }
+
+    this.activeSection = this.translateLabels(section);
+
+    // Store the active section in the URL:
+    this.router.navigate([], {
+      queryParams: { section: section.slug },
+      queryParamsHandling: 'merge',
+    });
   }
 
   private async updateFilters() {
@@ -77,21 +83,6 @@ export class StateService {
 
   private getFirstPendingSection(): QuestionSection {
     return this.sections.find((section) => section.state === 'pending');
-  }
-
-  private setActiveSection(section: QuestionSection) {
-    if (!section || typeof section === 'undefined') {
-      console.warn('Not a valid section!', section);
-      return;
-    }
-
-    this.activeSection = this.translateLabels(section);
-
-    // Store the active section in the URL:
-    this.router.navigate([], {
-      queryParams: { section: section.slug },
-      queryParamsHandling: 'merge',
-    });
   }
 
   private translateLabels(section: QuestionSection): QuestionSection {
