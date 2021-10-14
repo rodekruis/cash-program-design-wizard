@@ -3,7 +3,6 @@ import { QuestionData } from '../models/question-data.model';
 import { Program } from '../types/program.type';
 import { QuestionInput } from '../types/question-input.type';
 import { QuestionSection } from '../types/question-section.type';
-import { TranslatableString } from '../types/translatable-string.type';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -55,7 +54,7 @@ export class ProgramDataService {
       const section = {
         id: question.section_id,
         name: question.section_name,
-        label: this.fixTranslatableProperty(question.section_label),
+        label: question.section_label,
       };
 
       if (
@@ -82,23 +81,10 @@ export class ProgramDataService {
           delete question.section_id;
           delete question.section_name;
           delete question.section_label;
-          // Refactor data-model
-          if (typeof question.tags === 'string') {
-            question.tags = question.tags.split(',').map((tag) => tag.trim());
-          }
+
           return question as QuestionInput;
         });
       return section;
     });
-  }
-
-  private fixTranslatableProperty(prop: any): string | TranslatableString {
-    let property = '';
-    try {
-      property = JSON.parse(prop);
-    } catch (error) {
-      console.warn('Error parsing JSON', error);
-    }
-    return property;
   }
 }

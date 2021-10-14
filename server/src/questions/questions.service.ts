@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { parseTranslatableProperty } from 'src/helpers/translatable-string.helper';
 import { Repository } from 'typeorm';
 import { QuestionEntity } from './question.entity';
 import { QuestionsRO } from './question.interfaces';
@@ -29,7 +30,6 @@ export class QuestionsService {
       ])
       .leftJoin('question.section', 'section')
       .leftJoin('question.answers', 'answers')
-      // .leftJoin('question.tags', 'tags')
       .leftJoin('answers.program', 'program', 'program.id = :programId', {
         programId: programId,
       })
@@ -43,7 +43,7 @@ export class QuestionsService {
       .addGroupBy('section.label')
       .addGroupBy('answers.text')
       .addGroupBy('answers.updated')
-      .addSelect(`string_agg(tags.name::character varying, ', ')`, 'tags')
+      .addSelect(`array_agg(tags.name::character varying)`, 'tags')
       .orderBy('section.orderPriority', 'ASC')
       .addOrderBy('question.orderPriority', 'ASC');
     if (section) {
@@ -63,7 +63,16 @@ export class QuestionsService {
         .addGroupBy('tags_filter');
     }
 
-    const questions = await qb.getRawMany();
+    let questions = await qb.getRawMany();
+
+    // Process JSON-string content so the client doesn't have to
+    questions = questions.map((question) => {
+      question.section_label = parseTranslatableProperty(
+        question.section_label,
+      );
+      question.label = parseTranslatableProperty(question.label);
+      return question;
+    });
 
     return {
       questions: questions,
