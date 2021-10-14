@@ -49,7 +49,6 @@ export const mockProgram: Program = {
             { id: 30110, label: '55-64', value: '55-64' },
             { id: 30111, label: '65 plus', value: '65-plus' },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 302,
@@ -118,7 +117,6 @@ export const mockProgram: Program = {
             { id: 30606, label: 'with rental home', value: 'rental-home' },
             { id: 30607, label: 'with own home', value: 'own-home' },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 307,
@@ -151,7 +149,6 @@ export const mockProgram: Program = {
               value: 'household-size-6-more',
             },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 308,
@@ -167,7 +164,6 @@ export const mockProgram: Program = {
             { id: 30805, label: '5 or more dependants', value: 'dependants-5' },
             { id: 30806, label: '6 or more dependants', value: 'dependants-6' },
           ],
-          comment: getRandomComment(),
         },
 
         {
@@ -209,7 +205,6 @@ export const mockProgram: Program = {
             { id: 31203, label: 'Documented', value: 'documented' },
             { id: 31204, label: 'Undocumented', value: 'undocumented' },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 313,
@@ -227,7 +222,6 @@ export const mockProgram: Program = {
             { id: 31307, label: 'Unemployed', value: 'unemployed' },
             { id: 31308, label: 'Ilegal workers', value: 'ilegal-workers' },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 314,
@@ -251,7 +245,6 @@ export const mockProgram: Program = {
               value: 'financial-stability',
             },
           ],
-          comment: getRandomComment(),
         },
 
         {
@@ -305,7 +298,6 @@ export const mockProgram: Program = {
             { id: 31811, label: 'Epedemic', value: 'epedemic' },
             { id: 31812, label: 'Pandemic', value: 'pandemic' },
           ],
-          comment: getRandomComment(),
         },
 
         {
@@ -323,7 +315,6 @@ export const mockProgram: Program = {
             { id: 31906, label: 'Reconstruction', value: 'reconstruction' },
             { id: 31907, label: 'Combination', value: 'combination' },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 320,
@@ -376,7 +367,6 @@ export const mockProgram: Program = {
             { id: 40009, label: 'Samburu', value: 'sa' },
             { id: 40010, label: 'Swahili', value: 'sw' },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 401,
@@ -391,7 +381,6 @@ export const mockProgram: Program = {
             { id: 40104, label: 'No literacy', value: 'no-literacy' },
             { id: 40105, label: 'Illiterate', value: 'illiterate' },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 402,
@@ -433,7 +422,6 @@ export const mockProgram: Program = {
             { id: 40211, label: 'PC Laptop', value: 'pc-laptop' },
             { id: 40212, label: 'PC Desktop', value: 'pc-desktop' },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 403,
@@ -839,7 +827,6 @@ export const mockProgram: Program = {
             { id: 1002, label: 'option B', value: 'option-b' },
             { id: 1003, label: 'option C', value: 'option-c' },
           ],
-          comment: getRandomComment(),
         },
         {
           id: 104,
@@ -851,7 +838,6 @@ export const mockProgram: Program = {
             { id: 1025, label: 'option Y', value: 'option-y' },
             { id: 1026, label: 'option Z', value: 'option-z' },
           ],
-          comment: getRandomComment(),
         },
       ],
       state: 'pending',
