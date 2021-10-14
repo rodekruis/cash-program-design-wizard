@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, ActivationStart, Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { mockProgram } from '../mocks/program.mock';
 import { Tag } from '../models/tag.enum';
@@ -29,7 +29,7 @@ export class StateService {
   public sections: QuestionSection[] = [];
   public sections$: Observable<QuestionSection[]>;
 
-  private sectionsStore = new Subject<QuestionSection[]>();
+  private sectionsStore = new BehaviorSubject<QuestionSection[]>([]);
 
   constructor(
     private route: ActivatedRoute,
