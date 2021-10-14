@@ -83,7 +83,7 @@
         </ion-item>
       </div>
 
-      <div *ngIf="question.comment" class="ion-margin-vertical">
+      <div *ngIf="showComments(question)" class="ion-margin-vertical">
         <span style="color: var(--ion-color-medium)">{{
           'question-section.comments' | translate
         }}</span>
