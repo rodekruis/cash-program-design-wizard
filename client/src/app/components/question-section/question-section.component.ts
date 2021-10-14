@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { QuestionType } from 'src/app/types/question-input.type';
+import { QuestionInput, QuestionType } from 'src/app/types/question-input.type';
 import { QuestionSection } from 'src/app/types/question-section.type';
 
 @Component({
@@ -14,4 +14,12 @@ export class QuestionSectionComponent {
   public questionTypes = QuestionType;
 
   constructor() {}
+
+  public showComments(question: QuestionInput): boolean {
+    return (
+      question.comment &&
+      question.type !== QuestionType.select1 &&
+      question.type !== QuestionType.selectN
+    );
+  }
 }
