@@ -34,6 +34,9 @@ updates:
       - dependency-name: 'eslint'
         update-types:
           - 'version-update:semver-major'
+      - dependency-name: 'rxjs'
+        update-types:
+          - 'version-update:semver-major'
       - dependency-name: ts-node
         update-types:
           - 'version-update:semver-major'
