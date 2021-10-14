@@ -33,6 +33,9 @@ export class FiltersComponent implements OnInit {
   }
 
   private updateTagCount(sections: QuestionSection[]) {
+    if (!sections.length) {
+      return;
+    }
     const sectionQuestions = sections.map((section) => section.questions);
     const allQuestions: QuestionInput[] = [].concat(...sectionQuestions);
     const allTagsProps = allQuestions.map((question) => question.tags);
