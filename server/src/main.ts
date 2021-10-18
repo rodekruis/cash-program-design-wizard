@@ -21,6 +21,7 @@ async function bootstrap() {
     swaggerOptions: {
       tagsSorter: 'alpha',
       operationsSorter: 'alpha',
+      persistAuthorization: true,
     },
   });
   await app.listen(PORT);

@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { AnswerEntity } from '../answers/answer.entity';
 import { CascadeDeleteEntity } from '../base.entity';
-import { SectionEntity } from './../sections/section.entity';
+import { SubsectionEntity } from '../sub-sections/sub-section.entity';
 import { TagEntity } from './../tags/tag.entity';
 
 @Entity('question')
@@ -25,8 +25,8 @@ export class QuestionEntity extends CascadeDeleteEntity {
   @Column()
   public orderPriority: number;
 
-  @ManyToOne(() => SectionEntity, (section) => section.questions)
-  public section: SectionEntity;
+  @ManyToOne(() => SubsectionEntity, (subsection) => subsection.questions)
+  public subsection: SubsectionEntity;
 
   @OneToMany(() => AnswerEntity, (answer) => answer.question)
   public answers: AnswerEntity[];

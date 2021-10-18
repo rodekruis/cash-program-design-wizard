@@ -6,7 +6,7 @@
       "en": "What is total number of people you want to help?"
     },
     "orderPriority": 1000,
-    "section": "market",
+    "subsection": "market",
     "tags": ["cash"]
   },
   {
@@ -16,7 +16,7 @@
       "en": "Question for Text-input"
     },
     "orderPriority": 900,
-    "section": "test1",
+    "subsection": "test1",
     "tags": ["cash"]
   },
   {
@@ -26,7 +26,7 @@
       "en": "Question for Longer Text-input"
     },
     "orderPriority": 1000,
-    "section": "test1",
+    "subsection": "test1",
     "tags": ["people"]
   },
   {
@@ -36,7 +36,7 @@
       "en": "Question for Numeric-input"
     },
     "orderPriority": 1000,
-    "section": "test1",
+    "subsection": "test1",
     "tags": ["data"]
   },
   {
@@ -46,7 +46,7 @@
       "en": "Question for Text-input"
     },
     "orderPriority": 1000,
-    "section": "test2",
+    "subsection": "test2",
     "tags": ["data"]
   }
 ]

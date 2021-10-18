@@ -1,0 +1,22 @@
+[
+  {
+    "name": "submarket1",
+    "orderPriority": 1,
+    "section": "market"
+  },
+  {
+    "name": "submarket2",
+    "orderPriority": 2,
+    "section": "market"
+  },
+  {
+    "name": "subtest1",
+    "orderPriority": 1,
+    "section": "test1"
+  },
+  {
+    "name": "subtest2",
+    "orderPriority": 5,
+    "section": "test2"
+  }
+]

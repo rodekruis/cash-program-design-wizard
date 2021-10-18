@@ -4,10 +4,12 @@ export function parseTranslatableProperty(
   prop: any,
 ): string | TranslatableString {
   let property = '';
-  try {
-    property = JSON.parse(prop);
-  } catch (error) {
-    console.warn('Error parsing JSON', error);
+  if (prop) {
+    try {
+      property = JSON.parse(prop);
+    } catch (error) {
+      console.warn('Error parsing JSON', error);
+    }
   }
   return property;
 }

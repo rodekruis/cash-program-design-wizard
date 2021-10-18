@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { SectionEntity } from './../sections/section.entity';
 import { UserModule } from './../users/user.module';
 import { ProgramUserAssignmentEntity } from './program-user-assignment.entity';
 import { ProgramEntity } from './program.entity';
@@ -8,7 +9,11 @@ import { ProgramsService } from './programs.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([ProgramEntity, ProgramUserAssignmentEntity]),
+    TypeOrmModule.forFeature([
+      ProgramEntity,
+      ProgramUserAssignmentEntity,
+      SectionEntity,
+    ]),
     UserModule,
   ],
   providers: [ProgramsService],

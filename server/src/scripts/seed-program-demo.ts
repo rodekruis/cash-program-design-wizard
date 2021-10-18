@@ -8,6 +8,7 @@ import { UserService } from '../users/user.service';
 import { ProgramEntity } from './../programs/program.entity';
 import { QuestionEntity } from './../questions/question.entity';
 import { SectionEntity } from './../sections/section.entity';
+import { SubsectionEntity } from './../sub-sections/sub-section.entity';
 import { TagEntity } from './../tags/tag.entity';
 import { UserRoleEnum } from './../users/enum/user-role.enum';
 import { InterfaceScript } from './scripts.module';
@@ -19,6 +20,9 @@ export class SeedDemoProgram implements InterfaceScript {
 
   @InjectRepository(SectionEntity)
   private readonly sectionRepository: Repository<SectionEntity>;
+
+  @InjectRepository(SubsectionEntity)
+  private readonly subsectionRepository: Repository<SubsectionEntity>;
 
   @InjectRepository(QuestionEntity)
   private readonly questionRepository: Repository<QuestionEntity>;
@@ -95,6 +99,19 @@ export class SeedDemoProgram implements InterfaceScript {
       sections.push(section);
     }
     await this.sectionRepository.save(sections);
+
+    const subsections = [];
+    const subsectionsSeed = [];
+    for (const rawSubsection of subsectionsSeed) {
+      const subsection = new SubsectionEntity();
+      subsection.orderPriority = rawSubsection.orderPriority;
+      subsection.name = rawSubsection.name;
+      subsection.section = await this.sectionRepository.findOne({
+        where: { name: rawSubsection.section },
+      });
+      subsections.push(subsection);
+    }
+    await this.sectionRepository.save(sections);
   }
 
   private async seedQuestions() {
@@ -107,8 +124,8 @@ export class SeedDemoProgram implements InterfaceScript {
       question.orderPriority = rawQuestion.orderPriority;
       question.tags = await this.createOrGetTags(rawQuestion.tags);
 
-      question.section = await this.sectionRepository.findOne({
-        where: { name: rawQuestion.section },
+      question.subsection = await this.subsectionRepository.findOne({
+        where: { name: rawQuestion.subsection },
       });
       questions.push(question);
     }

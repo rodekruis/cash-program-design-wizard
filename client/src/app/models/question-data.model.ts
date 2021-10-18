@@ -4,11 +4,11 @@ import { Tag } from './tag.enum';
 
 export interface QuestionData {
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  section_id: string;
+  sectionId: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  section_name: string;
+  sectionName: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  section_label: string | TranslatableString;
+  sectionLabel: string | TranslatableString;
 
   id: number;
   type: QuestionType;

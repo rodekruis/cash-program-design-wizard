@@ -52,14 +52,14 @@ export class ProgramDataService {
 
     questions.forEach((question) => {
       const section = {
-        id: question.section_id,
-        name: question.section_name,
-        label: question.section_label,
+        id: question.sectionId,
+        name: question.sectionName,
+        label: question.sectionLabel,
       };
 
       if (
         !sections.some(
-          (existingSection) => existingSection.id === question.section_id,
+          (existingSection) => existingSection.id === question.sectionId,
         )
       ) {
         sections.push(section);
@@ -75,12 +75,12 @@ export class ProgramDataService {
   ): QuestionSection[] {
     return sections.map((section) => {
       section.questions = allQuestions
-        .filter((question) => question.section_id === section.id)
+        .filter((question) => question.sectionId === section.id)
         .map((question) => {
           // Remove unused properties
-          delete question.section_id;
-          delete question.section_name;
-          delete question.section_label;
+          delete question.sectionId;
+          delete question.sectionName;
+          delete question.sectionLabel;
 
           return question as QuestionInput;
         });
