@@ -22,13 +22,16 @@ export class QuestionsService {
         'question.id AS id',
         'question.type AS type',
         'question.label AS label',
-        'section.name',
-        'section.id',
-        'section.label',
+        'section.name AS sectionName',
+        'section.id AS sectionId',
+        'section.label AS sectionLabel',
+        'subsection.id AS subSectionId',
+        'subsection.name AS subSectionName',
         'answers.text as answer',
         'answers.updated as answerUpdate',
       ])
-      .leftJoin('question.section', 'section')
+      .leftJoin('question.subsection', 'subsection')
+      .leftJoin('subsection.section', 'section')
       .leftJoin('question.answers', 'answers')
       .leftJoin('answers.program', 'program', 'program.id = :programId', {
         programId: programId,
@@ -41,10 +44,13 @@ export class QuestionsService {
       .addGroupBy('section.name')
       .addGroupBy('section.id')
       .addGroupBy('section.label')
+      .addGroupBy('subsection.name')
+      .addGroupBy('subsection.id')
       .addGroupBy('answers.text')
       .addGroupBy('answers.updated')
       .addSelect(`array_agg(tags.name::character varying)`, 'tags')
       .orderBy('section.orderPriority', 'ASC')
+      .orderBy('subsection.orderPriority', 'ASC')
       .addOrderBy('question.orderPriority', 'ASC');
     if (section) {
       qb = qb.where('section.id = :section', {
@@ -67,9 +73,7 @@ export class QuestionsService {
 
     // Process JSON-string content so the client doesn't have to
     questions = questions.map((question) => {
-      question.section_label = parseTranslatableProperty(
-        question.section_label,
-      );
+      question.sectionLabel = parseTranslatableProperty(question.sectionLabel);
       question.label = parseTranslatableProperty(question.label);
       return question;
     });

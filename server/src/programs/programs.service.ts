@@ -22,7 +22,9 @@ export class ProgramsService {
       .where('user.id = :userId', { userId: userId });
     const assignedPrograms = await qb.getRawMany();
 
-    const sections = await this.sectionRepository.find();
+    const sections = await this.sectionRepository.find({
+      order: { orderPriority: 'ASC' },
+    });
     const sectionIds = sections.map((s) => s.id);
     for (const program of assignedPrograms) {
       program.sectionIds = sectionIds;
