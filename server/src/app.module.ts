@@ -30,7 +30,7 @@ import { UserModule } from './users/user.module';
       cli: {
         migrationsDir: 'migration',
       },
-      dropSchema: false,
+      dropSchema: true,
       synchronize: true,
     }),
     UserModule,
