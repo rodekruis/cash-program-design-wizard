@@ -14,7 +14,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     environment:
-      name: 'production'
+      name: development
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -41,7 +41,8 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
+          working-directory: server
           app-name: 'CPDW-Development'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_9fb0595b878945e9ac68a70604560388 }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
