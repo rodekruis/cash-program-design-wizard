@@ -1,5 +1,6 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
+# Also, see: https://github.com/Azure/actions-workflow-samples
 
 name: CD [server] - Azure Web App - development
 
@@ -8,6 +9,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: 'CPDW-Development'
+  AZURE_WEBAPP_PACKAGE_PATH: 'server'
+  NODE_VERSION: '14.x'
 
 jobs:
   build-and-deploy:
@@ -20,10 +26,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Node.js version
+      - name: Set up Node.js version ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
           cache-dependency-path: server/package-lock.json
   
@@ -31,18 +37,17 @@ jobs:
         run: npm install --global npm@7
 
       - name: npm install, build, and test
+        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
-        working-directory: server
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          working-directory: server
-          app-name: 'CPDW-Development'
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
           slot-name: 'production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
