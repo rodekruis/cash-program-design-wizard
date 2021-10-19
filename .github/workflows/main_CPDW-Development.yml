@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: CD Azure Web App [server] - development
+name: CD [server] - Azure Web App - development
 
 on:
   push:
@@ -26,7 +26,10 @@ jobs:
           node-version: '14.x'
           cache: 'npm'
           cache-dependency-path: server/package-lock.json
-    
+  
+      - name: 'Update to npm v7'
+        run: npm install --global npm@7
+
       - name: npm install, build, and test
         run: |
           npm install
