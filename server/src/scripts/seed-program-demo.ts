@@ -4,6 +4,7 @@ import { Connection, Repository } from 'typeorm';
 import * as programDemo from '../seed-data/program-demo.json';
 import * as questionsSeed from '../seed-data/questions.json';
 import * as sectionsSeed from '../seed-data/sections.json';
+import * as subsectionsSeed from '../seed-data/subsections.json';
 import { UserService } from '../users/user.service';
 import { ProgramEntity } from './../programs/program.entity';
 import { QuestionEntity } from './../questions/question.entity';
@@ -101,7 +102,7 @@ export class SeedDemoProgram implements InterfaceScript {
     await this.sectionRepository.save(sections);
 
     const subsections = [];
-    const subsectionsSeed = [];
+    console.log('subsectionsSeed: ', subsectionsSeed);
     for (const rawSubsection of subsectionsSeed) {
       const subsection = new SubsectionEntity();
       subsection.orderPriority = rawSubsection.orderPriority;
@@ -111,7 +112,7 @@ export class SeedDemoProgram implements InterfaceScript {
       });
       subsections.push(subsection);
     }
-    await this.sectionRepository.save(sections);
+    await this.subsectionRepository.save(subsections);
   }
 
   private async seedQuestions() {
