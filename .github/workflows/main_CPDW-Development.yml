@@ -44,6 +44,7 @@ jobs:
           npm run test --if-present
 
       - name: Reduce build package size
+        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         run: npm prune --production
 
       - name: Deploy to Azure
