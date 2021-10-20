@@ -22,13 +22,13 @@ export class QuestionsService {
         'question.id AS id',
         'question.type AS type',
         'question.label AS label',
-        'section.name AS sectionName',
-        'section.id AS sectionId',
-        'section.label AS sectionLabel',
-        'subsection.id AS subSectionId',
-        'subsection.name AS subSectionName',
+        'section.name AS "sectionName"',
+        'section.id AS "sectionId"',
+        'section.label AS "sectionLabel"',
+        'subsection.id AS "subsectionId"',
+        'subsection.name AS "subsectionName"',
         'answers.text as answer',
-        'answers.updated as answerUpdate',
+        'answers.updated as "answerUpdated"',
       ])
       .leftJoin('question.subsection', 'subsection')
       .leftJoin('subsection.section', 'section')
