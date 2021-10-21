@@ -26,10 +26,10 @@ export class StateService {
 
   public activeSection: QuestionSection;
 
-  public sections: QuestionSection[] = [];
   public sections$: Observable<QuestionSection[]>;
 
   private sectionsStore = new BehaviorSubject<QuestionSection[]>([]);
+  private sections: QuestionSection[] = [];
 
   constructor(
     private route: ActivatedRoute,
