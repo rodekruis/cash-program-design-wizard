@@ -9,6 +9,7 @@ export enum ApiPath {
   test = '',
   login = 'users/login',
   userPrograms = 'programs',
+  answers = 'answers',
 }
 
 @Injectable({

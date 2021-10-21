@@ -9,16 +9,18 @@ export enum QuestionType {
   selectN = 'select-n',
 }
 export interface QuestionInput {
-  id: number;
+  id: string;
   type: QuestionType;
   label: string | TranslatableString;
   tags: Tag[];
   options?: OptionChoice[];
+  answer?: string;
+  storedAnswer?: string;
   comment?: string;
 }
 
 export interface OptionChoice {
-  id: number;
+  id: string;
   label: string | TranslatableString;
   value: string;
 }

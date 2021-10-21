@@ -26,10 +26,10 @@ export class StateService {
 
   public activeSection: QuestionSection;
 
-  public sections: QuestionSection[] = [];
   public sections$: Observable<QuestionSection[]>;
 
   private sectionsStore = new BehaviorSubject<QuestionSection[]>([]);
+  private sections: QuestionSection[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -58,6 +58,15 @@ export class StateService {
         queryParamsHandling: 'merge',
       });
     }
+  }
+
+  public saveAnswersActiveSection() {
+    console.log(
+      `SaveAnswers ActiveSection : ${this.activeSection.id} : ${this.activeSection.label}`,
+    );
+    this.activeSection.questions.forEach((question) => {
+      this.programDataService.saveAnswer(this.programId, question);
+    });
   }
 
   private updateProgramId() {

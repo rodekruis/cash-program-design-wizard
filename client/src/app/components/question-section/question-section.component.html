@@ -29,6 +29,7 @@
                 "
                 [multiple]="false"
                 [attr.title]="question.label"
+                [(ngModel)]="question.answer"
               >
                 <ion-select-option
                   *ngFor="let option of question.options"
@@ -44,6 +45,7 @@
                 "
                 [multiple]="true"
                 [attr.title]="question.label"
+                [(ngModel)]="question.answer"
               >
                 <ion-select-option
                   *ngFor="let option of question.options"
@@ -58,6 +60,7 @@
                 inputmode="decimal"
                 pattern="[0-9]+"
                 [attr.title]="question.label"
+                [(ngModel)]="question.answer"
               ></ion-input>
             </ng-container>
             <ng-container *ngSwitchCase="questionTypes.textLong">
@@ -68,6 +71,7 @@
                 autocorrect="on"
                 autocapitalize="on"
                 [attr.title]="question.label"
+                [(ngModel)]="question.answer"
               ></ion-textarea>
             </ng-container>
             <ng-container *ngSwitchDefault>
@@ -77,6 +81,7 @@
                 autocorrect="on"
                 autocapitalize="on"
                 [attr.title]="question.label"
+                [(ngModel)]="question.answer"
               ></ion-input>
             </ng-container>
           </ng-container>
