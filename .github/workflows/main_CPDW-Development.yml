@@ -43,12 +43,23 @@ jobs:
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
+          npm run build
+          npm run test
 
       - name: Reduce build package size
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-        run: npm prune --production
+        run: |
+          npm prune --production
+          rm -r coverage/
+          rm -r test/
+          rm -r src/
+          rm .env
+          rm .eslintrc.js
+          rm .gitignore
+          rm .prettierignore
+          rm .prettierrc.yml
+          rm docker-compose.yml
+          rm nest-cli.json
 
       - name: Deploy to Azure
         id: deploy-to-webapp
