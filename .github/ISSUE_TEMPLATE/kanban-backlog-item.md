@@ -1,6 +1,6 @@
 ---
-name: Kanban: Backlog-item
-about: Create a backlog-item to refine later or put on the board directly 
+name: 'Kanban: Backlog-item'
+about: 'Create a backlog-item to refine later or put on the board directly.'
 title: ''
 labels: ''
 assignees: ''
