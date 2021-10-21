@@ -14,6 +14,8 @@ export interface QuestionInput {
   label: string | TranslatableString;
   tags: Tag[];
   options?: OptionChoice[];
+  answer?: string;
+  storedAnswer?: string;
   comment?: string;
 }
 

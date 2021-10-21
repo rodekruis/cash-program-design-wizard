@@ -44,10 +44,4 @@ export class NavProgressComponent implements OnInit {
       this.sections.indexOf(this.state.activeSection) + 1;
     this.state.setActiveSection(this.sections[nextSectionIndex]);
   }
-
-  public onSave() {
-    console.log(
-      `NavProgress: Save Section : ${this.state.activeSection.id} : ${this.state.activeSection.label}`,
-    );
-  }
 }

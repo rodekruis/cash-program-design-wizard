@@ -11,4 +11,5 @@ export interface QuestionData {
   type: QuestionType;
   label: string | TranslatableString;
   tags?: string | string[] | Tag[];
+  answer?: string;
 }

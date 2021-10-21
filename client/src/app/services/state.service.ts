@@ -60,6 +60,15 @@ export class StateService {
     }
   }
 
+  public saveAnswersActiveSection() {
+    console.log(
+      `SaveAnswers ActiveSection : ${this.activeSection.id} : ${this.activeSection.label}`,
+    );
+    this.activeSection.questions.forEach((question) => {
+      this.programDataService.saveAnswer(this.programId, question);
+    });
+  }
+
   private updateProgramId() {
     // Take the ProgramId from the URL (when/if available)
     this.router.events.subscribe(async (event: ActivationStart) => {
