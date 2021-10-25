@@ -83,16 +83,13 @@ export class QuestionsService {
         .addGroupBy('tags_filter');
     }
 
-    const query = qb.getQuery();
-    console.log('query: ', query);
-
     const questions = await qb.getRawMany();
 
     // Process JSON-string content so the client doesn't have to
     for (const question of questions) {
       question.tags = await this.findTags(question);
-      question.comments = await this.findComments(question);
-      question.answer = await this.findAnswer(question);
+      question.comments = await this.findComments(question, programId);
+      question.answer = await this.findAnswer(question, programId);
       question.optionChoices = await this.findOptionChoices(question);
     }
 
@@ -103,7 +100,6 @@ export class QuestionsService {
   }
 
   private async findTags(question) {
-    console.log('question: ', question.id);
     const qb = this.tagsRepository
       .createQueryBuilder('tag')
       .select(['to_json(array_agg(tag.name)) as tags'])
@@ -115,7 +111,7 @@ export class QuestionsService {
     return result.tags;
   }
 
-  private async findComments(question) {
+  private async findComments(question: QuestionEntity, programId: string) {
     const qb = this.commentRepository
       .createQueryBuilder('comment')
       .select([
@@ -126,20 +122,28 @@ export class QuestionsService {
       ])
       .addSelect('"user"."userName"', 'userName')
       .leftJoin('comment.user', 'user')
+      .leftJoin('comment.program', 'program')
       .leftJoin('comment.question', 'question')
       .where('question.id = :questionId', {
         questionId: question.id,
+      })
+      .andWhere('program.id = :programId', {
+        programId: programId,
       })
       .orderBy('comment.created', 'DESC');
     return await qb.getRawMany();
   }
 
-  private async findAnswer(question) {
+  private async findAnswer(question: QuestionEntity, programId: string) {
     const qb = this.answerRepository
       .createQueryBuilder('answer')
       .leftJoin('answer.question', 'question')
+      .leftJoin('answer.program', 'program')
       .where('question.id = :questionId', {
         questionId: question.id,
+      })
+      .andWhere('program.id = :programId', {
+        programId: programId,
       });
     return await qb.getOne();
   }

@@ -13,7 +13,6 @@ export class CommentsService {
     userId: string,
     commentDto: CommentDto,
   ): Promise<CommentEntity> {
-    console.log('userId: ', userId);
     try {
       const comment = await this.commentRepository.save({
         text: commentDto.text,
