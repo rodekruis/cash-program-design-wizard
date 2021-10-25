@@ -10,6 +10,7 @@ import { AnswerEntity } from '../answers/answer.entity';
 import { CascadeDeleteEntity } from '../base.entity';
 import { OptionChoiceEntity } from '../option-choices/option-choice.entity';
 import { SubsectionEntity } from '../sub-sections/sub-section.entity';
+import { CommentEntity } from './../comments/comment.entity';
 import { TagEntity } from './../tags/tag.entity';
 
 @Entity('question')
@@ -31,6 +32,9 @@ export class QuestionEntity extends CascadeDeleteEntity {
 
   @OneToMany(() => AnswerEntity, (answer) => answer.question)
   public answers: AnswerEntity[];
+
+  @OneToMany(() => CommentEntity, (comment) => comment.question)
+  public comments: CommentEntity[];
 
   @OneToMany(() => OptionChoiceEntity, (optionChoice) => optionChoice.question)
   public optionChoices: OptionChoiceEntity[];

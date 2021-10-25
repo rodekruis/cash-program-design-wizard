@@ -52,9 +52,9 @@ export class RolesProgramGuard implements CanActivate {
     endpointRoles: UserRoleEnum[],
     request: any,
   ): Promise<boolean> {
-    if (!request.params && !request.params.programId) {
+    if (!request.params.programId && !request.body.programId) {
       throw new HttpException(
-        'Program id not in params.',
+        'Program id not in params or body',
         HttpStatus.NOT_FOUND,
       );
     }
@@ -62,7 +62,10 @@ export class RolesProgramGuard implements CanActivate {
     const userRoles = [];
     if (user.programAssignments) {
       for (const programAssignment of user.programAssignments) {
-        if (programAssignment.program.id === request.params.programId)
+        if (
+          programAssignment.program.id === request.params.programId ||
+          programAssignment.program.id === request.body.programId
+        )
           userRoles.push(programAssignment.role);
       }
     }

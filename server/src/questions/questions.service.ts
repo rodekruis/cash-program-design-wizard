@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { parseTranslatableProperty } from 'src/helpers/translatable-string.helper';
 import { Repository } from 'typeorm';
+import { AnswerEntity } from '../answers/answer.entity';
+import { OptionChoiceEntity } from '../option-choices/option-choice.entity';
+import { TagEntity } from '../tags/tag.entity';
+import { CommentEntity } from './../comments/comment.entity';
 import { QuestionEntity } from './question.entity';
 import { QuestionsRO } from './question.interfaces';
 
@@ -9,6 +12,18 @@ import { QuestionsRO } from './question.interfaces';
 export class QuestionsService {
   @InjectRepository(QuestionEntity)
   private readonly questionRepository: Repository<QuestionEntity>;
+
+  @InjectRepository(TagEntity)
+  private readonly tagsRepository: Repository<TagEntity>;
+
+  @InjectRepository(AnswerEntity)
+  private readonly answerRepository: Repository<AnswerEntity>;
+
+  @InjectRepository(CommentEntity)
+  private readonly commentRepository: Repository<CommentEntity>;
+
+  @InjectRepository(OptionChoiceEntity)
+  private readonly ocRepository: Repository<OptionChoiceEntity>;
 
   public async findAll(
     programId: string,
@@ -21,10 +36,10 @@ export class QuestionsService {
         'question.name AS name',
         'question.id AS id',
         'question.type AS type',
-        'question.label AS label',
+        'question.label::json AS label',
         'section.name AS "sectionName"',
         'section.id AS "sectionId"',
-        'section.label AS "sectionLabel"',
+        'section.label::json AS "sectionLabel"',
         'subsection.id AS "subsectionId"',
         'subsection.name AS "subsectionName"',
         'answers.text as answer',
@@ -37,7 +52,6 @@ export class QuestionsService {
         programId: programId,
       })
       .leftJoin('question.tags', 'tags')
-      .leftJoin('question.optionChoices', 'optionChoices')
       .groupBy('question.id')
       .addGroupBy('question.name')
       .addGroupBy('question.type')
@@ -49,11 +63,6 @@ export class QuestionsService {
       .addGroupBy('subsection.id')
       .addGroupBy('answers.text')
       .addGroupBy('answers.updated')
-      .addSelect(`array_agg(tags.name::character varying)`, 'tags')
-      .addSelect(
-        `COALESCE(json_agg("optionChoices") FILTER (WHERE "optionChoices".id IS NOT NULL), '[]')`,
-        'optionChoices',
-      )
       .orderBy('section.orderPriority', 'ASC')
       .orderBy('subsection.orderPriority', 'ASC')
       .addOrderBy('question.orderPriority', 'ASC');
@@ -74,23 +83,80 @@ export class QuestionsService {
         .addGroupBy('tags_filter');
     }
 
-    let questions = await qb.getRawMany();
+    const query = qb.getQuery();
+    console.log('query: ', query);
+
+    const questions = await qb.getRawMany();
 
     // Process JSON-string content so the client doesn't have to
-    questions = questions.map((question) => {
-      question.sectionLabel = parseTranslatableProperty(question.sectionLabel);
-      question.label = parseTranslatableProperty(question.label);
-      if (question.optionChoices) {
-        for (const optionChoice of question.optionChoices) {
-          optionChoice.label = parseTranslatableProperty(optionChoice.label);
-        }
-      }
-      return question;
-    });
+    for (const question of questions) {
+      question.tags = await this.findTags(question);
+      question.comments = await this.findComments(question);
+      question.answer = await this.findAnswer(question);
+      question.optionChoices = await this.findOptionChoices(question);
+    }
 
     return {
       questions: questions,
       count: questions.length,
     };
+  }
+
+  private async findTags(question) {
+    console.log('question: ', question.id);
+    const qb = this.tagsRepository
+      .createQueryBuilder('tag')
+      .select(['to_json(array_agg(tag.name)) as tags'])
+      .leftJoin('tag.questions', 'questions')
+      .where('questions.id = :questionId', {
+        questionId: question.id,
+      });
+    const result = await qb.getRawOne();
+    return result.tags;
+  }
+
+  private async findComments(question) {
+    const qb = this.commentRepository
+      .createQueryBuilder('comment')
+      .select([
+        'comment.text AS text',
+        'comment.id AS id',
+        'comment.updated AS updated',
+        'comment.created AS created',
+      ])
+      .addSelect('"user"."userName"', 'userName')
+      .leftJoin('comment.user', 'user')
+      .leftJoin('comment.question', 'question')
+      .where('question.id = :questionId', {
+        questionId: question.id,
+      })
+      .orderBy('comment.created', 'DESC');
+    return await qb.getRawMany();
+  }
+
+  private async findAnswer(question) {
+    const qb = this.answerRepository
+      .createQueryBuilder('answer')
+      .leftJoin('answer.question', 'question')
+      .where('question.id = :questionId', {
+        questionId: question.id,
+      });
+    return await qb.getOne();
+  }
+
+  private async findOptionChoices(question) {
+    const qb = this.ocRepository
+      .createQueryBuilder('optionChoices')
+      .select([
+        '"optionChoices".label::json AS label',
+        '"optionChoices".id AS id',
+        '"optionChoices".name AS name',
+      ])
+      .leftJoin('optionChoices.question', 'question')
+      .where('question.id = :questionId', {
+        questionId: question.id,
+      })
+      .orderBy('optionChoices.orderPriority', 'ASC');
+    return await qb.getRawMany();
   }
 }

@@ -1,8 +1,9 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { Roles } from '../auth/roles.decorator';
-import { RolesGuard } from '../auth/roles.guard';
+import { RolesProgram } from '../auth/roles-program.decorator';
+import { RolesProgramGuard } from '../auth/roles-program.guard';
 import { UserRoleEnum } from '../users/enum/user-role.enum';
+import { AnswerEntity } from './answer.entity';
 import { AnswersService } from './answers.service';
 import { AnswerDto } from './dto/answer.dto';
 
@@ -16,11 +17,11 @@ export class AnswersController {
   }
 
   @ApiBearerAuth()
-  @UseGuards(RolesGuard)
+  @UseGuards(RolesProgramGuard)
   @ApiOperation({ summary: 'Post an answer (overwrites)' })
-  @Roles(UserRoleEnum.edit)
+  @RolesProgram(UserRoleEnum.edit)
   @Post()
-  public async post(@Body() answerPost: AnswerDto): Promise<void> {
+  public async post(@Body() answerPost: AnswerDto): Promise<AnswerEntity> {
     return await this.answerService.post(answerPost);
   }
 }
