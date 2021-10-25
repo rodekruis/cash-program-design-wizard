@@ -20,7 +20,6 @@ export class RolesProgramGuard implements CanActivate {
 
   public async canActivate(context: ExecutionContext): Promise<boolean> {
     let hasAccess: boolean;
-    console.log('hasAccess: ', hasAccess);
 
     const endpointRoles = this.reflector.get<UserRoleEnum[]>(
       'roles',
@@ -36,7 +35,6 @@ export class RolesProgramGuard implements CanActivate {
     if (authHeaders && (authHeaders as string).split(' ')[1]) {
       const token = (authHeaders as string).split(' ')[1];
       const decoded: any = jwt.verify(token, process.env.JWT_SECRET);
-      console.log('decoded Roles: ', decoded);
       const user = await this.userService.findById(decoded.id);
 
       hasAccess = await this.hasAccess(user, endpointRoles, request);

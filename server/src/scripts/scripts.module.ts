@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProgramEntity } from '../programs/program.entity';
+import { OptionChoiceEntity } from './../option-choices/option-choice.entity';
 import { QuestionEntity } from './../questions/question.entity';
 import { SectionEntity } from './../sections/section.entity';
 import { SubsectionEntity } from './../sub-sections/sub-section.entity';
@@ -17,6 +18,7 @@ import SeedDemoProgram from './seed-program-demo';
       SectionEntity,
       QuestionEntity,
       SubsectionEntity,
+      OptionChoiceEntity,
     ]),
     UserModule,
   ],

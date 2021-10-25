@@ -5,7 +5,37 @@
     "label": { "en": "PA Gender" },
     "orderPriority": 1,
     "subsection": "pa-gender",
-    "tags": ["people"]
+    "tags": ["people"],
+    "optionChoices": [
+      {
+        "label": {
+          "en:": "Currently Unknown"
+        },
+        "name": "unknown",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en:": "Female"
+        },
+        "name": "female",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en:": "Male"
+        },
+        "name": "male",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en:": "Non Binary"
+        },
+        "name": "non-binary",
+        "orderPriority": 4
+      }
+    ]
   },
   {
     "name": "pa-age-01",

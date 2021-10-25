@@ -6,6 +6,7 @@ import * as questionsSeed from '../seed-data/questions.json';
 import * as sectionsSeed from '../seed-data/sections.json';
 import * as subsectionsSeed from '../seed-data/subsections.json';
 import { UserService } from '../users/user.service';
+import { OptionChoiceEntity } from './../option-choices/option-choice.entity';
 import { ProgramEntity } from './../programs/program.entity';
 import { QuestionEntity } from './../questions/question.entity';
 import { SectionEntity } from './../sections/section.entity';
@@ -30,6 +31,9 @@ export class SeedDemoProgram implements InterfaceScript {
 
   @InjectRepository(TagEntity)
   private readonly tagRepository: Repository<TagEntity>;
+
+  @InjectRepository(OptionChoiceEntity)
+  private readonly optionChoiceRepository: Repository<OptionChoiceEntity>;
 
   public constructor(
     private readonly userService: UserService,
@@ -123,6 +127,11 @@ export class SeedDemoProgram implements InterfaceScript {
       question.type = rawQuestion.type;
       question.orderPriority = rawQuestion.orderPriority;
       question.tags = await this.createOrGetTags(rawQuestion.tags);
+      if (rawQuestion.optionChoices) {
+        question.optionChoices = await this.createOptionChoices(
+          rawQuestion.optionChoices,
+        );
+      }
 
       question.subsection = await this.subsectionRepository.findOne({
         where: { name: rawQuestion.subsection },
@@ -146,6 +155,23 @@ export class SeedDemoProgram implements InterfaceScript {
       tagEntities.push(tagEntity);
     }
     return tagEntities;
+  }
+
+  private async createOptionChoices(
+    optionChoices: any[],
+  ): Promise<OptionChoiceEntity[]> {
+    const optionChoiceEntities = [];
+    for (const optionChoice of optionChoices) {
+      let optionChoiceEntity = new OptionChoiceEntity();
+      optionChoiceEntity.label = JSON.stringify(optionChoice.label);
+      optionChoiceEntity.name = optionChoice.name;
+      optionChoiceEntity.orderPriority = optionChoice.orderPriority;
+      optionChoiceEntity = await this.optionChoiceRepository.save(
+        optionChoiceEntity,
+      );
+      optionChoiceEntities.push(optionChoiceEntity);
+    }
+    return optionChoiceEntities;
   }
 }
 
