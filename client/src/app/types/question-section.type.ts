@@ -8,4 +8,5 @@ export interface QuestionSection {
   label: string | TranslatableString;
   state: 'pending' | 'complete';
   questions: QuestionInput[];
+  reportTemplate?: string;
 }

@@ -8,6 +8,7 @@ export interface QuestionData {
   sectionLabel: string | TranslatableString;
 
   id: string;
+  name: string;
   type: QuestionType;
   label: string | TranslatableString;
   tags?: string | string[] | Tag[];

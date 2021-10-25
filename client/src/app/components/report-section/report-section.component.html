@@ -1,0 +1,43 @@
+<h2 [id]="section?.name">
+  <a
+    [routerLink]="['/', 'program', this.programId, 'overview']"
+    [queryParams]="{ section: section?.name }"
+    [title]="'report-section.go-to-input' | translate"
+    style="text-decoration: none"
+    >#</a
+  >
+  {{ section?.label }}
+</h2>
+
+<div *ngIf="!section?.reportTemplate">
+  <ion-grid class="report-section-values">
+    <ng-container *ngFor="let question of section?.questions">
+      <ion-row class="report-section-values--row">
+        <ion-col
+          [size]="12"
+          [sizeMd]="6"
+          [sizeLg]="4"
+          class="report-section-values--question"
+        >
+          <strong>{{ question.label }}</strong>
+        </ion-col>
+        <ion-col
+          [size]="12"
+          [sizeMd]="6"
+          [sizeLg]="8"
+          class="report-section-values--answer"
+        >
+          <div *ngIf="!question.answer">
+            <ion-note>-</ion-note>
+          </div>
+          <div *ngIf="question.answer">
+            <div [innerText]="question.answer" style="max-width: 33em"></div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+  </ion-grid>
+</div>
+<div *ngIf="!!section?.reportTemplate">
+  <pre [innerText]="section.reportTemplate"></pre>
+</div>

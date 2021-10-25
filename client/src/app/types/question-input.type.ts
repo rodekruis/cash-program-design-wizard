@@ -10,11 +10,13 @@ export enum QuestionType {
 }
 export interface QuestionInput {
   id: string;
+  name: string;
   type: QuestionType;
   label: string | TranslatableString;
   tags: Tag[];
   options?: OptionChoice[];
   answer?: string;
+  answerUpdated?: string | Date;
   storedAnswer?: string;
   comment?: string;
 }
