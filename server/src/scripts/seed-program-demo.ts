@@ -82,7 +82,7 @@ export class SeedDemoProgram implements InterfaceScript {
     );
     const assignUserView = {
       userName: userView.user.userName,
-      role: UserRoleEnum.edit,
+      role: UserRoleEnum.view,
       programId: program.id,
     };
     await this.userService.assign(assignUserView);
@@ -102,7 +102,6 @@ export class SeedDemoProgram implements InterfaceScript {
     await this.sectionRepository.save(sections);
 
     const subsections = [];
-    console.log('subsectionsSeed: ', subsectionsSeed);
     for (const rawSubsection of subsectionsSeed) {
       const subsection = new SubsectionEntity();
       subsection.orderPriority = rawSubsection.orderPriority;
