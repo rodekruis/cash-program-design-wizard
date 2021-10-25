@@ -18,6 +18,7 @@ export const mockProgram: Program = {
       questions: [
         {
           id: '300',
+          name: 'pa-gender-1',
           type: QuestionType.selectN,
           label: 'PA Gender',
           tags: [Tag.people],
@@ -32,6 +33,7 @@ export const mockProgram: Program = {
         },
         {
           id: '301',
+          name: 'pa-age-1',
           type: QuestionType.selectN,
           label: 'PA Age',
           tags: [Tag.people],
@@ -52,6 +54,7 @@ export const mockProgram: Program = {
         },
         {
           id: '302',
+          name: 'pa-status-1',
           type: QuestionType.selectN,
           label: 'PA Marital status',
           tags: [Tag.people],
@@ -76,6 +79,7 @@ export const mockProgram: Program = {
         },
         {
           id: '303',
+          name: 'pa-gender-2',
           type: QuestionType.textLong,
           label:
             'PA Gender: Is there a local culture where gender affects the efficacy of the intended CVA Program?',
@@ -84,6 +88,7 @@ export const mockProgram: Program = {
         },
         {
           id: '304',
+          name: 'pa-age-2',
           type: QuestionType.textLong,
           label:
             'PA Age: Is there a local lifestyle of this age group affects the efficacy of the intended CVA Program?',
@@ -92,6 +97,7 @@ export const mockProgram: Program = {
         },
         {
           id: '305',
+          name: 'pa-status-2',
           type: QuestionType.textLong,
           label:
             'PA Marital status: Is there a local stigma of the/these group(s) affects the efficacy of the intended CVA Program?',
@@ -100,6 +106,7 @@ export const mockProgram: Program = {
         },
         {
           id: '306',
+          name: 'pa-shelter-1',
           type: QuestionType.selectN,
           label: 'PA Shelter status',
           tags: [Tag.people],
@@ -120,6 +127,7 @@ export const mockProgram: Program = {
         },
         {
           id: '307',
+          name: 'pa-lives-1',
           type: QuestionType.selectN,
           label: 'PA Lives',
           tags: [Tag.people],
@@ -152,6 +160,7 @@ export const mockProgram: Program = {
         },
         {
           id: '308',
+          name: 'pa-dependants-1',
           type: QuestionType.selectN,
           label: 'PA dependants',
           tags: [Tag.people],
@@ -180,6 +189,7 @@ export const mockProgram: Program = {
 
         {
           id: '309',
+          name: 'pa-shelter-2',
           type: QuestionType.textLong,
           label:
             'PA Shelter status: Are there local regulations for the/these group(s) affects the efficacy of the intended CVA Program?',
@@ -189,6 +199,7 @@ export const mockProgram: Program = {
 
         {
           id: '310',
+          name: 'pa-lifestyle-1',
           type: QuestionType.textLong,
           label:
             'PA Lifestyle: Is there a trend for the/these group(s) affects the efficacy of the intended CVA Program?',
@@ -198,6 +209,7 @@ export const mockProgram: Program = {
 
         {
           id: '311',
+          name: 'pa-dependants-2',
           type: QuestionType.textLong,
           label:
             'PA Dependants: Is there a trend with the/these group(s) affects the efficacy of the intended CVA Program?',
@@ -207,6 +219,7 @@ export const mockProgram: Program = {
 
         {
           id: '312',
+          name: 'pa-legal-1',
           type: QuestionType.selectN,
           label: 'PA legal status',
           tags: [Tag.people],
@@ -220,6 +233,7 @@ export const mockProgram: Program = {
         },
         {
           id: '313',
+          name: 'pa-job-1',
           type: QuestionType.selectN,
           label: 'Job type',
           tags: [Tag.people],
@@ -237,6 +251,7 @@ export const mockProgram: Program = {
         },
         {
           id: '314',
+          name: 'pa-needs-1',
           type: QuestionType.selectN,
           label: 'lack of',
           tags: [Tag.people],
@@ -258,9 +273,9 @@ export const mockProgram: Program = {
             },
           ],
         },
-
         {
           id: '315',
+          name: 'pa-legal-2',
           type: QuestionType.textLong,
           label:
             'PA Legal Status: Is there a local law for the/these group(s) affects the efficacy of the intended CVA Program?',
@@ -270,6 +285,7 @@ export const mockProgram: Program = {
 
         {
           id: '316',
+          name: 'pa-econ-1',
           type: QuestionType.textLong,
           label:
             'Is there an economic trend for the/these group(s) affects the efficacy of the intended CVA Program?',
@@ -279,6 +295,7 @@ export const mockProgram: Program = {
 
         {
           id: '317',
+          name: 'pa-programs-1',
           type: QuestionType.textLong,
           label:
             'Are their other programs for the/these PAs that affect the efficacyof the intended CVA Program?',
@@ -288,6 +305,7 @@ export const mockProgram: Program = {
 
         {
           id: '318',
+          name: 'pa-disaster-1',
           type: QuestionType.selectN,
           label: 'Disaster Type',
           tags: [Tag.people],
@@ -314,6 +332,7 @@ export const mockProgram: Program = {
 
         {
           id: '319',
+          name: 'pa-disaster-2',
           type: QuestionType.selectN,
           label: 'Current Disaster Phase',
           tags: [Tag.people],
@@ -330,6 +349,7 @@ export const mockProgram: Program = {
         },
         {
           id: '320',
+          name: 'pa-placeholder',
           type: QuestionType.textLong,
           label: '',
           tags: [],
@@ -337,6 +357,7 @@ export const mockProgram: Program = {
         },
         {
           id: '321',
+          name: 'pa-disaster-3',
           type: QuestionType.textLong,
           label:
             'Is there potential for other combined Disasters to occur during the intended CVA program?',
@@ -346,6 +367,7 @@ export const mockProgram: Program = {
 
         {
           id: '322',
+          name: 'pa-disaster-4',
           type: QuestionType.textLong,
           label:
             'Is this disaster potentially reoccuring or in a phase efficacyof the intended CVA Program?',
@@ -356,461 +378,17 @@ export const mockProgram: Program = {
       state: 'pending',
     },
     {
-      id: '4',
-      name: 'aw-info',
-      order: 0,
-      label: 'The AWs & volunteers who wants to help the PAs mostly',
-      questions: [
-        {
-          id: '400',
-          type: QuestionType.selectN,
-          label: 'Languages Spoken',
-          tags: [Tag.people],
-          options: [
-            { id: '40000', label: 'Could be all of below', value: 'all' },
-            { id: '40001', label: 'Currently Unknown', value: 'unknown' },
-            { id: '40002', label: 'Arabic', value: 'ar' },
-            { id: '40003', label: 'English', value: 'en' },
-            { id: '40004', label: 'Spanish', value: 'es' },
-            { id: '40005', label: 'Dutch', value: 'nl' },
-            { id: '40006', label: 'French', value: 'fr' },
-            { id: '40007', label: 'Tagalog', value: 'ta' },
-            { id: '40008', label: 'Turkana', value: 'tu' },
-            { id: '40009', label: 'Samburu', value: 'sa' },
-            { id: '40010', label: 'Swahili', value: 'sw' },
-          ],
-        },
-        {
-          id: '401',
-          type: QuestionType.selectN,
-          label: 'literacy',
-          tags: [Tag.people],
-          options: [
-            { id: '40100', label: 'N/a', value: 'n-a' },
-            { id: '40101', label: 'Could be all of below', value: 'all' },
-            { id: '40102', label: 'Currently Unknown', value: 'unknown' },
-            { id: '40103', label: 'Highly literate', value: 'high-literacy' },
-            { id: '40104', label: 'No literacy', value: 'no-literacy' },
-            { id: '40105', label: 'Illiterate', value: 'illiterate' },
-          ],
-        },
-        {
-          id: '402',
-          type: QuestionType.selectN,
-          label: 'These Digtial Devices available to the AWs',
-          tags: [Tag.people],
-          options: [
-            { id: '40200', label: 'N/a', value: 'n-a' },
-            { id: '40201', label: 'Could be all of below', value: 'all' },
-            { id: '40202', label: 'Currently Unknown', value: 'unknown' },
-            { id: '40203', label: 'land line', value: 'land-line' },
-            {
-              id: '40204',
-              label: 'simcard only with Proxy phone',
-              value: 'sim-only-proxy-phone',
-            },
-            {
-              id: '40205',
-              label: 'proxy phone with Proxy phone number',
-              value: 'proxy-phone-proxy-number',
-            },
-            {
-              id: '40206',
-              label: 'mobile feature phone',
-              value: 'feature-phone',
-            },
-            {
-              id: '40207',
-              label: 'mobile smart phone android',
-              value: 'smart-phone-android',
-            },
-            {
-              id: '40208',
-              label: 'mobile smart phone iOS',
-              value: 'smart-phone-ios',
-            },
-            { id: '40209', label: 'Tablet android', value: 'tablet-android' },
-            { id: '40210', label: 'Tablet iOS', value: 'tablet-ios' },
-            { id: '40211', label: 'PC Laptop', value: 'pc-laptop' },
-            { id: '40212', label: 'PC Desktop', value: 'pc-desktop' },
-          ],
-        },
-        {
-          id: '403',
-          type: QuestionType.selectN,
-          label: 'access to share on Information sources',
-          tags: [Tag.people],
-          options: [
-            { id: '40300', label: 'N/a', value: 'n-a' },
-            { id: '40301', label: 'Could be all of below', value: 'all' },
-            { id: '40302', label: 'Currently Unknown', value: 'unknown' },
-            {
-              id: '40303',
-              label: 'Community meetings',
-              value: 'community-meetings',
-            },
-            {
-              id: '40304',
-              label: 'Religious meetings',
-              value: 'religious-meetings',
-            },
-            { id: '40305', label: 'Radio', value: 'radio' },
-            { id: '40306', label: 'TV', value: 'tv' },
-            {
-              id: '40307',
-              label: 'Social media platforms',
-              value: 'social-media',
-            },
-            { id: '40308', label: 'Websites', value: 'websites' },
-          ],
-        },
-        {
-          id: '404',
-          type: QuestionType.selectN,
-          label: 'social media platforms',
-          tags: [Tag.people],
-          options: [
-            { id: '40400', label: 'N/a', value: 'n-a' },
-            { id: '40401', label: 'Could be all of below', value: 'all' },
-            { id: '40402', label: 'Currently Unknown', value: 'unknown' },
-            { id: '40403', label: 'Facebook', value: 'facebook' },
-            { id: '40404', label: 'Instagram', value: 'instagram' },
-            { id: '40405', label: 'TikTok', value: 'tiktok' },
-          ],
-        },
-        {
-          id: '405',
-          type: QuestionType.selectN,
-          label: 'Communication channels',
-          tags: [Tag.people],
-          options: [
-            { id: '40500', label: 'N/a', value: 'n-a' },
-            { id: '40501', label: 'Could be all of below', value: 'all' },
-            { id: '40502', label: 'Currently Unknown', value: 'unknown' },
-            { id: '40503', label: 'Phone call', value: 'phone-call' },
-            { id: '40504', label: 'SMS', value: 'sms' },
-            { id: '40505', label: 'WhatsApp', value: 'whatsapp' },
-            { id: '40506', label: 'FB Messenger', value: 'fb-messenger' },
-            { id: '40507', label: 'Viber', value: 'viber' },
-            { id: '40508', label: 'Signal', value: 'signal' },
-            { id: '40509', label: 'E-mail', value: 'email' },
-          ],
-        },
-      ],
-      state: 'pending',
-    },
-    {
-      id: '5',
-      name: 'help-focus',
-      order: 0,
-      label: 'The people affected we want to help  mostly',
-      questions: [
-        {
-          id: '500',
-          type: QuestionType.selectN,
-          label: 'Shop in',
-          tags: [Tag.data],
-          options: [
-            { id: '50000', label: 'N/a', value: 'n-a' },
-            { id: '50001', label: 'Could be all of below', value: 'all' },
-            { id: '50002', label: 'Currently Unknown', value: 'unknown' },
-            {
-              id: '50003',
-              label: 'Open air markets',
-              value: 'open-air-markets',
-            },
-            { id: '50004', label: 'Supermarkets', value: 'supermarkets' },
-            { id: '50005', label: 'Small stores', value: 'small-stores' },
-          ],
-        },
-        {
-          id: '501',
-          type: QuestionType.selectN,
-          label: 'Frequency of shopping',
-          tags: [Tag.data],
-          options: [
-            { id: '50100', label: 'N/a', value: 'n-a' },
-            { id: '50101', label: 'Could be all of below', value: 'all' },
-            { id: '50102', label: 'Currently Unknown', value: 'unknown' },
-            { id: '50103', label: 'Weekly Market', value: 'weekly market' },
-            {
-              id: '50104',
-              label: 'Bi weekly Market (every second week)',
-              value: 'bi-weekly-market',
-            },
-            { id: '50105', label: 'Monthly Market', value: 'monthly-market' },
-            { id: '50106', label: 'ad hoc', value: 'ad-hoc' },
-          ],
-        },
-        {
-          id: '502',
-          type: QuestionType.selectN,
-          label: 'location of market food /supplies materials type',
-          tags: [Tag.data],
-          options: [
-            { id: '50200', label: 'N/a', value: 'n-a' },
-            { id: '50201', label: 'Could be all of below', value: 'all' },
-            { id: '50202', label: 'Currently Unknown', value: 'unknown' },
-            {
-              id: '50203',
-              label: 'travel 30 mins or less walking',
-              value: 'travel-30m-walking',
-            },
-            {
-              id: '50204',
-              label: 'travel 1 hours or less walking',
-              value: 'travel-1h-walking',
-            },
-            {
-              id: '50205',
-              label: 'travel 3 hours or less walking',
-              value: 'travel-3h-walking',
-            },
-            {
-              id: '50206',
-              label: 'travel 30 mins or less paid transport',
-              value: 'travel-30m-paid-transport',
-            },
-            {
-              id: '50207',
-              label: 'travel 1 hours or less paid transport',
-              value: 'travel-1h-paid-transport',
-            },
-            {
-              id: '50208',
-              label: 'travel 3 hours or less paid transport',
-              value: 'travel-3h-paid-transport',
-            },
-          ],
-        },
-        {
-          id: '503',
-          type: QuestionType.selectN,
-          label: 'Basket size',
-          tags: [Tag.data],
-          options: [
-            { id: '50300', label: 'N/a', value: 'n-a' },
-            { id: '50301', label: 'Could be all of below', value: 'all' },
-            { id: '50302', label: 'Currently Unknown', value: 'unknown' },
-          ],
-        },
-        {
-          id: '504',
-          type: QuestionType.selectN,
-          label: 'Using these currencies',
-          tags: [Tag.data],
-          options: [
-            { id: '50400', label: 'N/a', value: 'n-a' },
-            { id: '50401', label: '$ US Dollar', value: 'usd' },
-            { id: '50402', label: '€ Euro', value: 'euro' },
-            { id: '50403', label: 'CHF Swiss Franc', value: 'chf' },
-            { id: '50404', label: 'Kenyan shilling', value: 'Kenyan shilling' },
-            { id: '50405', label: 'Ethiopia Birr', value: 'Ethiopia Birr' },
-            { id: '50406', label: 'Labanese Pound', value: 'Labanese Pound' },
-          ],
-        },
-        {
-          id: '505',
-          type: QuestionType.selectN,
-          label: 'Use mobile service providers',
-          tags: [Tag.data],
-          options: [
-            { id: '50500', label: 'N/a', value: 'n-a' },
-            { id: '50501', label: 'Could be all of below', value: 'all' },
-            { id: '50502', label: 'Currently Unknown', value: 'unknown' },
-            { id: '50503', label: 'Lebara', value: 'Lebara' },
-            { id: '50504', label: 'Hello Cash', value: 'Hello Cash' },
-            { id: '50505', label: 'Alfa', value: 'Alfa' },
-            { id: '50506', label: 'Touch', value: 'Touch' },
-          ],
-        },
-        {
-          id: '506',
-          type: QuestionType.selectN,
-          label: 'Use financial services of',
-          tags: [Tag.data],
-          options: [
-            { id: '50600', label: 'N/a', value: 'n-a' },
-            { id: '50601', label: 'Could be all of below', value: 'all' },
-            { id: '50602', label: 'Currently Unknown', value: 'unknown' },
-            { id: '50603', label: 'Bank Accounts', value: 'bank-accounts' },
-            { id: '50604', label: 'Post offices', value: 'post-offices' },
-            {
-              id: '50605',
-              label: 'Mobile Cash Company',
-              value: 'mobile-cash-company',
-            },
-            {
-              id: '50606',
-              label: 'Remitence company',
-              value: 'remitence-company',
-            },
-            {
-              id: '50607',
-              label: 'Communications & Payments Company',
-              value: 'communications-payments-company',
-            },
-          ],
-        },
-        {
-          id: '507',
-          type: QuestionType.selectN,
-          label: 'Use the following to receive cash',
-          tags: [Tag.data],
-          options: [
-            { id: '50700', label: 'N/a', value: 'n-a' },
-            { id: '50701', label: 'Could be all of below', value: 'all' },
-            { id: '50702', label: 'Currently Unknown', value: 'unknown' },
-            {
-              id: '50703',
-              label: 'at counter to receive cash',
-              value: 'counter-receive-cash',
-            },
-            {
-              id: '50704',
-              label: 'at counter to send cash',
-              value: 'counter-send-cash',
-            },
-            { id: '50705', label: 'atm machine with card', value: 'atm-card' },
-            {
-              id: '50706',
-              label: 'online account with card',
-              value: 'online-account-card',
-            },
-            {
-              id: '50707',
-              label: 'at mobile cash agent with SMS code',
-              value: 'mobile-cash-agent-sms',
-            },
-          ],
-        },
-        {
-          id: '508',
-          type: QuestionType.selectN,
-          label: 'called',
-          tags: [Tag.data],
-          options: [
-            { id: '50800', label: 'N/a', value: 'n-a' },
-            { id: '50801', label: 'Could be all of below', value: 'all' },
-            { id: '50802', label: 'Currently Unknown', value: 'unknown' },
-            { id: '50803', label: 'MPESA', value: 'mpesa' },
-            { id: '50804', label: 'Western Union', value: 'western-union' },
-            { id: '50805', label: 'Cashunited', value: 'cashunited' },
-            { id: '50806', label: 'Libanpost', value: 'libanpost' },
-          ],
-        },
-        {
-          id: '509',
-          type: QuestionType.selectN,
-          label: 'main company',
-          tags: [Tag.data],
-          options: [
-            { id: '50900', label: 'N/a', value: 'n-a' },
-            { id: '50901', label: 'Could be all of below', value: 'all' },
-            { id: '50902', label: 'Currently Unknown', value: 'unknown' },
-            {
-              id: '50903',
-              label: `Africa's Talking Ltd`,
-              value: 'africas-talking-ltd',
-            },
-            { id: '50904', label: 'Western Union', value: 'western-union' },
-            { id: '50905', label: 'Cashunited', value: 'cashunited' },
-            { id: '50906', label: 'Libanpost', value: 'libanpost' },
-          ],
-        },
-      ],
-      state: 'pending',
-    },
-    {
-      id: '6',
-      name: 'pa-access',
-      order: 0,
-      label:
-        'The people we want to help have physicall & financial & social access to',
-      questions: [
-        {
-          id: '600',
-          type: QuestionType.selectN,
-          label: 'Energy',
-          tags: [Tag.data],
-          options: [
-            { id: '60000', label: 'N/a', value: 'n-a' },
-            { id: '60001', label: 'Could be all of below', value: 'all' },
-            { id: '60002', label: 'No electricity ', value: 'no-electricity' },
-            { id: '60003', label: 'Electricity ', value: 'electricity' },
-            { id: '60004', label: 'other', value: 'other' },
-          ],
-        },
-        {
-          id: '601',
-          type: QuestionType.selectN,
-          label: 'frequency ',
-          tags: [Tag.data],
-          options: [
-            { id: '60100', label: 'N/a', value: 'n-a' },
-            { id: '60101', label: 'Could be all of below', value: 'all' },
-            { id: '60102', label: 'unknown', value: 'unknown' },
-            { id: '60103', label: 'constant ', value: 'constant' },
-            { id: '60104', label: 'intermitant ', value: 'intermitant' },
-            { id: '60105', label: 'other', value: 'other' },
-          ],
-        },
-        {
-          id: '602',
-          type: QuestionType.selectN,
-          label: 'connectivity',
-          tags: [Tag.data],
-          options: [
-            { id: '60200', label: 'N/a', value: 'n-a' },
-            { id: '60201', label: 'Could be all of below', value: 'all' },
-            { id: '60202', label: 'no internet', value: 'no internet' },
-            { id: '60203', label: 'internet', value: 'internet' },
-            { id: '60204', label: 'TV', value: 'tv' },
-            { id: '60205', label: 'Radio', value: 'radio' },
-          ],
-        },
-        {
-          id: '603',
-          type: QuestionType.selectN,
-          label: 'frequency ',
-          tags: [Tag.data],
-          options: [
-            { id: '60300', label: 'N/a', value: 'n-a' },
-            { id: '60301', label: 'Could be all of below', value: 'all' },
-            { id: '60302', label: 'constant ', value: 'constant' },
-            { id: '60303', label: 'intermitant ', value: 'intermitant' },
-            { id: '60304', label: 'free', value: 'free' },
-            { id: '60305', label: 'paid', value: 'paid' },
-          ],
-        },
-        {
-          id: '604',
-          type: QuestionType.selectN,
-          label: 'and access it ',
-          tags: [Tag.data],
-          options: [],
-        },
-        {
-          id: '605',
-          type: QuestionType.selectN,
-          label: 'called',
-          tags: [Tag.data],
-          options: [],
-        },
-      ],
-      state: 'pending',
-    },
-    {
       id: '1',
       name: 'test1',
       order: 0,
       label: {
-        en: 'Section 1',
-        nl: 'Sectie 1',
+        en: 'Test Section 1',
+        nl: 'Test Sectie 1',
       },
       questions: [
         {
           id: '100',
+          name: 'test-1-text',
           type: QuestionType.text,
           label: {
             en: 'Question for Text-input',
@@ -821,6 +399,7 @@ export const mockProgram: Program = {
         },
         {
           id: '101',
+          name: 'test-1-text-long',
           type: QuestionType.textLong,
           label: 'Question for Longer Text-input',
           tags: [Tag.data],
@@ -828,6 +407,7 @@ export const mockProgram: Program = {
         },
         {
           id: '102',
+          name: 'test-1-numeric',
           type: QuestionType.numeric,
           label: 'Question for Numeric-input',
           tags: [Tag.people],
@@ -835,6 +415,7 @@ export const mockProgram: Program = {
         },
         {
           id: '103',
+          name: 'test-1-select-1',
           type: QuestionType.select1,
           label: 'Question for Select-1 from the options',
           tags: [Tag.data],
@@ -846,6 +427,7 @@ export const mockProgram: Program = {
         },
         {
           id: '104',
+          name: 'test-1-select-n',
           type: QuestionType.selectN,
           label: 'Question for Select-Multiple from the options',
           tags: [Tag.data],
@@ -860,18 +442,81 @@ export const mockProgram: Program = {
     },
     {
       id: '2',
-      name: 'test2',
+      name: 'test2-answers-values',
       order: 0,
-      label: 'Section 2',
+      label: 'Test Section 2 - Answers-Values',
       questions: [
         {
-          id: '110',
+          id: '120',
+          name: 'test-2-text',
           type: QuestionType.text,
-          label: 'Question for Text-input B',
-          tags: [Tag.cash],
+          label: 'Question for Text-input with Answer',
+          tags: [],
           comment: getRandomComment(),
+          answer: 'test answer',
+          answerUpdated: '2021-10-21T01:00:00Z',
+        },
+        {
+          id: '121',
+          name: 'test-2-text-long',
+          type: QuestionType.textLong,
+          label: 'Question for long Text-input with Answer',
+          tags: [],
+          comment: getRandomComment(),
+          answer: 'Long test answer\n\nwith multiple\nlines\nof\ntext...',
+          answerUpdated: '2021-10-21T01:01:00Z',
         },
       ],
+      state: 'pending',
+    },
+    {
+      id: '3',
+      name: 'test3-answers-narrative',
+      order: 0,
+      label: 'Test Section 3 - Answers-Narrative',
+      questions: [
+        {
+          id: '130',
+          name: 'test-3-select-1',
+          type: QuestionType.select1,
+          label: 'Question for Select-1 from the options',
+          tags: [Tag.data],
+          options: [
+            { id: '1001', label: 'option A', value: 'option-a' },
+            { id: '1002', label: 'option B', value: 'option-b' },
+            { id: '1003', label: 'option C', value: 'option-c' },
+          ],
+          answer: 'option-b',
+        },
+        {
+          id: '131',
+          name: 'test-3-select-2',
+          type: QuestionType.select1,
+          label: 'Question for Select-1 from the options',
+          tags: [Tag.cash],
+          options: [
+            { id: '1001', label: 'option A', value: 'option-a' },
+            { id: '1002', label: 'option B', value: 'option-b' },
+            { id: '1003', label: 'option C', value: 'option-c' },
+          ],
+          answer: 'option-a',
+        },
+        {
+          id: '132',
+          name: 'test-3-select-3',
+          type: QuestionType.selectN,
+          label: 'Question for Select-Multiple from the options',
+          tags: [Tag.data],
+          options: [
+            { id: '1024', label: 'option X', value: 'option-x' },
+            { id: '1025', label: 'option Y', value: 'option-y' },
+            { id: '1026', label: 'option Z', value: 'option-z' },
+          ],
+          answer: 'option-z',
+        },
+      ],
+      reportTemplate:
+        'The answers where: {{test-3-select-1}} \n\nAnd also {{test-3-select-3}} or {{test-3-select-2}}.',
       state: 'pending',
     },
   ],

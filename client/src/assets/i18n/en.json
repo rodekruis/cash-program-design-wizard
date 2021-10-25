@@ -35,6 +35,9 @@
     "page-title": "Report for program: {{id}}",
     "not-found": "No report found."
   },
+  "report-section": {
+    "go-to-input": "Go to section"
+  },
   "login-form": {
     "e-mail": {
       "label": "E-mail"

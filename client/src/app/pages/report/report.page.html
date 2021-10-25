@@ -21,8 +21,15 @@
 
       <ng-container *ngIf="id">
         <app-program-phase programId="{{ id }}"></app-program-phase>
-        <div class="debug--placeholder">
-          <pre>[ Content: ReportSection(s) ]</pre>
+
+        <div class="ion-padding">
+          <ng-container
+            *ngFor="let section of sections"
+            class="ion-margin-vertical ion-padding-vertical"
+          >
+            <app-report-section [section]="section"></app-report-section>
+            <br />
+          </ng-container>
         </div>
         <div class="debug--placeholder">
           <pre class="ion-text-end">[ Actions: (Nav)Progress ]</pre>

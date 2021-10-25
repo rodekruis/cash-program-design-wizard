@@ -49,7 +49,7 @@ export class StateService {
       return;
     }
 
-    this.activeSection = this.translateLabels(section);
+    this.activeSection = section;
 
     if (updateUrl) {
       // Store the active section in the URL:
@@ -107,8 +107,11 @@ export class StateService {
       program = await this.programDataService.getProgram(this.programId);
     }
 
-    this.sections = program.sections;
-    this.sectionsStore.next(program.sections);
+    const sections = program.sections.map((section) =>
+      this.translateLabels(section),
+    );
+    this.sections = sections;
+    this.sectionsStore.next(sections);
   }
 
   private async updateActiveSectionFromUrl() {
