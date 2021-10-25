@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { AnswerEntity } from '../answers/answer.entity';
 import { CascadeDeleteEntity } from '../base.entity';
+import { OptionChoiceEntity } from '../option-choices/option-choice.entity';
 import { SubsectionEntity } from '../sub-sections/sub-section.entity';
 import { TagEntity } from './../tags/tag.entity';
 
@@ -30,6 +31,9 @@ export class QuestionEntity extends CascadeDeleteEntity {
 
   @OneToMany(() => AnswerEntity, (answer) => answer.question)
   public answers: AnswerEntity[];
+
+  @OneToMany(() => OptionChoiceEntity, (optionChoice) => optionChoice.question)
+  public optionChoices: OptionChoiceEntity[];
 
   @ManyToMany(() => TagEntity, (tag) => tag.questions)
   @JoinTable()

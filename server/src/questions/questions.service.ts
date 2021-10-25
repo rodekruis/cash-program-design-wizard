@@ -37,6 +37,7 @@ export class QuestionsService {
         programId: programId,
       })
       .leftJoin('question.tags', 'tags')
+      .leftJoin('question.optionChoices', 'optionChoices')
       .groupBy('question.id')
       .addGroupBy('question.name')
       .addGroupBy('question.type')
@@ -49,6 +50,10 @@ export class QuestionsService {
       .addGroupBy('answers.text')
       .addGroupBy('answers.updated')
       .addSelect(`array_agg(tags.name::character varying)`, 'tags')
+      .addSelect(
+        `COALESCE(json_agg("optionChoices") FILTER (WHERE "optionChoices".id IS NOT NULL), '[]')`,
+        'optionChoices',
+      )
       .orderBy('section.orderPriority', 'ASC')
       .orderBy('subsection.orderPriority', 'ASC')
       .addOrderBy('question.orderPriority', 'ASC');
@@ -75,6 +80,11 @@ export class QuestionsService {
     questions = questions.map((question) => {
       question.sectionLabel = parseTranslatableProperty(question.sectionLabel);
       question.label = parseTranslatableProperty(question.label);
+      if (question.optionChoices) {
+        for (const optionChoice of question.optionChoices) {
+          optionChoice.label = parseTranslatableProperty(optionChoice.label);
+        }
+      }
       return question;
     });
 
