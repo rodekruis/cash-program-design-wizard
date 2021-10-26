@@ -22,7 +22,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'PA Gender',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '30000', label: 'N/a', value: 'n-a' },
             { id: '30001', label: 'any', value: 'any' },
             { id: '30002', label: 'Currently Unknown', value: 'unknown' },
@@ -37,7 +37,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'PA Age',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '30100', label: 'N/a', value: 'n-a' },
             { id: '30101', label: 'any', value: 'any' },
             { id: '30102', label: 'Currently Unknown', value: 'unknown' },
@@ -58,7 +58,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'PA Marital status',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '30200', label: 'N/a', value: 'n-a' },
             { id: '30201', label: 'any', value: 'any' },
             { id: '30202', label: 'Currently Unknown', value: 'unknown' },
@@ -110,7 +110,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'PA Shelter status',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '30600', label: 'N/a', value: 'n-a' },
             { id: '30601', label: 'any', value: 'any' },
             { id: '30602', label: 'Currently Unknown', value: 'unknown' },
@@ -131,7 +131,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'PA Lives',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '30700', label: 'N/a', value: 'n-a' },
             { id: '30701', label: 'any', value: 'any' },
             { id: '30702', label: 'Currently Unknown', value: 'unknown' },
@@ -164,7 +164,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'PA dependants',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '30800', label: 'N/a', value: 'n-a' },
             { id: '30801', label: 'any', value: 'any' },
             { id: '30802', label: 'Currently Unknown', value: 'unknown' },
@@ -223,7 +223,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'PA legal status',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '31200', label: 'N/a', value: 'n-a' },
             { id: '31201', label: 'any', value: 'any' },
             { id: '31202', label: 'Currently Unknown', value: 'unknown' },
@@ -237,7 +237,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'Job type',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '31300', label: 'N/a', value: 'n-a' },
             { id: '31301', label: 'any', value: 'any' },
             { id: '31302', label: 'Currently Unknown', value: 'unknown' },
@@ -255,7 +255,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'lack of',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '31400', label: 'N/a', value: 'n-a' },
             { id: '31401', label: 'any', value: 'any' },
             { id: '31402', label: 'Currently Unknown', value: 'unknown' },
@@ -309,7 +309,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'Disaster Type',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '31800', label: 'N/a', value: 'n-a' },
             { id: '31801', label: 'any', value: 'any' },
             { id: '31802', label: 'Currently Unknown', value: 'unknown' },
@@ -336,7 +336,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'Current Disaster Phase',
           tags: [Tag.people],
-          options: [
+          optionChoices: [
             { id: '31900', label: 'Prevention', value: 'prevention' },
             { id: '31901', label: 'Mitigation', value: 'mitigation' },
             { id: '31902', label: 'Preparedness', value: 'preparedness' },
@@ -419,7 +419,7 @@ export const mockProgram: Program = {
           type: QuestionType.select1,
           label: 'Question for Select-1 from the options',
           tags: [Tag.data],
-          options: [
+          optionChoices: [
             { id: '1001', label: 'option A', value: 'option-a' },
             { id: '1002', label: 'option B', value: 'option-b' },
             { id: '1003', label: 'option C', value: 'option-c' },
@@ -431,7 +431,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'Question for Select-Multiple from the options',
           tags: [Tag.data],
-          options: [
+          optionChoices: [
             { id: '1024', label: 'option X', value: 'option-x' },
             { id: '1025', label: 'option Y', value: 'option-y' },
             { id: '1026', label: 'option Z', value: 'option-z' },
@@ -481,7 +481,7 @@ export const mockProgram: Program = {
           type: QuestionType.select1,
           label: 'Question for Select-1 from the options',
           tags: [Tag.data],
-          options: [
+          optionChoices: [
             { id: '1001', label: 'option A', value: 'option-a' },
             { id: '1002', label: 'option B', value: 'option-b' },
             { id: '1003', label: 'option C', value: 'option-c' },
@@ -494,7 +494,7 @@ export const mockProgram: Program = {
           type: QuestionType.select1,
           label: 'Question for Select-1 from the options',
           tags: [Tag.cash],
-          options: [
+          optionChoices: [
             { id: '1001', label: 'option A', value: 'option-a' },
             { id: '1002', label: 'option B', value: 'option-b' },
             { id: '1003', label: 'option C', value: 'option-c' },
@@ -507,7 +507,7 @@ export const mockProgram: Program = {
           type: QuestionType.selectN,
           label: 'Question for Select-Multiple from the options',
           tags: [Tag.data],
-          options: [
+          optionChoices: [
             { id: '1024', label: 'option X', value: 'option-x' },
             { id: '1025', label: 'option Y', value: 'option-y' },
             { id: '1026', label: 'option Z', value: 'option-z' },

@@ -32,7 +32,7 @@
                 [(ngModel)]="question.answer"
               >
                 <ion-select-option
-                  *ngFor="let option of question.options"
+                  *ngFor="let option of question.optionChoices"
                   [value]="option.value"
                   >{{ option.label }}</ion-select-option
                 >
@@ -48,7 +48,7 @@
                 [(ngModel)]="question.answer"
               >
                 <ion-select-option
-                  *ngFor="let option of question.options"
+                  *ngFor="let option of question.optionChoices"
                   [value]="option.value"
                   >{{ option.label }}</ion-select-option
                 >
