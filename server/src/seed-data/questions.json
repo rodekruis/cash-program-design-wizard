@@ -9,28 +9,28 @@
     "optionChoices": [
       {
         "label": {
-          "en:": "Currently Unknown"
+          "en": "Currently Unknown"
         },
         "name": "unknown",
         "orderPriority": 1
       },
       {
         "label": {
-          "en:": "Female"
+          "en": "Female"
         },
         "name": "female",
         "orderPriority": 2
       },
       {
         "label": {
-          "en:": "Male"
+          "en": "Male"
         },
         "name": "male",
         "orderPriority": 3
       },
       {
         "label": {
-          "en:": "Non Binary"
+          "en": "Non Binary"
         },
         "name": "non-binary",
         "orderPriority": 4

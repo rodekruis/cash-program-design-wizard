@@ -144,6 +144,13 @@ export class StateService {
     section.label = this.translatableString.get(section.label);
     section.questions = section.questions.map((question) => {
       question.label = this.translatableString.get(question.label);
+
+      if (question.optionChoices && question.optionChoices.length) {
+        question.optionChoices = question.optionChoices.map((option) => {
+          option.label = this.translatableString.get(option.label);
+          return option;
+        });
+      }
       return question;
     });
     return section;
