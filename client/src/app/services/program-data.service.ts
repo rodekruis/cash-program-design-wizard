@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { QuestionData } from '../models/question-data.model';
 import { Program } from '../types/program.type';
-import { QuestionInput } from '../types/question-input.type';
+import { QuestionInput, QuestionType } from '../types/question-input.type';
 import { QuestionSection } from '../types/question-section.type';
 import { ApiPath, ApiService } from './api.service';
 
@@ -34,7 +34,11 @@ export class ProgramDataService {
 
   public saveAnswer(programId: string, question: QuestionInput) {
     // If nothing changed, nothing needs to be stored
-    if (question.answer === question.storedAnswer) {
+    if (
+      question.answer === question.storedAnswer ||
+      (this.isMultipleChoice(question) &&
+        this.isEqualJson(question.answer, question.storedAnswer))
+    ) {
       return;
     }
     // Make sure to always store String-values, even for empty answers
@@ -42,11 +46,17 @@ export class ProgramDataService {
       question.answer = '';
     }
 
+    let plainAnswer = question.answer;
+
+    if (this.isMultipleChoice(question)) {
+      plainAnswer = JSON.stringify(question.answer);
+    }
+
     return this.apiService
       .post(ApiPath.answers, {
         programId,
         questionId: question.id,
-        text: question.answer,
+        text: plainAnswer,
       })
       .subscribe(
         () => {
@@ -109,6 +119,19 @@ export class ProgramDataService {
           delete question.sectionName;
           delete question.sectionLabel;
 
+          if (this.isMultipleChoice(question)) {
+            try {
+              question.answer = JSON.parse(question.answer);
+            } catch (error) {
+              console.warn(
+                'Error parsing JSON-value in answer',
+                question.id,
+                question.name,
+                question.answer,
+              );
+            }
+          }
+
           return {
             ...question,
             storedAnswer: question.answer,
@@ -116,5 +139,13 @@ export class ProgramDataService {
         });
       return section;
     });
+  }
+
+  private isMultipleChoice(question: QuestionData | QuestionInput): boolean {
+    return QuestionType.selectN === question.type;
+  }
+
+  private isEqualJson(a: any, b: any): boolean {
+    return JSON.stringify(a) === JSON.stringify(b);
   }
 }

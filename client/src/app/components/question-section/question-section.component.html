@@ -33,7 +33,7 @@
               >
                 <ion-select-option
                   *ngFor="let option of question.optionChoices"
-                  [value]="option.value"
+                  [value]="option.name"
                   >{{ option.label }}</ion-select-option
                 >
               </ion-select>
@@ -49,7 +49,7 @@
               >
                 <ion-select-option
                   *ngFor="let option of question.optionChoices"
-                  [value]="option.value"
+                  [value]="option.name"
                   >{{ option.label }}</ion-select-option
                 >
               </ion-select>
