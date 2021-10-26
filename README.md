@@ -54,9 +54,9 @@ Run `npm install` from this directory. Or:
 - `npm run install:client` for the front-end only
 - `npm run install:server` for the back-end only
 
-To finish you local set-up, run:
+To finish you local set-up, run (required only once):
 
-    npx husky install
+    npm run prepare
 
 To set-up running all relevant lint/test scripts with their related git actions.
 
