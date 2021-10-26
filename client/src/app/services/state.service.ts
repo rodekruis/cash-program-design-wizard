@@ -64,9 +64,15 @@ export class StateService {
     console.log(
       `SaveAnswers ActiveSection : ${this.activeSection.id} : ${this.activeSection.label}`,
     );
-    this.activeSection.questions.forEach((question) => {
-      this.programDataService.saveAnswer(this.programId, question);
+
+    this.activeSection.subsections.forEach((subsection) => {
+      subsection.questions.forEach((question) => {
+        this.programDataService.saveAnswer(this.programId, question);
+      });
     });
+    // this.activeSection.questions.forEach((question) => {
+    //   this.programDataService.saveAnswer(this.programId, question);
+    // });
   }
 
   private updateProgramId() {
@@ -142,10 +148,17 @@ export class StateService {
 
   private translateLabels(section: QuestionSection): QuestionSection {
     section.label = this.translatableString.get(section.label);
-    section.questions = section.questions.map((question) => {
-      question.label = this.translatableString.get(question.label);
-      return question;
+    section.subsections = section.subsections.map((subsection) => {
+      subsection.questions.map((question) => {
+        question.label = this.translatableString.get(question.label);
+        return question;
+      });
+      return subsection;
     });
+    // section.questions = section.questions.map((question) => {
+    //   question.label = this.translatableString.get(question.label);
+    //   return question;
+    // });
     return section;
   }
 }

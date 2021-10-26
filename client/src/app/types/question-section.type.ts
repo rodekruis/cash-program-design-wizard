@@ -7,6 +7,13 @@ export interface QuestionSection {
   order: number;
   label: string | TranslatableString;
   state: 'pending' | 'complete';
-  questions: QuestionInput[];
+  subsections: QuestionSubsection[];
   reportTemplate?: string;
+}
+export interface QuestionSubsection {
+  id: string;
+  name: string;
+  order: number;
+  sectionId: string;
+  questions: QuestionInput[];
 }

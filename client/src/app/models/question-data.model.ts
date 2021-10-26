@@ -7,6 +7,10 @@ export interface QuestionData {
   sectionName: string;
   sectionLabel: string | TranslatableString;
 
+  subsectionId: string;
+  subsectionName: string;
+  subsectionLabel: string | TranslatableString;
+
   id: string;
   name: string;
   type: QuestionType;
