@@ -36,10 +36,15 @@ export class FiltersComponent implements OnInit {
     if (!sections.length) {
       return;
     }
-    const sectionQuestions = sections.map((section) =>
-      section.subsections.map((subsection) => subsection.questions),
-    );
-    const allQuestions: QuestionInput[] = [].concat(...sectionQuestions);
+
+    const allQuestions: QuestionInput[] = [];
+
+    sections.forEach((section) => {
+      section.subsections.forEach((subsection) => {
+        allQuestions.push(...subsection.questions);
+      });
+    });
+
     const allTagsProps = allQuestions.map((question) => question.tags);
     const allTags: Tag[] = [].concat(...allTagsProps);
 
