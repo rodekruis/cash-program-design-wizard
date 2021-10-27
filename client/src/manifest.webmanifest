@@ -1,9 +1,9 @@
 {
-  "name": "app",
-  "short_name": "app",
+  "name": "Cash Program Design Wizard",
+  "short_name": "CPDW",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
-  "display": "standalone",
+  "display": "browser",
   "scope": "./",
   "start_url": "./",
   "icons": [

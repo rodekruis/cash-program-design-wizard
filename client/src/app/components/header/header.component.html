@@ -17,7 +17,23 @@
 
   <ng-content></ng-content>
 
-  <div slot="end">
-    <app-user-state></app-user-state>
-  </div>
+  <ion-buttons slot="end">
+    <ion-button
+      (click)="toggleDarkMode()"
+      [title]="'app-header.toggle-dark-mode' | translate"
+      [attr.ariaLabel]="'app-header.toggle-dark-mode' | translate"
+      fill="clear"
+      shape="round"
+      size="small"
+    >
+      <ion-icon
+        [name]="darkModeEnabled() ? 'sunny' : 'moon'"
+        slot="icon-only"
+        size="small"
+        aria-hidden="true"
+      ></ion-icon>
+    </ion-button>
+
+    <app-user-state class="ion-margin-start"></app-user-state>
+  </ion-buttons>
 </ion-toolbar>
