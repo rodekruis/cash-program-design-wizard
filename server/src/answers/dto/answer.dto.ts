@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsUUID } from 'class-validator';
+import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
 
 export class AnswerDto {
   @ApiProperty({ example: '150778b8-20b8-41e7-92b4-58501e8d1043' })
@@ -13,6 +13,6 @@ export class AnswerDto {
   public readonly questionId: string;
 
   @ApiProperty({ example: 'Super good answer' })
-  @IsNotEmpty()
+  @IsString()
   public readonly text: string;
 }

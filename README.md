@@ -18,6 +18,7 @@ Preview of the latest (development) versions:
 
 [![CD [client] Azure Static Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)  
 [![CD [server] - Azure Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml)  
+.
 
 ---
 

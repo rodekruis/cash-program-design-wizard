@@ -31,7 +31,24 @@
             <ion-note>-</ion-note>
           </div>
           <div *ngIf="question.answer">
-            <div [innerText]="question.answer" style="max-width: 33em"></div>
+            <ng-container [ngSwitch]="question.type">
+              <ng-container *ngSwitchCase="questionType.select1">
+                <div>
+                  {{ renderOptionChoiceAnswer(question, question.answer) }}
+                </div>
+              </ng-container>
+              <ng-container *ngSwitchCase="questionType.selectN">
+                <div *ngFor="let option of question.answer">
+                  {{ renderOptionChoiceAnswer(question, option) }}
+                </div>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                <div
+                  [innerText]="question.answer"
+                  style="max-width: 33em"
+                ></div>
+              </ng-container>
+            </ng-container>
           </div>
         </ion-col>
       </ion-row>

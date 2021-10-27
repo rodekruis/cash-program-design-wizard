@@ -14,15 +14,15 @@ export interface QuestionInput {
   type: QuestionType;
   label: string | TranslatableString;
   tags: Tag[];
-  options?: OptionChoice[];
-  answer?: string;
+  optionChoices?: OptionChoice[];
+  answer?: string | string[];
   answerUpdated?: string | Date;
-  storedAnswer?: string;
+  storedAnswer?: string | string[];
   comment?: string;
 }
 
 export interface OptionChoice {
   id: string;
   label: string | TranslatableString;
-  value: string;
+  name: string;
 }

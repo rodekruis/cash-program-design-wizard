@@ -70,9 +70,6 @@ export class StateService {
         this.programDataService.saveAnswer(this.programId, question);
       });
     });
-    // this.activeSection.questions.forEach((question) => {
-    //   this.programDataService.saveAnswer(this.programId, question);
-    // });
   }
 
   private updateProgramId() {
@@ -151,14 +148,18 @@ export class StateService {
     section.subsections = section.subsections.map((subsection) => {
       subsection.questions.map((question) => {
         question.label = this.translatableString.get(question.label);
+
+        if (question.optionChoices && question.optionChoices.length) {
+          question.optionChoices = question.optionChoices.map((option) => {
+            option.label = this.translatableString.get(option.label);
+            return option;
+          });
+        }
+
         return question;
       });
       return subsection;
     });
-    // section.questions = section.questions.map((question) => {
-    //   question.label = this.translatableString.get(question.label);
-    //   return question;
-    // });
     return section;
   }
 }
