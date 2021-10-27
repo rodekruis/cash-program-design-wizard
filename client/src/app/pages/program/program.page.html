@@ -28,11 +28,16 @@
           <ion-col></ion-col>
         </ion-row>
 
+        <div class="debug--container">
+          <app-nav-progress></app-nav-progress>
+        </div>
+
         <div class="ion-margin-vertical ion-padding">
           <app-question-section
             [section]="state.activeSection"
           ></app-question-section>
         </div>
+
         <app-nav-progress></app-nav-progress>
       </ng-container>
       <!--
