@@ -20,7 +20,7 @@
       </ion-card>
 
       <ng-container *ngIf="id">
-        <app-program-phase programId="{{ id }}"></app-program-phase>
+        <app-program-phase [programId]="id"></app-program-phase>
 
         <div class="ion-padding">
           <ng-container
@@ -32,7 +32,7 @@
           </ng-container>
         </div>
         <div class="debug--placeholder">
-          <pre class="ion-text-end">[ Actions: (Nav)Progress ]</pre>
+          <pre class="ion-text-end">Actions: [ Print ]</pre>
         </div>
       </ng-container>
       <!--
