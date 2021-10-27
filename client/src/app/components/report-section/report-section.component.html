@@ -11,48 +11,50 @@
 
 <div *ngIf="!section?.reportTemplate">
   <ion-grid class="report-section-values">
-    <ng-container *ngFor="let question of section?.questions">
-      <ion-row class="report-section-values--row">
-        <ion-col
-          [size]="12"
-          [sizeMd]="6"
-          [sizeLg]="4"
-          class="report-section-values--question"
-        >
-          <strong>{{ question.label }}</strong>
-        </ion-col>
-        <ion-col
-          [size]="12"
-          [sizeMd]="6"
-          [sizeLg]="8"
-          class="report-section-values--answer"
-        >
-          <div *ngIf="!question.answer">
-            <ion-note>-</ion-note>
-          </div>
-          <div *ngIf="question.answer">
-            <ng-container [ngSwitch]="question.type">
-              <ng-container *ngSwitchCase="questionType.select1">
-                <div>
-                  {{ renderOptionChoiceAnswer(question, question.answer) }}
-                </div>
+    <ion-card *ngFor="let subsection of section?.subsections">
+      <ng-container *ngFor="let question of subsection.questions">
+        <ion-row class="report-section-values--row">
+          <ion-col
+            [size]="12"
+            [sizeMd]="6"
+            [sizeLg]="4"
+            class="report-section-values--question"
+          >
+            <strong>{{ question.label }}</strong>
+          </ion-col>
+          <ion-col
+            [size]="12"
+            [sizeMd]="6"
+            [sizeLg]="8"
+            class="report-section-values--answer"
+          >
+            <div *ngIf="!question.answer">
+              <ion-note>-</ion-note>
+            </div>
+            <div *ngIf="question.answer">
+              <ng-container [ngSwitch]="question.type">
+                <ng-container *ngSwitchCase="questionType.select1">
+                  <div>
+                    {{ renderOptionChoiceAnswer(question, question.answer) }}
+                  </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="questionType.selectN">
+                  <div *ngFor="let option of question.answer">
+                    {{ renderOptionChoiceAnswer(question, option) }}
+                  </div>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  <div
+                    [innerText]="question.answer"
+                    style="max-width: 33em"
+                  ></div>
+                </ng-container>
               </ng-container>
-              <ng-container *ngSwitchCase="questionType.selectN">
-                <div *ngFor="let option of question.answer">
-                  {{ renderOptionChoiceAnswer(question, option) }}
-                </div>
-              </ng-container>
-              <ng-container *ngSwitchDefault>
-                <div
-                  [innerText]="question.answer"
-                  style="max-width: 33em"
-                ></div>
-              </ng-container>
-            </ng-container>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </ion-card>
   </ion-grid>
 </div>
 <div *ngIf="!!section?.reportTemplate">

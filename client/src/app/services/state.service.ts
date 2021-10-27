@@ -64,8 +64,11 @@ export class StateService {
     console.log(
       `SaveAnswers ActiveSection : ${this.activeSection.id} : ${this.activeSection.label}`,
     );
-    this.activeSection.questions.forEach((question) => {
-      this.programDataService.saveAnswer(this.programId, question);
+
+    this.activeSection.subsections.forEach((subsection) => {
+      subsection.questions.forEach((question) => {
+        this.programDataService.saveAnswer(this.programId, question);
+      });
     });
   }
 
@@ -142,16 +145,20 @@ export class StateService {
 
   private translateLabels(section: QuestionSection): QuestionSection {
     section.label = this.translatableString.get(section.label);
-    section.questions = section.questions.map((question) => {
-      question.label = this.translatableString.get(question.label);
+    section.subsections = section.subsections.map((subsection) => {
+      subsection.questions.map((question) => {
+        question.label = this.translatableString.get(question.label);
 
-      if (question.optionChoices && question.optionChoices.length) {
-        question.optionChoices = question.optionChoices.map((option) => {
-          option.label = this.translatableString.get(option.label);
-          return option;
-        });
-      }
-      return question;
+        if (question.optionChoices && question.optionChoices.length) {
+          question.optionChoices = question.optionChoices.map((option) => {
+            option.label = this.translatableString.get(option.label);
+            return option;
+          });
+        }
+
+        return question;
+      });
+      return subsection;
     });
     return section;
   }

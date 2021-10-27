@@ -3,105 +3,108 @@
 <ion-grid>
   <ion-row class="ion-align-items-stretch">
     <ion-col
-      *ngFor="let question of section?.questions"
+      *ngFor="let subsection of section?.subsections"
       [sizeXs]="12"
       [sizeMd]="6"
       [sizeLg]="4"
-      class="ion-margin-vertical ion-padding"
+      class="ion-margin-vertical ion-padding ion-border"
       style="display: flex; flex-direction: column"
     >
-      <div style="flex: 1 1 auto">
-        <div class="ion-padding-vertical">
-          <ion-badge
-            *ngFor="let tag of question.tags"
-            class="ion-margin-start ion-float-end"
-            color="medium"
-            >{{ tag }}</ion-badge
-          >
-          <strong>{{ question.label }}</strong>
-        </div>
-        <ion-item>
-          <ng-container [ngSwitch]="question.type">
-            <ng-container *ngSwitchCase="questionTypes.select1">
-              <ion-select
-                [placeholder]="
-                  'question-section.fields.select-1.placeholder' | translate
-                "
-                [multiple]="false"
-                [attr.title]="question.label"
-                [(ngModel)]="question.answer"
+      <ion-card class="ion-padding" color="light">
+        <div *ngFor="let question of subsection.questions">
+          <div style="flex: 1 1 auto">
+            <div class="ion-padding-vertical">
+              <ion-badge
+                *ngFor="let tag of question.tags"
+                class="ion-margin-start ion-float-end"
+                color="medium"
+                >{{ tag }}</ion-badge
               >
-                <ion-select-option
-                  *ngFor="let option of question.optionChoices"
-                  [value]="option.name"
-                  >{{ option.label }}</ion-select-option
-                >
-              </ion-select>
-            </ng-container>
-            <ng-container *ngSwitchCase="questionTypes.selectN">
-              <ion-select
-                [placeholder]="
-                  'question-section.fields.select-n.placeholder' | translate
-                "
-                [multiple]="true"
-                [attr.title]="question.label"
-                [(ngModel)]="question.answer"
-              >
-                <ion-select-option
-                  *ngFor="let option of question.optionChoices"
-                  [value]="option.name"
-                  >{{ option.label }}</ion-select-option
-                >
-              </ion-select>
-            </ng-container>
-            <ng-container *ngSwitchCase="questionTypes.numeric">
-              <ion-input
-                type="number"
-                inputmode="decimal"
-                pattern="[0-9]+"
-                [attr.title]="question.label"
-                [(ngModel)]="question.answer"
-              ></ion-input>
-            </ng-container>
-            <ng-container *ngSwitchCase="questionTypes.textLong">
-              <ion-textarea
-                rows="2"
-                [autoGrow]="true"
-                [spellcheck]="true"
-                autocorrect="on"
-                autocapitalize="on"
-                [attr.title]="question.label"
-                [(ngModel)]="question.answer"
-              ></ion-textarea>
-            </ng-container>
-            <ng-container *ngSwitchDefault>
-              <ion-input
-                type="text"
-                [spellcheck]="true"
-                autocorrect="on"
-                autocapitalize="on"
-                [attr.title]="question.label"
-                [(ngModel)]="question.answer"
-              ></ion-input>
-            </ng-container>
-          </ng-container>
-        </ion-item>
-      </div>
-
-      <div *ngIf="showComments(question)" class="ion-margin-vertical">
-        <span style="color: var(--ion-color-medium)">{{
-          'question-section.comments' | translate
-        }}</span>
-        <div
-          class="ion-padding ion-margin-vertical"
-          style="
-            color: var(--ion-color-medium);
-            border: 1px solid var(--ion-color-light-shade);
-          "
-        >
-          {{ question.comment }}
+              <strong>{{ question.label }}</strong>
+            </div>
+            <ion-item>
+              <ng-container [ngSwitch]="question.type">
+                <ng-container *ngSwitchCase="questionTypes.select1">
+                  <ion-select
+                    [placeholder]="
+                      'question-section.fields.select-1.placeholder' | translate
+                    "
+                    [multiple]="false"
+                    [attr.title]="question.label"
+                    [(ngModel)]="question.answer"
+                  >
+                    <ion-select-option
+                      *ngFor="let option of question.optionChoices"
+                      [value]="option.name"
+                      >{{ option.label }}</ion-select-option
+                    >
+                  </ion-select>
+                </ng-container>
+                <ng-container *ngSwitchCase="questionTypes.selectN">
+                  <ion-select
+                    [placeholder]="
+                      'question-section.fields.select-n.placeholder' | translate
+                    "
+                    [multiple]="true"
+                    [attr.title]="question.label"
+                    [(ngModel)]="question.answer"
+                  >
+                    <ion-select-option
+                      *ngFor="let option of question.optionChoices"
+                      [value]="option.name"
+                      >{{ option.label }}</ion-select-option
+                    >
+                  </ion-select>
+                </ng-container>
+                <ng-container *ngSwitchCase="questionTypes.numeric">
+                  <ion-input
+                    type="number"
+                    inputmode="decimal"
+                    pattern="[0-9]+"
+                    [attr.title]="question.label"
+                    [(ngModel)]="question.answer"
+                  ></ion-input>
+                </ng-container>
+                <ng-container *ngSwitchCase="questionTypes.textLong">
+                  <ion-textarea
+                    rows="2"
+                    [autoGrow]="true"
+                    [spellcheck]="true"
+                    autocorrect="on"
+                    autocapitalize="on"
+                    [attr.title]="question.label"
+                    [(ngModel)]="question.answer"
+                  ></ion-textarea>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  <ion-input
+                    type="text"
+                    [spellcheck]="true"
+                    autocorrect="on"
+                    autocapitalize="on"
+                    [attr.title]="question.label"
+                    [(ngModel)]="question.answer"
+                  ></ion-input>
+                </ng-container>
+              </ng-container>
+            </ion-item>
+          </div>
+          <div *ngIf="showComments(question)" class="ion-margin-vertical">
+            <span style="color: var(--ion-color-medium)">{{
+              'question-section.comments' | translate
+            }}</span>
+            <div
+              class="ion-padding ion-margin-vertical"
+              style="
+                color: var(--ion-color-medium);
+                border: 1px solid var(--ion-color-light-shade);
+              "
+            >
+              {{ question.comment }}
+            </div>
+          </div>
         </div>
-      </div>
+      </ion-card>
     </ion-col>
   </ion-row>
 </ion-grid>

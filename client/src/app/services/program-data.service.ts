@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { QuestionData } from '../models/question-data.model';
 import { Program } from '../types/program.type';
 import { QuestionInput, QuestionType } from '../types/question-input.type';
-import { QuestionSection } from '../types/question-section.type';
+import {
+  QuestionSection,
+  QuestionSubsection,
+} from '../types/question-section.type';
 import { ApiPath, ApiService } from './api.service';
 
 @Injectable({
@@ -19,8 +22,10 @@ export class ProgramDataService {
 
       const allQuestions = await this.getQuestions(programId);
       const allSections = this.extractSections(allQuestions);
+      const allSubsections = this.extractSubsections(allQuestions);
       const fullSections = this.fillSectionsWithQuestions(
         allSections,
+        allSubsections,
         allQuestions,
       );
 
@@ -106,15 +111,44 @@ export class ProgramDataService {
     return sections;
   }
 
+  private extractSubsections(questions: QuestionData[]): QuestionSubsection[] {
+    const subsections = [];
+
+    questions.forEach(
+      ({ subsectionId, subsectionName, subsectionLabel, sectionId }) => {
+        const subsection = {
+          id: subsectionId,
+          name: subsectionName,
+          label: subsectionLabel,
+          sectionId,
+        };
+
+        if (
+          !subsections.some(
+            (existingSubsections) => existingSubsections.id === subsectionId,
+          )
+        ) {
+          subsections.push(subsection);
+        }
+      },
+    );
+
+    return subsections;
+  }
+
   private fillSectionsWithQuestions(
     sections: QuestionSection[],
+    subsections: QuestionSubsection[],
     allQuestions: QuestionData[],
   ): QuestionSection[] {
-    return sections.map((section) => {
-      section.questions = allQuestions
-        .filter((question) => question.sectionId === section.id)
+    const filledSubsections = subsections.map((subsection) => {
+      subsection.questions = allQuestions
+        .filter((question) => question.subsectionId === subsection.id)
         .map((question) => {
           // Remove unused properties
+          delete question.subsectionId;
+          delete question.subsectionName;
+          delete question.subsectionLabel;
           delete question.sectionId;
           delete question.sectionName;
           delete question.sectionLabel;
@@ -137,6 +171,24 @@ export class ProgramDataService {
             storedAnswer: question.answer,
           } as QuestionInput;
         });
+      return subsection;
+    });
+
+    return sections.map((section) => {
+      section.subsections = filledSubsections.filter(
+        (subsection) => subsection.sectionId === section.id,
+      );
+      // .map((question) => {
+      //   // Remove unused properties
+      //   delete question.sectionId;
+      //   delete question.sectionName;
+      //   delete question.sectionLabel;
+
+      //   return {
+      //     ...question,
+      //     storedAnswer: question.answer,
+      //   } as QuestionInput;
+      // });
       return section;
     });
   }
