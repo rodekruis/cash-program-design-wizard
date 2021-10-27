@@ -14,6 +14,6 @@ export interface QuestionSubsection {
   id: string;
   name: string;
   order: number;
-  sectionId: string;
+  sectionId?: string;
   questions: QuestionInput[];
 }
