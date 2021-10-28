@@ -3,7 +3,7 @@
   "app-header": {
     "app-name": "Cash Program Design Wizard",
     "home": "Home",
-    "user-menu": "User menu"
+    "toggle-dark-mode": "Toggle light/dark mode"
   },
   "phases": {
     "overview": "Program overview",

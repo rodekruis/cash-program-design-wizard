@@ -8,6 +8,9 @@ export const environment = {
   // Configuration/Feature-switches:
   debug: true,
 
+  // Let the interface automatically detect + switch to Dark-mode if a user prefers it
+  autoDarkMode: false,
+
   // Optional label to show which version is used
   envName: '',
   // The language that will be loaded first and used as a fallback

@@ -12,6 +12,11 @@ export class AppComponent {
     if (!!environment.envName) {
       document.title += ` [ ${environment.envName} ]`;
     }
+
+    if (environment.autoDarkMode) {
+      document.body.classList.add('dark');
+    }
+
     // Update language + text-direction for the full interface
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       document.documentElement.lang = event.lang;
