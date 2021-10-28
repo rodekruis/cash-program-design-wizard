@@ -829,17 +829,17 @@ export const mockProgram: Program = {
               optionChoices: [
                 {
                   id: getMockId(),
-                  label: 'option A',
+                  label: 'Option A',
                   name: 'option-a',
                 },
                 {
                   id: getMockId(),
-                  label: 'option B',
+                  label: 'Option B',
                   name: 'option-b',
                 },
                 {
                   id: getMockId(),
-                  label: 'option C',
+                  label: 'Option C',
                   name: 'option-c',
                 },
               ],
@@ -853,17 +853,17 @@ export const mockProgram: Program = {
               optionChoices: [
                 {
                   id: getMockId(),
-                  label: 'option X',
+                  label: 'Option X',
                   name: 'option-x',
                 },
                 {
                   id: getMockId(),
-                  label: 'option Y',
+                  label: 'Option Y',
                   name: 'option-y',
                 },
                 {
                   id: getMockId(),
-                  label: 'option Z',
+                  label: 'Option Z',
                   name: 'option-z',
                 },
               ],
@@ -940,7 +940,8 @@ export const mockProgram: Program = {
                 },
                 {
                   id: getMockId(),
-                  label: 'Option C',
+                  label:
+                    'Option C - is a very very long sentence that is really very long',
                   name: 'option-c',
                 },
               ],
@@ -974,12 +975,13 @@ export const mockProgram: Program = {
                 },
                 {
                   id: getMockId(),
-                  label: 'Option Z',
+                  label:
+                    'Option Z - is a very very long sentence that is really very long',
                   name: 'option-z',
                 },
               ],
               comment: getRandomComment(),
-              answer: ['option-x', 'option-y'],
+              answer: ['option-x', 'option-y', 'option-z'],
               answerUpdated: '2021-10-21T01:01:00Z',
             },
           ],

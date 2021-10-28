@@ -43,6 +43,26 @@
 }
 
 /****************************************************************************
+ * Overrides to Ionic elements:
+ */
+
+//  Force text-wrap on <ion-select>
+ion-select::part(placeholder),
+ion-select::part(text) {
+  white-space: normal !important;
+}
+// Force text-wrap on <ion-select-option>'s in an Alert
+ion-alert.select-alert {
+  --width: 33vw !important;
+  --max-width: 66vw !important;
+
+  .select-interface-option .alert-radio-label,
+  .select-interface-option .alert-checkbox-label {
+    white-space: normal !important;
+  }
+}
+
+/****************************************************************************
  * Development / Debugging ONLY:
  */
 
