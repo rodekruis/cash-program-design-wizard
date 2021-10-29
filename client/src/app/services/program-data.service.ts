@@ -178,17 +178,6 @@ export class ProgramDataService {
       section.subsections = filledSubsections.filter(
         (subsection) => subsection.sectionId === section.id,
       );
-      // .map((question) => {
-      //   // Remove unused properties
-      //   delete question.sectionId;
-      //   delete question.sectionName;
-      //   delete question.sectionLabel;
-
-      //   return {
-      //     ...question,
-      //     storedAnswer: question.answer,
-      //   } as QuestionInput;
-      // });
       return section;
     });
   }
