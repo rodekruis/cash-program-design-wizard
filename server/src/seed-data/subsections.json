@@ -37,10 +37,14 @@
     "orderPriority": 18,
     "section": "pa-skills"
   },
-  { "name": "aw-literacy", "orderPriority": 19, "section": "aw-skills" },
-  { "name": "aw-digtial-devices", "orderPriority": 20, "section": "aw-skills" },
   {
-    "name": "aw-trusted-information-sources",
+    "name": "aw-languages-spoken",
+    "orderPriority": 19,
+    "section": "aw-skills"
+  },
+  { "name": "aw-literacy", "orderPriority": 20, "section": "aw-skills" },
+  {
+    "name": "aw-digtial-devices",
     "orderPriority": 21,
     "section": "aw-skills"
   },
@@ -89,7 +93,7 @@
     "orderPriority": 38,
     "section": "services"
   },
-  { "name": "service-access ", "orderPriority": 39, "section": "services" },
+  { "name": "service-access", "orderPriority": 39, "section": "services" },
   { "name": "called", "orderPriority": 40, "section": "services" },
 
   {
