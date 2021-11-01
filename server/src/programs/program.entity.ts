@@ -16,4 +16,7 @@ export class ProgramEntity extends CascadeDeleteEntity {
 
   @OneToMany(() => AnswerEntity, (answer) => answer.program)
   public answers: AnswerEntity[];
+
+  @Column({ nullable: true })
+  public narrativeAnswersTemplate: string;
 }

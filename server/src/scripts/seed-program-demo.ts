@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as fs from 'fs';
+import { join } from 'path';
 import { Connection, Repository } from 'typeorm';
 import * as programDemo from '../seed-data/program-demo.json';
 import * as questionsSeed from '../seed-data/questions.json';
@@ -35,13 +37,16 @@ export class SeedDemoProgram implements InterfaceScript {
   @InjectRepository(OptionChoiceEntity)
   private readonly optionChoiceRepository: Repository<OptionChoiceEntity>;
 
+  // private connection: Connection;
+
   public constructor(
     private readonly userService: UserService,
     private readonly connection: Connection,
   ) {}
 
   public async run(): Promise<void> {
-    await this.truncateAll();
+    await this.runAllMigrations();
+
     const program = await this.seedProgram();
     await this.createUsers(program);
     await this.seedSections();
@@ -49,22 +54,11 @@ export class SeedDemoProgram implements InterfaceScript {
     console.log('Run SeedDemoProgram: done');
   }
 
-  public async truncateAll(): Promise<void> {
-    const entities = this.connection.entityMetadatas;
-    try {
-      for (const entity of entities) {
-        const repository = await this.connection.getRepository(entity.name);
-        if (repository.metadata.schema !== 'custom_migration_table') {
-          const q = `TRUNCATE TABLE \"${entity.tableName}\" CASCADE;`;
-          await repository.query(q);
-        }
-      }
-    } catch (error) {
-      throw new Error(`ERROR: Cleaning test db: ${error}`);
-    }
-  }
-
   private async seedProgram(): Promise<ProgramEntity> {
+    programDemo['narrativeAnswersTemplate'] = fs.readFileSync(
+      'src/seed-data/narrativeAnswersTemplate-demo-en.txt',
+      'utf8',
+    );
     return await this.programRepository.save(programDemo);
   }
 
@@ -172,6 +166,30 @@ export class SeedDemoProgram implements InterfaceScript {
       optionChoiceEntities.push(optionChoiceEntity);
     }
     return optionChoiceEntities;
+  }
+
+  private async runAllMigrations(): Promise<void> {
+    console.log('Startign migrations');
+    await this.connection.query(`DROP SCHEMA public CASCADE`);
+    await this.connection.query(
+      `CREATE SCHEMA public AUTHORIZATION ${process.env.POSTGRES_USERNAME}`,
+    );
+
+    await this.connection.query(
+      `CREATE TABLE public.custom_migration_table (
+        id serial NOT NULL,
+        "timestamp" int8 NOT NULL,
+        "name" varchar NOT NULL,
+        CONSTRAINT "PK_0ee8d1a09834605db454c13a49e" PRIMARY KEY (id)
+      );`,
+    );
+    const dir = join(__dirname, '*/migration/*.{ts,js}');
+    console.log('dir: ', dir);
+    await this.connection.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`);
+    await this.connection.runMigrations({
+      transaction: 'all',
+    });
+    console.log('Migrations are done');
   }
 }
 

@@ -16,8 +16,8 @@ Preview of the latest (development) versions:
 [![CI Tests](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml)
 [![CodeQL](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml)
 
-[![CD [client] Azure Static Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)  
-[![CD [server] - Azure Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml)  
+[![CD [client] Azure Static Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)
+[![CD [server] - Azure Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml)
 .
 
 ---
@@ -28,7 +28,7 @@ To set up a local development-environment:
 
 - Install Node.js: <https://nodejs.org/en/download/>
 
-  Install the version specified in the [`.node-version`](.node-version)-file.  
+  Install the version specified in the [`.node-version`](.node-version)-file.
   To prevent conflicts it is recommended to use a 'version manager'.
 
   - [`fnm`](https://github.com/Schniz/fnm#readme) (for Windows/macOS/Linux) After installing, run in this directory:
@@ -79,8 +79,23 @@ After this initial set-up, you can start with:
 - `npm run start:client` - for the front-end only
 - `npm run start:server` - for the back-end only
 
-The front-end client should be running at: <http://localhost:4200/>.  
+The front-end client should be running at: <http://localhost:4200/>.
 The back-end server should be running at: <http://localhost:3001/api/>.
+
+### Database migrations
+
+During development the database-structure will change (e.g. an extra column in a table) while there is already data stored that cannot be lost. In this case we have to apply a migration.
+
+Any time, the database-structure is adapted, before pushing, run:
+
+    npm run migration:generate <name>
+
+This stores all edits in a migration-file, which is pushed along with your code.
+On test- and production-server, this file is automatically run within the `npm prestart` command of the server.
+
+To run this file locally, do:
+
+    npm run migration:run
 
 ### Recommended code-editor/IDE tools/extensions
 
@@ -117,7 +132,7 @@ To simulate a production-environment locally and be able to use all (offline) fe
 
 The front-end/client app can be deployed as a static single-page-app or PWA.
 
-- Prepare the correct configuration in the `.env`-file, based on the example: [.env.example](./.env.example).  
+- Prepare the correct configuration in the `.env`-file, based on the example: [.env.example](./.env.example).
   For more information, see: [`dotenv`](https://www.npmjs.com/package/dotenv).
 
       cp .env.example .env
