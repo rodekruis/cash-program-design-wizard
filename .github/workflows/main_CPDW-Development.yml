@@ -35,14 +35,14 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
           cache-dependency-path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/package-lock.json
-  
+
       - name: Update to npm v7
         run: npm install --global npm@7
 
       - name: Install, Build, Test
         working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         run: |
-          npm install
+          npm ci
           npm run build
           npm run test
 
