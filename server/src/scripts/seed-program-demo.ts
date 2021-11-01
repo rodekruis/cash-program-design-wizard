@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as fs from 'fs';
-import { join } from 'path';
 import { Connection, Repository } from 'typeorm';
 import * as programDemo from '../seed-data/program-demo.json';
 import * as questionsSeed from '../seed-data/questions.json';
@@ -183,8 +182,6 @@ export class SeedDemoProgram implements InterfaceScript {
         CONSTRAINT "PK_0ee8d1a09834605db454c13a49e" PRIMARY KEY (id)
       );`,
     );
-    const dir = join(__dirname, '*/migration/*.{ts,js}');
-    console.log('dir: ', dir);
     await this.connection.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`);
     await this.connection.runMigrations({
       transaction: 'all',
