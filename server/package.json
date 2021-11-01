@@ -24,7 +24,7 @@
     "test": "npm run lint && npm run test:cov",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "migration:generate": "npx typeorm migration:generate -- -n",
-    "migration:run": "npx typeorm migration:run"
+    "migration:run": "npm run typeorm migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^8.1.0",
