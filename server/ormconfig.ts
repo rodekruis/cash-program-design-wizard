@@ -13,5 +13,5 @@ module.exports = {
     migrationsDir: 'migration',
   },
   dropSchema: false,
-  synchronize: false,
+  synchronize: true,
 };
