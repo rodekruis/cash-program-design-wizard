@@ -9,9 +9,10 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write .",
+    "prestart": "npm run migration:run",
     "start": "node dist/src/main.js",
     "start:database": "docker-compose up -d --build",
-    "start:dev": "npm-run-all --print-label --sequential start:database start:dev:nest",
+    "start:dev": "npm-run-all --print-label --sequential start:database migration:run start:dev:nest",
     "start:dev:nest": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:no-watch": "nest start",
@@ -21,7 +22,10 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "lint": "npx prettier --check .",
-    "test": "npm run lint && npm run test:cov"
+    "test": "npm run lint && npm run test:cov",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:generate": "npm run typeorm migration:generate -- -n",
+    "migration:run": "npm run typeorm migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^8.1.0",

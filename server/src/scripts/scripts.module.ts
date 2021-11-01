@@ -28,5 +28,5 @@ import SeedDemoProgram from './seed-program-demo';
 export class ScriptsModule {}
 
 export interface InterfaceScript {
-  run(): Promise<void>;
+  run(seedUsers: boolean): Promise<void>;
 }
