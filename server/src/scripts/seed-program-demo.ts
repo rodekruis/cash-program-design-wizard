@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
-import { narrativeAnswersTemplateDemoEn } from '../seed-data/narrativeAnswersTemplate-demo-en';
+import { narrativeReportTemplateDemoEn } from '../seed-data/narrativeAnswersTemplate-demo-en';
 import * as programDemo from '../seed-data/program-demo.json';
 import * as questionsSeed from '../seed-data/questions.json';
 import * as sectionsSeed from '../seed-data/sections.json';
@@ -54,7 +54,7 @@ export class SeedDemoProgram implements InterfaceScript {
   }
 
   private async seedProgram(): Promise<ProgramEntity> {
-    programDemo['narrativeReportTemplate'] = narrativeAnswersTemplateDemoEn;
+    programDemo['narrativeReportTemplate'] = narrativeReportTemplateDemoEn;
     return await this.programRepository.save(programDemo);
   }
 
