@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "migration/*"],
   "exclude": ["node_modules", "**/*.spec.ts"],
   "types": ["jest"]
 }
