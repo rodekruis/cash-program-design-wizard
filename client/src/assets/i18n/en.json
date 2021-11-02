@@ -37,6 +37,10 @@
     "title": "Narrative Report",
     "appendix": "Appendix"
   },
+  "report-narrative": {
+    "missing-explanation": "Nothing filled in.",
+    "answer-prefix": "Answer to question:"
+  },
   "report-section": {
     "go-to-input": "Go to section"
   },

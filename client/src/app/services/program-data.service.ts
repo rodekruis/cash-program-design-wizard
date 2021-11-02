@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { QuestionData } from '../models/question-data.model';
-import { Program } from '../types/program.type';
+import { Program, ProgramMetaData } from '../types/program.type';
 import { QuestionInput, QuestionType } from '../types/question-input.type';
 import {
   QuestionSection,
@@ -20,6 +20,7 @@ export class ProgramDataService {
         return reject('No Program ID provided');
       }
 
+      const programMetaData = await this.getProgramMetaData(programId);
       const allQuestions = await this.getQuestions(programId);
       const allSections = this.extractSections(allQuestions);
       const allSubsections = this.extractSubsections(allQuestions);
@@ -31,7 +32,8 @@ export class ProgramDataService {
 
       return resolve({
         id: programId,
-        label: '',
+        label: programMetaData.label,
+        narrativeReportTemplate: programMetaData.narrativeReportTemplate,
         sections: fullSections,
       });
     });
@@ -72,6 +74,17 @@ export class ProgramDataService {
           console.log('Answer save failed.', error);
         },
       );
+  }
+
+  private async getProgramMetaData(
+    programId: string,
+  ): Promise<ProgramMetaData> {
+    // Work-around for lack of a GetProgramById-endpoint:
+    const data = await this.apiService.get(ApiPath.userPrograms).toPromise();
+    const thisProgram = data.programs.find(
+      (program) => program.id === programId,
+    );
+    return thisProgram;
   }
 
   private async getQuestions(
