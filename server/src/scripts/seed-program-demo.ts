@@ -170,9 +170,7 @@ export class SeedDemoProgram implements InterfaceScript {
   private async runAllMigrations(): Promise<void> {
     console.log('Startign migrations');
     await this.connection.query(`DROP SCHEMA public CASCADE`);
-    await this.connection.query(
-      `CREATE SCHEMA public AUTHORIZATION ${process.env.POSTGRES_USERNAME}`,
-    );
+    await this.connection.query(`CREATE SCHEMA public`);
 
     await this.connection.query(
       `CREATE TABLE public.custom_migration_table (
