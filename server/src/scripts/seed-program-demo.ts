@@ -54,7 +54,7 @@ export class SeedDemoProgram implements InterfaceScript {
   }
 
   private async seedProgram(): Promise<ProgramEntity> {
-    programDemo['narrativeAnswersTemplate'] = narrativeAnswersTemplateDemoEn;
+    programDemo['narrativeReportTemplate'] = narrativeAnswersTemplateDemoEn;
     return await this.programRepository.save(programDemo);
   }
 

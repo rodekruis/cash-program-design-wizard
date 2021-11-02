@@ -18,5 +18,5 @@ export class ProgramEntity extends CascadeDeleteEntity {
   public answers: AnswerEntity[];
 
   @Column({ nullable: true })
-  public narrativeAnswersTemplate: string;
+  public narrativeReportTemplate: string;
 }
