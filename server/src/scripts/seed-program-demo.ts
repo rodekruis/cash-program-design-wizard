@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
-import { narrativeReportTemplateDemoEn } from '../seed-data/narrativeAnswersTemplate-demo-en';
+import { narrativeReportTemplateDemoEn } from '../seed-data/narrativeReportTemplate-demo-en';
 import * as programDemo from '../seed-data/program-demo.json';
 import * as questionsSeed from '../seed-data/questions.json';
 import * as sectionsSeed from '../seed-data/sections.json';
@@ -35,8 +35,6 @@ export class SeedDemoProgram implements InterfaceScript {
 
   @InjectRepository(OptionChoiceEntity)
   private readonly optionChoiceRepository: Repository<OptionChoiceEntity>;
-
-  // private connection: Connection;
 
   public constructor(
     private readonly userService: UserService,

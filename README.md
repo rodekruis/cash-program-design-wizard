@@ -71,6 +71,33 @@ Automated tests are configured and can be run with:
 - `npm run test:client` - for the front-end only
 - `npm run test:server` - for the back-end only
 
+## Mock/test Data
+
+All initial database-contents are hard-coded in the [`server/src/seed-data`](./server/src/seed-data/)-folder.
+
+- [`program-demo.json`](./server/src/seed-data/program-demo.json)
+  - `name`-attribute must be unique
+  - `narrativeReportTemplate` is required and is defined in [a separate file](./server/src/seed-data/narrativeReportTemplate-demo-en.ts)
+- [`sections.json`](./server/src/seed-data/sections.json)
+  - `name`-attribute must be unique
+- [`subsections.json`](./server/src/seed-data/subsections.json)
+
+  - `name`-attribute must be unique
+  - `section`-attribute must match a `name` of a `section` from `sections.json`
+
+- [`questions.json`](./server/src/seed-data/questions.json)
+  - `name`-attribute must be unique
+  - `subsection`-attribute must match a `name` of a `subsection` from `subsections.json`
+
+So the hierarchy is:
+
+- `program`
+  - `section` (1 or more)
+    - `subsection` (1 or more)
+      - `question` (1 or more)
+
+When these files are changed, a 'reset' of the database is required. This can be done via the endpoint: <http://localhost:3001/scripts/reset>
+
 ## Local Development
 
 After this initial set-up, you can start with:

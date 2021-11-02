@@ -32,8 +32,6 @@ export class ScriptsController {
     if (body.script == SeedScript.demo) {
       await this.seedDemoProgram.run();
     }
-    return res
-      .status(HttpStatus.ACCEPTED)
-      .send('Request received. The reset can take a minute.');
+    return res.status(HttpStatus.ACCEPTED).send('Reset done.');
   }
 }
