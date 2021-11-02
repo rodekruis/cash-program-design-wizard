@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { QuestionInput, QuestionType } from 'src/app/types/question-input.type';
 import { QuestionSection } from 'src/app/types/question-section.type';
 import { TranslatableString } from 'src/app/types/translatable-string.type';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-report-section',
@@ -16,6 +17,8 @@ export class ReportSectionComponent {
   public programId: string;
 
   public questionType = QuestionType;
+
+  public isDebug = environment.debug;
 
   constructor(private route: ActivatedRoute) {
     this.programId = this.route.snapshot.params.id;

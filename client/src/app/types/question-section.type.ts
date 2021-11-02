@@ -8,7 +8,6 @@ export interface QuestionSection {
   label: string | TranslatableString;
   state: 'pending' | 'complete';
   subsections: QuestionSubsection[];
-  reportTemplate?: string;
 }
 export interface QuestionSubsection {
   id: string;

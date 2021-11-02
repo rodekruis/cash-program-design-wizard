@@ -5,4 +5,5 @@ export interface Program {
   id: string;
   label: string | TranslatableString;
   sections: QuestionSection[];
+  narrativeReportTemplate?: string;
 }

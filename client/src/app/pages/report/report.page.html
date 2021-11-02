@@ -23,12 +23,20 @@
         <app-program-phase [programId]="id"></app-program-phase>
 
         <div class="ion-padding">
+          <h2>{{ 'report.title' | translate }}</h2>
+
+          <pre [innerText]="state?.narrativeReportTemplate"></pre>
+
+          <br />
+
+          <hr style="border-top: 1px dashed var(--ion-color-medium)" />
+
+          <h2>{{ 'report.appendix' | translate }}</h2>
           <ng-container
             *ngFor="let section of sections"
             class="ion-margin-vertical ion-padding-vertical"
           >
             <app-report-section [section]="section"></app-report-section>
-            <br />
           </ng-container>
         </div>
         <div class="debug--placeholder">

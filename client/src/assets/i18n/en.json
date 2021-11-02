@@ -33,7 +33,9 @@
   },
   "report": {
     "page-title": "Report for program: {{id}}",
-    "not-found": "No report found."
+    "not-found": "No report found.",
+    "title": "Narrative Report",
+    "appendix": "Appendix"
   },
   "report-section": {
     "go-to-input": "Go to section"

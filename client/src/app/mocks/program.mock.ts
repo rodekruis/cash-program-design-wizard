@@ -989,98 +989,13 @@ export const mockProgram: Program = {
       ],
       state: 'pending',
     },
-    {
-      id: getMockId(),
-      name: 'test3-answers-narrative',
-      order: 0,
-      label: 'Test Section 3 - Answers-Narrative',
-      subsections: [
-        {
-          id: getMockId(),
-          name: 'subsection-4',
-          order: 4,
-          questions: [
-            {
-              id: getMockId(),
-              name: 'test-3-select-1',
-              type: QuestionType.select1,
-              label: 'Question for Select-1 from the options',
-              tags: [Tag.data],
-              optionChoices: [
-                {
-                  id: getMockId(),
-                  label: 'Option A',
-                  name: 'option-a',
-                },
-                {
-                  id: getMockId(),
-                  label: 'Option B',
-                  name: 'option-b',
-                },
-                {
-                  id: getMockId(),
-                  label: 'Option C',
-                  name: 'option-c',
-                },
-              ],
-              answer: 'option-b',
-            },
-            {
-              id: getMockId(),
-              name: 'test-3-select-2',
-              type: QuestionType.select1,
-              label: 'Question for Select-1 from the options',
-              tags: [Tag.cash],
-              optionChoices: [
-                {
-                  id: getMockId(),
-                  label: 'Option A',
-                  name: 'option-a',
-                },
-                {
-                  id: getMockId(),
-                  label: 'Option B',
-                  name: 'option-b',
-                },
-                {
-                  id: getMockId(),
-                  label: 'Option C',
-                  name: 'option-c',
-                },
-              ],
-              answer: 'option-a',
-            },
-            {
-              id: getMockId(),
-              name: 'test-3-select-3',
-              type: QuestionType.selectN,
-              label: 'Question for Select-Multiple from the options',
-              tags: [Tag.data],
-              optionChoices: [
-                {
-                  id: getMockId(),
-                  label: 'Option X',
-                  name: 'option-x',
-                },
-                {
-                  id: getMockId(),
-                  label: 'Option Y',
-                  name: 'option-y',
-                },
-                {
-                  id: getMockId(),
-                  label: 'Option Z',
-                  name: 'option-z',
-                },
-              ],
-              answer: 'option-z',
-            },
-          ],
-        },
-      ],
-      reportTemplate:
-        'The answers where: {{test-3-select-1}} \n\nAnd also {{test-3-select-3}} or {{test-3-select-2}}.',
-      state: 'pending',
-    },
   ],
+  narrativeReportTemplate: `
+The answers where: {{test-2-select-n}}
+
+And also {{test-2-select-1}} or {{test-2-text}}.
+
+Concluding:
+{{text-2-text-long}}
+`,
 };
