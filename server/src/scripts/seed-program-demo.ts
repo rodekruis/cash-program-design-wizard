@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as fs from 'fs';
 import { Connection, Repository } from 'typeorm';
+import { narrativeAnswersTemplateDemoEn } from '../seed-data/narrativeAnswersTemplate-demo-en';
 import * as programDemo from '../seed-data/program-demo.json';
 import * as questionsSeed from '../seed-data/questions.json';
 import * as sectionsSeed from '../seed-data/sections.json';
@@ -44,7 +44,7 @@ export class SeedDemoProgram implements InterfaceScript {
   ) {}
 
   public async run(): Promise<void> {
-    await this.runAllMigrations();
+    await this.truncateAll();
 
     const program = await this.seedProgram();
     await this.createUsers(program);
@@ -54,10 +54,7 @@ export class SeedDemoProgram implements InterfaceScript {
   }
 
   private async seedProgram(): Promise<ProgramEntity> {
-    programDemo['narrativeAnswersTemplate'] = fs.readFileSync(
-      'src/seed-data/narrativeAnswersTemplate-demo-en.txt',
-      'utf8',
-    );
+    programDemo['narrativeAnswersTemplate'] = narrativeAnswersTemplateDemoEn;
     return await this.programRepository.save(programDemo);
   }
 
@@ -167,24 +164,18 @@ export class SeedDemoProgram implements InterfaceScript {
     return optionChoiceEntities;
   }
 
-  private async runAllMigrations(): Promise<void> {
-    console.log('Startign migrations');
-    await this.connection.query(`DROP SCHEMA public CASCADE`);
-    await this.connection.query(`CREATE SCHEMA public`);
+  private async truncateAll(): Promise<void> {
+    const entities = this.connection.entityMetadatas;
+    try {
+      for (const entity of entities) {
+        const repository = await this.connection.getRepository(entity.name);
 
-    await this.connection.query(
-      `CREATE TABLE public.custom_migration_table (
-        id serial NOT NULL,
-        "timestamp" int8 NOT NULL,
-        "name" varchar NOT NULL,
-        CONSTRAINT "PK_0ee8d1a09834605db454c13a49e" PRIMARY KEY (id)
-      );`,
-    );
-    await this.connection.query(`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`);
-    await this.connection.runMigrations({
-      transaction: 'all',
-    });
-    console.log('Migrations are done');
+        const q = `TRUNCATE TABLE public."${entity.tableName}" CASCADE;`;
+        await repository.query(q);
+      }
+    } catch (error) {
+      console.log('error: ', error);
+    }
   }
 }
 
