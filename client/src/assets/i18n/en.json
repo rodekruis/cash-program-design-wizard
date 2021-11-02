@@ -58,7 +58,9 @@
   "nav-progress": {
     "save-answers": {
       "label": "Save answers"
-    }
+    },
+    "next-section": "Next section",
+    "prev-section": "Previous section"
   },
   "common": {
     "ok": "Ok",
