@@ -1,5 +1,0 @@
-# Directory for database contents and/or mock/test data
-*
-
-# Ignore self to preserve this directory in git-repository
-!.gitignore

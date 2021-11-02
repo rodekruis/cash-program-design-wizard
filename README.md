@@ -71,6 +71,33 @@ Automated tests are configured and can be run with:
 - `npm run test:client` - for the front-end only
 - `npm run test:server` - for the back-end only
 
+## Mock/test Data
+
+All initial database-contents are hard-coded in the [`server/src/seed-data`](./server/src/seed-data/)-folder.
+
+- [`program-demo.json`](./server/src/seed-data/program-demo.json)
+  - `name`-attribute must be unique
+  - `narrativeReportTemplate` is required and is defined in [a separate file](./server/src/seed-data/narrativeReportTemplate-demo-en.ts)
+- [`sections.json`](./server/src/seed-data/sections.json)
+  - `name`-attribute must be unique
+- [`subsections.json`](./server/src/seed-data/subsections.json)
+
+  - `name`-attribute must be unique
+  - `section`-attribute must match a `name` of a `section` from `sections.json`
+
+- [`questions.json`](./server/src/seed-data/questions.json)
+  - `name`-attribute must be unique
+  - `subsection`-attribute must match a `name` of a `subsection` from `subsections.json`
+
+So the hierarchy is:
+
+- `program`
+  - `section` (1 or more)
+    - `subsection` (1 or more)
+      - `question` (1 or more)
+
+When these files are changed, a 'reset' of the database is required. This can be done via the endpoint: <http://localhost:3001/scripts/reset>
+
 ## Local Development
 
 After this initial set-up, you can start with:
@@ -128,27 +155,45 @@ To simulate a production-environment locally and be able to use all (offline) fe
 
 ## Deployment(s)
 
+For both the front- & back-end a shared configuration is used.
+
+Prepare the correct configuration in the `.env`-file, based on the example: [.env.example](./.env.example).  
+ For more information, see: [`dotenv`](https://www.npmjs.com/package/dotenv).
+
+      cp .env.example .env
+
 ### How to deploy the front-end/client app
 
 The front-end/client app can be deployed as a static single-page-app or PWA.
 
-- Prepare the correct configuration in the `.env`-file, based on the example: [.env.example](./.env.example).  
-  For more information, see: [`dotenv`](https://www.npmjs.com/package/dotenv).
-
-      cp .env.example .env
-
+- Make sure the `.env`-configuration is prepared.
 - Run: (from the root-folder)
 
       npm run build:production --prefix client
 
 - This will generate a folder with all HTML, JS, JSON and SVG assets: [`client/www`](./client/www/)
 - This can be deployed to any hosting-solution (supporting HTTPS), using [this server configuration](https://angular.io/guide/deployment#server-configuration).
+
 - The development-preview is automatically deployed using:
-  - GitHub-Actions
-    - The workflow is defined in: [`.github/workflows/azure-static-web-apps-....yml`](.github/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)
+  - A GitHub-Action: The workflow is defined in: [`.github/workflows/azure-static-web-apps-....yml`](.github/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)
   - And the [Azure Static Web App service](https://azure.microsoft.com/en-us/services/app-service/static/).
     - The configuration used is in: [`staticwebapp.config.json`](client/staticwebapp.config.json)
     - See documentation about the format in [this example configuration file](https://docs.microsoft.com/en-us/azure/static-web-apps/configuration#example-configuration-file)
+
+### How to deploy the back-end/server API
+
+The back-end/server API can be deployed as a stand-alone Node.js web-app (connected to a database).
+
+- Make sure the `.env`-configuration is prepared.
+- Run: (from the root-folder)
+
+      npm run build --prefix server
+
+- This will generate a folder with all required code: [`server/dist/`](./server/dist/)
+- This can be deployed/run as a Node.js service with `npm start`
+
+- The development-preview is automatically deployed via [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) using:
+  - A GitHub-Action: The workflow is defined in: [`.github/workflows/main_CPDW-development.yml`](.github/workflows/main_CPDW-Development.yml)
 
 ## License
 
