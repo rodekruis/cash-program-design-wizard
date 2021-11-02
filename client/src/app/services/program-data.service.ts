@@ -93,18 +93,16 @@ export class ProgramDataService {
     const sections = [];
 
     questions.forEach((question) => {
-      const section = {
-        id: question.sectionId,
-        name: question.sectionName,
-        label: question.sectionLabel,
-      };
-
       if (
         !sections.some(
           (existingSection) => existingSection.id === question.sectionId,
         )
       ) {
-        sections.push(section);
+        sections.push({
+          id: question.sectionId,
+          name: question.sectionName,
+          label: question.sectionLabel,
+        });
       }
     });
 
@@ -114,24 +112,21 @@ export class ProgramDataService {
   private extractSubsections(questions: QuestionData[]): QuestionSubsection[] {
     const subsections = [];
 
-    questions.forEach(
-      ({ subsectionId, subsectionName, subsectionLabel, sectionId }) => {
-        const subsection = {
-          id: subsectionId,
-          name: subsectionName,
-          label: subsectionLabel,
-          sectionId,
-        };
-
-        if (
-          !subsections.some(
-            (existingSubsections) => existingSubsections.id === subsectionId,
-          )
-        ) {
-          subsections.push(subsection);
-        }
-      },
-    );
+    questions.forEach((question) => {
+      if (
+        !subsections.some(
+          (existingSubsections) =>
+            existingSubsections.id === question.subsectionId,
+        )
+      ) {
+        subsections.push({
+          id: question.subsectionId,
+          name: question.subsectionName,
+          label: question.subsectionLabel,
+          sectionId: question.sectionId,
+        });
+      }
+    });
 
     return subsections;
   }
