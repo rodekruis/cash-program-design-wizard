@@ -161,6 +161,13 @@ export class ProgramDataService {
             }
           }
 
+          if (question.tags) {
+            // Only use unique tag-values:
+            question.tags = question.tags.filter(
+              (el, i, array) => array.indexOf(el) === i,
+            );
+          }
+
           return {
             ...question,
             storedAnswer: question.answer,
