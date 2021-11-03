@@ -16,6 +16,8 @@ import { TranslatableStringService } from './translatable-string.service';
 export class StateService {
   public programId: string;
 
+  public narrativeReportTemplate: string;
+
   public filters: {
     tag: Tag | '';
   } = {
@@ -109,6 +111,8 @@ export class StateService {
     } else {
       program = await this.programDataService.getProgram(this.programId);
     }
+
+    this.narrativeReportTemplate = program.narrativeReportTemplate;
 
     const sections = program.sections.map((section) =>
       this.translateLabels(section),
