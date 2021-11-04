@@ -63,7 +63,7 @@ export class ProgramDataService {
       .post(ApiPath.answers, {
         programId,
         questionId: question.id,
-        text: plainAnswer,
+        text: plainAnswer.toString(), // Prevent storing numeric-input as a number
       })
       .subscribe(
         () => {

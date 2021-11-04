@@ -36,6 +36,7 @@
                     [(ngModel)]="question.answer"
                     [cancelText]="'common.cancel' | translate"
                     [okText]="'common.ok' | translate"
+                    (ionChange)="onChangeAnswer(question)"
                   >
                     <ion-select-option
                       *ngFor="let option of question.optionChoices"
@@ -54,6 +55,7 @@
                     [(ngModel)]="question.answer"
                     [cancelText]="'common.cancel' | translate"
                     [okText]="'common.ok' | translate"
+                    (ionChange)="onChangeAnswer(question)"
                   >
                     <ion-select-option
                       *ngFor="let option of question.optionChoices"
@@ -69,6 +71,8 @@
                     pattern="[0-9]+"
                     [attr.title]="question.label"
                     [(ngModel)]="question.answer"
+                    (ionChange)="onChangeAnswer(question)"
+                    [debounce]="600"
                   ></ion-input>
                 </ng-container>
                 <ng-container *ngSwitchCase="questionTypes.textLong">
@@ -80,6 +84,8 @@
                     autocapitalize="on"
                     [attr.title]="question.label"
                     [(ngModel)]="question.answer"
+                    (ionChange)="onChangeAnswer(question)"
+                    [debounce]="600"
                   ></ion-textarea>
                 </ng-container>
                 <ng-container *ngSwitchDefault>
@@ -90,6 +96,8 @@
                     autocapitalize="on"
                     [attr.title]="question.label"
                     [(ngModel)]="question.answer"
+                    (ionChange)="onChangeAnswer(question)"
+                    [debounce]="600"
                   ></ion-input>
                 </ng-container>
               </ng-container>
