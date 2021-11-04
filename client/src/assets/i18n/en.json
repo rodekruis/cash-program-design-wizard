@@ -21,6 +21,7 @@
     "not-found": "No program found."
   },
   "question-section": {
+    "no-questions": "No questions available with the current filters.",
     "fields": {
       "select-1": {
         "placeholder": "Select 1 from the list"
@@ -71,5 +72,13 @@
   "common": {
     "ok": "Ok",
     "cancel": "Cancel"
+  },
+  "filters": {
+    "tags": {
+      "all": "All",
+      "cash": "Cash",
+      "data": "Data",
+      "people": "People"
+    }
   }
 }

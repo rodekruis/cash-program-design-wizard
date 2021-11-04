@@ -31,7 +31,9 @@ export class ProgramPage implements OnInit {
           response.programs[0].id
         ) {
           this.id = response.programs[0].id;
-          this.router.navigate(['program', this.id]);
+          this.router.navigate(['program', this.id], {
+            queryParamsHandling: 'merge',
+          });
         }
       });
     }

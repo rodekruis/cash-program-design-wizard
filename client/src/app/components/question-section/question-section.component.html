@@ -13,14 +13,17 @@
       style="display: flex; flex-direction: column"
     >
       <ion-card class="ion-padding" color="light">
-        <div *ngFor="let question of subsection.questions">
+        <div
+          *ngFor="let question of subsection.questions"
+          [hidden]="!shouldShowQuestion(question.tags)"
+        >
           <div style="flex: 1 1 auto">
             <div class="ion-padding-vertical">
               <ion-badge
                 *ngFor="let tag of question.tags"
                 class="ion-margin-start ion-float-end"
                 color="medium"
-                >{{ tag }}</ion-badge
+                >{{ tagLabels[tag] }}</ion-badge
               >
               <strong>{{ question.label }}</strong>
             </div>
@@ -117,6 +120,11 @@
               {{ question.comment }}
             </div>
           </div>
+        </div>
+        <div *ngIf="isSubSectionEmpty(subsection)">
+          <ion-note>
+            {{ 'question-section.no-questions' | translate }}
+          </ion-note>
         </div>
       </ion-card>
     </ion-col>
