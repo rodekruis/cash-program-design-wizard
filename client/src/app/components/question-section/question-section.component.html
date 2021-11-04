@@ -1,13 +1,15 @@
-<h3>{{ section?.label }}</h3>
-
 <ion-grid>
-  <ion-row class="ion-align-items-stretch">
+  <ion-row>
+    <ion-col class="ion-padding-horizontal">
+      <h3>{{ section?.label }}</h3>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-align-items-stretch ion-margin-vertical">
     <ion-col
       *ngFor="let subsection of section?.subsections"
       [sizeXs]="12"
       [sizeMd]="6"
       [sizeLg]="4"
-      class="ion-margin-vertical ion-padding ion-border"
       style="display: flex; flex-direction: column"
     >
       <ion-card class="ion-padding" color="light">

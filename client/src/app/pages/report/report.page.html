@@ -20,7 +20,9 @@
       </ion-card>
 
       <ng-container *ngIf="id">
-        <app-program-phase [programId]="id"></app-program-phase>
+        <div class="ion-margin">
+          <app-program-phase [programId]="id"></app-program-phase>
+        </div>
 
         <div class="ion-padding">
           <h2>{{ 'report.title' | translate }}</h2>

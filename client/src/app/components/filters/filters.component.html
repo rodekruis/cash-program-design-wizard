@@ -1,6 +1,14 @@
 <ion-segment
   [value]="state?.filters?.tag || 'all'"
   (ionChange)="onChange($event)"
+  [scrollable]="true"
+  [swipeGesture]="false"
+  style="
+    --margin-top: 0;
+    --margin-end: 0;
+    --margin-bottom: 0;
+    --margin-start: 0;
+  "
 >
   <ion-segment-button *ngFor="let tag of tags" [value]="tag">
     <ion-label>

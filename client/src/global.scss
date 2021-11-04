@@ -29,17 +29,24 @@
  * Generic Lay-out:
  */
 
-.frame {
-  display: flex;
-  justify-content: stretch;
-  align-content: stretch;
-  align-items: stretch;
-}
 .frame--sidebar {
-  flex: 0 0 auto;
+  display: inline-block;
 }
-.frame--contents {
-  flex: 1 1 auto;
+// Hard-coded to Ionic breakpoint "small"
+// See: https://ionicframework.com/docs/layout/grid#default-breakpoints
+@media (min-width: 576px) {
+  .frame {
+    display: flex;
+    justify-content: stretch;
+    align-content: stretch;
+    align-items: stretch;
+  }
+  .frame--sidebar {
+    flex: 0 0 auto;
+  }
+  .frame--contents {
+    flex: 1 1 auto;
+  }
 }
 
 /****************************************************************************
@@ -61,6 +68,10 @@ ion-alert.select-alert {
     white-space: normal !important;
   }
 }
+
+/****************************************************************************
+ * Utilities:
+ */
 
 /****************************************************************************
  * Development / Debugging ONLY:
