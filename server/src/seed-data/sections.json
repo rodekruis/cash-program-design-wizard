@@ -29,11 +29,6 @@
     "orderPriority": 5
   },
   {
-    "name": "market",
-    "label": null,
-    "orderPriority": 9990
-  },
-  {
     "name": "test1",
     "label": {
       "en": "Test Section 1"
@@ -43,7 +38,7 @@
   {
     "name": "test2",
     "label": {
-      "en": "Test Section 2"
+      "en": "Test Section 2 - Edge-cases"
     },
     "orderPriority": 9992
   }
