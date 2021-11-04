@@ -1117,5 +1117,8 @@ And also {{test-2-select-1}} or {{test-2-text}}.
 
 Concluding:
 {{text-2-text-long}}
+
+Output answers multiple times:
+{{test-2-text}} + {{test-2-text}} + {{test-2-text}}
 `,
 };
