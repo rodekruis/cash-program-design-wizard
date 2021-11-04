@@ -6,6 +6,8 @@ const getRandomNumber = (min: number, max: number): number =>
   Math.round(Math.random() * (max - min) + min);
 const getRandomComment = (): string | null =>
   Math.random() >= 0.5 ? `Lorem ipsum...` : null;
+const getRandomTag = (): Tag =>
+  Object.values(Tag)[getRandomNumber(0, Object.values(Tag).length - 1)];
 const getMockId = (): string =>
   `00000000-0000-0000-0000-${Math.random().toString().substr(2, 12)}`;
 
@@ -794,24 +796,21 @@ export const mockProgram: Program = {
                 en: 'Question for Text-input',
                 nl: 'Vraag met Tekst-invoer',
               },
-              tags: [Tag.data],
-              comment: getRandomComment(),
+              tags: [getRandomTag()],
             },
             {
               id: getMockId(),
               name: 'test-1-text-long',
               type: QuestionType.textLong,
               label: 'Question for Longer Text-input',
-              tags: [Tag.data],
-              comment: getRandomComment(),
+              tags: [getRandomTag()],
             },
             {
               id: getMockId(),
               name: 'test-1-numeric',
               type: QuestionType.numeric,
               label: 'Question for Numeric-input',
-              tags: [Tag.people],
-              comment: getRandomComment(),
+              tags: [getRandomTag()],
             },
           ],
         },
@@ -825,7 +824,7 @@ export const mockProgram: Program = {
               name: 'test-1-select-1',
               type: QuestionType.select1,
               label: 'Question for Select-1 from the options',
-              tags: [Tag.data],
+              tags: [getRandomTag()],
               optionChoices: [
                 {
                   id: getMockId(),
@@ -846,10 +845,56 @@ export const mockProgram: Program = {
             },
             {
               id: getMockId(),
+              name: 'test-1-select-2',
+              type: QuestionType.select1,
+              label: 'Select-1 with 1 option',
+              tags: [getRandomTag()],
+              optionChoices: [
+                {
+                  id: getMockId(),
+                  label: 'Option 1',
+                  name: 'option-1',
+                },
+              ],
+            },
+            {
+              id: getMockId(),
+              name: 'test-1-select-3',
+              type: QuestionType.select1,
+              label: 'Select-1 with extreme options',
+              tags: [getRandomTag()],
+              optionChoices: [
+                {
+                  id: getMockId(),
+                  label: 'Option 1',
+                  name: 'option-1',
+                },
+                {
+                  id: getMockId(),
+                  label:
+                    'Option 2 - with a very, very, very long label that will run over multiple lines',
+                  name: 'option-2',
+                },
+                {
+                  id: getMockId(),
+                  label: 'Option 3️⃣',
+                  name: 'option-3-emoji',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: getMockId(),
+          name: 'test1-sub-3',
+          order: 3,
+          questions: [
+            {
+              id: getMockId(),
               name: 'test-1-select-n',
               type: QuestionType.selectN,
               label: 'Question for Select-Multiple from the options',
-              tags: [Tag.data],
+              tags: [getRandomTag()],
               optionChoices: [
                 {
                   id: getMockId(),
@@ -867,6 +912,81 @@ export const mockProgram: Program = {
                   name: 'option-z',
                 },
               ],
+            },
+            {
+              id: getMockId(),
+              name: 'test-1-select-n-2',
+              type: QuestionType.selectN,
+              label: 'Select-Multiple with 1 option',
+              tags: [getRandomTag()],
+              optionChoices: [
+                {
+                  id: getMockId(),
+                  label: 'Option 1',
+                  name: 'option-1',
+                },
+              ],
+            },
+            {
+              id: getMockId(),
+              name: 'test-1-select-n',
+              type: QuestionType.selectN,
+              label: 'Select-Multiple with extreme options',
+              tags: [getRandomTag()],
+              optionChoices: [
+                {
+                  id: getMockId(),
+                  label: 'Option 1',
+                  name: 'option-1',
+                },
+                {
+                  id: getMockId(),
+                  label:
+                    'Option 2 - with a very, very, very long label that will run over multiple lines',
+
+                  name: 'option-2',
+                },
+                {
+                  id: getMockId(),
+                  label: 'Option 3️⃣',
+                  name: 'option-3-emoji',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: getMockId(),
+          name: 'test1-sub-4',
+          order: 1,
+          questions: [
+            {
+              id: getMockId(),
+              name: 'test-1-text-2',
+              type: QuestionType.text,
+              label:
+                'Very, very, very long question for Text-input that runs over several, multple lines of text',
+              tags: [getRandomTag()],
+              comment: `Long comment. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+            },
+            {
+              id: getMockId(),
+              name: 'test-1-text-long',
+              type: QuestionType.textLong,
+              label:
+                'Very, very, very long question for Long-Text-input that runs over several, multple lines of text',
+              tags: [getRandomTag()],
+              comment: 'Short comment',
+            },
+            {
+              id: getMockId(),
+              name: 'test-1-numeric',
+              type: QuestionType.numeric,
+              label: 'Question for Numeric-input',
+              tags: [getRandomTag()],
+              comment: `Comment. \n with multiple \n lines \n of text.`,
             },
           ],
         },
@@ -889,7 +1009,7 @@ export const mockProgram: Program = {
               name: 'test-2-text',
               type: QuestionType.text,
               label: 'Question for Text-input with Answer',
-              tags: [],
+              tags: [getRandomTag()],
               comment: getRandomComment(),
               answer: 'test answer',
               answerUpdated: '2021-10-21T01:00:00Z',
@@ -899,7 +1019,7 @@ export const mockProgram: Program = {
               name: 'test-2-text-long',
               type: QuestionType.textLong,
               label: 'Question for long Text-input with Answer',
-              tags: [],
+              tags: [getRandomTag()],
               comment: getRandomComment(),
               answer: 'Long test answer\n\nwith multiple\nlines\nof\ntext...',
               answerUpdated: '2021-10-21T01:01:00Z',
@@ -909,7 +1029,7 @@ export const mockProgram: Program = {
               name: 'test-2-numeric',
               type: QuestionType.numeric,
               label: 'Question for Numeric-input with Answer',
-              tags: [],
+              tags: [getRandomTag()],
               comment: getRandomComment(),
               answer: `${getRandomNumber(1, 10000)}`,
               answerUpdated: '2021-10-21T01:00:00Z',
@@ -926,7 +1046,7 @@ export const mockProgram: Program = {
               name: 'test-2-select-1',
               type: QuestionType.select1,
               label: 'Question for Select-1 with 1 Answer',
-              tags: [],
+              tags: [getRandomTag()],
               optionChoices: [
                 {
                   id: getMockId(),
@@ -961,7 +1081,7 @@ export const mockProgram: Program = {
               name: 'test-2-select-n',
               type: QuestionType.selectN,
               label: 'Question for Select-N with 2 Answers',
-              tags: [],
+              tags: [getRandomTag()],
               optionChoices: [
                 {
                   id: getMockId(),

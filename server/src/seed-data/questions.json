@@ -1997,25 +1997,14 @@
     "subsection": "called",
     "tags": ["data"]
   },
-
-  {
-    "name": "number-of-person-affected",
-    "type": "numeric",
-    "label": {
-      "en": "What is total number of people you want to help?"
-    },
-    "orderPriority": 1000,
-    "subsection": "submarket1",
-    "tags": ["cash"]
-  },
   {
     "name": "test-text-1",
     "type": "text",
     "label": {
       "en": "Question for Text-input"
     },
-    "orderPriority": 900,
-    "subsection": "subtest1",
+    "orderPriority": 1000,
+    "subsection": "subtest1-1",
     "tags": ["cash"]
   },
   {
@@ -2024,8 +2013,8 @@
     "label": {
       "en": "Question for Longer Text-input"
     },
-    "orderPriority": 1000,
-    "subsection": "subtest1",
+    "orderPriority": 1010,
+    "subsection": "subtest1-1",
     "tags": ["people"]
   },
   {
@@ -2034,18 +2023,185 @@
     "label": {
       "en": "Question for Numeric-input"
     },
-    "orderPriority": 1000,
-    "subsection": "subtest2",
+    "orderPriority": 1020,
+    "subsection": "subtest1-1",
     "tags": ["data"]
   },
   {
-    "name": "test-text-2",
+    "name": "test-select-1",
+    "type": "select-1",
+    "label": {
+      "en": "Question for Select-1 from the options"
+    },
+    "orderPriority": 1100,
+    "subsection": "subtest1-2",
+    "tags": ["cash"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Option A"
+        },
+        "name": "option-a",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "Option B"
+        },
+        "name": "option-b",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Option C"
+        },
+        "name": "option-c",
+        "orderPriority": 3
+      }
+    ]
+  },
+  {
+    "name": "test-text-long-2",
+    "type": "text-long",
+    "label": {
+      "en": "More context"
+    },
+    "orderPriority": 1110,
+    "subsection": "subtest1-2",
+    "tags": ["cash"]
+  },
+  {
+    "name": "test-select-n",
+    "type": "select-n",
+    "label": {
+      "en": "Question for Select-Multiple from the options"
+    },
+    "orderPriority": 1200,
+    "subsection": "subtest1-3",
+    "tags": ["data"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Option X"
+        },
+        "name": "option-x",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "Option Y"
+        },
+        "name": "option-y",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Option Z"
+        },
+        "name": "option-z",
+        "orderPriority": 3
+      }
+    ]
+  },
+  {
+    "name": "test-text-long-3",
+    "type": "text-long",
+    "label": {
+      "en": "More context"
+    },
+    "orderPriority": 1210,
+    "subsection": "subtest1-3",
+    "tags": ["data"]
+  },
+  {
+    "name": "test2-text-1",
     "type": "text",
     "label": {
-      "en": "Question for Text-input"
+      "en": "Question for Text-input with a very, very, very long questions that runs over multiple lines."
     },
     "orderPriority": 1000,
-    "subsection": "subtest2",
-    "tags": ["data"]
+    "subsection": "subtest2-1",
+    "tags": []
+  },
+  {
+    "name": "test2-select-n-1",
+    "type": "select-n",
+    "label": {
+      "en": "Select-Multiple with only 1 option"
+    },
+    "orderPriority": 1200,
+    "subsection": "subtest2-2",
+    "tags": ["data"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Option 1"
+        },
+        "name": "option-1",
+        "orderPriority": 1
+      }
+    ]
+  },
+  {
+    "name": "test2-select-n-2",
+    "type": "select-n",
+    "label": {
+      "en": "Select-Multiple with extreme options"
+    },
+    "orderPriority": 1200,
+    "subsection": "subtest2-2",
+    "tags": ["data"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Option 1"
+        },
+        "name": "option-1",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "Option 2 - with a very, very, very long label that will run over multiple lines"
+        },
+        "name": "option-2",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Option 3️⃣"
+        },
+        "name": "option-3-emoji",
+        "orderPriority": 3
+      }
+    ]
+  },
+  {
+    "name": "test2-select-1",
+    "type": "select-1",
+    "label": {
+      "en": "Question for Select-1 from the options"
+    },
+    "orderPriority": 1300,
+    "subsection": "subtest2-3",
+    "tags": ["cash"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Option 1"
+        },
+        "name": "option-1",
+        "orderPriority": 1
+      }
+    ]
+  },
+  {
+    "name": "test2-numeric-1",
+    "type": "numeric",
+    "label": {
+      "en": "Question for Numeric-input"
+    },
+    "orderPriority": 1400,
+    "subsection": "subtest2-4",
+    "tags": ["people"]
   }
 ]
