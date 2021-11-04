@@ -20,7 +20,7 @@
                 *ngFor="let tag of question.tags"
                 class="ion-margin-start ion-float-end"
                 color="medium"
-                >{{ tag }}</ion-badge
+                >{{ tagLabels[tag] }}</ion-badge
               >
               <strong>{{ question.label }}</strong>
             </div>

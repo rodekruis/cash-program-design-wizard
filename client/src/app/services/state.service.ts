@@ -19,9 +19,9 @@ export class StateService {
   public narrativeReportTemplate: string;
 
   public filters: {
-    tag: Tag | '';
+    tag: Tag;
   } = {
-    tag: '',
+    tag: Tag.all,
   };
 
   public viewMode: ViewMode = ViewMode.view;
@@ -97,7 +97,7 @@ export class StateService {
       if (queryParams.tag && Tag[queryParams.tag]) {
         this.filters.tag = queryParams.tag;
       } else {
-        this.filters.tag = '';
+        this.filters.tag = Tag.all;
       }
     });
   }
