@@ -69,6 +69,12 @@ ion-alert.select-alert {
   }
 }
 
+// Make numeric input data stand out more
+input[type='number'] {
+  font-family: monospace !important;
+  font-feature-settings: 'tnum';
+}
+
 /****************************************************************************
  * Utilities:
  */
