@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "start": "node dist/src/main.js",
     "start:database": "docker-compose up -d --build",
-    "start:dev": "npm-run-all --print-label --sequential start:database migration:run2 start:dev:nest",
+    "start:dev": "npm-run-all --print-label --sequential start:database migration:run start:dev:nest",
     "start:dev:nest": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:no-watch": "nest start",
