@@ -22,12 +22,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "lint": "npx prettier --check .",
     "test": "npm run lint && npm run test:cov",
-    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "migration:run2": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run",
-    "migration:run3": "ts-node $(yarn bin typeorm) migration:run",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "migration:generate": "npx typeorm migration:generate -- -n",
-    "migration:run": "npm run typeorm migration:run",
-    "ts-node": "node_modules/ts-node/dist/bin.js"
+    "migration:run": "npm run typeorm migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^8.1.0",
