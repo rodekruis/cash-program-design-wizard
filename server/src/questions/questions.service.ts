@@ -49,7 +49,7 @@ export class QuestionsService {
       .addGroupBy('subsection.id')
       .addGroupBy('answers.text')
       .addGroupBy('answers.updated')
-      .addSelect(`array_agg(tags.name::character varying)`, 'tags')
+      .addSelect(`array_agg(distinct(tags.name::character varying))`, 'tags')
       .addSelect(
         `COALESCE(json_agg("optionChoices") FILTER (WHERE "optionChoices".id IS NOT NULL), '[]')`,
         'optionChoices',
