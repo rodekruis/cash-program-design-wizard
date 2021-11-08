@@ -27,7 +27,8 @@ export interface OptionChoice {
 }
 
 export interface QuestionComment {
+  id: string;
   text: string;
-  user: string;
-  timestamp: string | Date;
+  userName: string;
+  created: string | Date;
 }

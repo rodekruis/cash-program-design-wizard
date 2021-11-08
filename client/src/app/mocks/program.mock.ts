@@ -7,9 +7,10 @@ const getRandomNumber = (min: number, max: number): number =>
 const getRandomComment = (): QuestionComment | null =>
   Math.random() >= 0.5
     ? {
+        id: getMockId(),
         text: `Lorem ipsum...`,
-        user: 'test-user',
-        timestamp: new Date().toISOString(),
+        userName: 'test-user',
+        created: new Date().toISOString(),
       }
     : null;
 const getRandomTag = (): Tag =>
@@ -82,14 +83,16 @@ export const mockProgram: Program = {
               tags: [Tag.people],
               comments: [
                 {
+                  id: getMockId(),
                   text: 'Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ché la diritta via era smarrita.',
-                  user: 'andrea',
-                  timestamp: '2021-11-07 11:51',
+                  userName: 'andrea',
+                  created: '2021-11-07 11:51',
                 },
                 {
+                  id: getMockId(),
                   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales.',
-                  user: 'elwin',
-                  timestamp: '2021-11-07 15:47',
+                  userName: 'elwin',
+                  created: '2021-11-07 15:47',
                 },
                 getRandomComment(),
               ],
@@ -990,11 +993,12 @@ export const mockProgram: Program = {
               tags: [getRandomTag()],
               comments: [
                 {
-                  timestamp: new Date().toISOString(),
-                  user: 'test',
+                  id: getMockId(),
                   text: `Long comment. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+                   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+                  userName: 'ruben',
+                  created: '2021-11-08 11:24',
                 },
               ],
             },
@@ -1007,9 +1011,10 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
               tags: [getRandomTag()],
               comments: [
                 {
-                  timestamp: new Date().toISOString(),
-                  user: 'test',
+                  id: getMockId(),
                   text: 'Short comment',
+                  userName: 'ruben',
+                  created: '2021-11-08 11:24',
                 },
               ],
             },
@@ -1021,9 +1026,10 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
               tags: [getRandomTag()],
               comments: [
                 {
-                  timestamp: new Date().toISOString(),
-                  user: 'test',
+                  id: getMockId(),
                   text: `Comment. \n with multiple \n lines \n of text.`,
+                  userName: 'ruben',
+                  created: '2021-11-08 11:24',
                 },
               ],
             },

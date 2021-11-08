@@ -11,6 +11,7 @@ export enum ApiPath {
   userPrograms = 'programs',
   programs = 'programs',
   answers = 'answers',
+  comments = 'comments',
 }
 
 @Injectable({

@@ -5,7 +5,14 @@
     </ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
-    <ion-textarea (ionChange)="onType($event)"></ion-textarea>
-    <ion-button [disabled]="submitDisabled">Submit</ion-button>
+    <form (ngSubmit)="onSubmit()">
+      <ion-textarea
+        [(ngModel)]="comment"
+        name="text"
+        (ionChange)="onType($event)"
+        class="ion-margin-bottom"
+      ></ion-textarea>
+      <ion-button [disabled]="submitDisabled" type="submit">Submit</ion-button>
+    </form>
   </ion-card-content>
 </ion-card>

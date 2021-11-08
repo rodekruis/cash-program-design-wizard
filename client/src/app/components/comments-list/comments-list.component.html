@@ -2,12 +2,14 @@
   <ng-container *ngIf="comment">
     <ion-card-header>
       <ion-card-subtitle
-        >posted by <strong>{{ comment.user }}</strong> on
-        <strong>{{ comment.timestamp }}</strong></ion-card-subtitle
+        >posted by <strong>{{ comment.userName }}</strong> on
+        <strong>{{ comment.created }}</strong></ion-card-subtitle
       >
     </ion-card-header>
     <ion-card-content *ngIf="comment">
-      {{ comment.text }}
+      <pre>
+        {{ comment.text }}
+      </pre>
     </ion-card-content>
   </ng-container>
 </ion-card>

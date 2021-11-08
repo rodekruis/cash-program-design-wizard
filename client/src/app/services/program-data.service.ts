@@ -80,6 +80,27 @@ export class ProgramDataService {
       );
   }
 
+  public saveComment(
+    programId: string,
+    question: QuestionInput,
+    commentText: string,
+  ) {
+    if (!programId || !question || !commentText) {
+      return;
+    }
+
+    return (
+      this.apiService
+        .post(ApiPath.comments, {
+          programId,
+          questionId: question.id,
+          text: commentText,
+        })
+        .subscribe(() => {}),
+      (error) => console.log('Comment save failed.', error)
+    );
+  }
+
   private async getProgramMetaData(
     programId: string,
   ): Promise<ProgramMetaData> {
