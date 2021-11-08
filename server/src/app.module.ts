@@ -33,6 +33,7 @@ import { UserModule } from './users/user.module';
       },
       dropSchema: false,
       synchronize: true,
+      migrationsRun: true,
       // logging: true,
     }),
     UserModule,
