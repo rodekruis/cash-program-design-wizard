@@ -9,7 +9,7 @@ export class AnswersService {
   @InjectRepository(AnswerEntity)
   private readonly answerRepository: Repository<AnswerEntity>;
 
-  public async post(answerDto: AnswerDto): Promise<void> {
+  public async post(answerDto: AnswerDto): Promise<AnswerEntity> {
     const originalAnswer = await this.answerRepository.findOne({
       where: {
         program: { id: answerDto.programId },
@@ -18,12 +18,11 @@ export class AnswersService {
     });
     if (originalAnswer) {
       originalAnswer.text = answerDto.text;
-      this.answerRepository.save(originalAnswer);
-      return;
+      return this.answerRepository.save(originalAnswer);
     }
 
     try {
-      await this.answerRepository.save({
+      return await this.answerRepository.save({
         text: answerDto.text,
         program: { id: answerDto.programId },
         question: { id: answerDto.questionId },

@@ -1,6 +1,7 @@
 import * as bcrypt from 'bcrypt';
 import { BeforeInsert, Column, Entity, Index, OneToMany } from 'typeorm';
 import { CascadeDeleteEntity } from '../base.entity';
+import { CommentEntity } from '../comments/comment.entity';
 import { ProgramUserAssignmentEntity } from '../programs/program-user-assignment.entity';
 
 @Entity('user')
@@ -25,4 +26,7 @@ export class UserEntity extends CascadeDeleteEntity {
     (programAssignment) => programAssignment.user,
   )
   public programAssignments: ProgramUserAssignmentEntity[];
+
+  @OneToMany(() => CommentEntity, (comment) => comment.user)
+  public comments: CommentEntity[];
 }

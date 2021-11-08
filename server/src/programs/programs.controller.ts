@@ -21,7 +21,7 @@ export class ProgramsController {
   @ApiOperation({ summary: 'Get all assigned programs' })
   @Roles(UserRoleEnum.edit, UserRoleEnum.view)
   @Get()
-  public async findAll(@User('id') userId: number): Promise<ProgramsRO> {
+  public async findAll(@User('id') userId: string): Promise<ProgramsRO> {
     return await this.programService.findAll(userId);
   }
 }

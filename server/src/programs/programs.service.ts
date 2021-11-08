@@ -13,7 +13,7 @@ export class ProgramsService {
   @InjectRepository(SectionEntity)
   private readonly sectionRepository: Repository<SectionEntity>;
 
-  public async findAll(userId: number): Promise<ProgramsRO> {
+  public async findAll(userId: string): Promise<ProgramsRO> {
     const qb = await this.programRepository
       .createQueryBuilder('program')
       .select(['name', 'program.id as id', '"narrativeReportTemplate"'])

@@ -6,6 +6,7 @@ import { Connection } from 'typeorm';
 import { AnswersModule } from './answers/answers.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CommentsModule } from './comments/comments.module';
 import { ProgramsModule } from './programs/programs.module';
 import { QuestionsModule } from './questions/questions.module';
 import { ScriptsModule } from './scripts/scripts.module';
@@ -39,6 +40,7 @@ import { UserModule } from './users/user.module';
     ScriptsModule,
     ProgramsModule,
     QuestionsModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
