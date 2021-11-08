@@ -9,7 +9,6 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write .",
-    "prestart": "npm run migration:run2",
     "start": "node dist/src/main.js",
     "start:database": "docker-compose up -d --build",
     "start:dev": "npm-run-all --print-label --sequential start:database migration:run2 start:dev:nest",
