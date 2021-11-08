@@ -1,11 +1,17 @@
 import { Tag } from '../models/tag.enum';
 import { Program } from '../types/program.type';
-import { QuestionType } from '../types/question-input.type';
+import { QuestionComment, QuestionType } from '../types/question-input.type';
 
 const getRandomNumber = (min: number, max: number): number =>
   Math.round(Math.random() * (max - min) + min);
-const getRandomComment = (): string | null =>
-  Math.random() >= 0.5 ? `Lorem ipsum...` : null;
+const getRandomComment = (): QuestionComment | null =>
+  Math.random() >= 0.5
+    ? {
+        text: `Lorem ipsum...`,
+        user: 'test-user',
+        timestamp: new Date().toISOString(),
+      }
+    : null;
 const getRandomTag = (): Tag =>
   Object.values(Tag)[getRandomNumber(0, Object.values(Tag).length - 1)];
 const getMockId = (): string =>
@@ -74,7 +80,19 @@ export const mockProgram: Program = {
               label:
                 'PA Gender: Is there a local culture where gender affects the efficacy of the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [
+                {
+                  text: 'Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ché la diritta via era smarrita.',
+                  user: 'andrea',
+                  timestamp: '2021-11-07 11:51',
+                },
+                {
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales.',
+                  user: 'elwin',
+                  timestamp: '2021-11-07 15:47',
+                },
+                getRandomComment(),
+              ],
             },
           ],
         },
@@ -160,7 +178,7 @@ export const mockProgram: Program = {
               label:
                 'PA Age: Is there a local lifestyle of this age group affects the efficacy of the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -225,7 +243,7 @@ export const mockProgram: Program = {
               label:
                 'PA Marital status: Is there a local stigma of the/these group(s) affects the efficacy of the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -290,7 +308,7 @@ export const mockProgram: Program = {
               label:
                 'PA Shelter status: Are there local regulations for the/these group(s) affects the efficacy of the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -355,7 +373,7 @@ export const mockProgram: Program = {
               label:
                 'PA Lifestyle: Is there a trend for the/these group(s) affects the efficacy of the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -416,7 +434,7 @@ export const mockProgram: Program = {
               label:
                 'PA Dependants: Is there a trend with the/these group(s) affects the efficacy of the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -466,7 +484,7 @@ export const mockProgram: Program = {
               label:
                 'PA Legal Status: Is there a local law for the/these group(s) affects the efficacy of the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -536,7 +554,7 @@ export const mockProgram: Program = {
               label:
                 'Is there an economic trend for the/these group(s) affects the efficacy of the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -617,7 +635,7 @@ export const mockProgram: Program = {
               label:
                 'Are their other programs for the/these PAs that affect the efficacyof the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -757,7 +775,7 @@ export const mockProgram: Program = {
               label:
                 'Is there potential for other combined Disasters to occur during the intended CVA program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
 
             {
@@ -767,7 +785,7 @@ export const mockProgram: Program = {
               label:
                 'Is this disaster potentially reoccuring or in a phase efficacyof the intended CVA Program?',
               tags: [Tag.people],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -797,6 +815,7 @@ export const mockProgram: Program = {
                 nl: 'Vraag met Tekst-invoer',
               },
               tags: [getRandomTag()],
+              comments: [getRandomComment()],
             },
             {
               id: getMockId(),
@@ -804,6 +823,7 @@ export const mockProgram: Program = {
               type: QuestionType.textLong,
               label: 'Question for Longer Text-input',
               tags: [getRandomTag()],
+              comments: [getRandomComment()],
             },
             {
               id: getMockId(),
@@ -811,6 +831,7 @@ export const mockProgram: Program = {
               type: QuestionType.numeric,
               label: 'Question for Numeric-input',
               tags: [getRandomTag()],
+              comments: [getRandomComment()],
             },
           ],
         },
@@ -967,9 +988,15 @@ export const mockProgram: Program = {
               label:
                 'Very, very, very long question for Text-input that runs over several, multple lines of text',
               tags: [getRandomTag()],
-              comment: `Long comment. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+              comments: [
+                {
+                  timestamp: new Date().toISOString(),
+                  user: 'test',
+                  text: `Long comment. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+                },
+              ],
             },
             {
               id: getMockId(),
@@ -978,7 +1005,13 @@ export const mockProgram: Program = {
               label:
                 'Very, very, very long question for Long-Text-input that runs over several, multple lines of text',
               tags: [getRandomTag()],
-              comment: 'Short comment',
+              comments: [
+                {
+                  timestamp: new Date().toISOString(),
+                  user: 'test',
+                  text: 'Short comment',
+                },
+              ],
             },
             {
               id: getMockId(),
@@ -986,7 +1019,13 @@ export const mockProgram: Program = {
               type: QuestionType.numeric,
               label: 'Question for Numeric-input',
               tags: [getRandomTag()],
-              comment: `Comment. \n with multiple \n lines \n of text.`,
+              comments: [
+                {
+                  timestamp: new Date().toISOString(),
+                  user: 'test',
+                  text: `Comment. \n with multiple \n lines \n of text.`,
+                },
+              ],
             },
           ],
         },
@@ -1010,7 +1049,7 @@ export const mockProgram: Program = {
               type: QuestionType.text,
               label: 'Question for Text-input with Answer',
               tags: [getRandomTag()],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
               answer: 'test answer',
             },
             {
@@ -1019,7 +1058,7 @@ export const mockProgram: Program = {
               type: QuestionType.textLong,
               label: 'Question for long Text-input with Answer',
               tags: [getRandomTag()],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
               answer: 'Long test answer\n\nwith multiple\nlines\nof\ntext...',
             },
             {
@@ -1028,7 +1067,7 @@ export const mockProgram: Program = {
               type: QuestionType.numeric,
               label: 'Question for Numeric-input with Answer',
               tags: [getRandomTag()],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
               answer: `${getRandomNumber(1, 10000)}`,
             },
           ],
@@ -1062,7 +1101,7 @@ export const mockProgram: Program = {
                   name: 'option-c',
                 },
               ],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
               answer: 'option-b',
             },
           ],
@@ -1096,7 +1135,7 @@ export const mockProgram: Program = {
                   name: 'option-z',
                 },
               ],
-              comment: getRandomComment(),
+              comments: [getRandomComment()],
               answer: ['option-x', 'option-y', 'option-z'],
             },
           ],

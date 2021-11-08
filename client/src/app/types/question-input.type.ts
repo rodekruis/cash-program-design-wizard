@@ -17,11 +17,17 @@ export interface QuestionInput {
   optionChoices?: OptionChoice[];
   answer?: string | string[];
   storedAnswer?: string | string[];
-  comment?: string;
+  comments?: QuestionComment[];
 }
 
 export interface OptionChoice {
   id: string;
   label: string | TranslatableString;
   name: string;
+}
+
+export interface QuestionComment {
+  text: string;
+  user: string;
+  timestamp: string | Date;
 }

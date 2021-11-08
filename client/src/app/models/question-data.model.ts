@@ -1,4 +1,8 @@
-import { OptionChoice, QuestionType } from '../types/question-input.type';
+import {
+  OptionChoice,
+  QuestionComment,
+  QuestionType,
+} from '../types/question-input.type';
 import { TranslatableString } from '../types/translatable-string.type';
 import { Tag } from './tag.enum';
 
@@ -18,4 +22,5 @@ export interface QuestionData {
   tags?: string[] | Tag[];
   answer?: string;
   optionChoices?: OptionChoice[];
+  comments?: QuestionComment[];
 }
