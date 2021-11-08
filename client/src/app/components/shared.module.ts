@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from '../components/header/header.component';
+import { CommentInputComponent } from './comment-input/comment-input.component';
+import { CommentsListComponent } from './comments-list/comments-list.component';
 import { FiltersComponent } from './filters/filters.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NavProgressComponent } from './nav-progress/nav-progress.component';
@@ -34,6 +36,8 @@ import { UserStateComponent } from './user-state/user-state.component';
     ReportSectionComponent,
     SidebarComponent,
     UserStateComponent,
+    CommentInputComponent,
+    CommentsListComponent,
   ],
   exports: [
     CommonModule,
@@ -51,6 +55,8 @@ import { UserStateComponent } from './user-state/user-state.component';
     SidebarComponent,
     TranslateModule,
     UserStateComponent,
+    CommentInputComponent,
+    CommentsListComponent,
   ],
 })
 export class SharedModule {}

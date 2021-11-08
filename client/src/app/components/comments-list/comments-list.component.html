@@ -1,0 +1,13 @@
+<ion-card *ngFor="let comment of comments" class="ion-margin-bottom">
+  <ng-container *ngIf="comment">
+    <ion-card-header>
+      <ion-card-subtitle
+        >posted by <strong>{{ comment.user }}</strong> on
+        <strong>{{ comment.timestamp }}</strong></ion-card-subtitle
+      >
+    </ion-card-header>
+    <ion-card-content *ngIf="comment">
+      {{ comment.text }}
+    </ion-card-content>
+  </ng-container>
+</ion-card>
