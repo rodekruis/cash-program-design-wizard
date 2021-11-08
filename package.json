@@ -2,6 +2,7 @@
   "name": "cash-program-design-wizard",
   "homepage": "https://github.com/rodekruis/cash-program-design-wizard#readme",
   "scripts": {
+    "prepare": "husky install",
     "fix:syntax": "npm run lint -- --write",
     "postinstall": "npm-run-all --print-label --sequential install:client install:server",
     "install:client": "npm install --prefix client",
@@ -12,7 +13,9 @@
     "test:server": "npm test --prefix server",
     "start": "npm-run-all --print-label --parallel start:client start:server",
     "start:client": "npm start --prefix client",
-    "start:server": "npm run start:dev --prefix server"
+    "start:server": "npm run start:dev --prefix server",
+    "migration:generate": "npm run migration:generate --prefix server",
+    "migration:run": "npm run typeorm migration:run --prefix server"
   },
   "repository": {
     "type": "git",
@@ -23,8 +26,7 @@
     "url": "https://github.com/rodekruis/cash-program-design-wizard/issues"
   },
   "engines": {
-    "node": "^16.6.1",
-    "npm": "^7.20.3"
+    "npm": "^7.x"
   },
   "devDependencies": {
     "husky": "^7.0.1",

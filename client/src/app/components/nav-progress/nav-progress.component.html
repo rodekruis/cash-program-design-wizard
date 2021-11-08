@@ -1,31 +1,41 @@
-<ion-grid class="ion-padding">
-  <ion-row>
-    <ion-col class="ion-text-start">
-      <ion-button
-        color="medium"
-        size="small"
-        (click)="state.saveAnswersActiveSection()"
-      >
-        {{ 'nav-progress.save-answers.label' | translate }}
-      </ion-button>
-    </ion-col>
-    <ion-col class="ion-text-end">
-      <ion-button
-        (click)="goPrevSection()"
-        [disabled]="!hasPrevSection()"
-        color="medium"
-        size="small"
-      >
-        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
-      </ion-button>
-      <ion-button
-        (click)="goNextSection()"
-        [disabled]="!hasNextSection()"
-        color="medium"
-        size="small"
-      >
-        <ion-icon name="chevron-forward" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<ion-row class="ion-justify-content-end ion-align-items-center">
+  <ion-button
+    color="primary"
+    fill="outline"
+    size="small"
+    (click)="state.saveAnswersActiveSection()"
+    class="ion-margin-horizontal"
+  >
+    {{ 'nav-progress.save-answers.label' | translate }}
+  </ion-button>
+
+  <ion-button
+    (click)="goPrevSection()"
+    [disabled]="!hasPrevSection()"
+    color="medium"
+    size="small"
+    [attr.title]="'nav-progress.prev-section' | translate"
+    [attr.aria-label]="'nav-progress.prev-section' | translate"
+  >
+    <ion-icon
+      name="chevron-back"
+      slot="icon-only"
+      aria-hidden="true"
+    ></ion-icon>
+  </ion-button>
+
+  <ion-button
+    (click)="goNextSection()"
+    [disabled]="!hasNextSection()"
+    color="medium"
+    size="small"
+    [attr.title]="'nav-progress.next-section' | translate"
+    [attr.aria-label]="'nav-progress.next-section' | translate"
+  >
+    <ion-icon
+      name="chevron-forward"
+      slot="icon-only"
+      aria-hidden="true"
+    ></ion-icon>
+  </ion-button>
+</ion-row>

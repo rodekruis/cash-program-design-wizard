@@ -1,4 +1,4 @@
-import { QuestionType } from '../types/question-input.type';
+import { OptionChoice, QuestionType } from '../types/question-input.type';
 import { TranslatableString } from '../types/translatable-string.type';
 import { Tag } from './tag.enum';
 
@@ -7,9 +7,15 @@ export interface QuestionData {
   sectionName: string;
   sectionLabel: string | TranslatableString;
 
+  subsectionId: string;
+  subsectionName: string;
+  subsectionLabel: string | TranslatableString;
+
   id: string;
+  name: string;
   type: QuestionType;
   label: string | TranslatableString;
-  tags?: string | string[] | Tag[];
+  tags?: string[] | Tag[];
   answer?: string;
+  optionChoices?: OptionChoice[];
 }

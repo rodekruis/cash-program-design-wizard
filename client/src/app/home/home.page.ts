@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiPath, ApiService } from '../services/api.service';
-import { StateService } from '../services/state.service';
 import { TranslatableStringService } from '../services/translatable-string.service';
 
 @Component({
@@ -13,7 +12,6 @@ export class HomePage {
   public apiTestInProgress = false;
 
   constructor(
-    public state: StateService,
     private apiService: ApiService,
     private translatableString: TranslatableStringService,
     public translate: TranslateService,

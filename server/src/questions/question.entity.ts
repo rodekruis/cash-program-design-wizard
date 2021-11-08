@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  Index,
   JoinTable,
   ManyToMany,
   ManyToOne,
@@ -16,12 +17,14 @@ import { TagEntity } from './../tags/tag.entity';
 @Entity('question')
 export class QuestionEntity extends CascadeDeleteEntity {
   @Column()
+  @Index()
   public name: string;
 
   @Column()
   public label: string;
 
   @Column({ nullable: true })
+  @Index()
   public type: string;
 
   @Column()

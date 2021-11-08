@@ -1,32 +1,36 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from '../components/shared.module';
-import { ApiService } from '../services/api.service';
-import { TranslatableStringService } from '../services/translatable-string.service';
-import { HomePage } from './home.page';
+import { ReportSectionComponent } from './report-section.component';
 
-describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+describe('ReportSectionComponent', () => {
+  let component: ReportSectionComponent;
+  let fixture: ComponentFixture<ReportSectionComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [HomePage],
+        declarations: [ReportSectionComponent],
         imports: [
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
-          SharedModule,
           RouterTestingModule,
-          HttpClientTestingModule,
         ],
-        providers: [ApiService, TranslatableStringService],
+        providers: [
+          {
+            provide: ActivatedRoute,
+            useValue: {
+              snapshot: {
+                params: { id: 1 },
+              },
+            },
+          },
+        ],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(HomePage);
+      fixture = TestBed.createComponent(ReportSectionComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     }),

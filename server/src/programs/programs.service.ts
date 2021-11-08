@@ -16,7 +16,7 @@ export class ProgramsService {
   public async findAll(userId: string): Promise<ProgramsRO> {
     const qb = await this.programRepository
       .createQueryBuilder('program')
-      .select(['name', 'program.id as id'])
+      .select(['name', 'program.id as id', '"narrativeReportTemplate"'])
       .leftJoin('program.userAssignments', 'userAssignments')
       .leftJoin('userAssignments.user', 'user')
       .where('user.id = :userId', { userId: userId });

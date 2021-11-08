@@ -10,11 +10,12 @@ export class BaseCpdwEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 
-  @Index()
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Index()
   public created: Date;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Index()
   public updated: Date;
 
   @BeforeUpdate()

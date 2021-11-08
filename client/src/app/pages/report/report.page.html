@@ -20,12 +20,29 @@
       </ion-card>
 
       <ng-container *ngIf="id">
-        <app-program-phase programId="{{ id }}"></app-program-phase>
-        <div class="debug--placeholder">
-          <pre>[ Content: ReportSection(s) ]</pre>
+        <div class="ion-margin">
+          <app-program-phase [programId]="id"></app-program-phase>
+        </div>
+
+        <div class="ion-padding">
+          <h2>{{ 'report.title' | translate }}</h2>
+
+          <app-report-narrative></app-report-narrative>
+
+          <br />
+
+          <hr style="border-top: 1px dashed var(--ion-color-medium)" />
+
+          <h2>{{ 'report.appendix' | translate }}</h2>
+          <ng-container
+            *ngFor="let section of sections"
+            class="ion-margin-vertical ion-padding-vertical"
+          >
+            <app-report-section [section]="section"></app-report-section>
+          </ng-container>
         </div>
         <div class="debug--placeholder">
-          <pre class="ion-text-end">[ Actions: (Nav)Progress ]</pre>
+          <pre class="ion-text-end">Actions: [ Print ]</pre>
         </div>
       </ng-container>
       <!--

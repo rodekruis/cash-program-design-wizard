@@ -20,4 +20,7 @@ export class ProgramEntity extends CascadeDeleteEntity {
 
   @OneToMany(() => CommentEntity, (comment) => comment.program)
   public comments: CommentEntity[];
+
+  @Column({ nullable: true })
+  public narrativeReportTemplate: string;
 }

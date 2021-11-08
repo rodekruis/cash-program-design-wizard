@@ -16,10 +16,12 @@ import { TranslatableStringService } from './translatable-string.service';
 export class StateService {
   public programId: string;
 
+  public narrativeReportTemplate: string;
+
   public filters: {
-    tag: Tag | '';
+    tag: Tag;
   } = {
-    tag: '',
+    tag: Tag.all,
   };
 
   public viewMode: ViewMode = ViewMode.view;
@@ -49,7 +51,7 @@ export class StateService {
       return;
     }
 
-    this.activeSection = this.translateLabels(section);
+    this.activeSection = section;
 
     if (updateUrl) {
       // Store the active section in the URL:
@@ -64,8 +66,11 @@ export class StateService {
     console.log(
       `SaveAnswers ActiveSection : ${this.activeSection.id} : ${this.activeSection.label}`,
     );
-    this.activeSection.questions.forEach((question) => {
-      this.programDataService.saveAnswer(this.programId, question);
+
+    this.activeSection.subsections.forEach((subsection) => {
+      subsection.questions.forEach((question) => {
+        this.programDataService.saveAnswer(this.programId, question);
+      });
     });
   }
 
@@ -92,7 +97,7 @@ export class StateService {
       if (queryParams.tag && Tag[queryParams.tag]) {
         this.filters.tag = queryParams.tag;
       } else {
-        this.filters.tag = '';
+        this.filters.tag = Tag.all;
       }
     });
   }
@@ -107,8 +112,13 @@ export class StateService {
       program = await this.programDataService.getProgram(this.programId);
     }
 
-    this.sections = program.sections;
-    this.sectionsStore.next(program.sections);
+    this.narrativeReportTemplate = program.narrativeReportTemplate;
+
+    const sections = program.sections.map((section) =>
+      this.translateLabels(section),
+    );
+    this.sections = sections;
+    this.sectionsStore.next(sections);
   }
 
   private async updateActiveSectionFromUrl() {
@@ -139,9 +149,20 @@ export class StateService {
 
   private translateLabels(section: QuestionSection): QuestionSection {
     section.label = this.translatableString.get(section.label);
-    section.questions = section.questions.map((question) => {
-      question.label = this.translatableString.get(question.label);
-      return question;
+    section.subsections = section.subsections.map((subsection) => {
+      subsection.questions.map((question) => {
+        question.label = this.translatableString.get(question.label);
+
+        if (question.optionChoices && question.optionChoices.length) {
+          question.optionChoices = question.optionChoices.map((option) => {
+            option.label = this.translatableString.get(option.label);
+            return option;
+          });
+        }
+
+        return question;
+      });
+      return subsection;
     });
     return section;
   }

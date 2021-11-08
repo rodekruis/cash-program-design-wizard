@@ -20,20 +20,29 @@
       </ion-card>
 
       <ng-container *ngIf="id">
-        <app-program-phase [programId]="id"></app-program-phase>
-        <ion-row>
-          <ion-col>
-            <app-filters></app-filters>
-          </ion-col>
-          <ion-col></ion-col>
-        </ion-row>
+        <div class="ion-margin">
+          <app-program-phase [programId]="id"></app-program-phase>
+        </div>
 
-        <div class="ion-margin-vertical ion-padding">
+        <div class="ion-margin">
+          <app-filters
+            style="display: inline-block; max-width: 100%"
+          ></app-filters>
+        </div>
+
+        <div class="ion-margin">
+          <app-nav-progress></app-nav-progress>
+        </div>
+
+        <div class="ion-margin-vertical">
           <app-question-section
             [section]="state.activeSection"
           ></app-question-section>
         </div>
-        <app-nav-progress></app-nav-progress>
+
+        <div class="ion-margin">
+          <app-nav-progress></app-nav-progress>
+        </div>
       </ng-container>
       <!--
 

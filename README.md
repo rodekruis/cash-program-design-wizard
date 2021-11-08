@@ -15,7 +15,10 @@ Preview of the latest (development) versions:
 
 [![CI Tests](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml)
 [![CodeQL](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml)
-[![CD Azure Static Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)
+
+[![CD [client] Azure Static Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)  
+[![CD [server] - Azure Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml)  
+.
 
 ---
 
@@ -54,9 +57,9 @@ Run `npm install` from this directory. Or:
 - `npm run install:client` for the front-end only
 - `npm run install:server` for the back-end only
 
-To finish you local set-up, run:
+To finish you local set-up, run (required only once):
 
-    npx husky install
+    npm run prepare
 
 To set-up running all relevant lint/test scripts with their related git actions.
 
@@ -68,6 +71,33 @@ Automated tests are configured and can be run with:
 - `npm run test:client` - for the front-end only
 - `npm run test:server` - for the back-end only
 
+## Mock/test Data
+
+All initial database-contents are hard-coded in the [`server/src/seed-data`](./server/src/seed-data/)-folder.
+
+- [`program-demo.json`](./server/src/seed-data/program-demo.json)
+  - `name`-attribute must be unique
+  - `narrativeReportTemplate` is required and is defined in [a separate file](./server/src/seed-data/narrativeReportTemplate-demo-en.ts)
+- [`sections.json`](./server/src/seed-data/sections.json)
+  - `name`-attribute must be unique
+- [`subsections.json`](./server/src/seed-data/subsections.json)
+
+  - `name`-attribute must be unique
+  - `section`-attribute must match a `name` of a `section` from `sections.json`
+
+- [`questions.json`](./server/src/seed-data/questions.json)
+  - `name`-attribute must be unique
+  - `subsection`-attribute must match a `name` of a `subsection` from `subsections.json`
+
+So the hierarchy is:
+
+- `program`
+  - `section` (1 or more)
+    - `subsection` (1 or more)
+      - `question` (1 or more)
+
+When these files are changed, a 'reset' of the database is required. This can be done via the endpoint: <http://localhost:3001/scripts/reset>
+
 ## Local Development
 
 After this initial set-up, you can start with:
@@ -78,6 +108,21 @@ After this initial set-up, you can start with:
 
 The front-end client should be running at: <http://localhost:4200/>.  
 The back-end server should be running at: <http://localhost:3001/api/>.
+
+### Database migrations
+
+During development the database-structure will change (e.g. an extra column in a table) while there is already data stored that cannot be lost. In this case we have to apply a migration.
+
+Any time, the database-structure is adapted, before pushing, run:
+
+    npm run migration:generate <name>
+
+This stores all edits in a migration-file, which should be committed and pushed along with your code changes.
+On test- and production-server, this file is automatically run by `npm` in the `prestart` stage.
+
+To run this file manually, locally, do:
+
+    npm run migration:run
 
 ### Recommended code-editor/IDE tools/extensions
 
@@ -110,27 +155,45 @@ To simulate a production-environment locally and be able to use all (offline) fe
 
 ## Deployment(s)
 
+For both the front- & back-end a shared configuration is used.
+
+Prepare the correct configuration in the `.env`-file, based on the example: [.env.example](./.env.example).  
+ For more information, see: [`dotenv`](https://www.npmjs.com/package/dotenv).
+
+      cp .env.example .env
+
 ### How to deploy the front-end/client app
 
 The front-end/client app can be deployed as a static single-page-app or PWA.
 
-- Prepare the correct configuration in the `.env`-file, based on the example: [.env.example](./.env.example).  
-  For more information, see: [`dotenv`](https://www.npmjs.com/package/dotenv).
-
-      cp .env.example .env
-
+- Make sure the `.env`-configuration is prepared.
 - Run: (from the root-folder)
 
       npm run build:production --prefix client
 
 - This will generate a folder with all HTML, JS, JSON and SVG assets: [`client/www`](./client/www/)
 - This can be deployed to any hosting-solution (supporting HTTPS), using [this server configuration](https://angular.io/guide/deployment#server-configuration).
+
 - The development-preview is automatically deployed using:
-  - GitHub-Actions
-    - The workflow is defined in: [`.github/workflows/azure-static-web-apps-....yml`](.github/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)
+  - A GitHub-Action: The workflow is defined in: [`.github/workflows/azure-static-web-apps-....yml`](.github/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)
   - And the [Azure Static Web App service](https://azure.microsoft.com/en-us/services/app-service/static/).
     - The configuration used is in: [`staticwebapp.config.json`](client/staticwebapp.config.json)
     - See documentation about the format in [this example configuration file](https://docs.microsoft.com/en-us/azure/static-web-apps/configuration#example-configuration-file)
+
+### How to deploy the back-end/server API
+
+The back-end/server API can be deployed as a stand-alone Node.js web-app (connected to a database).
+
+- Make sure the `.env`-configuration is prepared.
+- Run: (from the root-folder)
+
+      npm run build --prefix server
+
+- This will generate a folder with all required code: [`server/dist/`](./server/dist/)
+- This can be deployed/run as a Node.js service with `npm start`
+
+- The development-preview is automatically deployed via [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) using:
+  - A GitHub-Action: The workflow is defined in: [`.github/workflows/main_CPDW-development.yml`](.github/workflows/main_CPDW-Development.yml)
 
 ## License
 

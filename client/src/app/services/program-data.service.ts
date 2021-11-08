@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { QuestionData } from '../models/question-data.model';
-import { Program } from '../types/program.type';
-import { QuestionInput } from '../types/question-input.type';
-import { QuestionSection } from '../types/question-section.type';
+import { Program, ProgramMetaData } from '../types/program.type';
+import { QuestionInput, QuestionType } from '../types/question-input.type';
+import {
+  QuestionSection,
+  QuestionSubsection,
+} from '../types/question-section.type';
 import { ApiPath, ApiService } from './api.service';
 
 @Injectable({
@@ -17,16 +20,20 @@ export class ProgramDataService {
         return reject('No Program ID provided');
       }
 
+      const programMetaData = await this.getProgramMetaData(programId);
       const allQuestions = await this.getQuestions(programId);
       const allSections = this.extractSections(allQuestions);
+      const allSubsections = this.extractSubsections(allQuestions);
       const fullSections = this.fillSectionsWithQuestions(
         allSections,
+        allSubsections,
         allQuestions,
       );
 
       return resolve({
         id: programId,
-        label: '',
+        label: programMetaData.label,
+        narrativeReportTemplate: programMetaData.narrativeReportTemplate,
         sections: fullSections,
       });
     });
@@ -34,7 +41,11 @@ export class ProgramDataService {
 
   public saveAnswer(programId: string, question: QuestionInput) {
     // If nothing changed, nothing needs to be stored
-    if (question.answer === question.storedAnswer) {
+    if (
+      question.answer === question.storedAnswer ||
+      (this.isMultipleChoice(question) &&
+        this.isEqualJson(question.answer, question.storedAnswer))
+    ) {
       return;
     }
     // Make sure to always store String-values, even for empty answers
@@ -42,11 +53,17 @@ export class ProgramDataService {
       question.answer = '';
     }
 
+    let plainAnswer = question.answer;
+
+    if (this.isMultipleChoice(question)) {
+      plainAnswer = JSON.stringify(question.answer);
+    }
+
     return this.apiService
       .post(ApiPath.answers, {
         programId,
         questionId: question.id,
-        text: question.answer,
+        text: plainAnswer.toString(), // Prevent storing numeric-input as a number
       })
       .subscribe(
         () => {
@@ -57,6 +74,17 @@ export class ProgramDataService {
           console.log('Answer save failed.', error);
         },
       );
+  }
+
+  private async getProgramMetaData(
+    programId: string,
+  ): Promise<ProgramMetaData> {
+    // Work-around for lack of a GetProgramById-endpoint:
+    const data = await this.apiService.get(ApiPath.userPrograms).toPromise();
+    const thisProgram = data.programs.find(
+      (program) => program.id === programId,
+    );
+    return thisProgram;
   }
 
   private async getQuestions(
@@ -78,43 +106,102 @@ export class ProgramDataService {
     const sections = [];
 
     questions.forEach((question) => {
-      const section = {
-        id: question.sectionId,
-        name: question.sectionName,
-        label: question.sectionLabel,
-      };
-
       if (
         !sections.some(
           (existingSection) => existingSection.id === question.sectionId,
         )
       ) {
-        sections.push(section);
+        sections.push({
+          id: question.sectionId,
+          name: question.sectionName,
+          label: question.sectionLabel,
+        });
       }
     });
 
     return sections;
   }
 
+  private extractSubsections(questions: QuestionData[]): QuestionSubsection[] {
+    const subsections = [];
+
+    questions.forEach((question) => {
+      if (
+        !subsections.some(
+          (existingSubsections) =>
+            existingSubsections.id === question.subsectionId,
+        )
+      ) {
+        subsections.push({
+          id: question.subsectionId,
+          name: question.subsectionName,
+          label: question.subsectionLabel,
+          sectionId: question.sectionId,
+        });
+      }
+    });
+
+    return subsections;
+  }
+
   private fillSectionsWithQuestions(
     sections: QuestionSection[],
+    subsections: QuestionSubsection[],
     allQuestions: QuestionData[],
   ): QuestionSection[] {
-    return sections.map((section) => {
-      section.questions = allQuestions
-        .filter((question) => question.sectionId === section.id)
+    const filledSubsections = subsections.map((subsection) => {
+      subsection.questions = allQuestions
+        .filter((question) => question.subsectionId === subsection.id)
         .map((question) => {
           // Remove unused properties
+          delete question.subsectionId;
+          delete question.subsectionName;
+          delete question.subsectionLabel;
           delete question.sectionId;
           delete question.sectionName;
           delete question.sectionLabel;
+
+          if (this.isMultipleChoice(question)) {
+            try {
+              question.answer = JSON.parse(question.answer);
+            } catch (error) {
+              console.warn(
+                'Error parsing JSON-value in answer',
+                question.id,
+                question.name,
+                question.answer,
+              );
+            }
+          }
+
+          if (question.tags) {
+            // Only use unique tag-values:
+            question.tags = question.tags.filter(
+              (el, i, array) => array.indexOf(el) === i,
+            );
+          }
 
           return {
             ...question,
             storedAnswer: question.answer,
           } as QuestionInput;
         });
+      return subsection;
+    });
+
+    return sections.map((section) => {
+      section.subsections = filledSubsections.filter(
+        (subsection) => subsection.sectionId === section.id,
+      );
       return section;
     });
+  }
+
+  private isMultipleChoice(question: QuestionData | QuestionInput): boolean {
+    return QuestionType.selectN === question.type;
+  }
+
+  private isEqualJson(a: any, b: any): boolean {
+    return JSON.stringify(a) === JSON.stringify(b);
   }
 }

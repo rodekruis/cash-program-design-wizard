@@ -3,30 +3,27 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from '../components/shared.module';
-import { ApiService } from '../services/api.service';
-import { TranslatableStringService } from '../services/translatable-string.service';
-import { HomePage } from './home.page';
+import { StateService } from 'src/app/services/state.service';
+import { ReportNarrativeComponent } from './report-narrative.component';
 
-describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+describe('ReportNarrativeComponent', () => {
+  let component: ReportNarrativeComponent;
+  let fixture: ComponentFixture<ReportNarrativeComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [HomePage],
+        declarations: [ReportNarrativeComponent],
         imports: [
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
-          SharedModule,
           RouterTestingModule,
           HttpClientTestingModule,
         ],
-        providers: [ApiService, TranslatableStringService],
+        providers: [StateService],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(HomePage);
+      fixture = TestBed.createComponent(ReportNarrativeComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     }),

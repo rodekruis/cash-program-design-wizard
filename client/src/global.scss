@@ -29,18 +29,55 @@
  * Generic Lay-out:
  */
 
-.frame {
-  display: flex;
-  justify-content: stretch;
-  align-content: stretch;
-  align-items: stretch;
-}
 .frame--sidebar {
-  flex: 0 0 auto;
+  display: inline-block;
 }
-.frame--contents {
-  flex: 1 1 auto;
+// Hard-coded to Ionic breakpoint "small"
+// See: https://ionicframework.com/docs/layout/grid#default-breakpoints
+@media (min-width: 576px) {
+  .frame {
+    display: flex;
+    justify-content: stretch;
+    align-content: stretch;
+    align-items: stretch;
+  }
+  .frame--sidebar {
+    flex: 0 0 auto;
+  }
+  .frame--contents {
+    flex: 1 1 auto;
+  }
 }
+
+/****************************************************************************
+ * Overrides to Ionic elements:
+ */
+
+//  Force text-wrap on <ion-select>
+ion-select::part(placeholder),
+ion-select::part(text) {
+  white-space: normal !important;
+}
+// Force text-wrap on <ion-select-option>'s in an Alert
+ion-alert.select-alert {
+  --width: 33vw !important;
+  --max-width: 66vw !important;
+
+  .select-interface-option .alert-radio-label,
+  .select-interface-option .alert-checkbox-label {
+    white-space: normal !important;
+  }
+}
+
+// Make numeric input data stand out more
+input[type='number'] {
+  font-family: monospace !important;
+  font-feature-settings: 'tnum';
+}
+
+/****************************************************************************
+ * Utilities:
+ */
 
 /****************************************************************************
  * Development / Debugging ONLY:

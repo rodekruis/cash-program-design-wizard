@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
+import { narrativeReportTemplateDemoEn } from '../seed-data/narrativeReportTemplate-demo-en';
 import * as programDemo from '../seed-data/program-demo.json';
 import * as questionsSeed from '../seed-data/questions.json';
 import * as sectionsSeed from '../seed-data/sections.json';
@@ -42,6 +43,7 @@ export class SeedDemoProgram implements InterfaceScript {
 
   public async run(): Promise<void> {
     await this.truncateAll();
+
     const program = await this.seedProgram();
     await this.createUsers(program);
     await this.seedSections();
@@ -49,22 +51,8 @@ export class SeedDemoProgram implements InterfaceScript {
     console.log('Run SeedDemoProgram: done');
   }
 
-  public async truncateAll(): Promise<void> {
-    const entities = this.connection.entityMetadatas;
-    try {
-      for (const entity of entities) {
-        const repository = await this.connection.getRepository(entity.name);
-        if (repository.metadata.schema !== 'custom_migration_table') {
-          const q = `TRUNCATE TABLE \"${entity.tableName}\" CASCADE;`;
-          await repository.query(q);
-        }
-      }
-    } catch (error) {
-      throw new Error(`ERROR: Cleaning test db: ${error}`);
-    }
-  }
-
   private async seedProgram(): Promise<ProgramEntity> {
+    programDemo['narrativeReportTemplate'] = narrativeReportTemplateDemoEn;
     return await this.programRepository.save(programDemo);
   }
 
@@ -86,7 +74,7 @@ export class SeedDemoProgram implements InterfaceScript {
     );
     const assignUserView = {
       userName: userView.user.userName,
-      role: UserRoleEnum.edit,
+      role: UserRoleEnum.view,
       programId: program.id,
     };
     await this.userService.assign(assignUserView);
@@ -172,6 +160,20 @@ export class SeedDemoProgram implements InterfaceScript {
       optionChoiceEntities.push(optionChoiceEntity);
     }
     return optionChoiceEntities;
+  }
+
+  private async truncateAll(): Promise<void> {
+    const entities = this.connection.entityMetadatas;
+    try {
+      for (const entity of entities) {
+        const repository = await this.connection.getRepository(entity.name);
+
+        const q = `TRUNCATE TABLE public."${entity.tableName}" CASCADE;`;
+        await repository.query(q);
+      }
+    } catch (error) {
+      console.log('error: ', error);
+    }
   }
 }
 
