@@ -12,6 +12,6 @@ export class ProgramUserAssignmentEntity extends CascadeDeleteEntity {
   @ManyToOne(() => ProgramEntity, (program) => program.userAssignments)
   public program: ProgramEntity;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   public role: UserRoleEnum;
 }
