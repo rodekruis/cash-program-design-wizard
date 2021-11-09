@@ -40,7 +40,8 @@
   },
   "report-narrative": {
     "missing-explanation": "Nothing filled in.",
-    "answer-prefix": "Answer to question:"
+    "answer-prefix": "Answer to question:",
+    "copy-to-clipboard": "Copy text to clipboard"
   },
   "report-section": {
     "go-to-input": "Go to section"

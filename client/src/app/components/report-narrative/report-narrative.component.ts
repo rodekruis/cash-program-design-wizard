@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
+import { Clipboard } from '@capacitor/clipboard';
 import { TranslateService } from '@ngx-translate/core';
 import {
   flatten,
@@ -24,6 +31,9 @@ type AnswerSet = {
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class ReportNarrativeComponent implements OnInit {
+  @ViewChild('reportOutput')
+  public reportOutput: ElementRef;
+
   public report: string;
 
   private answers: AnswerSet[];
@@ -45,6 +55,14 @@ export class ReportNarrativeComponent implements OnInit {
         this.state.narrativeReportTemplate,
         this.answers,
       );
+    });
+  }
+
+  public async copy2Clipboard() {
+    const reportText = this.reportOutput.nativeElement.innerText;
+    await Clipboard.write({
+      // eslint-disable-next-line id-blacklist
+      string: reportText,
     });
   }
 
