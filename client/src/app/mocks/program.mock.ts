@@ -13,7 +13,7 @@ const getMockId = (): string =>
 
 export const mockProgram: Program = {
   id: getMockId(),
-  label: 'Mock Program',
+  name: 'Mock Program',
   sections: [
     {
       id: getMockId(),

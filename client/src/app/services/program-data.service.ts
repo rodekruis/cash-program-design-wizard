@@ -32,7 +32,7 @@ export class ProgramDataService {
 
       return resolve({
         id: programId,
-        label: programMetaData.label,
+        name: programMetaData.name,
         narrativeReportTemplate: programMetaData.narrativeReportTemplate,
         sections: fullSections,
       });
