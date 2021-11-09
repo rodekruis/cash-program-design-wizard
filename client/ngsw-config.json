@@ -27,11 +27,7 @@
   "dataGroups": [
     {
       "name": "api",
-      "urls": [
-        "!/assets/**",
-        "!/svg/**",
-        "!/*.(js|json|css|svg|jpg|png|webp|gif|woff2)"
-      ],
+      "urls": ["*/programs", "*/programs/**"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,

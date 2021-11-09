@@ -9,6 +9,7 @@ export enum ApiPath {
   test = '',
   login = 'users/login',
   userPrograms = 'programs',
+  programs = 'programs',
   answers = 'answers',
 }
 

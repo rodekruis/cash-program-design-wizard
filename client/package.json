@@ -15,7 +15,7 @@
     "lint:syntax": "npx prettier --check .",
     "fix:syntax": "npm run lint:syntax -- --write",
     "preserve-static": "cp www/index.html www/404.html",
-    "serve-static": "npx http-server ./www/ -c-0",
+    "serve-static": "npx http-server ./www/ -c-0 --port 8081 --proxy http://localhost:8081?",
     "start:production": "npm run build:production && npm run serve-static",
     "start": "ng serve",
     "test": "npm run lint && ng test --no-watch --browsers=ChromeHeadless",

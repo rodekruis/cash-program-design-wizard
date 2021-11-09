@@ -100,7 +100,7 @@ export class ProgramDataService {
       optionalParams.section = sectionId;
     }
     const data = await this.apiService
-      .get(`programs/${programId}/questions`, optionalParams)
+      .get(`${ApiPath.programs}/${programId}/questions`, optionalParams)
       .toPromise();
 
     return data.questions ? data.questions : [];
