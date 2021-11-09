@@ -224,6 +224,10 @@ export class ProgramDataService {
             );
           }
 
+          if (question.comments.length > 0) {
+            question.comments.sort((a, b) => (a.created < b.created ? -1 : 1));
+          }
+
           return {
             ...question,
             storedAnswer: question.answer,
