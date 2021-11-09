@@ -14,7 +14,6 @@ export class CommentInputComponent implements OnInit {
 
   public charLimit = 140;
   public comment: string;
-  public userName: string;
 
   constructor(
     private state: StateService,

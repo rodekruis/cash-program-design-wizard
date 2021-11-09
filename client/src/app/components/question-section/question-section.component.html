@@ -112,12 +112,10 @@
             color="light"
           >
             <p>{{ 'question-section.comments' | translate }}</p>
-            <div>
-              <app-comments-list
-                [comments]="question.comments"
-              ></app-comments-list>
-              <app-comment-input [question]="question"></app-comment-input>
-            </div>
+            <app-comments-list
+              [comments]="question.comments"
+            ></app-comments-list>
+            <app-comment-input [question]="question"></app-comment-input>
           </div>
         </div>
         <div *ngIf="isSubSectionEmpty(subsection)">

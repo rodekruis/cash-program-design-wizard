@@ -80,5 +80,9 @@
       "data": "Data",
       "people": "People"
     }
+  },
+  "comment-input": {
+    "add-comment": "Add comment",
+    "submit": "Submit"
   }
 }
