@@ -101,8 +101,8 @@ export class ProgramDataService {
     }
 
     return (
-      this.apiService
-        .post(ApiPath.comments, {
+      this.syncService
+        .tryPost(ApiPath.comments, {
           programId,
           questionId: question.id,
           text: commentText,
@@ -115,7 +115,7 @@ export class ProgramDataService {
             text: commentText,
           });
         }),
-      (error) => console.log('Comment save failed.', error)
+      (error) => console.warn('Comment save failed.', error)
     );
   }
 
