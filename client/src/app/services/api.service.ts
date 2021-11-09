@@ -42,7 +42,7 @@ export class ApiService {
       );
   }
 
-  public post(path: ApiPath, body: any): Observable<any> {
+  public post(path: ApiPath, body: any, _params?: HttpParams): Observable<any> {
     return this.http
       .post(`${environment.apiUrl}/${path}`, body, {
         headers: this.createHeaders(),
