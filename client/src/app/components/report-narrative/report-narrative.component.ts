@@ -66,7 +66,6 @@ export class ReportNarrativeComponent implements OnInit {
   }
 
   private parseTemplate(template: string, answers: AnswerSet[]) {
-    console.log('parseTemplate: ');
     const missingExplanation = this.translate.instant(
       'report-narrative.missing-explanation',
     );
