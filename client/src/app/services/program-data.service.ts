@@ -7,16 +7,27 @@ import {
   QuestionSubsection,
 } from '../types/question-section.type';
 import { ApiPath, ApiService } from './api.service';
+import { AuthService } from './auth.service';
 import { SyncService } from './sync.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProgramDataService {
+  private userName = '';
+
   constructor(
     private apiService: ApiService,
+    private authService: AuthService,
     private syncService: SyncService,
-  ) {}
+  ) {
+    this.authService.authenticationState$.subscribe((user) => {
+      if (!user || !user.userName) {
+        return;
+      }
+      this.userName = user.userName;
+    });
+  }
 
   public async getProgram(programId: string): Promise<Program> {
     return new Promise(async (resolve, reject) => {
@@ -96,7 +107,14 @@ export class ProgramDataService {
           questionId: question.id,
           text: commentText,
         })
-        .subscribe(() => {}),
+        .subscribe((res) => {
+          question.comments.push({
+            id: res.id,
+            userName: this.userName,
+            created: new Date().toISOString(),
+            text: commentText,
+          });
+        }),
       (error) => console.log('Comment save failed.', error)
     );
   }

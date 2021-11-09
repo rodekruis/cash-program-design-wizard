@@ -6,8 +6,10 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { Tag } from 'src/app/models/tag.enum';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProgramDataService } from 'src/app/services/program-data.service';
 import { StateService } from 'src/app/services/state.service';
+import { SharedModule } from '../shared.module';
 import { CommentInputComponent } from './comment-input.component';
 
 describe('CommentInputComponent', () => {
@@ -27,6 +29,7 @@ describe('CommentInputComponent', () => {
           TranslateModule.forRoot(),
           RouterTestingModule,
           HttpClientTestingModule,
+          SharedModule,
         ],
         providers: [
           {
@@ -40,6 +43,7 @@ describe('CommentInputComponent', () => {
           },
           ProgramDataService,
           StateService,
+          AuthService,
         ],
       }).compileComponents();
 

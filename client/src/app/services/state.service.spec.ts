@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { Tag } from '../models/tag.enum';
+import { AuthService } from './auth.service';
 import { ProgramDataService } from './program-data.service';
 import { StateService } from './state.service';
 import { TranslatableStringService } from './translatable-string.service';
@@ -34,6 +35,7 @@ describe('StateService', () => {
         },
         TranslatableStringService,
         ProgramDataService,
+        AuthService,
       ],
     });
     route = TestBed.inject(ActivatedRoute);

@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { SharedModule } from 'src/app/components/shared.module';
 import { Tag } from 'src/app/models/tag.enum';
+import { AuthService } from 'src/app/services/auth.service';
 import { ReportPage } from './report.page';
 
 describe('ReportPage', () => {
@@ -38,6 +39,7 @@ describe('ReportPage', () => {
               queryParams: of(mockParams),
             },
           },
+          AuthService,
         ],
       }).compileComponents();
 

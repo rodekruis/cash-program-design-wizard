@@ -1,15 +1,15 @@
 <ion-card *ngFor="let comment of comments" class="ion-margin-bottom">
   <ng-container *ngIf="comment">
-    <ion-card-header>
+    <ion-card-header class="ion-border-bottom">
       <ion-card-subtitle
         >posted by <strong>{{ comment.userName }}</strong> on
         <strong>{{ comment.created }}</strong></ion-card-subtitle
       >
     </ion-card-header>
     <ion-card-content *ngIf="comment">
-      <pre>
+      <div style="white-space: pre-line">
         {{ comment.text }}
-      </pre>
+      </div>
     </ion-card-content>
   </ng-container>
 </ion-card>

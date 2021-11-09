@@ -1,18 +1,26 @@
 <ion-card>
   <ion-card-header>
-    <ion-card-subtitle>
-      Add comment {{ commentLength }}/{{ charLimit }}
-    </ion-card-subtitle>
+    <ion-card-subtitle> Add comment </ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
-    <form (ngSubmit)="onSubmit()">
+    <form #commentForm="ngForm" (ngSubmit)="onSubmit()">
       <ion-textarea
         [(ngModel)]="comment"
         name="text"
         (ionChange)="onType($event)"
         class="ion-margin-bottom"
+        minlength="3"
+        [maxlength]="charLimit"
+        required
       ></ion-textarea>
-      <ion-button [disabled]="submitDisabled" type="submit">Submit</ion-button>
+      <ion-row class="ion-align-items-center">
+        <ion-button [disabled]="commentForm.invalid" type="submit">
+          Submit
+        </ion-button>
+        <ion-note class="ion-margin-start">
+          {{ comment?.length || 0 }}/{{ charLimit }}
+        </ion-note>
+      </ion-row>
     </form>
   </ion-card-content>
 </ion-card>

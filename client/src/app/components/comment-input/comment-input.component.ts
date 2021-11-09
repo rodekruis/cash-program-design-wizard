@@ -13,9 +13,8 @@ export class CommentInputComponent implements OnInit {
   question: QuestionInput;
 
   public charLimit = 140;
-  public submitDisabled = true;
-  public commentLength = 0;
   public comment: string;
+  public userName: string;
 
   constructor(
     private state: StateService,
@@ -26,10 +25,6 @@ export class CommentInputComponent implements OnInit {
 
   public onType(event) {
     this.comment = event.detail.value.trim();
-    this.commentLength = this.comment.length;
-
-    this.submitDisabled =
-      this.commentLength === 0 || this.commentLength > this.charLimit;
   }
 
   public onSubmit() {
