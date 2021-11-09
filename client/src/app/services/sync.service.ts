@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EMPTY, Observable, throwError, TimeoutError } from 'rxjs';
-import { catchError, retry, share, timeout } from 'rxjs/operators';
+import { concat, EMPTY, Observable, throwError, TimeoutError } from 'rxjs';
+import { catchError, map, retry, share, timeout } from 'rxjs/operators';
 import { SyncTask } from '../types/sync-task.type';
 import { ApiPath, ApiService } from './api.service';
 
@@ -13,7 +13,38 @@ const STORAGE_KEY = 'syncTasks';
   providedIn: 'root',
 })
 export class SyncService {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+    window.addEventListener('online', () => {
+      console.log('Going back on-line, triggering processing Sync-queue...');
+      this.sync();
+    });
+  }
+
+  public sync(): Observable<any> {
+    const requests: Observable<any>[] = [];
+    const syncTasks = this.getExistingSyncTasks();
+
+    syncTasks.forEach((task: SyncTask) => {
+      const params = new HttpParams({
+        fromString: task.params,
+      });
+      const request$ = this.apiService
+        .post(task.url, task.body, params)
+        .pipe(map((_) => task));
+
+      requests.push(request$);
+    });
+
+    const allRequests$ = concat(...requests).pipe(share());
+
+    allRequests$.subscribe((task) => {
+      const index = syncTasks.findIndex((t) => t === task);
+      syncTasks.splice(index, 1);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(syncTasks));
+    });
+
+    return allRequests$;
+  }
 
   public tryPost(
     url: ApiPath,
@@ -50,9 +81,17 @@ export class SyncService {
   }
 
   private offlineOrBadConnection(err: HttpErrorResponse): boolean {
+    console.log('err instanceof TimeoutError: ', err instanceof TimeoutError);
+    console.log(
+      'err.error instanceof ErrorEvent: ',
+      err.error instanceof ErrorEvent,
+    );
+    console.log('err.status === 0: ', err.status === 0);
+    console.log('!window.navigator.onLine: ', !window.navigator.onLine);
     return (
       err instanceof TimeoutError ||
       err.error instanceof ErrorEvent ||
+      err.status === 0 ||
       !window.navigator.onLine
     );
   }
