@@ -23,5 +23,21 @@
         "files": ["/assets/**", "/svg/**", "/*.(svg|jpg|png|webp|gif|woff2)"]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": [
+        "!/assets/**",
+        "!/svg/**",
+        "!/*.(js|json|css|svg|jpg|png|webp|gif|woff2)"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "7d",
+        "timeout": "30s"
+      }
+    }
   ]
 }
