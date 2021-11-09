@@ -1,1 +1,20 @@
-<div [innerHTML]="report" style="white-space: pre-wrap"></div>
+<div
+  #reportOutput
+  [innerHTML]="report"
+  style="white-space: pre-wrap"
+  class="ion-margin-vertical"
+></div>
+
+<br />
+
+<hr
+  style="border-top: 1px solid var(--ion-color-medium)-tint"
+  class="ion-margin-vertical"
+/>
+
+<ion-button fill="outline" color="secondary" (click)="copy2Clipboard()">
+  <ion-icon name="clipboard" aria-hidden="true" slot="start"></ion-icon>
+  {{ 'report-narrative.copy-to-clipboard' | translate }}
+</ion-button>
+
+<br />
