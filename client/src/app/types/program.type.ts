@@ -7,6 +7,6 @@ export interface Program extends ProgramMetaData {
 
 export interface ProgramMetaData {
   id: string;
-  label: string | TranslatableString;
+  name: string | TranslatableString;
   narrativeReportTemplate?: string;
 }

@@ -17,7 +17,7 @@
     "report": "Narrative report"
   },
   "program": {
-    "page-title": "Program: {{id}}",
+    "page-title": "Program: {{name}}",
     "not-found": "No program found."
   },
   "question-section": {

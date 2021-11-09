@@ -7,6 +7,7 @@ import { Tag } from '../models/tag.enum';
 import { ViewMode } from '../models/view-mode.enum';
 import { Program } from '../types/program.type';
 import { QuestionSection } from '../types/question-section.type';
+import { TranslatableString } from '../types/translatable-string.type';
 import { ProgramDataService } from './program-data.service';
 import { TranslatableStringService } from './translatable-string.service';
 
@@ -15,6 +16,7 @@ import { TranslatableStringService } from './translatable-string.service';
 })
 export class StateService {
   public programId: string;
+  public programName: string | TranslatableString;
 
   public narrativeReportTemplate: string;
 
@@ -112,8 +114,11 @@ export class StateService {
       program = await this.programDataService.getProgram(this.programId);
     }
 
+    // Update Program meta-data
+    this.programName = this.translatableString.get(program.name);
     this.narrativeReportTemplate = program.narrativeReportTemplate;
 
+    // Update all sections
     const sections = program.sections.map((section) =>
       this.translateLabels(section),
     );

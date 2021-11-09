@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiPath, ApiService } from 'src/app/services/api.service';
 import { StateService } from 'src/app/services/state.service';
+import { TranslatableString } from 'src/app/types/translatable-string.type';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -12,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class ProgramPage implements OnInit {
   public isDebug = environment.debug;
   public id: string;
+  public name: string | TranslatableString;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,5 +39,10 @@ export class ProgramPage implements OnInit {
         }
       });
     }
+
+    // Use sections-update 'event' to update Program-name
+    this.state.sections$.subscribe((_sections) => {
+      this.name = this.state.programName;
+    });
   }
 }
