@@ -106,19 +106,17 @@
               </ng-container>
             </ion-item>
           </div>
-          <div *ngIf="showComments(question)" class="ion-margin-vertical">
-            <span style="color: var(--ion-color-medium)">{{
-              'question-section.comments' | translate
-            }}</span>
-            <div
-              class="ion-padding ion-margin-vertical"
-              style="
-                color: var(--ion-color-medium);
-                border: 1px solid var(--ion-color-light-shade);
-              "
-            >
-              {{ question.comment }}
-            </div>
+          <div
+            *ngIf="showComments(question)"
+            class="ion-margin-vertical"
+            color="light"
+          >
+            <p>{{ 'question-section.comments' | translate }}</p>
+            <app-comments-list
+              *ngIf="question.comments"
+              [comments]="question.comments"
+            ></app-comments-list>
+            <app-comment-input [question]="question"></app-comment-input>
           </div>
         </div>
         <div *ngIf="isSubSectionEmpty(subsection)">

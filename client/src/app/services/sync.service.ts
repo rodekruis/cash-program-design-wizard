@@ -81,13 +81,6 @@ export class SyncService {
   }
 
   private offlineOrBadConnection(err: HttpErrorResponse): boolean {
-    console.log('err instanceof TimeoutError: ', err instanceof TimeoutError);
-    console.log(
-      'err.error instanceof ErrorEvent: ',
-      err.error instanceof ErrorEvent,
-    );
-    console.log('err.status === 0: ', err.status === 0);
-    console.log('!window.navigator.onLine: ', !window.navigator.onLine);
     return (
       err instanceof TimeoutError ||
       err.error instanceof ErrorEvent ||

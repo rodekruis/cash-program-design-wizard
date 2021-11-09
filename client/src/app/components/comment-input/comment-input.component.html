@@ -1,0 +1,36 @@
+<ion-card class="ion-no-margin">
+  <ion-card-header style="padding-bottom: 0.1em">
+    {{ 'comment-input.add-comment' | translate }}:
+  </ion-card-header>
+  <ion-card-content>
+    <form #commentForm="ngForm" (ngSubmit)="onSubmit()">
+      <ion-textarea
+        name="comment"
+        [(ngModel)]="comment"
+        minlength="3"
+        [maxlength]="charLimit"
+        required
+        (ionChange)="onType($event)"
+        [autoGrow]="true"
+        [spellcheck]="true"
+        autocorrect="on"
+        autocapitalize="on"
+        [rows]="1"
+        class="ion-margin-bottom"
+      ></ion-textarea>
+      <ion-row class="ion-align-items-center">
+        <ion-button
+          type="submit"
+          [disabled]="commentForm.invalid"
+          [fill]="commentForm.invalid ? 'clear' : 'solid'"
+          size="small"
+        >
+          {{ 'comment-input.submit' | translate }}
+        </ion-button>
+        <ion-note *ngIf="comment?.length" class="ion-margin-start">
+          {{ comment?.length || 0 }}/{{ charLimit }}
+        </ion-note>
+      </ion-row>
+    </form>
+  </ion-card-content>
+</ion-card>

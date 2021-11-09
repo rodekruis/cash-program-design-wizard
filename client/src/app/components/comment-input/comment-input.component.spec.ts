@@ -5,14 +5,16 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { SharedModule } from 'src/app/components/shared.module';
 import { Tag } from 'src/app/models/tag.enum';
 import { AuthService } from 'src/app/services/auth.service';
-import { ReportPage } from './report.page';
+import { ProgramDataService } from 'src/app/services/program-data.service';
+import { StateService } from 'src/app/services/state.service';
+import { SharedModule } from '../shared.module';
+import { CommentInputComponent } from './comment-input.component';
 
-describe('ReportPage', () => {
-  let component: ReportPage;
-  let fixture: ComponentFixture<ReportPage>;
+describe('CommentInputComponent', () => {
+  let component: CommentInputComponent;
+  let fixture: ComponentFixture<CommentInputComponent>;
 
   const mockParams = {
     tag: Tag.data,
@@ -21,7 +23,7 @@ describe('ReportPage', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [ReportPage],
+        declarations: [CommentInputComponent],
         imports: [
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
@@ -39,11 +41,13 @@ describe('ReportPage', () => {
               queryParams: of(mockParams),
             },
           },
+          ProgramDataService,
+          StateService,
           AuthService,
         ],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(ReportPage);
+      fixture = TestBed.createComponent(CommentInputComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     }),

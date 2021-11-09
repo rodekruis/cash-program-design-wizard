@@ -56,7 +56,6 @@ export class QuestionSectionComponent {
 
   public showComments(question: QuestionInput): boolean {
     return (
-      question.comment &&
       question.type !== QuestionType.select1 &&
       question.type !== QuestionType.selectN
     );
