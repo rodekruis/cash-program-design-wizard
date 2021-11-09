@@ -1,6 +1,6 @@
 <ion-card class="ion-no-margin">
   <ion-card-header style="padding-bottom: 0.1em">
-    <label for="test"> {{ 'comment-input.add-comment' | translate }}: </label>
+    {{ 'comment-input.add-comment' | translate }}:
   </ion-card-header>
   <ion-card-content>
     <form #commentForm="ngForm" (ngSubmit)="onSubmit()">
