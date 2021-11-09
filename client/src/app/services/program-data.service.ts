@@ -161,7 +161,7 @@ export class ProgramDataService {
           delete question.sectionName;
           delete question.sectionLabel;
 
-          if (this.isMultipleChoice(question)) {
+          if (this.isMultipleChoice(question) && question.answer) {
             try {
               question.answer = JSON.parse(question.answer);
             } catch (error) {
