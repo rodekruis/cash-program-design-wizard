@@ -57,27 +57,25 @@ export class SeedDemoProgram implements InterfaceScript {
   }
 
   private async createUsers(program: ProgramEntity): Promise<void> {
-    const userEdit = await this.userService.create(
-      process.env.USERCONFIG_EDIT_USERNAME,
-      process.env.USERCONFIG_EDIT_PASSWORD,
-    );
-    const assignUserEdit = {
-      userName: userEdit.user.userName,
-      role: UserRoleEnum.edit,
-      programId: program.id,
-    };
-    await this.userService.assign(assignUserEdit);
-
     const userView = await this.userService.create(
       process.env.USERCONFIG_VIEW_USERNAME,
       process.env.USERCONFIG_VIEW_PASSWORD,
     );
-    const assignUserView = {
+    await this.userService.assign({
       userName: userView.user.userName,
       role: UserRoleEnum.view,
       programId: program.id,
-    };
-    await this.userService.assign(assignUserView);
+    });
+
+    const userEdit = await this.userService.create(
+      process.env.USERCONFIG_EDIT_USERNAME,
+      process.env.USERCONFIG_EDIT_PASSWORD,
+    );
+    await this.userService.assign({
+      userName: userEdit.user.userName,
+      role: UserRoleEnum.edit,
+      programId: program.id,
+    });
   }
 
   private async seedSections() {
