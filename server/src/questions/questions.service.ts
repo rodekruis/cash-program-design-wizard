@@ -86,11 +86,9 @@ export class QuestionsService {
 
     const questions = await qb.getRawMany();
 
-    // Process JSON-string content so the client doesn't have to
     for (const question of questions) {
       question.tags = await this.findTags(question);
       question.comments = await this.findComments(question, programId);
-      question.answer = await this.findAnswer(question, programId);
       question.optionChoices = await this.findOptionChoices(question);
     }
 
@@ -133,20 +131,6 @@ export class QuestionsService {
       })
       .orderBy('comment.created', 'DESC');
     return await qb.getRawMany();
-  }
-
-  private async findAnswer(question: QuestionEntity, programId: string) {
-    const qb = this.answerRepository
-      .createQueryBuilder('answer')
-      .leftJoin('answer.question', 'question')
-      .leftJoin('answer.program', 'program')
-      .where('question.id = :questionId', {
-        questionId: question.id,
-      })
-      .andWhere('program.id = :programId', {
-        programId: programId,
-      });
-    return await qb.getOne();
   }
 
   private async findOptionChoices(question) {

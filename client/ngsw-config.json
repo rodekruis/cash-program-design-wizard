@@ -20,10 +20,19 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": [
-          "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
-        ]
+        "files": ["/assets/**", "/svg/**", "/*.(svg|jpg|png|webp|gif|woff2)"]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": ["*/programs", "*/programs/**"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "7d",
+        "timeout": "30s"
       }
     }
   ]

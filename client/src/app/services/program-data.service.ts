@@ -7,12 +7,16 @@ import {
   QuestionSubsection,
 } from '../types/question-section.type';
 import { ApiPath, ApiService } from './api.service';
+import { SyncService } from './sync.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProgramDataService {
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private syncService: SyncService,
+  ) {}
 
   public async getProgram(programId: string): Promise<Program> {
     return new Promise(async (resolve, reject) => {
@@ -59,8 +63,8 @@ export class ProgramDataService {
       plainAnswer = JSON.stringify(question.answer);
     }
 
-    return this.apiService
-      .post(ApiPath.answers, {
+    return this.syncService
+      .tryPost(ApiPath.answers, {
         programId,
         questionId: question.id,
         text: plainAnswer.toString(), // Prevent storing numeric-input as a number
@@ -96,7 +100,7 @@ export class ProgramDataService {
       optionalParams.section = sectionId;
     }
     const data = await this.apiService
-      .get(`programs/${programId}/questions`, optionalParams)
+      .get(`${ApiPath.programs}/${programId}/questions`, optionalParams)
       .toPromise();
 
     return data.questions ? data.questions : [];
