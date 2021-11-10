@@ -141,7 +141,7 @@ export class UserService {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
-    const returnUser = await this.userRepository.findOne(user.id, {
+    const returnUser = await this.userRepository.findOne(user.user_id, {
       relations: ['programAssignments'],
     });
     return this.buildUserRO(returnUser);
