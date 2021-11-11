@@ -4,10 +4,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { mockProgram } from '../mocks/program.mock';
 import { Tag } from '../models/tag.enum';
-import { ViewMode } from '../models/view-mode.enum';
 import { Program } from '../types/program.type';
 import { QuestionSection } from '../types/question-section.type';
 import { TranslatableString } from '../types/translatable-string.type';
+import { AuthService } from './auth.service';
 import { ProgramDataService } from './program-data.service';
 import { TranslatableStringService } from './translatable-string.service';
 
@@ -26,8 +26,6 @@ export class StateService {
     tag: Tag.all,
   };
 
-  public viewMode: ViewMode = ViewMode.view;
-
   public activeSection: QuestionSection;
 
   public sections$: Observable<QuestionSection[]>;
@@ -40,11 +38,19 @@ export class StateService {
     private router: Router,
     private translatableString: TranslatableStringService,
     private programDataService: ProgramDataService,
+    private authService: AuthService,
   ) {
     this.sections$ = this.sectionsStore.asObservable();
 
     this.updateProgramId();
     this.updateFilters();
+
+    this.authService.authenticationState$.subscribe((user) => {
+      // Reset state when user is logged out
+      if (!user) {
+        this.clearState();
+      }
+    });
   }
 
   public setActiveSection(section: QuestionSection, updateUrl = true) {
@@ -170,5 +176,14 @@ export class StateService {
       return subsection;
     });
     return section;
+  }
+
+  private clearState() {
+    this.programId = null;
+    this.programName = '';
+    this.filters = { tag: Tag.all };
+    this.activeSection = null;
+    this.sections = [];
+    this.sectionsStore.next(this.sections);
   }
 }

@@ -6,10 +6,12 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
+import { UserToken } from 'src/types/user-token.type';
 import { getRepository, Repository } from 'typeorm';
 import { ProgramUserAssignmentEntity } from '../programs/program-user-assignment.entity';
 import { ProgramEntity } from './../programs/program.entity';
 import { AssignUserDto } from './dto/assign-user.dto';
+import { UserRoleEnum } from './enum/user-role.enum';
 import { UserEntity } from './user.entity';
 import { UserRO } from './user.interface';
 import jwt = require('jsonwebtoken');
@@ -50,12 +52,7 @@ export class UserService {
   }
 
   private buildUserRO(user: UserEntity): UserRO {
-    const roles = {};
-    if (user.programAssignments) {
-      for (const assignment of user.programAssignments) {
-        roles[assignment.id] = assignment.role;
-      }
-    }
+    const roles = this.extractRoles(user);
     const userRO = {
       id: user.id,
       userName: user.userName,
@@ -69,17 +66,17 @@ export class UserService {
     const today = new Date();
     const exp = new Date(today);
     exp.setDate(today.getDate() + 60);
-    const toSign = {
+    const toSign: UserToken = {
       id: user.id,
       userName: user.userName,
       exp: exp.getTime() / 1000,
-      role: user.programAssignments,
+      roles: this.extractRoles(user),
     };
     const result = jwt.sign(toSign, process.env.JWT_SECRET);
     return result;
   }
 
-  public async findById(id: number) {
+  public async findById(id: string) {
     const user = await this.userRepository.findOne(id, {
       relations: ['programAssignments', 'programAssignments.program'],
       where: { id: id },
@@ -141,9 +138,22 @@ export class UserService {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
-    const returnUser = await this.userRepository.findOne(user.user_id, {
-      relations: ['programAssignments'],
-    });
+    const returnUser = await this.findById(user.user_id);
     return this.buildUserRO(returnUser);
+  }
+
+  private extractRoles(user: UserEntity): {
+    [_programId: string]: UserRoleEnum;
+  } {
+    const roles = {};
+    if (user.programAssignments) {
+      for (const assignment of user.programAssignments) {
+        if (!assignment.program) {
+          return;
+        }
+        roles[assignment.program.id] = assignment.role;
+      }
+    }
+    return roles;
   }
 }
