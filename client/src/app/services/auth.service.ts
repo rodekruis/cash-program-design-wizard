@@ -28,14 +28,16 @@ export class AuthService {
     return this.getUserFromToken() !== null;
   }
 
-  public hasUserRole(requiredRoles: UserRole[]): boolean {
+  public hasUserRole(requiredRoles: UserRole[], programId: string): boolean {
     const user = this.getUserFromToken();
 
     if (!user || !user.roles) {
       return false;
     }
 
-    return requiredRoles.some((role) => user.roles.includes(role));
+    return requiredRoles.some(
+      (role) => user.roles[programId] && user.roles[programId] === role,
+    );
   }
 
   public async login(userName: string, password: string): Promise<any> {
