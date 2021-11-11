@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Tag } from 'src/app/models/tag.enum';
+import { UserRole } from 'src/app/models/user.model';
 import { getOptionChoiceAnswer } from 'src/app/pages/report/report-helpers';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProgramDataService } from 'src/app/services/program-data.service';
 import { StateService } from 'src/app/services/state.service';
 import { QuestionInput, QuestionType } from 'src/app/types/question-input.type';
@@ -29,8 +31,14 @@ export class QuestionSectionComponent {
     private state: StateService,
     private programData: ProgramDataService,
     private translate: TranslateService,
+    private authService: AuthService,
   ) {
     this.tagLabels = this.translate.instant('filters.tags');
+
+    // Use sections-update 'event' to get up-to-date Program-MetaData
+    this.state.sections$.subscribe((_sections) => {
+      this.canEdit = this.userCanEdit();
+    });
   }
 
   public onChangeAnswer(question: QuestionInput) {
@@ -56,6 +64,10 @@ export class QuestionSectionComponent {
     }
 
     return false;
+  }
+
+  public userCanEdit(): boolean {
+    return this.authService.hasUserRole([UserRole.edit], this.state.programId);
   }
 
   public showComments(question: QuestionInput): boolean {

@@ -4,7 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
+import { getMockId } from '../mocks/mock-helpers';
 import { Tag } from '../models/tag.enum';
+import { User, UserRole } from '../models/user.model';
 import { AuthService } from './auth.service';
 import { ProgramDataService } from './program-data.service';
 import { StateService } from './state.service';
@@ -17,6 +19,16 @@ describe('StateService', () => {
 
   const mockParams = {
     tag: Tag.data,
+  };
+
+  const mockUser: User = {
+    token: 'test',
+    id: getMockId(),
+    userName: 'test@example.org',
+    roles: [UserRole.admin],
+  };
+  const authServiceMock = {
+    authenticationState$: of(mockUser),
   };
 
   beforeEach(() => {
@@ -35,7 +47,10 @@ describe('StateService', () => {
         },
         TranslatableStringService,
         ProgramDataService,
-        AuthService,
+        {
+          provide: AuthService,
+          useValue: authServiceMock,
+        },
       ],
     });
     route = TestBed.inject(ActivatedRoute);
