@@ -1,3 +1,16 @@
+<div *ngIf="!report" style="line-height: 1.3em !important">
+  <br />
+  <ion-skeleton-text style="line-height: 1; width: 60%"></ion-skeleton-text>
+  <br />
+  <ion-skeleton-text style="line-height: 1; width: 88%"></ion-skeleton-text>
+  <ion-skeleton-text style="line-height: 1; width: 70%"></ion-skeleton-text>
+  <ion-skeleton-text style="line-height: 1; width: 60%"></ion-skeleton-text>
+  <br />
+  <ion-skeleton-text style="line-height: 1; width: 70%"></ion-skeleton-text>
+  <ion-skeleton-text style="line-height: 1; width: 60%"></ion-skeleton-text>
+  <br />
+</div>
+
 <div
   #reportOutput
   [innerHTML]="report"

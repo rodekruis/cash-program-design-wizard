@@ -35,13 +35,16 @@
 
           <hr style="border-top: 1px dashed var(--ion-color-medium)" />
 
-          <h2>{{ 'report.appendix' | translate }}</h2>
-          <ng-container
-            *ngFor="let section of sections"
-            class="ion-margin-vertical ion-padding-vertical"
-          >
-            <app-report-section [section]="section"></app-report-section>
-          </ng-container>
+          <section *ngIf="sections.length">
+            <h2>{{ 'report.appendix' | translate }}</h2>
+
+            <ng-container
+              *ngFor="let section of sections"
+              class="ion-margin-vertical ion-padding-vertical"
+            >
+              <app-report-section [section]="section"></app-report-section>
+            </ng-container>
+          </section>
         </div>
         <div class="debug--placeholder">
           <pre class="ion-text-end">Actions: [ Print ]</pre>
