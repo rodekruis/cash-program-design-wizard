@@ -1,16 +1,18 @@
-<ng-container *ngFor="let comment of comments">
-  <ion-card *ngIf="comment" class="ion-no-margin ion-margin-bottom">
-    <ion-card-header class="ion-border-bottom">
-      <strong>{{ comment.userName }}</strong>
-      @
-      <strong>
-        <time [attr.datetime]="comment.created">
-          {{ comment.created | date: 'yyyy-MM-dd - HH:mm' }}
-        </time>
-      </strong>
-    </ion-card-header>
-    <ion-card-content style="white-space: pre-line">
-      {{ comment.text }}
-    </ion-card-content>
-  </ion-card>
-</ng-container>
+<div class="ion-margin-top ion-no-padding">
+  <div *ngFor="let comment of comments" class="ion-padding-bottom">
+    <ion-card *ngIf="comment" class="ion-no-margin">
+      <ion-card-header>
+        <strong>{{ comment.userName }}</strong>
+        @
+        <strong>
+          <time [attr.datetime]="comment.created">
+            {{ comment.created | date: 'yyyy-MM-dd - HH:mm' }}
+          </time>
+        </strong>
+      </ion-card-header>
+      <ion-card-content style="white-space: pre-line">
+        {{ comment.text }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>

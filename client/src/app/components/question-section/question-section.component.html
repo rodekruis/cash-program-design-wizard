@@ -106,18 +106,35 @@
               </ng-container>
             </ion-item>
           </div>
-          <div
-            *ngIf="showComments(question)"
-            class="ion-margin-vertical"
-            color="light"
-          >
-            <p>{{ 'question-section.comments' | translate }}</p>
+          <details *ngIf="showComments(question)" class="ion-margin-vertical">
+            <summary style="list-style-type: none; cursor: pointer">
+              <ion-item lines="full" fill="clear">
+                <ng-container [ngSwitch]="question.comments.length">
+                  <ion-label *ngSwitchCase="0" color="primary"
+                    ><strong>{{
+                      'question-section.no-comments' | translate
+                    }}</strong></ion-label
+                  >
+                  <ion-label *ngSwitchDefault color="primary">
+                    <strong>
+                      {{ 'question-section.comments' | translate }}
+                      {{ question.comments.length }}
+                    </strong>
+                  </ion-label>
+                </ng-container>
+                <ion-icon
+                  name="chatbubbles"
+                  slot="end"
+                  color="primary"
+                ></ion-icon>
+              </ion-item>
+            </summary>
             <app-comments-list
               *ngIf="question.comments"
               [comments]="question.comments"
             ></app-comments-list>
             <app-comment-input [question]="question"></app-comment-input>
-          </div>
+          </details>
         </div>
         <div *ngIf="isSubSectionEmpty(subsection)">
           <ion-note>
@@ -128,3 +145,4 @@
     </ion-col>
   </ion-row>
 </ion-grid>
+<!-- <ion-icon name="arrow-down" slot="end"></ion-icon> -->
