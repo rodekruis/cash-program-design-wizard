@@ -12,7 +12,13 @@
   class="ion-margin-vertical"
 />
 
-<ion-button fill="outline" color="secondary" (click)="copy2Clipboard()">
+<ion-button
+  *ngIf="report"
+  type="button"
+  fill="outline"
+  color="secondary"
+  (click)="copy2Clipboard()"
+>
   <ion-icon name="clipboard" aria-hidden="true" slot="start"></ion-icon>
   {{ 'report-narrative.copy-to-clipboard' | translate }}
 </ion-button>
