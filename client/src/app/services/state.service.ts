@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { mockProgram } from '../mocks/program.mock';
 import { Tag } from '../models/tag.enum';
-import { ViewMode } from '../models/view-mode.enum';
 import { Program } from '../types/program.type';
 import { QuestionSection } from '../types/question-section.type';
 import { TranslatableString } from '../types/translatable-string.type';
@@ -25,8 +24,6 @@ export class StateService {
   } = {
     tag: Tag.all,
   };
-
-  public viewMode: ViewMode = ViewMode.view;
 
   public activeSection: QuestionSection;
 
