@@ -40,9 +40,8 @@ export class ProgramPage implements OnInit {
       });
     }
 
-    // Use sections-update 'event' to update Program-name
-    this.state.sections$.subscribe((_sections) => {
-      this.name = this.state.programName;
+    this.state.programMetaData$.subscribe((program) => {
+      this.name = program.name;
     });
   }
 }
