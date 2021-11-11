@@ -33,7 +33,7 @@
     "comments": "Comment(s):"
   },
   "report": {
-    "page-title": "Report for program: {{id}}",
+    "page-title": "Report for program: {{name}}",
     "not-found": "No report found.",
     "title": "Narrative Report",
     "appendix": "Appendix"
