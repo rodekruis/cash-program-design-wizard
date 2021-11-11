@@ -138,9 +138,7 @@ export class UserService {
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
-    const returnUser = await this.userRepository.findOne(user.user_id, {
-      relations: ['programAssignments'],
-    });
+    const returnUser = await this.findById(user.user_id);
     return this.buildUserRO(returnUser);
   }
 
@@ -150,7 +148,10 @@ export class UserService {
     const roles = {};
     if (user.programAssignments) {
       for (const assignment of user.programAssignments) {
-        roles[assignment.id] = assignment.role;
+        if (!assignment.program) {
+          return;
+        }
+        roles[assignment.program.id] = assignment.role;
       }
     }
     return roles;
