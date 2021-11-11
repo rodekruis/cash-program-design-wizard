@@ -24,7 +24,7 @@ export class FiltersComponent implements OnInit {
     private router: Router,
     private translate: TranslateService,
   ) {
-    this.tagLabels = this.translate.instant('filters.tags');
+    this.triggerTranslations();
   }
 
   public ngOnInit() {
@@ -42,6 +42,13 @@ export class FiltersComponent implements OnInit {
       queryParams: { tag },
       queryParamsHandling: 'merge',
     });
+  }
+
+  private triggerTranslations() {
+    this.tagLabels = this.translate.instant('filters.tags');
+    this.translate
+      .get('filters.tags')
+      .subscribe((translations) => (this.tagLabels = translations));
   }
 
   private updateTagCount(sections: QuestionSection[]) {
