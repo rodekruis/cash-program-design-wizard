@@ -75,6 +75,21 @@ input[type='number'] {
   font-feature-settings: 'tnum';
 }
 
+// Make 'readonly'-inputs look less 'active;:
+ion-item.is-readonly {
+  --full-highlight-height: 0;
+
+  input,
+  textarea {
+    cursor: default;
+  }
+
+  // Hide the number-input 'spinner' (pseudo-)elements in Firefox:
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
 /****************************************************************************
  * Utilities:
  */
