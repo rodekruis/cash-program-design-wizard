@@ -1,0 +1,27 @@
+<ion-button
+  *ngIf="showOffline || !isOnline"
+  (click)="changeSync(true)"
+  color="warning"
+  attr.title="{{ 'connection-status.offline.label-long' | translate }} - {{
+    'connection-status.go.online' | translate
+  }}"
+  attr.aria-label="{{ 'connection-status.offline.label-long' | translate }} - {{
+    'connection-status.go.online' | translate
+  }}"
+>
+  <ion-icon name="cloud-offline" slot="start" aria-hidden="true"></ion-icon>
+  <ion-label>{{ 'connection-status.offline.label' | translate }}</ion-label>
+</ion-button>
+<ion-button
+  *ngIf="!showOffline && isOnline"
+  (click)="changeSync(false)"
+  attr.title="{{ 'connection-status.online.label-long' | translate }} - {{
+    'connection-status.go.offline' | translate
+  }}"
+  attr.aria-label="{{ 'connection-status.online.label-long' | translate }} - {{
+    'connection-status.go.offline' | translate
+  }}"
+>
+  <ion-icon name="cloud" slot="start" aria-hidden="true"></ion-icon>
+  <ion-label>{{ 'connection-status.online.label' | translate }}</ion-label>
+</ion-button>
