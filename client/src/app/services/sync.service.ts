@@ -13,16 +13,22 @@ const STORAGE_KEY = 'syncTasks';
   providedIn: 'root',
 })
 export class SyncService {
+  public forceOffline = false;
+
   constructor(private apiService: ApiService) {
-    window.addEventListener('online', () => {
-      console.log('Going back on-line, triggering processing Sync-queue...');
-      this.sync();
+    window.addEventListener('online', () => this.goOnline(), { passive: true });
+    window.addEventListener('offline', () => this.goOffline(), {
+      passive: true,
     });
   }
 
   public sync(): Observable<any> {
     const requests: Observable<any>[] = [];
     const syncTasks = this.getExistingSyncTasks();
+
+    console.log(
+      `SyncService: Processing queue... ${syncTasks.length} tasks pending.`,
+    );
 
     syncTasks.forEach((task: SyncTask) => {
       const params = new HttpParams({
@@ -51,6 +57,11 @@ export class SyncService {
     body: any,
     params?: HttpParams,
   ): Observable<any> {
+    if (this.forceOffline) {
+      this.addOrUpdateSyncTask(url, body, params);
+      return EMPTY;
+    }
+
     return this.apiService.post(url, body, params).pipe(
       timeout(HTTP_TIMEOUT_IN_MS),
       retry(REQUEST_RETRIES),
@@ -103,12 +114,24 @@ export class SyncService {
 
     tasks.push(syncTask);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-    console.log('SyncService: SyncTask added to queue.');
+    console.log(
+      `SyncService: Task added to queue. Tasks pending: ${tasks.length}`,
+    );
   }
 
   private getExistingSyncTasks(): SyncTask[] {
     const serializedTasks = localStorage.getItem(STORAGE_KEY);
 
     return serializedTasks ? JSON.parse(serializedTasks) : [];
+  }
+
+  private goOnline() {
+    console.log('SyncService: Going on-line.');
+    this.sync();
+  }
+
+  private goOffline() {
+    console.log('SyncService: Going off-line. Collecting tasks in queue...');
+    this.forceOffline = true;
   }
 }
