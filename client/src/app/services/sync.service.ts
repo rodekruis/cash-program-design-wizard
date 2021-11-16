@@ -22,7 +22,7 @@ export class SyncService {
     });
   }
 
-  public sync(): Observable<any> {
+  public processQueue(): Observable<any> {
     const requests: Observable<any>[] = [];
     const syncTasks = this.getExistingSyncTasks();
 
@@ -127,7 +127,7 @@ export class SyncService {
 
   private goOnline() {
     console.log('SyncService: Going on-line.');
-    this.sync();
+    this.processQueue();
   }
 
   private goOffline() {

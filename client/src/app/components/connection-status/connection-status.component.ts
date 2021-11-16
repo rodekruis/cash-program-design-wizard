@@ -39,7 +39,7 @@ export class ConnectionStatusComponent implements OnInit {
     if (this.isOnline && doSync) {
       this.showOffline = false;
 
-      this.syncService.sync();
+      this.syncService.processQueue();
     }
   }
 }
