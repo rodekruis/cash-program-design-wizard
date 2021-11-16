@@ -8,9 +8,11 @@
   "scripts": {
     "ng": "ng",
     "set-env-variables": "node ./_set-env-variables.js",
+    "check:icons-in-use": "node ./_check-icons-in-use.js",
     "prebuild": "npm run set-env-variables",
     "build": "ng build",
     "build:production": "npm run build -- --configuration production",
+    "postbuild": "npm run check:icons-in-use",
     "lint": "npm run lint:syntax && ng lint",
     "lint:syntax": "npx prettier --check .",
     "fix:syntax": "npm run lint:syntax -- --write",
