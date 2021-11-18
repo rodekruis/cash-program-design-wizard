@@ -1,0 +1,24 @@
+details {
+  summary {
+    list-style-type: none;
+    cursor: pointer;
+  }
+
+  .details-closed {
+    display: inline;
+  }
+
+  .details-open {
+    display: none;
+  }
+
+  &[open] {
+    .details-closed {
+      display: none;
+    }
+
+    .details-open {
+      display: inline;
+    }
+  }
+}

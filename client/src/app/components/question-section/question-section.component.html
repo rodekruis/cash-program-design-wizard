@@ -107,7 +107,7 @@
             </ion-item>
           </div>
           <details *ngIf="showComments(question)" class="ion-margin-vertical">
-            <summary style="list-style-type: none; cursor: pointer">
+            <summary>
               <ion-item lines="full" fill="clear">
                 <ng-container [ngSwitch]="question.comments.length">
                   <ion-label *ngSwitchCase="0" color="primary"
@@ -123,9 +123,16 @@
                   </ion-label>
                 </ng-container>
                 <ion-icon
-                  name="chatbubbles"
+                  name="chevron-forward"
                   slot="end"
                   color="primary"
+                  class="details-closed"
+                ></ion-icon>
+                <ion-icon
+                  name="chevron-down"
+                  slot="end"
+                  color="primary"
+                  class="details-open"
                 ></ion-icon>
               </ion-item>
             </summary>
