@@ -2,6 +2,6 @@ textarea {
   border: 1px solid var(--ion-color-medium);
   color: var(--ion-color-light-contrast);
   width: 100%;
-  resize: none;
+  resize: vertical;
   min-height: 80px;
 }
