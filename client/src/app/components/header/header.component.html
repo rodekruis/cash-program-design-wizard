@@ -27,7 +27,15 @@
       size="small"
     >
       <ion-icon
-        [name]="darkModeEnabled() ? 'sunny' : 'moon'"
+        *ngIf="darkModeEnabled()"
+        name="sunny"
+        slot="icon-only"
+        size="small"
+        aria-hidden="true"
+      ></ion-icon>
+      <ion-icon
+        *ngIf="!darkModeEnabled()"
+        name="moon"
         slot="icon-only"
         size="small"
         aria-hidden="true"
