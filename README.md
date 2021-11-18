@@ -76,19 +76,23 @@ Automated tests are configured and can be run with:
 All initial database-contents are hard-coded in the [`server/src/seed-data`](./server/src/seed-data/)-folder.
 
 - ### Program - [`program-demo.json`](./server/src/seed-data/program-demo.json)
-  | attribute | type | explanation |
-  | --- | --- | --- |
-  | `name` | string | identifier of the program |
-<br>
+
+  | attribute | type   | explanation               |
+  | --------- | ------ | ------------------------- |
+  | `name`    | string | identifier of the program |
+
+  <br>
 
 - ### Section - [`sections.json`](./server/src/seed-data/sections.json)
-  | attribute | type | explanation |
-  | --- | --- | --- |
+
+  | attribute       | type   | explanation                                |
+  | --------------- | ------ | ------------------------------------------ |
   | `name`          | string | identifier of the section (must be unique) |
-  | `label`         | object | what users see in the platform |
-  | `orderPriority` | number | |
+  | `label`         | object | what users see in the platform             |
+  | `orderPriority` | number |                                            |
 
   Example:
+
   ```JSON
   {
     "name": "pa-info",
@@ -96,16 +100,19 @@ All initial database-contents are hard-coded in the [`server/src/seed-data`](./s
     "orderPriority": 1
   }
   ```
-<br>
+
+  <br>
 
 - ### Subsection - [`subsections.json`](./server/src/seed-data/subsections.json)
-  | attribute | type | explanation |
-  | --- | --- | --- |
-  | `name` | string |	identifier of the subsection (must be unique) |
-  | `orderPriority` | number | |
-  | `section` | string |	must match a `name` of a `section` |
+
+  | attribute       | type   | explanation                                   |
+  | --------------- | ------ | --------------------------------------------- |
+  | `name`          | string | identifier of the subsection (must be unique) |
+  | `orderPriority` | number |                                               |
+  | `section`       | string | must match a `name` of a `section`            |
 
   Example:
+
   ```JSON
   {
     "name": "pa-gender",
@@ -113,27 +120,30 @@ All initial database-contents are hard-coded in the [`server/src/seed-data`](./s
     "section": "pa-info"
   },
   ```
-<br>
+
+  <br>
 
 - ### Question - [`questions.json`](./server/src/seed-data/questions.json)
-  | attribute | type | explanation |
-  | --- | --- | --- |
-  | `name` | string | identifier of the question (must be unique, used in the narrative report)
-  | `type` | string | possible values: `select-1`, `select-n`, `text`, `text-long`, `numeric`
-  | `label` | object | what users see in the platform
-  | `orderPriority` | number | 
-  | `subsection` | string | must match a `name` of a `subsection`
-  | `tags` | [string] | array of strings. possible values: `cash`, `people`, `data`. write it as: "cash", "data"
-  | `optionChoices` | [optionChoice] | array of optionChoice objects, **used only for types `select-1` and `select-n`**
+
+  | attribute       | type           | explanation                                                                              |
+  | --------------- | -------------- | ---------------------------------------------------------------------------------------- |
+  | `name`          | string         | identifier of the question (must be unique, used in the narrative report)                |
+  | `type`          | string         | possible values: `select-1`, `select-n`, `text`, `text-long`, `numeric`                  |
+  | `label`         | object         | what users see in the platform                                                           |
+  | `orderPriority` | number         |
+  | `subsection`    | string         | must match a `name` of a `subsection`                                                    |
+  | `tags`          | [string]       | array of strings. possible values: `cash`, `people`, `data`. write it as: "cash", "data" |
+  | `optionChoices` | [optionChoice] | array of optionChoice objects, **used only for types `select-1` and `select-n`**         |
 
   - #### optionChoice (part of the `optionChoices` array attribute inside questions with types `select-1` and `select-2` )
-    | attribute | type | explanation |
-    | --- | --- | --- |
-    | `label` | object | what users see in the platform |
-    | `name` | string | identifier of the option |
-    | `orderPriority` | number |  |
+    | attribute       | type   | explanation                    |
+    | --------------- | ------ | ------------------------------ |
+    | `label`         | object | what users see in the platform |
+    | `name`          | string | identifier of the option       |
+    | `orderPriority` | number |                                |
 
   Example:
+
   ```JSON
   {
     "name": "pa-gender-01",
@@ -174,12 +184,14 @@ All initial database-contents are hard-coded in the [`server/src/seed-data`](./s
     ]
   }
   ```
-<br>
 
-- ### Narrative Report - [narrativeReportTemplate-demo-en.ts](./server/src/seed-data/narrativeReportTemplate-demo-en.ts) 
+  <br>
+
+- ### Narrative Report - [narrativeReportTemplate-demo-en.ts](./server/src/seed-data/narrativeReportTemplate-demo-en.ts)
 <br>
 
 So the hierarchy is:
+
 - `program`
   - `section` (1 or more)
     - `subsection` (1 or more)
