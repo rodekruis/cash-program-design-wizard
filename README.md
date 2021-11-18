@@ -75,26 +75,117 @@ Automated tests are configured and can be run with:
 
 All initial database-contents are hard-coded in the [`server/src/seed-data`](./server/src/seed-data/)-folder.
 
-- [`program-demo.json`](./server/src/seed-data/program-demo.json)
-  - `name`-attribute must be unique
-  - `narrativeReportTemplate` is required and is defined in [a separate file](./server/src/seed-data/narrativeReportTemplate-demo-en.ts)
-- [`sections.json`](./server/src/seed-data/sections.json)
-  - `name`-attribute must be unique
-- [`subsections.json`](./server/src/seed-data/subsections.json)
+- ### Program - [`program-demo.json`](./server/src/seed-data/program-demo.json)
+  | attribute | type | explanation |
+  | --- | --- | --- |
+  | `name` | string | identifier of the program |
+<br>
 
-  - `name`-attribute must be unique
-  - `section`-attribute must match a `name` of a `section` from `sections.json`
+- ### Section - [`sections.json`](./server/src/seed-data/sections.json)
+  | attribute | type | explanation |
+  | --- | --- | --- |
+  | `name`          | string | identifier of the section (must be unique) |
+  | `label`         | object | what users see in the platform |
+  | `orderPriority` | number | |
 
-- [`questions.json`](./server/src/seed-data/questions.json)
-  - `name`-attribute must be unique
-  - `subsection`-attribute must match a `name` of a `subsection` from `subsections.json`
+  Example:
+  ```JSON
+  {
+    "name": "pa-info",
+    "label": { "en": "The people we will help are mostly" },
+    "orderPriority": 1
+  }
+  ```
+<br>
+
+- ### Subsection - [`subsections.json`](./server/src/seed-data/subsections.json)
+  | attribute | type | explanation |
+  | --- | --- | --- |
+  | `name` | string |	identifier of the subsection (must be unique) |
+  | `orderPriority` | number | |
+  | `section` | string |	must match a `name` of a `section` |
+
+  Example:
+  ```JSON
+  {
+    "name": "pa-gender",
+    "orderPriority": 1,
+    "section": "pa-info"
+  },
+  ```
+<br>
+
+- ### Question - [`questions.json`](./server/src/seed-data/questions.json)
+  | attribute | type | explanation |
+  | --- | --- | --- |
+  | `name` | string | identifier of the question (must be unique, used in the narrative report)
+  | `type` | string | possible values: `select-1`, `select-n`, `text`, `text-long`, `numeric`
+  | `label` | object | what users see in the platform
+  | `orderPriority` | number | 
+  | `subsection` | string | must match a `name` of a `subsection`
+  | `tags` | [string] | array of strings. possible values: `cash`, `people`, `data`. write it as: "cash", "data"
+  | `optionChoices` | [optionChoice] | array of optionChoice objects, **used only for types `select-1` and `select-n`**
+
+  - #### optionChoice (part of the `optionChoices` array attribute inside questions with types `select-1` and `select-2` )
+    | attribute | type | explanation |
+    | --- | --- | --- |
+    | `label` | object | what users see in the platform |
+    | `name` | string | identifier of the option |
+    | `orderPriority` | number |  |
+
+  Example:
+  ```JSON
+  {
+    "name": "pa-gender-01",
+    "type": "select-n",
+    "label": { "en": "PA Gender" },
+    "orderPriority": 1,
+    "subsection": "pa-gender",
+    "tags": ["people"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Currently Unknown"
+        },
+        "name": "unknown",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "Female"
+        },
+        "name": "female",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Male"
+        },
+        "name": "male",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "Non Binary"
+        },
+        "name": "non-binary",
+        "orderPriority": 4
+      }
+    ]
+  }
+  ```
+<br>
+
+- ### Narrative Report - [narrativeReportTemplate-demo-en.ts](./server/src/seed-data/narrativeReportTemplate-demo-en.ts) 
+<br>
 
 So the hierarchy is:
-
 - `program`
   - `section` (1 or more)
     - `subsection` (1 or more)
       - `question` (1 or more)
+
+<br>
 
 When these files are changed, a 'reset' of the database is required. This can be done via the endpoint: <http://localhost:3001/scripts/reset>
 
