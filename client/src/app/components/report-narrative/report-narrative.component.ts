@@ -54,8 +54,17 @@ export class ReportNarrativeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.prepareTranslations();
-
+    // All these operations will not run/finish in order, so each tries to render the template
+    this.translate
+      .get('report-narrative.missing-explanation')
+      .subscribe((label) => {
+        this.missingExplanation = label;
+        this.renderTemplate();
+      });
+    this.translate.get('report-narrative.answer-prefix').subscribe((label) => {
+      this.answerPrefix = label;
+      this.renderTemplate();
+    });
     this.state.programMetaData$.subscribe((program) => {
       this.reportTemplate = program.narrativeReportTemplate;
       this.renderTemplate();
@@ -102,11 +111,17 @@ export class ReportNarrativeComponent implements OnInit {
   }
 
   private renderTemplate() {
-    if (!this.reportTemplate || !this.answers) {
+    // Only continue if everything is available
+    if (
+      !this.reportTemplate ||
+      !this.answers ||
+      !this.missingExplanation ||
+      !this.answerPrefix
+    ) {
       return;
     }
 
-    this.rawReport = this.parseTemplate(this.reportTemplate, this.answers);
+    this.rawReport = this.parseTemplate(this.reportTemplate);
     const markedReport = this.markdownService.compile(this.rawReport);
     this.report = this.domSanitizer.sanitize(
       SecurityContext.HTML,
@@ -114,16 +129,7 @@ export class ReportNarrativeComponent implements OnInit {
     );
   }
 
-  private prepareTranslations() {
-    this.missingExplanation = this.translate.instant(
-      'report-narrative.missing-explanation',
-    );
-    this.answerPrefix = this.translate.instant(
-      'report-narrative.answer-prefix',
-    );
-  }
-
-  private parseTemplate(template: string, answers: AnswerSet[]) {
+  private parseTemplate(template: string) {
     return template.replace(/{{([^{]+)}}/gi, (_token, variable) => {
       const answer = this.getAnswerByName(variable);
 
@@ -131,11 +137,21 @@ export class ReportNarrativeComponent implements OnInit {
         return `<em class="variable variable--empty" title="${this.missingExplanation}"> <code>${variable}</code> </em>`;
       }
 
+      if (typeof answer === 'object') {
+        const listOptions = answer.map(
+          (option) =>
+            `<li><strong class="variable variable--filled">${option}</strong></li>`,
+        );
+        return `<ul title="${this.answerPrefix} ${variable}">
+          ${listOptions.join('')}
+        </ul>`;
+      }
+
       return `<strong class="variable variable--filled" title="${this.answerPrefix} ${variable}">${answer}</strong>`;
     });
   }
 
-  private getAnswerByName(name: string): string {
+  private getAnswerByName(name: string): string | string[] {
     const answer = this.answers.find((a) => a.name === name);
     if (!answer) {
       return '';
@@ -148,7 +164,7 @@ export class ReportNarrativeComponent implements OnInit {
       const answerOptions = answer.answer.map((answerOption) =>
         getOptionChoiceAnswer(answer.question, answerOption),
       );
-      return answerOptions.join(', ');
+      return answerOptions;
     }
 
     if (answer.question.type === QuestionType.select1) {
