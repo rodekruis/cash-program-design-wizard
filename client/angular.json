@@ -27,7 +27,7 @@
                 "output": "assets"
               },
               {
-                "glob": "**/{arrow-back-sharp,caret-back-sharp,chevron-back,chevron-forward,clipboard,cloud-offline,cloud,enter,home-sharp,log-in,log-out,menu,resize,warning}.svg",
+                "glob": "**/{arrow-back-sharp,caret-back-sharp,chevron-back,chevron-forward,clipboard,cloud-offline,cloud,enter,home-sharp,log-in,log-out,menu,moon,resize,sunny,warning}.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "svg"
               },
