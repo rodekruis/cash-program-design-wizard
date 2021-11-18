@@ -43,7 +43,8 @@
     "missing-explanation": "Nothing filled in.",
     "answer-prefix": "Answer to question:",
     "copy-to-clipboard": "Copy text to clipboard",
-    "print": "Print"
+    "print": "Print",
+    "last-updated": "Last updated:"
   },
   "report-section": {
     "go-to-input": "Go to section"

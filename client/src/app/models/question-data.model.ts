@@ -21,6 +21,7 @@ export interface QuestionData {
   label: string | TranslatableString;
   tags?: string[] | Tag[];
   answer?: string;
+  answerUpdated?: string | Date;
   optionChoices?: OptionChoice[];
   comments?: QuestionComment[];
 }

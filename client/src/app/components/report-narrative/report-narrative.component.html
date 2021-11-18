@@ -28,6 +28,10 @@
     </ion-button>
   </div>
 
+  <div>
+    {{ 'report-narrative.last-updated' | translate }}
+    {{ lastUpdate | date: 'yyyy-MM-dd HH:mm' }}
+  </div>
   <div
     #reportOutput
     ngPreserveWhitespaces

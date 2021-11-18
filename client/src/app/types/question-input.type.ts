@@ -16,6 +16,7 @@ export interface QuestionInput {
   tags: Tag[];
   optionChoices?: OptionChoice[];
   answer?: string | string[];
+  answerUpdated?: string | Date;
   storedAnswer?: string | string[];
   comments?: QuestionComment[];
 }

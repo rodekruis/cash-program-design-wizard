@@ -24,6 +24,7 @@ import {
 type AnswerSet = {
   name: string;
   answer: string | string[];
+  answerUpdated: string | Date;
   question: QuestionInput;
 };
 
@@ -39,6 +40,8 @@ export class ReportNarrativeComponent implements OnInit {
 
   public rawReport: string;
   public report: string;
+
+  public lastUpdate: string | Date;
 
   private reportTemplate: string;
   private answers: AnswerSet[];
@@ -70,7 +73,11 @@ export class ReportNarrativeComponent implements OnInit {
       this.renderTemplate();
     });
     this.state.sections$.subscribe((sections) => {
+      if (!sections.length) {
+        return;
+      }
       this.answers = this.createAnswersSet(sections);
+      this.lastUpdate = this.findLatestAnswer();
       this.renderTemplate();
     });
   }
@@ -105,6 +112,7 @@ export class ReportNarrativeComponent implements OnInit {
       .map((question) => ({
         name: question.name,
         answer: question.answer,
+        answerUpdated: question.answerUpdated,
         question,
       }));
     return answers;
@@ -172,5 +180,15 @@ export class ReportNarrativeComponent implements OnInit {
     }
 
     return answer.answer.toString();
+  }
+
+  private findLatestAnswer() {
+    if (!this.answers.length) {
+      return '';
+    }
+    // Sort latest first
+    this.answers.sort((a, b) => (a.answerUpdated > b.answerUpdated ? -1 : 1));
+
+    return this.answers[0].answerUpdated;
   }
 }
