@@ -27,10 +27,14 @@
               >
               <strong>{{ question.label }}</strong>
             </div>
-            <ion-item>
+            <ion-item [ngClass]="{ 'is-readonly': !canEdit }">
               <ng-container [ngSwitch]="question.type">
                 <ng-container *ngSwitchCase="questionTypes.select1">
+                  <div *ngIf="!canEdit && question.answer">
+                    {{ getOptionChoiceAnswer(question, question.answer) }}
+                  </div>
                   <ion-select
+                    *ngIf="canEdit"
                     [placeholder]="
                       'question-section.fields.select-1.placeholder' | translate
                     "
@@ -49,7 +53,20 @@
                   </ion-select>
                 </ng-container>
                 <ng-container *ngSwitchCase="questionTypes.selectN">
+                  <div *ngIf="!canEdit && question.answer">
+                    <ng-container
+                      *ngFor="
+                        let answerOption of question.answer;
+                        let index = index
+                      "
+                    >
+                      <span *ngIf="index > 0">,</span>
+                      {{ getOptionChoiceAnswer(question, answerOption) }}
+                    </ng-container>
+                  </div>
+
                   <ion-select
+                    *ngIf="canEdit"
                     [placeholder]="
                       'question-section.fields.select-n.placeholder' | translate
                     "
@@ -76,6 +93,7 @@
                     [(ngModel)]="question.answer"
                     (ionChange)="onChangeAnswer(question)"
                     [debounce]="600"
+                    [readonly]="!canEdit"
                   ></ion-input>
                 </ng-container>
                 <ng-container *ngSwitchCase="questionTypes.textLong">
@@ -89,6 +107,7 @@
                     [(ngModel)]="question.answer"
                     (ionChange)="onChangeAnswer(question)"
                     [debounce]="600"
+                    [readonly]="!canEdit"
                   ></ion-textarea>
                 </ng-container>
                 <ng-container *ngSwitchDefault>
@@ -101,6 +120,7 @@
                     [(ngModel)]="question.answer"
                     (ionChange)="onChangeAnswer(question)"
                     [debounce]="600"
+                    [readonly]="!canEdit"
                   ></ion-input>
                 </ng-container>
               </ng-container>

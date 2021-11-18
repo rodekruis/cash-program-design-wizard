@@ -4,10 +4,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { mockProgram } from '../mocks/program.mock';
 import { Tag } from '../models/tag.enum';
-import { ViewMode } from '../models/view-mode.enum';
-import { Program } from '../types/program.type';
+import { Program, ProgramMetaData } from '../types/program.type';
 import { QuestionSection } from '../types/question-section.type';
-import { TranslatableString } from '../types/translatable-string.type';
+import { AuthService } from './auth.service';
 import { ProgramDataService } from './program-data.service';
 import { TranslatableStringService } from './translatable-string.service';
 
@@ -16,9 +15,6 @@ import { TranslatableStringService } from './translatable-string.service';
 })
 export class StateService {
   public programId: string;
-  public programName: string | TranslatableString;
-
-  public narrativeReportTemplate: string;
 
   public filters: {
     tag: Tag;
@@ -26,7 +22,7 @@ export class StateService {
     tag: Tag.all,
   };
 
-  public viewMode: ViewMode = ViewMode.view;
+  public programMetaData$: Observable<ProgramMetaData>;
 
   public activeSection: QuestionSection;
 
@@ -35,16 +31,33 @@ export class StateService {
   private sectionsStore = new BehaviorSubject<QuestionSection[]>([]);
   private sections: QuestionSection[] = [];
 
+  private programMetaData: ProgramMetaData = {
+    id: null,
+    name: '',
+  };
+  private programMetaDataStore = new BehaviorSubject<ProgramMetaData>(
+    this.programMetaData,
+  );
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private translatableString: TranslatableStringService,
     private programDataService: ProgramDataService,
+    private authService: AuthService,
   ) {
     this.sections$ = this.sectionsStore.asObservable();
+    this.programMetaData$ = this.programMetaDataStore.asObservable();
 
     this.updateProgramId();
     this.updateFilters();
+
+    this.authService.authenticationState$.subscribe((user) => {
+      // Reset state when user is logged out
+      if (!user) {
+        this.clearState();
+      }
+    });
   }
 
   public setActiveSection(section: QuestionSection, updateUrl = true) {
@@ -86,6 +99,7 @@ export class StateService {
         this.programId !== event.snapshot.params.id
       ) {
         this.programId = event.snapshot.params.id;
+        this.setProgramMetaData('id', event.snapshot.params.id);
 
         // Trigger the retrieval of the Program-data here, for lack of a better mechanism. :/
         await this.updateSections();
@@ -115,8 +129,11 @@ export class StateService {
     }
 
     // Update Program meta-data
-    this.programName = this.translatableString.get(program.name);
-    this.narrativeReportTemplate = program.narrativeReportTemplate;
+    this.setProgramMetaData('name', this.translatableString.get(program.name));
+    this.setProgramMetaData(
+      'narrativeReportTemplate',
+      program.narrativeReportTemplate,
+    );
 
     // Update all sections
     const sections = program.sections.map((section) =>
@@ -170,5 +187,21 @@ export class StateService {
       return subsection;
     });
     return section;
+  }
+
+  private setProgramMetaData(property: keyof ProgramMetaData, value: any) {
+    this.programMetaData[property] = value;
+    this.programMetaDataStore.next(this.programMetaData);
+  }
+
+  private clearState() {
+    this.filters = { tag: Tag.all };
+    this.activeSection = null;
+    this.sections = [];
+    this.sectionsStore.next(this.sections);
+    this.programMetaDataStore.next({
+      id: null,
+      name: '',
+    });
   }
 }

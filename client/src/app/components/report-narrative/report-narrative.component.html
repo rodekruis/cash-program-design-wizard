@@ -1,3 +1,16 @@
+<div *ngIf="!report" style="line-height: 1.3em !important">
+  <br />
+  <ion-skeleton-text style="line-height: 1; width: 60%"></ion-skeleton-text>
+  <br />
+  <ion-skeleton-text style="line-height: 1; width: 88%"></ion-skeleton-text>
+  <ion-skeleton-text style="line-height: 1; width: 70%"></ion-skeleton-text>
+  <ion-skeleton-text style="line-height: 1; width: 60%"></ion-skeleton-text>
+  <br />
+  <ion-skeleton-text style="line-height: 1; width: 70%"></ion-skeleton-text>
+  <ion-skeleton-text style="line-height: 1; width: 60%"></ion-skeleton-text>
+  <br />
+</div>
+
 <div
   #reportOutput
   [innerHTML]="report"
@@ -12,7 +25,13 @@
   class="ion-margin-vertical"
 />
 
-<ion-button fill="outline" color="secondary" (click)="copy2Clipboard()">
+<ion-button
+  *ngIf="report"
+  type="button"
+  fill="outline"
+  color="secondary"
+  (click)="copy2Clipboard()"
+>
   <ion-icon name="clipboard" aria-hidden="true" slot="start"></ion-icon>
   {{ 'report-narrative.copy-to-clipboard' | translate }}
 </ion-button>

@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from '../components/header/header.component';
 import { CommentInputComponent } from './comment-input/comment-input.component';
 import { CommentsListComponent } from './comments-list/comments-list.component';
+import { ConnectionStatusComponent } from './connection-status/connection-status.component';
 import { FiltersComponent } from './filters/filters.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NavProgressComponent } from './nav-progress/nav-progress.component';
@@ -26,6 +27,7 @@ import { UserStateComponent } from './user-state/user-state.component';
     TranslateModule,
   ],
   declarations: [
+    ConnectionStatusComponent,
     FiltersComponent,
     HeaderComponent,
     LoginFormComponent,
@@ -41,6 +43,7 @@ import { UserStateComponent } from './user-state/user-state.component';
   ],
   exports: [
     CommonModule,
+    ConnectionStatusComponent,
     FiltersComponent,
     FormsModule,
     HeaderComponent,

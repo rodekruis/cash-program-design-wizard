@@ -6,6 +6,7 @@ export enum UserRole {
 
 export interface User {
   token?: string;
+  id: string;
   userName: string;
   roles: UserRole[];
 }

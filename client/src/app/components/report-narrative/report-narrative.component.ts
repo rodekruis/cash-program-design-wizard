@@ -36,6 +36,7 @@ export class ReportNarrativeComponent implements OnInit {
 
   public report: string;
 
+  private reportTemplate: string;
   private answers: AnswerSet[];
 
   constructor(
@@ -44,17 +45,13 @@ export class ReportNarrativeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.state.programMetaData$.subscribe((program) => {
+      this.reportTemplate = program.narrativeReportTemplate;
+      this.renderTemplate();
+    });
     this.state.sections$.subscribe((sections) => {
       this.answers = this.createAnswersSet(sections);
-
-      if (!this.state.narrativeReportTemplate || !this.answers) {
-        return;
-      }
-
-      this.report = this.parseTemplate(
-        this.state.narrativeReportTemplate,
-        this.answers,
-      );
+      this.renderTemplate();
     });
   }
 
@@ -81,6 +78,14 @@ export class ReportNarrativeComponent implements OnInit {
         question,
       }));
     return answers;
+  }
+
+  private renderTemplate() {
+    if (!this.reportTemplate || !this.answers) {
+      return;
+    }
+
+    this.report = this.parseTemplate(this.reportTemplate, this.answers);
   }
 
   private parseTemplate(template: string, answers: AnswerSet[]) {

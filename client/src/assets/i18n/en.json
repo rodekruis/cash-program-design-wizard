@@ -34,7 +34,7 @@
     "comments": "Comment(s):"
   },
   "report": {
-    "page-title": "Report for program: {{id}}",
+    "page-title": "Report for program: {{name}}",
     "not-found": "No report found.",
     "title": "Narrative Report",
     "appendix": "Appendix"
@@ -86,5 +86,19 @@
   "comment-input": {
     "add-comment": "Add comment",
     "submit": "Submit"
+  },
+  "connection-status": {
+    "online": {
+      "label": "Online",
+      "label-long": "You are currently online"
+    },
+    "offline": {
+      "label": "Offline",
+      "label-long": "You are currently offline"
+    },
+    "go": {
+      "online": "Go online and sync",
+      "offline": "Prepare for offline"
+    }
   }
 }

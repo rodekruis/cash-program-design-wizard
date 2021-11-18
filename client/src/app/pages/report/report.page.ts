@@ -10,6 +10,7 @@ import { QuestionSection } from 'src/app/types/question-section.type';
 })
 export class ReportPage implements OnInit {
   public id: string;
+  public name: string;
 
   public sections: QuestionSection[];
 
@@ -18,6 +19,9 @@ export class ReportPage implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
 
+    this.state.programMetaData$.subscribe((program) => {
+      this.name = program.name as string;
+    });
     this.state.sections$.subscribe((sections) => (this.sections = sections));
   }
 }
