@@ -57,7 +57,7 @@ console.log('Checking icons in use...');
 fromDir('www', /\.(js|css|html)$/, checkIfUsed);
 
 const iconsUsed = iconList.filter((icon) => icon.used === true);
-console.log(`\nFound ${iconsUsed.length} icons in use.`);
+console.log(`\nFound ${iconsUsed.length} icons in use.\n`);
 
 const iconFileNames = iconsUsed.map((icon) => icon.iconName);
 const globLine = `"glob": "**/{${iconFileNames.join(',')}}.svg",`;
@@ -68,9 +68,10 @@ if (angularJson.includes(globLine)) {
   console.log('Icon-list in angular.json is up-to-date.\n');
   return process.exit(0);
 } else {
-  console.log(`Update angular.json to the following lines:`);
-  console.log('In the location: projects/app/architect/build/options/assets');
-  console.log(`
+  console.error(`Icon-list is out-of-date!\n`);
+  console.error(`Update angular.json to the following lines:`);
+  console.error('In the location: projects/app/architect/build/options/assets');
+  console.error(`
               {
                 ${globLine}
                 "input": "node_modules/ionicons/dist/ionicons/svg",
