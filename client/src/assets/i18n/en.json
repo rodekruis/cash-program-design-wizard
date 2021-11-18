@@ -42,7 +42,8 @@
   "report-narrative": {
     "missing-explanation": "Nothing filled in.",
     "answer-prefix": "Answer to question:",
-    "copy-to-clipboard": "Copy text to clipboard"
+    "copy-to-clipboard": "Copy text to clipboard",
+    "print": "Print"
   },
   "report-section": {
     "go-to-input": "Go to section"

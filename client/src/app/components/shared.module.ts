@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { MarkdownModule } from 'ngx-markdown';
 import { HeaderComponent } from '../components/header/header.component';
 import { CommentInputComponent } from './comment-input/comment-input.component';
 import { CommentsListComponent } from './comments-list/comments-list.component';
@@ -23,10 +24,13 @@ import { UserStateComponent } from './user-state/user-state.component';
     CommonModule,
     FormsModule,
     IonicModule,
+    MarkdownModule,
     RouterModule,
     TranslateModule,
   ],
   declarations: [
+    CommentInputComponent,
+    CommentsListComponent,
     ConnectionStatusComponent,
     FiltersComponent,
     HeaderComponent,
@@ -38,10 +42,10 @@ import { UserStateComponent } from './user-state/user-state.component';
     ReportSectionComponent,
     SidebarComponent,
     UserStateComponent,
-    CommentInputComponent,
-    CommentsListComponent,
   ],
   exports: [
+    CommentInputComponent,
+    CommentsListComponent,
     CommonModule,
     ConnectionStatusComponent,
     FiltersComponent,
@@ -49,6 +53,7 @@ import { UserStateComponent } from './user-state/user-state.component';
     HeaderComponent,
     IonicModule,
     LoginFormComponent,
+    MarkdownModule,
     NavProgressComponent,
     ProgramPhaseComponent,
     QuestionSectionComponent,
@@ -58,8 +63,6 @@ import { UserStateComponent } from './user-state/user-state.component';
     SidebarComponent,
     TranslateModule,
     UserStateComponent,
-    CommentInputComponent,
-    CommentsListComponent,
   ],
 })
 export class SharedModule {}

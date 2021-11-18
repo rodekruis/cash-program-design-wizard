@@ -10,30 +10,28 @@
   <ion-skeleton-text style="line-height: 1; width: 60%"></ion-skeleton-text>
   <br />
 </div>
+<div *ngIf="report">
+  <div style="display: flex; justify-content: end" class="no-print">
+    <ion-button
+      type="button"
+      fill="outline"
+      color="primary"
+      (click)="copy2Clipboard(rawReport)"
+    >
+      <ion-icon name="clipboard" aria-hidden="true" slot="start"></ion-icon>
+      {{ 'report-narrative.copy-to-clipboard' | translate }}
+    </ion-button>
 
-<div
-  #reportOutput
-  [innerHTML]="report"
-  style="white-space: pre-wrap"
-  class="ion-margin-vertical"
-></div>
+    <ion-button type="button" (click)="print()">
+      <ion-icon name="print" aria-hidden="true" slot="start"></ion-icon>
+      {{ 'report-narrative.print' | translate }}
+    </ion-button>
+  </div>
 
-<br />
-
-<hr
-  style="border-top: 1px solid var(--ion-color-medium)-tint"
-  class="ion-margin-vertical"
-/>
-
-<ion-button
-  *ngIf="report"
-  type="button"
-  fill="outline"
-  color="secondary"
-  (click)="copy2Clipboard()"
->
-  <ion-icon name="clipboard" aria-hidden="true" slot="start"></ion-icon>
-  {{ 'report-narrative.copy-to-clipboard' | translate }}
-</ion-button>
-
-<br />
+  <div
+    #reportOutput
+    ngPreserveWhitespaces
+    [innerHTML]="report"
+    class="ion-margin-vertical"
+  ></div>
+</div>

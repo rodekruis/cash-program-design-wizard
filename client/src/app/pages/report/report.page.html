@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="no-print">
   <app-header>
     <ion-title>
       {{ 'report.page-title' | translate: { name: name } }}
@@ -8,7 +8,7 @@
 
 <ion-content>
   <div class="frame">
-    <div class="frame--sidebar">
+    <div class="frame--sidebar no-print">
       <app-sidebar></app-sidebar>
     </div>
     <div class="frame--contents">
@@ -22,12 +22,12 @@
       </ion-card>
 
       <ng-container *ngIf="id">
-        <div class="ion-margin">
+        <div class="ion-margin no-print">
           <app-program-phase [programId]="id"></app-program-phase>
         </div>
 
         <div class="ion-padding">
-          <h2>{{ 'report.title' | translate }}</h2>
+          <h2>{{ 'report.title' | translate }}: {{ name }}</h2>
 
           <app-report-narrative></app-report-narrative>
 
@@ -36,7 +36,9 @@
           <hr style="border-top: 1px dashed var(--ion-color-medium)" />
 
           <section *ngIf="sections.length">
-            <h2>{{ 'report.appendix' | translate }}</h2>
+            <h2 class="only-print--page-break-before">
+              {{ 'report.appendix' | translate }}
+            </h2>
 
             <ng-container
               *ngFor="let section of sections"
@@ -45,9 +47,6 @@
               <app-report-section [section]="section"></app-report-section>
             </ng-container>
           </section>
-        </div>
-        <div class="debug--placeholder">
-          <pre class="ion-text-end">Actions: [ Print ]</pre>
         </div>
       </ng-container>
       <!--

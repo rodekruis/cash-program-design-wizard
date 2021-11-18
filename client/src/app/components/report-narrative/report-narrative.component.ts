@@ -2,11 +2,14 @@ import {
   Component,
   ElementRef,
   OnInit,
+  SecurityContext,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Clipboard } from '@capacitor/clipboard';
 import { TranslateService } from '@ngx-translate/core';
+import { MarkdownService } from 'ngx-markdown';
 import {
   flatten,
   getOptionChoiceAnswer,
@@ -28,23 +31,31 @@ type AnswerSet = {
   selector: 'app-report-narrative',
   templateUrl: './report-narrative.component.html',
   styleUrls: ['./report-narrative.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ReportNarrativeComponent implements OnInit {
   @ViewChild('reportOutput')
   public reportOutput: ElementRef;
 
+  public rawReport: string;
   public report: string;
 
   private reportTemplate: string;
   private answers: AnswerSet[];
 
+  private missingExplanation: string;
+  private answerPrefix: string;
+
   constructor(
     private state: StateService,
     private translate: TranslateService,
+    private markdownService: MarkdownService,
+    private domSanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
+    this.prepareTranslations();
+
     this.state.programMetaData$.subscribe((program) => {
       this.reportTemplate = program.narrativeReportTemplate;
       this.renderTemplate();
@@ -55,12 +66,22 @@ export class ReportNarrativeComponent implements OnInit {
     });
   }
 
-  public async copy2Clipboard() {
-    const reportText = this.reportOutput.nativeElement.innerText;
+  public print() {
+    window.print();
+  }
+
+  public async copy2Clipboard(source: string) {
+    const reportText = this.stripHtml(source);
     await Clipboard.write({
       // eslint-disable-next-line id-blacklist
       string: reportText,
     });
+  }
+
+  private stripHtml(source: string): string {
+    const output = document.createElement('output');
+    output.innerHTML = source;
+    return output.innerText || '';
   }
 
   private createAnswersSet(sections: QuestionSection[]): AnswerSet[] {
@@ -85,24 +106,32 @@ export class ReportNarrativeComponent implements OnInit {
       return;
     }
 
-    this.report = this.parseTemplate(this.reportTemplate, this.answers);
+    this.rawReport = this.parseTemplate(this.reportTemplate, this.answers);
+    const markedReport = this.markdownService.compile(this.rawReport);
+    this.report = this.domSanitizer.sanitize(
+      SecurityContext.HTML,
+      markedReport,
+    );
+  }
+
+  private prepareTranslations() {
+    this.missingExplanation = this.translate.instant(
+      'report-narrative.missing-explanation',
+    );
+    this.answerPrefix = this.translate.instant(
+      'report-narrative.answer-prefix',
+    );
   }
 
   private parseTemplate(template: string, answers: AnswerSet[]) {
-    const missingExplanation = this.translate.instant(
-      'report-narrative.missing-explanation',
-    );
-    const answerPrefix = this.translate.instant(
-      'report-narrative.answer-prefix',
-    );
     return template.replace(/{{([^{]+)}}/gi, (_token, variable) => {
       const answer = this.getAnswerByName(variable);
 
       if (!answer) {
-        return `<em class="variable variable--empty" title="${missingExplanation}"> <code>${variable}</code> </em>`;
+        return `<em class="variable variable--empty" title="${this.missingExplanation}"> <code>${variable}</code> </em>`;
       }
 
-      return `<strong class="variable variable--filled" title="${answerPrefix} ${variable}">${answer}</strong>`;
+      return `<strong class="variable variable--filled" title="${this.answerPrefix} ${variable}">${answer}</strong>`;
     });
   }
 
