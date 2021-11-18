@@ -141,11 +141,11 @@ export class ReportNarrativeComponent implements OnInit {
     return template.replace(/{{([^{]+)}}/gi, (_token, variable) => {
       const answer = this.getAnswerByName(variable);
 
-      if (!answer) {
+      if (!answer || !answer.length) {
         return `<em class="variable variable--empty" title="${this.missingExplanation}"> <code>${variable}</code> </em>`;
       }
 
-      if (typeof answer === 'object') {
+      if (Array.isArray(answer)) {
         const listOptions = answer.map(
           (option) =>
             `<li><strong class="variable variable--filled">${option}</strong></li>`,
@@ -167,7 +167,7 @@ export class ReportNarrativeComponent implements OnInit {
 
     if (
       answer.question.type === QuestionType.selectN &&
-      typeof answer.answer === 'object'
+      Array.isArray(answer.answer)
     ) {
       const answerOptions = answer.answer.map((answerOption) =>
         getOptionChoiceAnswer(answer.question, answerOption),
