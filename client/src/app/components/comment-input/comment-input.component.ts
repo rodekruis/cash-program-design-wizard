@@ -22,10 +22,6 @@ export class CommentInputComponent implements OnInit {
 
   ngOnInit() {}
 
-  public onType(event) {
-    this.comment = event.detail.value.trim();
-  }
-
   public onSubmit() {
     this.programData.saveComment(
       this.state.programId,
