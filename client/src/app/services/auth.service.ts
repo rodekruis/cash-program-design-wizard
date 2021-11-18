@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User, UserRole } from '../models/user.model';
 import { ApiPath, ApiService } from './api.service';
 import { JwtService } from './jwt.service';
@@ -33,6 +34,11 @@ export class AuthService {
 
     if (!user || !user.roles) {
       return false;
+    }
+
+    if (environment.debug && programId === '123') {
+      console.warn('Using mock-user role, based on username!');
+      return requiredRoles.some((role) => user.userName.startsWith(role));
     }
 
     return requiredRoles.some(
