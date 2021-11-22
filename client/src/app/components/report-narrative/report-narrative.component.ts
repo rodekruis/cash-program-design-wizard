@@ -37,7 +37,7 @@ type AnswerSet = {
   encapsulation: ViewEncapsulation.None,
 })
 export class ReportNarrativeComponent implements OnInit, OnDestroy {
-  @ViewChild('reportOutput')
+  @ViewChild('reportOutput', { static: true })
   public reportOutput: ElementRef;
 
   public rawReport: string;
