@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { MarkdownModule } from 'ngx-markdown';
 import { of } from 'rxjs';
 import { SharedModule } from 'src/app/components/shared.module';
 import { Tag } from 'src/app/models/tag.enum';
@@ -25,6 +26,7 @@ describe('ReportPage', () => {
         imports: [
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
+          MarkdownModule.forRoot(),
           RouterTestingModule,
           HttpClientTestingModule,
           SharedModule,

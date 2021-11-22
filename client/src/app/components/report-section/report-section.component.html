@@ -3,6 +3,7 @@
     [routerLink]="['/', 'program', this.programId, 'overview']"
     [queryParams]="{ section: section?.name }"
     [title]="'report-section.go-to-input' | translate"
+    class="no-print"
     style="text-decoration: none"
     >#</a
   >
@@ -10,12 +11,15 @@
 </h3>
 
 <ion-grid class="report-section-values">
-  <ion-card *ngFor="let subsection of section?.subsections">
+  <div
+    *ngFor="let subsection of section?.subsections"
+    class="ion-margin-vertical"
+  >
     <ng-container *ngFor="let question of subsection.questions">
       <ion-row class="report-section-values--row">
         <ion-col
           [size]="12"
-          [sizeMd]="6"
+          [sizeSm]="6"
           [sizeLg]="4"
           class="report-section-values--question"
         >
@@ -27,7 +31,7 @@
         </ion-col>
         <ion-col
           [size]="12"
-          [sizeMd]="6"
+          [sizeSm]="6"
           [sizeLg]="8"
           class="report-section-values--answer"
         >
@@ -57,5 +61,5 @@
         </ion-col>
       </ion-row>
     </ng-container>
-  </ion-card>
+  </div>
 </ion-grid>
