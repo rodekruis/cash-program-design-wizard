@@ -129,8 +129,11 @@
           </div>
           <details *ngIf="showComments(question)" class="ion-margin-vertical">
             <summary>
-              <ion-item lines="full" fill="clear">
-                <ng-container [ngSwitch]="question.comments.length">
+              <div style="display: flex">
+                <div
+                  [ngSwitch]="question.comments.length"
+                  style="flex: 1 1 auto"
+                >
                   <ion-label *ngSwitchCase="0" color="primary">
                     <strong>
                       {{ 'question-section.no-comments' | translate }}
@@ -142,20 +145,20 @@
                       {{ question.comments.length }}
                     </strong>
                   </ion-label>
-                </ng-container>
+                </div>
                 <ion-icon
                   name="chevron-down"
-                  slot="end"
                   color="primary"
                   class="details-closed"
+                  style="align-self: flex-end"
                 ></ion-icon>
                 <ion-icon
                   name="chevron-up"
-                  slot="end"
                   color="primary"
                   class="details-open"
+                  style="align-self: flex-end"
                 ></ion-icon>
-              </ion-item>
+              </div>
             </summary>
             <app-comments-list
               *ngIf="question.comments"
