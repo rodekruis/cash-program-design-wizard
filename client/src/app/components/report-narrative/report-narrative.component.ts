@@ -1,6 +1,7 @@
 import {
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   SecurityContext,
   ViewChild,
@@ -10,6 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Clipboard } from '@capacitor/clipboard';
 import { TranslateService } from '@ngx-translate/core';
 import { MarkdownService } from 'ngx-markdown';
+import { Subscription } from 'rxjs';
 import {
   flatten,
   getOptionChoiceAnswer,
@@ -34,7 +36,7 @@ type AnswerSet = {
   styleUrls: ['./report-narrative.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ReportNarrativeComponent implements OnInit {
+export class ReportNarrativeComponent implements OnInit, OnDestroy {
   @ViewChild('reportOutput')
   public reportOutput: ElementRef;
 
@@ -49,6 +51,11 @@ export class ReportNarrativeComponent implements OnInit {
   private missingExplanation: string;
   private answerPrefix: string;
 
+  private translation1Updates: Subscription;
+  private translation2Updates: Subscription;
+  private programUpdates: Subscription;
+  private sectionUpdates: Subscription;
+
   constructor(
     private state: StateService,
     private translate: TranslateService,
@@ -58,21 +65,23 @@ export class ReportNarrativeComponent implements OnInit {
 
   ngOnInit() {
     // All these operations will not run/finish in order, so each tries to render the template
-    this.translate
+    this.translation1Updates = this.translate
       .get('report-narrative.missing-explanation')
       .subscribe((label) => {
         this.missingExplanation = label;
         this.renderTemplate();
       });
-    this.translate.get('report-narrative.answer-prefix').subscribe((label) => {
-      this.answerPrefix = label;
-      this.renderTemplate();
-    });
-    this.state.programMetaData$.subscribe((program) => {
+    this.translation2Updates = this.translate
+      .get('report-narrative.answer-prefix')
+      .subscribe((label) => {
+        this.answerPrefix = label;
+        this.renderTemplate();
+      });
+    this.programUpdates = this.state.programMetaData$.subscribe((program) => {
       this.reportTemplate = program.narrativeReportTemplate;
       this.renderTemplate();
     });
-    this.state.sections$.subscribe((sections) => {
+    this.sectionUpdates = this.state.sections$.subscribe((sections) => {
       if (!sections.length) {
         return;
       }
@@ -80,6 +89,13 @@ export class ReportNarrativeComponent implements OnInit {
       this.lastUpdate = this.findLatestAnswer();
       this.renderTemplate();
     });
+  }
+
+  ngOnDestroy() {
+    this.translation1Updates.unsubscribe();
+    this.translation2Updates.unsubscribe();
+    this.programUpdates.unsubscribe();
+    this.sectionUpdates.unsubscribe();
   }
 
   public print() {
