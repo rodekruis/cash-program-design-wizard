@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { HeaderComponent } from '../components/header/header.component';
+import { NumbersOnlyDirective } from '../directives/numbers-only.directive';
 import { CommentInputComponent } from './comment-input/comment-input.component';
 import { CommentsListComponent } from './comments-list/comments-list.component';
 import { ConnectionStatusComponent } from './connection-status/connection-status.component';
@@ -29,6 +30,7 @@ import { UserStateComponent } from './user-state/user-state.component';
     TranslateModule,
   ],
   declarations: [
+    NumbersOnlyDirective,
     CommentInputComponent,
     CommentsListComponent,
     ConnectionStatusComponent,

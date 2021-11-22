@@ -94,6 +94,7 @@
                     (ionChange)="onChangeAnswer(question)"
                     [debounce]="600"
                     [readonly]="!canEdit"
+                    appNumbersOnly
                   ></ion-input>
                 </ng-container>
                 <ng-container *ngSwitchCase="questionTypes.textLong">
