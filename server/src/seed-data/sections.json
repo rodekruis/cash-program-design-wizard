@@ -1,45 +1,29 @@
 [
   {
     "name": "pa-info",
-    "label": { "en": "The people we will help are mostly" },
+    "label": { "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY...." },
     "orderPriority": 1
   },
   {
-    "name": "pa-skills",
-    "label": {
-      "en": "The people we want to help mostly use or are familiar with"
-    },
+    "name": "pa-support",
+    "label": { "en": "THE PEOPLE WE ARE HELPING...." },
     "orderPriority": 2
   },
   {
-    "name": "aw-skills",
-    "label": { "en": "The AWs & volunteers who wants to help the PAs mostly" },
+    "name": "pa-skills",
+    "label": { "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY FAMILIAR WITH …" },
     "orderPriority": 3
   },
   {
     "name": "help-wanted",
-    "label": { "en": "The people affected we want to help  mostly" },
+    "label": { "en": "THE PEOPLE WE ARE HELPING MOSTLY …" },
     "orderPriority": 4
   },
   {
     "name": "services",
     "label": {
-      "en": "The people we want to help have phyical & financial & social  access to"
+      "en": "THE PEOPLE WE ARE HELPING HAVE PHYSICAL, FINANCIAL AND SOCIAL ACCESS TO …"
     },
     "orderPriority": 5
-  },
-  {
-    "name": "test1",
-    "label": {
-      "en": "Test Section 1"
-    },
-    "orderPriority": 9991
-  },
-  {
-    "name": "test2",
-    "label": {
-      "en": "Test Section 2 - Edge-cases"
-    },
-    "orderPriority": 9992
   }
 ]
