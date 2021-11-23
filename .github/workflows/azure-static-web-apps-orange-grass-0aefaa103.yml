@@ -47,6 +47,7 @@ jobs:
         env:
           DEBUG: ${{ secrets.DEBUG }}
           ENV_NAME: ${{ secrets.ENV_NAME }}
+          NG_USE_MOCK_DATA: ${{ secrets.NG_USE_MOCK_DATA }}
           API_URL: ${{ secrets.API_URL }}
 
   close_pull_request_job:
