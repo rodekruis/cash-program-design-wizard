@@ -15,18 +15,25 @@
       <!--
 
       -->
-      <ion-card *ngIf="!id">
-        <ion-card-header>
-          <ion-card-title>{{ 'program.not-found' | translate }}</ion-card-title>
-        </ion-card-header>
-      </ion-card>
+      <ion-progress-bar
+        *ngIf="!id"
+        type="indeterminate"
+        class="ion-margin"
+      ></ion-progress-bar>
 
       <ng-container *ngIf="id">
         <div class="ion-margin">
           <app-program-phase [programId]="id"></app-program-phase>
         </div>
 
+        <ion-progress-bar
+          *ngIf="!state?.activeSection"
+          type="indeterminate"
+          class="ion-margin"
+        ></ion-progress-bar>
+
         <ion-row
+          *ngIf="state?.activeSection"
           class="
             toolbar-sticky
             ion-margin-vertical ion-padding-horizontal ion-align-items-center

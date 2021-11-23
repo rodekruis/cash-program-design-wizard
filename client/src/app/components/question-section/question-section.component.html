@@ -13,6 +13,11 @@
       style="display: flex; flex-direction: column"
     >
       <ion-card class="ion-padding" color="light">
+        <div *ngIf="isSubSectionEmpty(subsection)">
+          <ion-note>
+            {{ 'question-section.no-questions' | translate }}
+          </ion-note>
+        </div>
         <div
           *ngFor="let question of subsection?.questions"
           [hidden]="!shouldShowQuestion(question.tags)"
@@ -166,11 +171,6 @@
             ></app-comments-list>
             <app-comment-input [question]="question"></app-comment-input>
           </details>
-        </div>
-        <div *ngIf="isSubSectionEmpty(subsection)">
-          <ion-note>
-            {{ 'question-section.no-questions' | translate }}
-          </ion-note>
         </div>
       </ion-card>
     </ion-col>
