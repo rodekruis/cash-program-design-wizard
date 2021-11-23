@@ -1,27 +1,29 @@
 [
   {
-    "name":"pa-info", 
-    "label": {"en": "THE PEOPLE WE ARE HELPING ARE MOSTLY...."},
-    "orderPriority":	1
-  	},
-  {
-  "name":"pa-support", 
-  "label": {"en": "THE PEOPLE WE ARE HELPING...."},
-   "orderPriority":	2
+    "name": "pa-info",
+    "label": { "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY...." },
+    "orderPriority": 1
   },
   {
-    "name":"pa-skills", 
-    "label": {"en": "THE PEOPLE WE ARE HELPING ARE MOSTLY FAMILIAR WITH …"}, 
-    "orderPriority":  3	
+    "name": "pa-support",
+    "label": { "en": "THE PEOPLE WE ARE HELPING...." },
+    "orderPriority": 2
   },
   {
-    "name":"help-wanted", 
-    "label": {"en": "THE PEOPLE WE ARE HELPING MOSTLY …"}, 
-    "orderPriority":	4
+    "name": "pa-skills",
+    "label": { "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY FAMILIAR WITH …" },
+    "orderPriority": 3
   },
   {
-    "name":"services", 
-    "label": {"en": "THE PEOPLE WE ARE HELPING HAVE PHYSICAL, FINANCIAL AND SOCIAL ACCESS TO …"}, 
-    "orderPriority":	5
+    "name": "help-wanted",
+    "label": { "en": "THE PEOPLE WE ARE HELPING MOSTLY …" },
+    "orderPriority": 4
+  },
+  {
+    "name": "services",
+    "label": {
+      "en": "THE PEOPLE WE ARE HELPING HAVE PHYSICAL, FINANCIAL AND SOCIAL ACCESS TO …"
+    },
+    "orderPriority": 5
   }
 ]
