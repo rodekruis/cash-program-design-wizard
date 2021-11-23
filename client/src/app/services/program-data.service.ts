@@ -158,16 +158,17 @@ export class ProgramDataService {
 
     questions.forEach((question) => {
       if (
-        !sections.some(
+        sections.some(
           (existingSection) => existingSection.id === question.sectionId,
         )
       ) {
-        sections.push({
-          id: question.sectionId,
-          name: question.sectionName,
-          label: question.sectionLabel,
-        });
+        return;
       }
+      sections.push({
+        id: question.sectionId,
+        name: question.sectionName,
+        label: question.sectionLabel,
+      });
     });
 
     return sections;
@@ -178,18 +179,19 @@ export class ProgramDataService {
 
     questions.forEach((question) => {
       if (
-        !subsections.some(
+        subsections.some(
           (existingSubsections) =>
             existingSubsections.id === question.subsectionId,
         )
       ) {
-        subsections.push({
-          id: question.subsectionId,
-          name: question.subsectionName,
-          label: question.subsectionLabel,
-          sectionId: question.sectionId,
-        });
+        return;
       }
+      subsections.push({
+        id: question.subsectionId,
+        name: question.subsectionName,
+        label: question.subsectionLabel,
+        sectionId: question.sectionId,
+      });
     });
 
     return subsections;
