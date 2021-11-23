@@ -129,7 +129,7 @@ export class QuestionsService {
       .andWhere('program.id = :programId', {
         programId: programId,
       })
-      .orderBy('comment.created', 'DESC');
+      .orderBy('comment.created', 'ASC');
     return await qb.getRawMany();
   }
 
