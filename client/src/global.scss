@@ -28,7 +28,9 @@
 /****************************************************************************
  * Generic Lay-out:
  */
-
+.frame {
+  min-height: 100%;
+}
 .frame--sidebar {
   display: inline-block;
 }

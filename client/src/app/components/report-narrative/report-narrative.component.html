@@ -11,7 +11,7 @@
   <br />
 </div>
 <div *ngIf="report">
-  <div style="display: flex; justify-content: end" class="no-print">
+  <ion-row class="no-print ion-justify-content-end">
     <ion-button
       type="button"
       fill="outline"
@@ -26,7 +26,7 @@
       <ion-icon name="print" aria-hidden="true" slot="start"></ion-icon>
       {{ 'report-narrative.print' | translate }}
     </ion-button>
-  </div>
+  </ion-row>
 
   <div>
     {{ 'report-narrative.last-updated' | translate }}
