@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SyncService } from 'src/app/services/sync.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { SyncService } from 'src/app/services/sync.service';
   templateUrl: './connection-status.component.html',
   styleUrls: ['./connection-status.component.scss'],
 })
-export class ConnectionStatusComponent implements OnInit {
+export class ConnectionStatusComponent implements OnInit, OnDestroy {
   public isOnline: boolean;
   public showOffline: boolean;
 
@@ -16,16 +16,17 @@ export class ConnectionStatusComponent implements OnInit {
     this.isOnline = window.navigator.onLine;
     this.showOffline = this.syncService.forceOffline;
 
-    window.addEventListener(
-      'offline',
-      () => (this.isOnline = window.navigator.onLine),
-      { passive: true },
-    );
-    window.addEventListener(
-      'online',
-      () => (this.isOnline = window.navigator.onLine),
-      { passive: true },
-    );
+    window.addEventListener('offline', () => this.updateOnlineState(), {
+      passive: true,
+    });
+    window.addEventListener('online', () => this.updateOnlineState, {
+      passive: true,
+    });
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('offline', () => this.updateOnlineState);
+    window.removeEventListener('online', () => this.updateOnlineState);
   }
 
   public changeSync(doSync: boolean) {
@@ -41,5 +42,9 @@ export class ConnectionStatusComponent implements OnInit {
 
       this.syncService.processQueue();
     }
+  }
+
+  private updateOnlineState() {
+    this.isOnline = window.navigator.onLine;
   }
 }

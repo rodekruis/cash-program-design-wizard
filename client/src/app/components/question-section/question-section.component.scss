@@ -1,7 +1,11 @@
 details {
   summary {
-    list-style-type: none;
+    list-style: none;
     cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
   }
 
   .details-closed {

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { StateService } from 'src/app/services/state.service';
 import { QuestionSection } from 'src/app/types/question-section.type';
 
@@ -7,13 +8,21 @@ import { QuestionSection } from 'src/app/types/question-section.type';
   templateUrl: './nav-progress.component.html',
   styleUrls: ['./nav-progress.component.scss'],
 })
-export class NavProgressComponent implements OnInit {
+export class NavProgressComponent implements OnInit, OnDestroy {
   private sections: QuestionSection[];
+
+  private sectionUpdates: Subscription;
 
   constructor(public state: StateService) {}
 
   ngOnInit() {
-    this.state.sections$.subscribe((sections) => (this.sections = sections));
+    this.sectionUpdates = this.state.sections$.subscribe(
+      (sections) => (this.sections = sections),
+    );
+  }
+
+  ngOnDestroy() {
+    this.sectionUpdates.unsubscribe();
   }
 
   public hasPrevSection(): boolean {

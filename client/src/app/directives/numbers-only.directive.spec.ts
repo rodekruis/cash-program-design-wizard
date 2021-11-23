@@ -1,7 +1,7 @@
 import { waitForAsync } from '@angular/core/testing';
 import { NumbersOnlyDirective } from './numbers-only.directive';
 
-fdescribe('NumbersOnlyDirective', () => {
+describe('NumbersOnlyDirective', () => {
   let testElement;
   let directive;
 

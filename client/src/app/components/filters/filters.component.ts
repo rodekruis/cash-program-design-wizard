@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { Tag } from 'src/app/models/tag.enum';
 import { StateService } from 'src/app/services/state.service';
 import { QuestionInput } from 'src/app/types/question-input.type';
@@ -11,7 +12,7 @@ import { QuestionSection } from 'src/app/types/question-section.type';
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
 })
-export class FiltersComponent implements OnInit {
+export class FiltersComponent implements OnInit, OnDestroy {
   public tags: Tag[] = Object.values(Tag);
 
   public tagCount: Map<Tag, number> = new Map(
@@ -19,19 +20,27 @@ export class FiltersComponent implements OnInit {
   );
   public tagLabels: { [tag: string]: string };
 
+  private sectionUpdates: Subscription;
+  private labelTranslationUpdates: Subscription;
+
   constructor(
     public state: StateService,
     private router: Router,
     private translate: TranslateService,
-  ) {
-    this.triggerTranslations();
-  }
+  ) {}
 
   public ngOnInit() {
-    this.state.sections$.subscribe((sections) => {
+    this.triggerTranslations();
+    this.sectionUpdates = this.state.sections$.subscribe((sections) => {
       this.updateTagCount(sections);
     });
   }
+
+  public ngOnDestroy() {
+    this.sectionUpdates.unsubscribe();
+    this.labelTranslationUpdates.unsubscribe();
+  }
+
   public onChange(event: any) {
     let tag: string = event.detail.value;
     if (tag === Tag.all) {
@@ -46,7 +55,7 @@ export class FiltersComponent implements OnInit {
 
   private triggerTranslations() {
     this.tagLabels = this.translate.instant('filters.tags');
-    this.translate
+    this.labelTranslationUpdates = this.translate
       .get('filters.tags')
       .subscribe((translations) => (this.tagLabels = translations));
   }

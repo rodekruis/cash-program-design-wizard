@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { Tag } from 'src/app/models/tag.enum';
 import { UserRole } from 'src/app/models/user.model';
 import { getOptionChoiceAnswer } from 'src/app/pages/report/report-helpers';
@@ -17,7 +18,7 @@ import {
   templateUrl: './question-section.component.html',
   styleUrls: ['./question-section.component.scss'],
 })
-export class QuestionSectionComponent {
+export class QuestionSectionComponent implements OnInit, OnDestroy {
   @Input()
   section: QuestionSection;
 
@@ -27,18 +28,26 @@ export class QuestionSectionComponent {
   public canEdit = false;
   public getOptionChoiceAnswer = getOptionChoiceAnswer;
 
+  private sectionUpdates: Subscription;
+
   constructor(
     private state: StateService,
     private programData: ProgramDataService,
     private translate: TranslateService,
     private authService: AuthService,
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.tagLabels = this.translate.instant('filters.tags');
 
     // Use sections-update 'event' to get up-to-date Program-MetaData
-    this.state.sections$.subscribe((_sections) => {
+    this.sectionUpdates = this.state.sections$.subscribe((_sections) => {
       this.canEdit = this.userCanEdit();
     });
+  }
+
+  ngOnDestroy() {
+    this.sectionUpdates.unsubscribe();
   }
 
   public onChangeAnswer(question: QuestionInput) {

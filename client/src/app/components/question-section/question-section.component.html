@@ -1,7 +1,7 @@
 <ion-grid>
   <ion-row>
     <ion-col class="ion-padding-horizontal">
-      <h3>{{ section?.label }}</h3>
+      <h3 class="ion-no-margin">{{ section?.label }}</h3>
     </ion-col>
   </ion-row>
   <ion-row class="ion-align-items-stretch ion-margin-vertical">
@@ -13,8 +13,13 @@
       style="display: flex; flex-direction: column"
     >
       <ion-card class="ion-padding" color="light">
+        <div *ngIf="isSubSectionEmpty(subsection)">
+          <ion-note>
+            {{ 'question-section.no-questions' | translate }}
+          </ion-note>
+        </div>
         <div
-          *ngFor="let question of subsection.questions"
+          *ngFor="let question of subsection?.questions"
           [hidden]="!shouldShowQuestion(question.tags)"
         >
           <div style="flex: 1 1 auto">
@@ -129,8 +134,11 @@
           </div>
           <details *ngIf="showComments(question)" class="ion-margin-vertical">
             <summary>
-              <ion-item lines="full" fill="clear">
-                <ng-container [ngSwitch]="question.comments.length">
+              <div style="display: flex">
+                <div
+                  [ngSwitch]="question.comments.length"
+                  style="flex: 1 1 auto"
+                >
                   <ion-label *ngSwitchCase="0" color="primary">
                     <strong>
                       {{ 'question-section.no-comments' | translate }}
@@ -142,20 +150,20 @@
                       {{ question.comments.length }}
                     </strong>
                   </ion-label>
-                </ng-container>
+                </div>
                 <ion-icon
                   name="chevron-down"
-                  slot="end"
                   color="primary"
                   class="details-closed"
+                  style="align-self: flex-end"
                 ></ion-icon>
                 <ion-icon
                   name="chevron-up"
-                  slot="end"
                   color="primary"
                   class="details-open"
+                  style="align-self: flex-end"
                 ></ion-icon>
-              </ion-item>
+              </div>
             </summary>
             <app-comments-list
               *ngIf="question.comments"
@@ -163,11 +171,6 @@
             ></app-comments-list>
             <app-comment-input [question]="question"></app-comment-input>
           </details>
-        </div>
-        <div *ngIf="isSubSectionEmpty(subsection)">
-          <ion-note>
-            {{ 'question-section.no-questions' | translate }}
-          </ion-note>
         </div>
       </ion-card>
     </ion-col>

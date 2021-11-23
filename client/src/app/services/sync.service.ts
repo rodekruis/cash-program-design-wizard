@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { concat, EMPTY, Observable, throwError, TimeoutError } from 'rxjs';
 import { catchError, map, retry, share, timeout } from 'rxjs/operators';
 import { SyncTask } from '../types/sync-task.type';
@@ -12,7 +12,7 @@ const STORAGE_KEY = 'syncTasks';
 @Injectable({
   providedIn: 'root',
 })
-export class SyncService {
+export class SyncService implements OnDestroy {
   public forceOffline = false;
 
   constructor(private apiService: ApiService) {
@@ -20,6 +20,11 @@ export class SyncService {
     window.addEventListener('offline', () => this.goOffline(), {
       passive: true,
     });
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('online', () => this.goOnline());
+    window.removeEventListener('offline', () => this.goOffline());
   }
 
   public processQueue(): Observable<any> {

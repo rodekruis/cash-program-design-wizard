@@ -6,13 +6,16 @@ export const environment = {
   production: false,
 
   // Configuration/Feature-switches:
-  debug: true,
+
+  // Load hard-coded test-data from file, instead of from the server
+  useMockData: true,
 
   // Let the interface automatically detect + switch to Dark-mode if a user prefers it
   autoDarkMode: false,
 
   // Optional label to show which version is used
   envName: '',
+
   // The language that will be loaded first and used as a fallback
   defaultLanguage: 'en',
 

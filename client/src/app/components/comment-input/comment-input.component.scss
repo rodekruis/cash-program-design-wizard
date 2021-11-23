@@ -1,7 +1,9 @@
 textarea {
-  border: 1px solid var(--ion-color-medium);
-  color: var(--ion-color-light-contrast);
-  width: 100%;
   resize: vertical;
-  min-height: 80px;
+  width: 100%;
+  min-height: 6em;
+  padding: 0.5em;
+  border: 1px solid var(--ion-color-medium-shade);
+  color: var(--ion-color-light-contrast);
+  background-color: transparent;
 }

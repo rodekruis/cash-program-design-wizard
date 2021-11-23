@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { QuestionData } from '../models/question-data.model';
 import { Program, ProgramMetaData } from '../types/program.type';
 import { QuestionInput, QuestionType } from '../types/question-input.type';
@@ -74,6 +75,13 @@ export class ProgramDataService {
       plainAnswer = JSON.stringify(question.answer);
     }
 
+    if (environment.useMockData && programId === '123') {
+      console.warn(`Using mock-data, fake saving answer: ${question.name}`);
+      question.storedAnswer = question.answer;
+
+      return;
+    }
+
     return this.syncService
       .tryPost(ApiPath.answers, {
         programId,
@@ -82,11 +90,11 @@ export class ProgramDataService {
       })
       .subscribe(
         () => {
-          // Store the stored (backend)state in the local state
+          // Update the stored (backend)state in the local state
           question.storedAnswer = question.answer;
         },
         (error) => {
-          console.log('Answer save failed.', error);
+          console.error('Answer save failed.', error);
         },
       );
   }
@@ -150,16 +158,17 @@ export class ProgramDataService {
 
     questions.forEach((question) => {
       if (
-        !sections.some(
+        sections.some(
           (existingSection) => existingSection.id === question.sectionId,
         )
       ) {
-        sections.push({
-          id: question.sectionId,
-          name: question.sectionName,
-          label: question.sectionLabel,
-        });
+        return;
       }
+      sections.push({
+        id: question.sectionId,
+        name: question.sectionName,
+        label: question.sectionLabel,
+      });
     });
 
     return sections;
@@ -170,18 +179,19 @@ export class ProgramDataService {
 
     questions.forEach((question) => {
       if (
-        !subsections.some(
+        subsections.some(
           (existingSubsections) =>
             existingSubsections.id === question.subsectionId,
         )
       ) {
-        subsections.push({
-          id: question.subsectionId,
-          name: question.subsectionName,
-          label: question.subsectionLabel,
-          sectionId: question.sectionId,
-        });
+        return;
       }
+      subsections.push({
+        id: question.subsectionId,
+        name: question.subsectionName,
+        label: question.subsectionLabel,
+        sectionId: question.sectionId,
+      });
     });
 
     return subsections;
@@ -215,17 +225,6 @@ export class ProgramDataService {
                 question.answer,
               );
             }
-          }
-
-          if (question.tags) {
-            // Only use unique tag-values:
-            question.tags = question.tags.filter(
-              (el, i, array) => array.indexOf(el) === i,
-            );
-          }
-
-          if (question.comments.length > 0) {
-            question.comments.sort((a, b) => (a.created < b.created ? -1 : 1));
           }
 
           return {
