@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiPath, ApiService } from 'src/app/services/api.service';
 import { StateService } from 'src/app/services/state.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-program',
@@ -11,7 +10,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./program.page.scss'],
 })
 export class ProgramPage implements OnInit, OnDestroy {
-  public isDebug = environment.debug;
   public id: string;
   public name: string;
 

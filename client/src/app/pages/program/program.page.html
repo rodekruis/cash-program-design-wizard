@@ -53,19 +53,4 @@
       -->
     </div>
   </div>
-  <section *ngIf="isDebug">
-    <pre class="debug--container ion-margin">
-DEBUG INFO:
------------
-
-programId: {{ state.programId }}
-filters: {{ state.filters | json }}
-    </pre>
-    <details class="debug--container ion-padding ion-margin">
-      <summary>
-        Active Section: <code>{{ state.activeSection?.name }}</code>
-      </summary>
-      <pre>{{ state.activeSection | json }}</pre>
-    </details>
-  </section>
 </ion-content>
