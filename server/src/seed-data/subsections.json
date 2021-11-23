@@ -173,5 +173,41 @@
     "name": "communication-orgs",
     "orderPriority": 35,
     "section": "services"
+  },
+
+  {
+    "name": "subtest1-1",
+    "orderPriority": 992,
+    "section": "test1"
+  },
+  {
+    "name": "subtest1-2",
+    "orderPriority": 993,
+    "section": "test1"
+  },
+  {
+    "name": "subtest1-3",
+    "orderPriority": 994,
+    "section": "test1"
+  },
+  {
+    "name": "subtest2-1",
+    "orderPriority": 995,
+    "section": "test2"
+  },
+  {
+    "name": "subtest2-2",
+    "orderPriority": 996,
+    "section": "test2"
+  },
+  {
+    "name": "subtest2-3",
+    "orderPriority": 997,
+    "section": "test2"
+  },
+  {
+    "name": "subtest2-4",
+    "orderPriority": 998,
+    "section": "test2"
   }
 ]

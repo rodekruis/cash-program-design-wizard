@@ -25,5 +25,20 @@
       "en": "THE PEOPLE WE ARE HELPING HAVE PHYSICAL, FINANCIAL AND SOCIAL ACCESS TO …"
     },
     "orderPriority": 5
+  },
+
+  {
+    "name": "test1",
+    "label": {
+      "en": "Test Section 1"
+    },
+    "orderPriority": 9991
+  },
+  {
+    "name": "test2",
+    "label": {
+      "en": "Test Section 2 - Edge-cases"
+    },
+    "orderPriority": 9992
   }
 ]
