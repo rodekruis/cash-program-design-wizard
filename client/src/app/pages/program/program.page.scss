@@ -1,0 +1,9 @@
+// Min-width takes <app-filters> and <app-nav-progres> next to each other into account
+@media (min-width: 900px) {
+  .toolbar-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--ion-background-color);
+  }
+}

@@ -26,24 +26,26 @@
           <app-program-phase [programId]="id"></app-program-phase>
         </div>
 
-        <div class="ion-margin">
-          <app-filters
-            style="display: inline-block; max-width: 100%"
-          ></app-filters>
-        </div>
-
-        <div class="ion-margin">
-          <app-nav-progress></app-nav-progress>
-        </div>
+        <ion-row
+          class="
+            toolbar-sticky
+            ion-margin-vertical ion-padding-horizontal ion-align-items-center
+          "
+        >
+          <ion-col size="12" [sizeMd]="6">
+            <app-filters
+              style="display: inline-block; max-width: 100%"
+            ></app-filters>
+          </ion-col>
+          <ion-col size="12" [sizeMd]="6">
+            <app-nav-progress></app-nav-progress>
+          </ion-col>
+        </ion-row>
 
         <div class="ion-margin-vertical">
           <app-question-section
             [section]="state.activeSection"
           ></app-question-section>
-        </div>
-
-        <div class="ion-margin">
-          <app-nav-progress></app-nav-progress>
         </div>
       </ng-container>
       <!--
