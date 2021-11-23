@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { QuestionData } from '../models/question-data.model';
 import { Program, ProgramMetaData } from '../types/program.type';
 import { QuestionInput, QuestionType } from '../types/question-input.type';
@@ -74,6 +75,13 @@ export class ProgramDataService {
       plainAnswer = JSON.stringify(question.answer);
     }
 
+    if (environment.useMockData && programId === '123') {
+      console.warn(`Using mock-data, fake saving answer: ${question.name}`);
+      question.storedAnswer = question.answer;
+
+      return;
+    }
+
     return this.syncService
       .tryPost(ApiPath.answers, {
         programId,
@@ -82,11 +90,11 @@ export class ProgramDataService {
       })
       .subscribe(
         () => {
-          // Store the stored (backend)state in the local state
+          // Update the stored (backend)state in the local state
           question.storedAnswer = question.answer;
         },
         (error) => {
-          console.log('Answer save failed.', error);
+          console.error('Answer save failed.', error);
         },
       );
   }

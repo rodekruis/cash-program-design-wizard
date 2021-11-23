@@ -413,6 +413,12 @@ mockProgramData.sections = mockProgramData.sections.map((section) => {
     section.subsections = section.subsections.map((subsection) => {
       if (subsection.questions) {
         subsection.questions = subsection.questions.map((question) => {
+          if (question.answer) {
+            question.storedAnswer = question.answer;
+          }
+          if (question.answer && !question.answerUpdated) {
+            question.answerUpdated = new Date().toISOString();
+          }
           if (question.comments) {
             question.comments = question.comments.filter(
               (comment) => !!comment,
