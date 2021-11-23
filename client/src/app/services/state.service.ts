@@ -121,7 +121,7 @@ export class StateService {
   private async updateSections() {
     let program: Program;
     // Hard-code mock-data in
-    if (environment.debug && this.programId === '123') {
+    if (environment.useMockData && this.programId === '123') {
       console.warn('Using mock-data!');
       program = mockProgram;
     } else {

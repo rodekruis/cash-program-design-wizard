@@ -36,7 +36,7 @@ export class AuthService {
       return false;
     }
 
-    if (environment.debug && programId === '123') {
+    if (environment.useMockData && programId === '123') {
       console.warn('Using mock-user role, based on username!');
       return requiredRoles.some((role) => user.userName.startsWith(role));
     }
