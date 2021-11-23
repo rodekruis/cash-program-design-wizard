@@ -14,7 +14,7 @@
     >
       <ion-card class="ion-padding" color="light">
         <div
-          *ngFor="let question of subsection.questions"
+          *ngFor="let question of subsection?.questions"
           [hidden]="!shouldShowQuestion(question.tags)"
         >
           <div style="flex: 1 1 auto">

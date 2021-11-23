@@ -49,7 +49,9 @@ export class ProgramPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.userProgramsUpdates.unsubscribe();
+    if (this.userProgramsUpdates) {
+      this.userProgramsUpdates.unsubscribe();
+    }
     this.programUpdates.unsubscribe();
   }
 }
