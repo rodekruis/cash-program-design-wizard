@@ -1,9 +1,14 @@
 import { Directive, HostListener } from '@angular/core';
 
+/**
+ * Let the input-element ONLY accept input as defined in the `pattern`-attribute.
+ *
+ * @example  <input pattern="[a-z]+" appOnlyAllowedInput>
+ */
 @Directive({
-  selector: '[appNumbersOnly]',
+  selector: '[appOnlyAllowedInput]',
 })
-export class NumbersOnlyDirective {
+export class OnlyAllowedInputDirective {
   constructor() {}
 
   @HostListener('keypress', ['$event'])

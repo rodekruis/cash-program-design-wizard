@@ -1,14 +1,14 @@
 import { waitForAsync } from '@angular/core/testing';
-import { NumbersOnlyDirective } from './numbers-only.directive';
+import { OnlyAllowedInputDirective } from './only-allowed-input.directive';
 
-describe('NumbersOnlyDirective', () => {
+describe('OnlyAllowedInputDirective', () => {
   let testElement;
   let directive;
 
   beforeEach(
     waitForAsync(() => {
       testElement = document.createElement('input');
-      directive = new NumbersOnlyDirective();
+      directive = new OnlyAllowedInputDirective();
     }),
   );
 
