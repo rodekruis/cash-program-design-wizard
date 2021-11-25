@@ -9,7 +9,7 @@ import { QuestionSection } from 'src/app/types/question-section.type';
   styleUrls: ['./nav-progress.component.scss'],
 })
 export class NavProgressComponent implements OnInit, OnDestroy {
-  private sections: QuestionSection[];
+  public sections: QuestionSection[];
 
   private sectionUpdates: Subscription;
 

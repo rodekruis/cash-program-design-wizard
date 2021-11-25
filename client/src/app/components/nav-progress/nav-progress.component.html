@@ -8,34 +8,67 @@
   >
     {{ 'nav-progress.save-answers.label' | translate }}
   </ion-button>
+  <span class="ion-nowrap">
+    <ion-button
+      (click)="goPrevSection()"
+      [disabled]="!hasPrevSection()"
+      [fill]="!hasPrevSection() ? 'clear' : 'solid'"
+      color="medium"
+      size="small"
+      [attr.title]="'nav-progress.prev-section' | translate"
+      [attr.aria-label]="'nav-progress.prev-section' | translate"
+    >
+      <ion-icon
+        name="chevron-back"
+        slot="icon-only"
+        aria-hidden="true"
+      ></ion-icon>
+    </ion-button>
 
-  <ion-button
-    (click)="goPrevSection()"
-    [disabled]="!hasPrevSection()"
-    color="medium"
-    size="small"
-    [attr.title]="'nav-progress.prev-section' | translate"
-    [attr.aria-label]="'nav-progress.prev-section' | translate"
-  >
-    <ion-icon
-      name="chevron-back"
-      slot="icon-only"
-      aria-hidden="true"
-    ></ion-icon>
-  </ion-button>
+    <ion-button
+      *ngFor="let section of sections; index as index"
+      routerLink="."
+      [queryParams]="{ section: section.name }"
+      routerLinkActive
+      #sectionLink="routerLinkActive"
+      [fill]="sectionLink.isActive ? 'solid' : 'clear'"
+      [attr.title]="
+        sectionLink.isActive
+          ? ('nav-progress.current-section'
+            | translate: { nr: index + 1, name: section.name })
+          : ('nav-progress.go-section'
+            | translate: { nr: index + 1, name: section.name })
+      "
+      [attr.aria-label]="
+        sectionLink.isActive
+          ? ('nav-progress.current-section'
+            | translate: { nr: index + 1, name: section.name })
+          : ('nav-progress.go-section'
+            | translate: { nr: index + 1, name: section.name })
+      "
+      [attr.aria-current]="sectionLink.isActive ? 'step' : null"
+      color="medium"
+      size="small"
+      class="ion-no-margin"
+      style="--border-radius: 0; border-right: 1px solid transparent"
+    >
+      {{ index + 1 }}
+    </ion-button>
 
-  <ion-button
-    (click)="goNextSection()"
-    [disabled]="!hasNextSection()"
-    color="medium"
-    size="small"
-    [attr.title]="'nav-progress.next-section' | translate"
-    [attr.aria-label]="'nav-progress.next-section' | translate"
-  >
-    <ion-icon
-      name="chevron-forward"
-      slot="icon-only"
-      aria-hidden="true"
-    ></ion-icon>
-  </ion-button>
+    <ion-button
+      (click)="goNextSection()"
+      [disabled]="!hasNextSection()"
+      [fill]="!hasNextSection() ? 'clear' : 'solid'"
+      color="medium"
+      size="small"
+      [attr.title]="'nav-progress.next-section' | translate"
+      [attr.aria-label]="'nav-progress.next-section' | translate"
+    >
+      <ion-icon
+        name="chevron-forward"
+        slot="icon-only"
+        aria-hidden="true"
+      ></ion-icon>
+    </ion-button>
+  </span>
 </ion-row>
