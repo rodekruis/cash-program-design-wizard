@@ -1,5 +1,5 @@
 <ion-button
-  *ngIf="showOffline || !isOnline"
+  *ngIf="!isOnline || showOffline"
   (click)="changeSync(true)"
   color="warning"
   attr.title="{{ 'connection-status.offline.label-long' | translate }} - {{

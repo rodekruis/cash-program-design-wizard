@@ -19,7 +19,7 @@ export class ConnectionStatusComponent implements OnInit, OnDestroy {
     window.addEventListener('offline', () => this.updateOnlineState(), {
       passive: true,
     });
-    window.addEventListener('online', () => this.updateOnlineState, {
+    window.addEventListener('online', () => this.updateOnlineState(), {
       passive: true,
     });
   }
