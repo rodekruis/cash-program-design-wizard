@@ -22,116 +22,12 @@
           *ngFor="let question of subsection?.questions"
           [hidden]="!shouldShowQuestion(question.tags)"
         >
-          <div style="flex: 1 1 auto">
-            <div class="ion-padding-vertical">
-              <ion-badge
-                *ngFor="let tag of question.tags"
-                class="ion-margin-start ion-float-end"
-                color="medium"
-                >{{ tagLabels[tag] }}</ion-badge
-              >
-              <strong>{{ question.label }}</strong>
-            </div>
-            <ion-item [ngClass]="{ 'is-readonly': !canEdit }">
-              <ng-container [ngSwitch]="question.type">
-                <ng-container *ngSwitchCase="questionTypes.select1">
-                  <div *ngIf="!canEdit && question.answer">
-                    {{ getOptionChoiceAnswer(question, question.answer) }}
-                  </div>
-                  <ion-select
-                    *ngIf="canEdit"
-                    [placeholder]="
-                      'question-section.fields.select-1.placeholder' | translate
-                    "
-                    [multiple]="false"
-                    [attr.title]="question.label"
-                    [(ngModel)]="question.answer"
-                    [cancelText]="'common.cancel' | translate"
-                    [okText]="'common.ok' | translate"
-                    (ionChange)="onChangeAnswer(question)"
-                  >
-                    <ion-select-option
-                      *ngFor="let option of question.optionChoices"
-                      [value]="option.name"
-                      [innerText]="option.label"
-                    ></ion-select-option>
-                  </ion-select>
-                </ng-container>
-                <ng-container *ngSwitchCase="questionTypes.selectN">
-                  <div *ngIf="!canEdit && question.answer">
-                    <ng-container
-                      *ngFor="
-                        let answerOption of question.answer;
-                        let index = index
-                      "
-                    >
-                      <span *ngIf="index > 0">,</span>
-                      {{ getOptionChoiceAnswer(question, answerOption) }}
-                    </ng-container>
-                  </div>
+          <app-question-input
+            style="flex: 1 1 auto"
+            [question]="question"
+            [canEdit]="canEdit"
+          ></app-question-input>
 
-                  <ion-select
-                    *ngIf="canEdit"
-                    [placeholder]="
-                      'question-section.fields.select-n.placeholder' | translate
-                    "
-                    [multiple]="true"
-                    [attr.title]="question.label"
-                    [(ngModel)]="question.answer"
-                    [cancelText]="'common.cancel' | translate"
-                    [okText]="'common.ok' | translate"
-                    (ionChange)="onChangeAnswer(question)"
-                  >
-                    <ion-select-option
-                      *ngFor="let option of question.optionChoices"
-                      [value]="option.name"
-                      [innerText]="option.label"
-                    ></ion-select-option>
-                  </ion-select>
-                </ng-container>
-                <ng-container *ngSwitchCase="questionTypes.numeric">
-                  <ion-input
-                    type="number"
-                    inputmode="decimal"
-                    pattern="[0-9]+"
-                    [attr.title]="question.label"
-                    [(ngModel)]="question.answer"
-                    (ionChange)="onChangeAnswer(question)"
-                    [debounce]="600"
-                    [readonly]="!canEdit"
-                    appOnlyAllowedInput
-                  ></ion-input>
-                </ng-container>
-                <ng-container *ngSwitchCase="questionTypes.textLong">
-                  <ion-textarea
-                    rows="2"
-                    [autoGrow]="true"
-                    [spellcheck]="true"
-                    autocorrect="on"
-                    autocapitalize="on"
-                    [attr.title]="question.label"
-                    [(ngModel)]="question.answer"
-                    (ionChange)="onChangeAnswer(question)"
-                    [debounce]="600"
-                    [readonly]="!canEdit"
-                  ></ion-textarea>
-                </ng-container>
-                <ng-container *ngSwitchDefault>
-                  <ion-input
-                    type="text"
-                    [spellcheck]="true"
-                    autocorrect="on"
-                    autocapitalize="on"
-                    [attr.title]="question.label"
-                    [(ngModel)]="question.answer"
-                    (ionChange)="onChangeAnswer(question)"
-                    [debounce]="600"
-                    [readonly]="!canEdit"
-                  ></ion-input>
-                </ng-container>
-              </ng-container>
-            </ion-item>
-          </div>
           <details *ngIf="showComments(question)" class="ion-margin-vertical">
             <summary>
               <div style="display: flex">
