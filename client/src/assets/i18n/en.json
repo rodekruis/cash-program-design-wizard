@@ -70,8 +70,10 @@
     "save-answers": {
       "label": "Save answers"
     },
-    "next-section": "Next section",
-    "prev-section": "Previous section"
+    "prev-section": "Previous section",
+    "current-section": "Current section: {{nr}} ({{name}})",
+    "go-section": "Go to section: {{nr}} ({{name}})",
+    "next-section": "Next section"
   },
   "common": {
     "ok": "Ok",
