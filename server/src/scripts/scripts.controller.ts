@@ -1,10 +1,11 @@
 import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
 import { ApiOperation, ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
-import SeedDemoProgram from './seed-program-demo';
+import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import SeedDemoProgram from './seed-program';
 
-enum SeedScript {
+export enum SeedScript {
   demo = 'demo',
+  test = 'test',
 }
 
 class ResetDto {
@@ -16,6 +17,7 @@ class ResetDto {
     enum: SeedScript,
     example: Object.values(SeedScript).join(' | '),
   })
+  @IsEnum(SeedScript)
   public readonly script: string;
 }
 
@@ -29,9 +31,7 @@ export class ScriptsController {
     if (body.secret !== process.env.RESET_SECRET) {
       return res.status(HttpStatus.FORBIDDEN).send('Not allowed');
     }
-    if (body.script == SeedScript.demo) {
-      await this.seedDemoProgram.run();
-    }
+    await this.seedDemoProgram.run(body.script);
     return res.status(HttpStatus.ACCEPTED).send('Reset done.');
   }
 }
