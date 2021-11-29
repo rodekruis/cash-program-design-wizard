@@ -183,3 +183,12 @@ input[type='number'] {
   outline: 1px dashed hotpink;
   padding: 0.33em;
 }
+
+.offline-toaster {
+  margin-top: 180px;
+  width: 20%;
+  min-width: 200px;
+  left: 75%;
+  --border-radius: 0;
+  --box-shadow: none;
+}
