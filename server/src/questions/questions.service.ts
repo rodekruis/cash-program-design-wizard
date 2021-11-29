@@ -6,7 +6,7 @@ import { OptionChoiceEntity } from '../option-choices/option-choice.entity';
 import { TagEntity } from '../tags/tag.entity';
 import { CommentEntity } from './../comments/comment.entity';
 import { QuestionEntity } from './question.entity';
-import { QuestionsRO } from './question.interfaces';
+import { QuestionSearchOption, QuestionsRO } from './question.interfaces';
 
 @Injectable()
 export class QuestionsService {
@@ -25,10 +25,9 @@ export class QuestionsService {
   @InjectRepository(OptionChoiceEntity)
   private readonly ocRepository: Repository<OptionChoiceEntity>;
 
-  public async findAll(
+  public async find(
     programId: string,
-    section: string,
-    tags: string[] | string,
+    searchOptions: QuestionSearchOption,
   ): Promise<QuestionsRO> {
     let qb = await this.questionRepository
       .createQueryBuilder('question')
@@ -67,19 +66,24 @@ export class QuestionsService {
       .orderBy('section.orderPriority', 'ASC')
       .orderBy('subsection.orderPriority', 'ASC')
       .addOrderBy('question.orderPriority', 'ASC');
-    if (section) {
+    if (searchOptions.section) {
       qb = qb.where('section.id = :section', {
-        section: section,
+        section: searchOptions.section,
       });
     }
-    if (tags) {
-      if (typeof tags === 'string') {
-        tags = [tags];
+    if (searchOptions.questionId) {
+      qb = qb.where('question.id = :questionId', {
+        questionId: searchOptions.questionId,
+      });
+    }
+    if (searchOptions.tags) {
+      if (typeof searchOptions.tags === 'string') {
+        searchOptions.tags = [searchOptions.tags];
       }
       qb = qb
         .leftJoin('question.tags', 'tags_filter')
         .where('tags_filter.name IN (:...tags)', {
-          tags: tags,
+          tags: searchOptions.tags,
         })
         .addGroupBy('tags_filter');
     }
@@ -96,6 +100,16 @@ export class QuestionsService {
       questions: questions,
       count: questions.length,
     };
+  }
+
+  public async findOne(
+    programId: string,
+    questionId: string,
+  ): Promise<QuestionEntity> {
+    const result = await this.find(programId, { questionId: questionId });
+    if (result.questions.length === 1) {
+      return result.questions[0];
+    }
   }
 
   private async findTags(question) {
