@@ -1,20 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
+import { OptionChoiceEntity } from '../option-choices/option-choice.entity';
+import { ProgramEntity } from '../programs/program.entity';
+import { QuestionEntity } from '../questions/question.entity';
+import { SectionEntity } from '../sections/section.entity';
 import { narrativeReportTemplateDemoEn } from '../seed-data/narrativeReportTemplate-demo-en';
 import * as programDemo from '../seed-data/program-demo.json';
+import * as programTest from '../seed-data/program-test.json';
+import * as questionsSeedTest from '../seed-data/questions-test.json';
 import * as questionsSeed from '../seed-data/questions.json';
+import * as sectionsSeedTest from '../seed-data/sections-test.json';
 import * as sectionsSeed from '../seed-data/sections.json';
+import * as subsectionsSeedTest from '../seed-data/subsections-test.json';
 import * as subsectionsSeed from '../seed-data/subsections.json';
+import { SubsectionEntity } from '../sub-sections/sub-section.entity';
+import { TagEntity } from '../tags/tag.entity';
+import { UserRoleEnum } from '../users/enum/user-role.enum';
 import { UserService } from '../users/user.service';
-import { OptionChoiceEntity } from './../option-choices/option-choice.entity';
-import { ProgramEntity } from './../programs/program.entity';
-import { QuestionEntity } from './../questions/question.entity';
-import { SectionEntity } from './../sections/section.entity';
-import { SubsectionEntity } from './../sub-sections/sub-section.entity';
-import { TagEntity } from './../tags/tag.entity';
-import { UserRoleEnum } from './../users/enum/user-role.enum';
+import { narrativeReportTemplateTestEn } from './../seed-data/narrativeReportTemplate-test-en ';
+import { SeedScript } from './scripts.controller';
 import { InterfaceScript } from './scripts.module';
+
+class SeedInput {
+  sections: any;
+  subsections: any;
+  questions: any;
+  program: any;
+  narrativeReportTemplate: any;
+}
 
 @Injectable()
 export class SeedDemoProgram implements InterfaceScript {
@@ -41,19 +55,42 @@ export class SeedDemoProgram implements InterfaceScript {
     private readonly connection: Connection,
   ) {}
 
-  public async run(): Promise<void> {
+  public async run(programName): Promise<void> {
+    const input = await this.setInput(programName);
+
     await this.truncateAll();
 
-    const program = await this.seedProgram();
-    await this.createUsers(program);
-    await this.seedSections();
-    await this.seedQuestions();
+    const programEntity = await this.seedProgram(input);
+    await this.createUsers(programEntity);
+    await this.seedSections(input);
+    await this.seedQuestions(input);
     console.log('Run SeedDemoProgram: done');
   }
 
-  private async seedProgram(): Promise<ProgramEntity> {
+  private setInput(programName: string): SeedInput {
+    if (programName === SeedScript.demo) {
+      return {
+        sections: sectionsSeed,
+        subsections: subsectionsSeed,
+        questions: questionsSeed,
+        program: programDemo,
+        narrativeReportTemplate: narrativeReportTemplateDemoEn,
+      };
+    }
+    if (programName === SeedScript.test) {
+      return {
+        sections: sectionsSeedTest,
+        subsections: subsectionsSeedTest,
+        questions: questionsSeedTest,
+        program: programTest,
+        narrativeReportTemplate: narrativeReportTemplateTestEn,
+      };
+    }
+  }
+
+  private async seedProgram(seedInput: SeedInput): Promise<ProgramEntity> {
     programDemo['narrativeReportTemplate'] = narrativeReportTemplateDemoEn;
-    return await this.programRepository.save(programDemo);
+    return await this.programRepository.save(seedInput.program);
   }
 
   private async createUsers(program: ProgramEntity): Promise<void> {
@@ -78,9 +115,9 @@ export class SeedDemoProgram implements InterfaceScript {
     });
   }
 
-  private async seedSections() {
+  private async seedSections(seedInput: SeedInput) {
     const sections = [];
-    for (const rawSection of sectionsSeed) {
+    for (const rawSection of seedInput.sections) {
       const section = new SectionEntity();
       section.orderPriority = rawSection.orderPriority;
       section.label = rawSection.label
@@ -92,7 +129,7 @@ export class SeedDemoProgram implements InterfaceScript {
     await this.sectionRepository.save(sections);
 
     const subsections = [];
-    for (const rawSubsection of subsectionsSeed) {
+    for (const rawSubsection of seedInput.subsections) {
       const subsection = new SubsectionEntity();
       subsection.orderPriority = rawSubsection.orderPriority;
       subsection.name = rawSubsection.name;
@@ -104,9 +141,9 @@ export class SeedDemoProgram implements InterfaceScript {
     await this.subsectionRepository.save(subsections);
   }
 
-  private async seedQuestions() {
+  private async seedQuestions(seedInput: SeedInput) {
     const questions = [];
-    for (const rawQuestion of questionsSeed) {
+    for (const rawQuestion of seedInput.questions) {
       const question = new QuestionEntity();
       question.label = JSON.stringify(rawQuestion.label);
       question.name = rawQuestion.name;

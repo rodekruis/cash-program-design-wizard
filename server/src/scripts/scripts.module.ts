@@ -8,7 +8,7 @@ import { SubsectionEntity } from './../sub-sections/sub-section.entity';
 import { TagEntity } from './../tags/tag.entity';
 import { UserModule } from './../users/user.module';
 import { ScriptsController } from './scripts.controller';
-import SeedDemoProgram from './seed-program-demo';
+import SeedDemoProgram from './seed-program';
 
 @Module({
   imports: [
