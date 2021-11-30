@@ -1,7 +1,7 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
+import { NotificationService } from './services/notification.service';
 
 describe('AppComponent', () => {
   beforeEach(
@@ -9,7 +9,7 @@ describe('AppComponent', () => {
       TestBed.configureTestingModule({
         declarations: [AppComponent],
         imports: [TranslateModule.forRoot()],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA],
+        providers: [NotificationService],
       }).compileComponents();
     }),
   );
@@ -19,5 +19,4 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
-  // TODO: add more tests!
 });

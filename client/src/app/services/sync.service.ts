@@ -4,7 +4,7 @@ import { concat, EMPTY, Observable, throwError, TimeoutError } from 'rxjs';
 import { catchError, map, retry, share, timeout } from 'rxjs/operators';
 import { SyncTask } from '../types/sync-task.type';
 import { ApiPath, ApiService } from './api.service';
-import { NotificationService } from './notification.service';
+import { PubSubEvent, PubSubService } from './pub-sub.service';
 
 const HTTP_TIMEOUT_IN_MS = 5000;
 const REQUEST_RETRIES = 2;
@@ -16,10 +16,7 @@ const STORAGE_KEY = 'syncTasks';
 export class SyncService implements OnDestroy {
   public forceOffline = false;
 
-  constructor(
-    private apiService: ApiService,
-    private notifications: NotificationService,
-  ) {
+  constructor(private pubSub: PubSubService, private apiService: ApiService) {
     window.addEventListener('online', () => this.goOnline(), { passive: true });
     window.addEventListener('offline', () => this.goOffline(), {
       passive: true,
@@ -33,13 +30,13 @@ export class SyncService implements OnDestroy {
 
   public goOffline() {
     console.log('SyncService: Going off-line. Collecting tasks in queue...');
-    this.notifications.notifyOffline();
+    this.pubSub.publish(PubSubEvent.didConnectionOffline);
     this.forceOffline = true;
   }
 
   public goOnline() {
     console.log('SyncService: Going on-line.');
-    this.notifications.dismissAll();
+    this.pubSub.publish(PubSubEvent.didConnectionOnline);
     this.processQueue();
   }
 
@@ -108,7 +105,7 @@ export class SyncService implements OnDestroy {
     console.log(
       `SyncService: Task added to queue. Tasks pending: ${tasks.length}`,
     );
-    this.notifications.notifyOffline();
+    this.pubSub.publish(PubSubEvent.didAddSyncTask);
   }
 
   private getExistingSyncTasks(): SyncTask[] {

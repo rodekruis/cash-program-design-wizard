@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { PubSubEvent, PubSubService } from './pub-sub.service';
 
 const enum NotificationType {
   offline,
@@ -15,15 +16,24 @@ export class NotificationService {
   constructor(
     public toastController: ToastController,
     private translate: TranslateService,
-  ) {}
-
-  public dismissAll() {
-    this.stack.forEach((toast) => {
-      toast.dismiss();
+    private pubSub: PubSubService,
+  ) {
+    this.pubSub.subscribe(PubSubEvent.didConnectionOnline, () => {
+      const offlineNotification = this.stack.get(NotificationType.offline);
+      if (offlineNotification) {
+        offlineNotification.dismiss();
+      }
     });
+    this.pubSub.subscribe(PubSubEvent.didConnectionOffline, () => {
+      this.notifyOffline();
+    });
+    this.pubSub.subscribe(PubSubEvent.didAddSyncTask, () => {
+      this.notifyOffline();
+    });
+    console.log('NotificationService created.');
   }
 
-  public notifyOffline() {
+  private notifyOffline() {
     return this.presentToast(
       NotificationType.offline,
       this.translate.instant('notification.offline'),
