@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NotificationService } from 'src/app/services/notification.service';
 import { SyncService } from 'src/app/services/sync.service';
 
 @Component({
@@ -11,10 +10,7 @@ export class ConnectionStatusComponent implements OnInit, OnDestroy {
   public isOnline: boolean;
   public showOffline: boolean;
 
-  constructor(
-    private syncService: SyncService,
-    private notifications: NotificationService,
-  ) {}
+  constructor(private syncService: SyncService) {}
 
   ngOnInit() {
     this.isOnline = window.navigator.onLine;
@@ -38,14 +34,14 @@ export class ConnectionStatusComponent implements OnInit, OnDestroy {
 
     if (this.syncService.forceOffline) {
       this.showOffline = true;
-      this.notifications.notifyOffline();
+      this.syncService.goOffline();
       return;
     }
 
     if (this.isOnline && doSync) {
       this.showOffline = false;
 
-      this.syncService.processQueue();
+      this.syncService.goOnline();
     }
   }
 

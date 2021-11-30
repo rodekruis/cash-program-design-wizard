@@ -31,34 +31,16 @@ export class SyncService implements OnDestroy {
     window.removeEventListener('offline', () => this.goOffline());
   }
 
-  public processQueue(): Observable<any> {
-    const requests: Observable<any>[] = [];
-    const syncTasks = this.getExistingSyncTasks();
+  public goOffline() {
+    console.log('SyncService: Going off-line. Collecting tasks in queue...');
+    this.notifications.notifyOffline();
+    this.forceOffline = true;
+  }
 
-    console.log(
-      `SyncService: Processing queue... ${syncTasks.length} tasks pending.`,
-    );
-
-    syncTasks.forEach((task: SyncTask) => {
-      const params = new HttpParams({
-        fromString: task.params,
-      });
-      const request$ = this.apiService
-        .post(task.url, task.body, params)
-        .pipe(map((_) => task));
-
-      requests.push(request$);
-    });
-
-    const allRequests$ = concat(...requests).pipe(share());
-
-    allRequests$.subscribe((task) => {
-      const index = syncTasks.findIndex((t) => t === task);
-      syncTasks.splice(index, 1);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(syncTasks));
-    });
-
-    return allRequests$;
+  public goOnline() {
+    console.log('SyncService: Going on-line.');
+    this.notifications.dismissAll();
+    this.processQueue();
   }
 
   public tryPost(
@@ -135,14 +117,33 @@ export class SyncService implements OnDestroy {
     return serializedTasks ? JSON.parse(serializedTasks) : [];
   }
 
-  private goOnline() {
-    console.log('SyncService: Going on-line.');
-    this.processQueue();
-  }
+  private processQueue(): Observable<any> {
+    const requests: Observable<any>[] = [];
+    const syncTasks = this.getExistingSyncTasks();
 
-  private goOffline() {
-    console.log('SyncService: Going off-line. Collecting tasks in queue...');
-    this.notifications.notifyOffline();
-    this.forceOffline = true;
+    console.log(
+      `SyncService: Processing queue... ${syncTasks.length} tasks pending.`,
+    );
+
+    syncTasks.forEach((task: SyncTask) => {
+      const params = new HttpParams({
+        fromString: task.params,
+      });
+      const request$ = this.apiService
+        .post(task.url, task.body, params)
+        .pipe(map((_) => task));
+
+      requests.push(request$);
+    });
+
+    const allRequests$ = concat(...requests).pipe(share());
+
+    allRequests$.subscribe((task) => {
+      const index = syncTasks.findIndex((t) => t === task);
+      syncTasks.splice(index, 1);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(syncTasks));
+    });
+
+    return allRequests$;
   }
 }

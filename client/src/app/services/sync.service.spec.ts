@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApiService } from './api.service';
+import { NotificationService } from './notification.service';
 import { SyncService } from './sync.service';
 
 describe('SyncService', () => {
@@ -10,7 +11,7 @@ describe('SyncService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, TranslateModule.forRoot()],
-      providers: [ApiService],
+      providers: [ApiService, NotificationService],
     });
     service = TestBed.inject(SyncService);
   });
