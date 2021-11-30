@@ -23,6 +23,8 @@ export class StateService {
     tag: Tag.all,
   };
 
+  public isLoading: boolean;
+
   public programMetaData$: Observable<ProgramMetaData>;
 
   public activeSection: QuestionSection;
@@ -125,6 +127,7 @@ export class StateService {
   }
 
   private async updateSections() {
+    this.isLoading = true;
     let program: Program;
     // Hard-code mock-data in
     if (environment.useMockData && this.programId === '123') {
@@ -147,6 +150,7 @@ export class StateService {
     );
     this.sections = sections;
     this.sectionsStore.next(sections);
+    this.isLoading = false;
   }
 
   private async refreshSections() {

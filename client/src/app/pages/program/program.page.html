@@ -27,7 +27,7 @@
         </div>
 
         <ion-progress-bar
-          *ngIf="!state?.activeSection"
+          *ngIf="state?.isLoading || !state?.activeSection"
           type="indeterminate"
           class="ion-margin"
         ></ion-progress-bar>
