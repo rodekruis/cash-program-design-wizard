@@ -19,6 +19,8 @@ export interface QuestionInput {
   answerUpdated?: string | Date;
   storedAnswer?: string | string[];
   comments?: QuestionComment[];
+  isInProgress?: boolean;
+  hasError?: boolean;
 }
 
 export interface OptionChoice {

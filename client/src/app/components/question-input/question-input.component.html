@@ -8,7 +8,19 @@
     >
     <strong>{{ question.label }}</strong>
   </div>
-  <ion-item [ngClass]="{ 'is-readonly': !canEdit }">
+  <ion-item
+    [ngClass]="{
+      'is-readonly': !canEdit,
+      'is-error': question.hasError,
+      'is-in-progress': question.isInProgress,
+      'is-pending': canEdit && question.answer !== question.storedAnswer,
+      'is-saved':
+        canEdit &&
+        !!question.answer &&
+        question.answer === question.storedAnswer,
+      'answer-state': true
+    }"
+  >
     <ng-container [ngSwitch]="question.type">
       <ng-container *ngSwitchCase="questionTypes.select1">
         <div *ngIf="!canEdit && question.answer">
