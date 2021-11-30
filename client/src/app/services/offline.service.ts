@@ -14,12 +14,11 @@ export class OfflineService {
   async presentToast() {
     const toast = await this.toastController.create({
       position: 'top',
-      cssClass: 'offline-toaster',
+      cssClass: 'notification',
       color: 'secondary',
       message: this.translate.instant(
-        'connection-status.offline.toaster-message',
+        'connection-status.offline.notification-message',
       ),
-      duration: 2000,
     });
     toast.present();
   }

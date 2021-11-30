@@ -99,7 +99,7 @@
     "offline": {
       "label": "Offline",
       "label-long": "You are currently offline",
-      "toaster-message": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later."
+      "notification-message": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later."
     },
     "go": {
       "online": "Go online and sync",
