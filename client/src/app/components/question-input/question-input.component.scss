@@ -12,3 +12,22 @@ ion-item.is-readonly {
     -moz-appearance: textfield;
   }
 }
+
+.answer-state {
+  border-inline-end: 4px solid transparent;
+
+  &.is-error {
+    border-inline-end-color: var(--ion-color-danger);
+  }
+  &.is-saved {
+    border-inline-end-color: purple;
+  }
+  &.is-in-progress {
+    border-inline-end-style: dotted;
+    border-inline-end-color: gold;
+  }
+  &.is-pending {
+    border-inline-end-color: var(--ion-color-primary);
+    border-inline-end-style: solid; // `is-pending` is always applied together with `is-in-progress`
+  }
+}

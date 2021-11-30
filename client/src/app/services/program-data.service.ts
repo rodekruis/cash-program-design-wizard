@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { EMPTY, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { QuestionData } from '../models/question-data.model';
 import { Program, ProgramMetaData } from '../types/program.type';
@@ -55,14 +56,17 @@ export class ProgramDataService {
     });
   }
 
-  public saveAnswer(programId: string, question: QuestionInput) {
+  public saveAnswer(
+    programId: string,
+    question: QuestionInput,
+  ): Observable<any> {
     // If nothing changed, nothing needs to be stored
     if (
       question.answer === question.storedAnswer ||
       (this.isMultipleChoice(question) &&
         this.isEqualJson(question.answer, question.storedAnswer))
     ) {
-      return;
+      return EMPTY;
     }
     // Make sure to always store String-values, even for empty answers
     if (question.answer === null || question.answer === undefined) {
@@ -79,24 +83,32 @@ export class ProgramDataService {
       console.warn(`Using mock-data, fake saving answer: ${question.name}`);
       question.storedAnswer = question.answer;
 
-      return;
+      return EMPTY;
     }
 
-    return this.syncService
-      .tryPost(ApiPath.answers, {
-        programId,
-        questionId: question.id,
-        text: plainAnswer.toString(), // Prevent storing numeric-input as a number
-      })
-      .subscribe(
-        () => {
-          // Update the stored (backend)state in the local state
-          question.storedAnswer = question.answer;
-        },
-        (error) => {
-          console.error('Answer save failed.', error);
-        },
-      );
+    question.isInProgress = true;
+    question.hasError = false;
+
+    const theRequest = this.syncService.tryPost(ApiPath.answers, {
+      programId,
+      questionId: question.id,
+      text: plainAnswer.toString(), // Prevent storing numeric-input as a number
+    });
+
+    theRequest.subscribe(
+      () => {
+        // Update the stored (backend)state in the local state
+        question.storedAnswer = question.answer;
+        question.isInProgress = false;
+      },
+      (error) => {
+        console.error('Answer save failed.', error);
+
+        question.hasError = true;
+      },
+    );
+
+    return theRequest;
   }
 
   public saveComment(

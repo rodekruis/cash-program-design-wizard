@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
+import { NotificationService } from './services/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private translate: TranslateService) {
+  constructor(
+    private translate: TranslateService,
+    public notifications: NotificationService, // Injection required here to enable notifications triggered by PubSub-events
+  ) {
     if (!!environment.envName) {
       document.title += ` [ ${environment.envName} ]`;
     }

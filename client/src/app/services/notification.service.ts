@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { PubSubEvent, PubSubService } from './pub-sub.service';
 
 const enum NotificationType {
   offline,
+  syncDone,
 }
 
 @Injectable({
@@ -15,18 +17,39 @@ export class NotificationService {
   constructor(
     public toastController: ToastController,
     private translate: TranslateService,
-  ) {}
-
-  public dismissAll() {
-    this.stack.forEach((toast) => {
-      toast.dismiss();
+    private pubSub: PubSubService,
+  ) {
+    this.pubSub.subscribe(PubSubEvent.didConnectionOnline, () => {
+      const offlineNotification = this.stack.get(NotificationType.offline);
+      if (offlineNotification) {
+        offlineNotification.dismiss();
+      }
     });
+    this.pubSub.subscribe(PubSubEvent.didConnectionOffline, () => {
+      this.notifyOffline();
+    });
+    this.pubSub.subscribe(PubSubEvent.didAddSyncTask, () => {
+      this.notifyOffline();
+    });
+    this.pubSub.subscribe(PubSubEvent.didSyncQueue, () => {
+      this.notifySyncDone();
+    });
+    console.log('NotificationService created.');
   }
 
-  public notifyOffline() {
+  private notifyOffline() {
     return this.presentToast(
       NotificationType.offline,
       this.translate.instant('notification.offline'),
+    );
+  }
+
+  private notifySyncDone() {
+    return this.presentToast(
+      NotificationType.syncDone,
+      this.translate.instant('notification.sync-done'),
+      true,
+      5000,
     );
   }
 
@@ -34,6 +57,7 @@ export class NotificationService {
     type: NotificationType,
     message: string,
     canDismiss = true,
+    duration = 0,
   ) {
     // There can be only 1 notification of a specific type visible at any one time.
     if (this.stack.has(type)) {
@@ -62,6 +86,7 @@ export class NotificationService {
       color: 'secondary',
       message,
       buttons,
+      duration,
     });
 
     // Keep track of all notifications on the current 'stack':
