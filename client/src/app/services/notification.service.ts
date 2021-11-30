@@ -5,6 +5,7 @@ import { PubSubEvent, PubSubService } from './pub-sub.service';
 
 const enum NotificationType {
   offline,
+  syncDone,
 }
 
 @Injectable({
@@ -30,6 +31,9 @@ export class NotificationService {
     this.pubSub.subscribe(PubSubEvent.didAddSyncTask, () => {
       this.notifyOffline();
     });
+    this.pubSub.subscribe(PubSubEvent.didSyncQueue, () => {
+      this.notifySyncDone();
+    });
     console.log('NotificationService created.');
   }
 
@@ -40,10 +44,20 @@ export class NotificationService {
     );
   }
 
+  private notifySyncDone() {
+    return this.presentToast(
+      NotificationType.syncDone,
+      this.translate.instant('notification.sync-done'),
+      true,
+      5000,
+    );
+  }
+
   private async presentToast(
     type: NotificationType,
     message: string,
     canDismiss = true,
+    duration = 0,
   ) {
     // There can be only 1 notification of a specific type visible at any one time.
     if (this.stack.has(type)) {
@@ -72,6 +86,7 @@ export class NotificationService {
       color: 'secondary',
       message,
       buttons,
+      duration,
     });
 
     // Keep track of all notifications on the current 'stack':

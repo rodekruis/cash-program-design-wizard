@@ -106,6 +106,7 @@
     }
   },
   "notification": {
-    "offline": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later."
+    "offline": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later.",
+    "sync-done": "Your locally saved answers are stored on the server."
   }
 }

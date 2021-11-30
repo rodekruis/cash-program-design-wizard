@@ -8,6 +8,7 @@ import { Program, ProgramMetaData } from '../types/program.type';
 import { QuestionSection } from '../types/question-section.type';
 import { AuthService } from './auth.service';
 import { ProgramDataService } from './program-data.service';
+import { PubSubEvent, PubSubService } from './pub-sub.service';
 import { TranslatableStringService } from './translatable-string.service';
 
 @Injectable({
@@ -45,6 +46,7 @@ export class StateService {
     private translatableString: TranslatableStringService,
     private programDataService: ProgramDataService,
     private authService: AuthService,
+    private pubSub: PubSubService,
   ) {
     this.sections$ = this.sectionsStore.asObservable();
     this.programMetaData$ = this.programMetaDataStore.asObservable();
@@ -57,6 +59,10 @@ export class StateService {
       if (!user) {
         this.clearState();
       }
+    });
+
+    this.pubSub.subscribe(PubSubEvent.didSyncQueue, () => {
+      this.refreshSections();
     });
   }
 
@@ -141,6 +147,16 @@ export class StateService {
     );
     this.sections = sections;
     this.sectionsStore.next(sections);
+  }
+
+  private async refreshSections() {
+    const currentActiveSectionName = this.activeSection.name;
+
+    await this.updateSections();
+    this.setActiveSection(
+      this.getSectionByName(currentActiveSectionName),
+      false,
+    );
   }
 
   private async updateActiveSectionFromUrl() {

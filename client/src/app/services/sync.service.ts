@@ -139,6 +139,11 @@ export class SyncService implements OnDestroy {
       const index = syncTasks.findIndex((t) => t === task);
       syncTasks.splice(index, 1);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(syncTasks));
+
+      // Let the last request signal that "we're done for now"
+      if (syncTasks.length === 0) {
+        this.pubSub.publish(PubSubEvent.didSyncQueue);
+      }
     });
 
     return allRequests$;
