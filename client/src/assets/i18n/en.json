@@ -104,5 +104,8 @@
       "online": "Go online and sync",
       "offline": "Prepare for offline"
     }
+  },
+  "notification": {
+    "offline": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later."
   }
 }

@@ -4,6 +4,7 @@ import { concat, EMPTY, Observable, throwError, TimeoutError } from 'rxjs';
 import { catchError, map, retry, share, timeout } from 'rxjs/operators';
 import { SyncTask } from '../types/sync-task.type';
 import { ApiPath, ApiService } from './api.service';
+import { NotificationService } from './notification.service';
 
 const HTTP_TIMEOUT_IN_MS = 5000;
 const REQUEST_RETRIES = 2;
@@ -15,7 +16,10 @@ const STORAGE_KEY = 'syncTasks';
 export class SyncService implements OnDestroy {
   public forceOffline = false;
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private apiService: ApiService,
+    private notifications: NotificationService,
+  ) {
     window.addEventListener('online', () => this.goOnline(), { passive: true });
     window.addEventListener('offline', () => this.goOffline(), {
       passive: true,
@@ -27,34 +31,16 @@ export class SyncService implements OnDestroy {
     window.removeEventListener('offline', () => this.goOffline());
   }
 
-  public processQueue(): Observable<any> {
-    const requests: Observable<any>[] = [];
-    const syncTasks = this.getExistingSyncTasks();
+  public goOffline() {
+    console.log('SyncService: Going off-line. Collecting tasks in queue...');
+    this.notifications.notifyOffline();
+    this.forceOffline = true;
+  }
 
-    console.log(
-      `SyncService: Processing queue... ${syncTasks.length} tasks pending.`,
-    );
-
-    syncTasks.forEach((task: SyncTask) => {
-      const params = new HttpParams({
-        fromString: task.params,
-      });
-      const request$ = this.apiService
-        .post(task.url, task.body, params)
-        .pipe(map((_) => task));
-
-      requests.push(request$);
-    });
-
-    const allRequests$ = concat(...requests).pipe(share());
-
-    allRequests$.subscribe((task) => {
-      const index = syncTasks.findIndex((t) => t === task);
-      syncTasks.splice(index, 1);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(syncTasks));
-    });
-
-    return allRequests$;
+  public goOnline() {
+    console.log('SyncService: Going on-line.');
+    this.notifications.dismissAll();
+    this.processQueue();
   }
 
   public tryPost(
@@ -122,6 +108,7 @@ export class SyncService implements OnDestroy {
     console.log(
       `SyncService: Task added to queue. Tasks pending: ${tasks.length}`,
     );
+    this.notifications.notifyOffline();
   }
 
   private getExistingSyncTasks(): SyncTask[] {
@@ -130,13 +117,33 @@ export class SyncService implements OnDestroy {
     return serializedTasks ? JSON.parse(serializedTasks) : [];
   }
 
-  private goOnline() {
-    console.log('SyncService: Going on-line.');
-    this.processQueue();
-  }
+  private processQueue(): Observable<any> {
+    const requests: Observable<any>[] = [];
+    const syncTasks = this.getExistingSyncTasks();
 
-  private goOffline() {
-    console.log('SyncService: Going off-line. Collecting tasks in queue...');
-    this.forceOffline = true;
+    console.log(
+      `SyncService: Processing queue... ${syncTasks.length} tasks pending.`,
+    );
+
+    syncTasks.forEach((task: SyncTask) => {
+      const params = new HttpParams({
+        fromString: task.params,
+      });
+      const request$ = this.apiService
+        .post(task.url, task.body, params)
+        .pipe(map((_) => task));
+
+      requests.push(request$);
+    });
+
+    const allRequests$ = concat(...requests).pipe(share());
+
+    allRequests$.subscribe((task) => {
+      const index = syncTasks.findIndex((t) => t === task);
+      syncTasks.splice(index, 1);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(syncTasks));
+    });
+
+    return allRequests$;
   }
 }

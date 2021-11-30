@@ -34,13 +34,14 @@ export class ConnectionStatusComponent implements OnInit, OnDestroy {
 
     if (this.syncService.forceOffline) {
       this.showOffline = true;
+      this.syncService.goOffline();
       return;
     }
 
     if (this.isOnline && doSync) {
       this.showOffline = false;
 
-      this.syncService.processQueue();
+      this.syncService.goOnline();
     }
   }
 
