@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 
+const enum NotificationType {
+  offline,
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationService {
-  private stack: HTMLIonToastElement[] = [];
+  private stack: Map<NotificationType, HTMLIonToastElement> = new Map();
 
   constructor(
     public toastController: ToastController,
@@ -20,10 +24,28 @@ export class NotificationService {
   }
 
   public notifyOffline() {
-    return this.presentToast(this.translate.instant('notification.offline'));
+    return this.presentToast(
+      NotificationType.offline,
+      this.translate.instant('notification.offline'),
+    );
   }
 
-  private async presentToast(message: string, canDismiss = true) {
+  private async presentToast(
+    type: NotificationType,
+    message: string,
+    canDismiss = true,
+  ) {
+    // There can be only 1 notification of a specific type visible at any one time.
+    if (this.stack.has(type)) {
+      // Dismiss the existing notification
+      this.stack.get(type).dismiss(
+        {
+          reason: 'replaced-by-new-of-same-type',
+        },
+        'cancel',
+      );
+    }
+
     let buttons = [];
     if (canDismiss) {
       buttons = [
@@ -41,10 +63,13 @@ export class NotificationService {
       message,
       buttons,
     });
-    this.stack.push(toast);
+
+    // Keep track of all notifications on the current 'stack':
+    this.stack.set(type, toast);
     toast.onDidDismiss().then((_event) => {
-      this.stack.splice(this.stack.indexOf(toast));
+      this.stack.delete(type);
     });
+
     return toast.present();
   }
 }
