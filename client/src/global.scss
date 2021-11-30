@@ -78,6 +78,18 @@ input[type='number'] {
   font-feature-settings: 'tnum';
 }
 
+// <ion-toast> customizations:
+.notification {
+  --start: auto;
+  --end: var(--padding-end);
+
+  top: calc(56px + 0.5 * var(--padding-top)); // See <ion-toolbar> min-height
+
+  --width: 42%;
+  --min-width: 20rem;
+  --max-width: 33rem;
+}
+
 /****************************************************************************
  * Utilities:
  */
@@ -182,13 +194,4 @@ input[type='number'] {
 .debug--placeholder {
   outline: 1px dashed hotpink;
   padding: 0.33em;
-}
-
-.notification {
-  margin-top: 180px;
-  width: 20%;
-  min-width: 200px;
-  left: 75%;
-  --border-radius: 0;
-  --box-shadow: none;
 }

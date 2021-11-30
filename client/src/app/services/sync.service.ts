@@ -4,7 +4,7 @@ import { concat, EMPTY, Observable, throwError, TimeoutError } from 'rxjs';
 import { catchError, map, retry, share, timeout } from 'rxjs/operators';
 import { SyncTask } from '../types/sync-task.type';
 import { ApiPath, ApiService } from './api.service';
-import { OfflineService } from './offline.service';
+import { NotificationService } from './notification.service';
 
 const HTTP_TIMEOUT_IN_MS = 5000;
 const REQUEST_RETRIES = 2;
@@ -18,7 +18,7 @@ export class SyncService implements OnDestroy {
 
   constructor(
     private apiService: ApiService,
-    private offlineService: OfflineService,
+    private notifications: NotificationService,
   ) {
     window.addEventListener('online', () => this.goOnline(), { passive: true });
     window.addEventListener('offline', () => this.goOffline(), {
@@ -126,7 +126,7 @@ export class SyncService implements OnDestroy {
     console.log(
       `SyncService: Task added to queue. Tasks pending: ${tasks.length}`,
     );
-    this.offlineService.presentToast();
+    this.notifications.notifyOffline();
   }
 
   private getExistingSyncTasks(): SyncTask[] {
@@ -142,7 +142,7 @@ export class SyncService implements OnDestroy {
 
   private goOffline() {
     console.log('SyncService: Going off-line. Collecting tasks in queue...');
-    this.offlineService.presentToast();
+    this.notifications.notifyOffline();
     this.forceOffline = true;
   }
 }

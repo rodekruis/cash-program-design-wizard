@@ -98,12 +98,14 @@
     },
     "offline": {
       "label": "Offline",
-      "label-long": "You are currently offline",
-      "notification-message": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later."
+      "label-long": "You are currently offline"
     },
     "go": {
       "online": "Go online and sync",
       "offline": "Prepare for offline"
     }
+  },
+  "notification": {
+    "offline": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later."
   }
 }

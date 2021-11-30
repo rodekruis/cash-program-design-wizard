@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { OfflineService } from 'src/app/services/offline.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { SyncService } from 'src/app/services/sync.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class ConnectionStatusComponent implements OnInit, OnDestroy {
 
   constructor(
     private syncService: SyncService,
-    private offlineService: OfflineService,
+    private notifications: NotificationService,
   ) {}
 
   ngOnInit() {
@@ -38,7 +38,7 @@ export class ConnectionStatusComponent implements OnInit, OnDestroy {
 
     if (this.syncService.forceOffline) {
       this.showOffline = true;
-      this.offlineService.presentToast();
+      this.notifications.notifyOffline();
       return;
     }
 
