@@ -70,7 +70,7 @@
     "@typescript-eslint/parser": "4.33.0",
     "dotenv": "^10.0.0",
     "eslint": "^7.6.0",
-    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jsdoc": "36.1.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "http-server": "^14.0.0",
