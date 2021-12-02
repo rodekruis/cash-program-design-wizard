@@ -78,115 +78,170 @@ Automated tests are configured and can be run with:
 
 All initial database-contents are hard-coded in the [`server/src/seed-data`](./server/src/seed-data/)-folder.
 
-- ### Program - [`program-demo.json`](./server/src/seed-data/program-demo.json)
+### Program - [`program-demo.json`](./server/src/seed-data/program-demo.json)
 
-  | attribute | type   | explanation               |
-  | --------- | ------ | ------------------------- |
-  | `name`    | string | identifier of the program |
+| attribute | type   | explanation               |
+| --------- | ------ | ------------------------- |
+| `name`    | string | identifier of the program |
 
-- ### Section - [`sections.json`](./server/src/seed-data/sections.json)
+### Section - [`sections.json`](./server/src/seed-data/sections.json)
 
-  | attribute       | type   | explanation                                |
-  | --------------- | ------ | ------------------------------------------ |
-  | `name`          | string | identifier of the section (must be unique) |
-  | `label`         | object | what users see in the platform             |
-  | `orderPriority` | number |                                            |
+| attribute       | type                | explanation                                |
+| --------------- | ------------------- | ------------------------------------------ |
+| `name`          | string              | identifier of the section (must be unique) |
+| `label`         | translations-object | what users see in the app                  |
+| `orderPriority` | number              |                                            |
 
-  Example:
+Example:
 
-  ```JSON
-  {
-    "name": "pa-info",
-    "label": { "en": "The people we will help are mostly" },
-    "orderPriority": 1
-  }
-  ```
-
-- ### Subsection - [`subsections.json`](./server/src/seed-data/subsections.json)
-
-  | attribute       | type   | explanation                                   |
-  | --------------- | ------ | --------------------------------------------- |
-  | `name`          | string | identifier of the subsection (must be unique) |
-  | `orderPriority` | number |                                               |
-  | `section`       | string | must match a `name` of a `section`            |
-
-  Example:
-
-  ```JSON
-  {
-    "name": "pa-gender",
-    "orderPriority": 1,
-    "section": "pa-info"
+```JSON
+{
+  "name": "pa-info",
+  "label": {
+    "en": "The people we will help are mostly..."
   },
-  ```
+  "orderPriority": 1
+}
+```
 
-- ### Question - [`questions.json`](./server/src/seed-data/questions.json)
+### Subsection - [`subsections.json`](./server/src/seed-data/subsections.json)
 
-  | attribute       | type           | explanation                                                                              |
-  | --------------- | -------------- | ---------------------------------------------------------------------------------------- |
-  | `name`          | string         | identifier of the question (must be unique, used in the narrative report)                |
-  | `type`          | string         | possible values: `select-1`, `select-n`, `text`, `text-long`, `numeric`                  |
-  | `label`         | object         | what users see in the platform                                                           |
-  | `orderPriority` | number         |
-  | `subsection`    | string         | must match a `name` of a `subsection`                                                    |
-  | `tags`          | [string]       | array of strings. possible values: `cash`, `people`, `data`. write it as: "cash", "data" |
-  | `optionChoices` | [optionChoice] | array of optionChoice objects, **used only for types `select-1` and `select-n`**         |
+| attribute       | type   | explanation                                   |
+| --------------- | ------ | --------------------------------------------- |
+| `name`          | string | identifier of the subsection (must be unique) |
+| `orderPriority` | number |                                               |
+| `section`       | string | must match a `name` of a `section`            |
 
-  - **`optionChoice`** (part of the `optionChoices` array attribute inside questions with types `select-1` and `select-2` )
+Example:
 
-    | attribute       | type   | explanation                    |
-    | --------------- | ------ | ------------------------------ |
-    | `label`         | object | what users see in the platform |
-    | `name`          | string | identifier of the option       |
-    | `orderPriority` | number |                                |
+```JSON
+{
+  "name": "pa-gender",
+  "orderPriority": 1,
+  "section": "pa-info"
+},
+```
+
+### Question - [`questions.json`](./server/src/seed-data/questions.json)
+
+| attribute       | type           | explanation                                                                              |
+| --------------- | -------------- | ---------------------------------------------------------------------------------------- |
+| `name`          | string         | identifier of the question (must be unique, used in the narrative report)                |
+| `type`          | string         | possible values: `select-1`, `select-n`, `text`, `text-long`, `numeric`                  |
+| `label`         | {translations} | what users see in the app                                                                |
+| `orderPriority` | number         |
+| `subsection`    | string         | must match a `name` of a `subsection`                                                    |
+| `tags`          | [string]       | array of strings. possible values: `cash`, `people`, `data`. write it as: "cash", "data" |
+| `optionChoices` | [optionChoice] | array of optionChoice objects, **used only for types `select-1` and `select-n`**         |
+
+- `optionChoice`(s)
+
+  Part of the `optionChoices` array attribute inside questions with types `select-1` and `select-2` )
+
+  | attribute       | type           | explanation               |
+  | --------------- | -------------- | ------------------------- |
+  | `label`         | {translations} | what users see in the app |
+  | `name`          | string         | identifier of the option  |
+  | `orderPriority` | number         |                           |
+
+Example:
+
+```JSON
+{
+  "name": "pa-gender-01",
+  "type": "select-n",
+  "label": {
+    "en": "PA Gender"
+  },
+  "orderPriority": 1,
+  "subsection": "pa-gender",
+  "tags": ["people"],
+  "optionChoices": [
+    {
+      "label": {
+        "en": "Currently Unknown"
+      },
+      "name": "unknown",
+      "orderPriority": 1
+    },
+    {
+      "label": {
+        "en": "Female"
+      },
+      "name": "female",
+      "orderPriority": 2
+    },
+    {
+      "label": {
+        "en": "Male"
+      },
+      "name": "male",
+      "orderPriority": 3
+    },
+    {
+      "label": {
+        "en": "Non Binary"
+      },
+      "name": "non-binary",
+      "orderPriority": 4
+    }
+  ]
+}
+```
+
+- ### `{translations}`-object(s)
+
+  Some text-labels (what users see in the app) should be created by a `translations`-object, this can contain multiple versions of the same text in multiple languages/locales.
 
   Example:
 
   ```JSON
   {
-    "name": "pa-gender-01",
-    "type": "select-n",
-    "label": { "en": "PA Gender" },
-    "orderPriority": 1,
-    "subsection": "pa-gender",
-    "tags": ["people"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Currently Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Female"
-        },
-        "name": "female",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Male"
-        },
-        "name": "male",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Non Binary"
-        },
-        "name": "non-binary",
-        "orderPriority": 4
-      }
-    ]
+    "en": "An English text",
+    "en_US": "An American text",
+    "nl": "Een Nederlandse tekst",
+    "nl_BE": "Een Vlaamse tekst"
   }
   ```
 
-- ### Narrative Report - [`narrativeReportTemplate-demo-en.ts`](./server/src/seed-data/narrativeReportTemplate-demo-en.ts)
-  ...
+  > Switching between multiple languages/locales isn't currently available in the front-end/app, but should be prepared for, by having the data in the database in this format.
 
-So the hierarchy is:
+- ### Narrative Report
+
+  The text of the narrative report is based on this template.  
+  For marking up and lay-outing the contents, [Markdown](https://en.wikipedia.org/wiki/Markdown) can be used.
+
+  See the working examples for the [`demo`-report](./server/src/seed-data/narrativeReportTemplate-demo-en.ts) or the [`test`-report](server/src/seed-data/narrativeReportTemplate-test-en.ts).
+
+  A good introduction to the possibilities can be found on:  
+  [GiHub Docs: Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
+  **Variables** (or the _filled-in answers_)  
+  The filled-in answers of the program can be used by including _variables_ in the template in the form of: `{{name-of-question}}`.
+
+  Where `name-of-question` is the value of the `name`-attributes of a question. (see [Question](#question---questionsjson) above.)
+
+  Answers on multiple-choice questions (`"type": "select-n"`) will be rendered as a bullet-list.
+
+  Example:
+
+  ```md
+  ## Section-heading
+
+  Multi-line paragraphs,  
+  can be used.
+
+  Put _emphasis_ on some words, or make them **stand out** more.
+
+  ### Example:
+
+  The people we want to help identify mostly as:
+  {{pa-gender-01}}
+
+  We will spend {{currency}} {{montly-amount}} per month, per {{household-type}}.
+  ```
+
+### Hierarchy/Tree-structure
 
 - `program`
   - `section` (1 or more)
@@ -233,6 +288,7 @@ To run this file manually, locally, do:
 - [Angular v12](https://v12.angular.io/docs/)
 - [`ngx-translate`](https://github.com/ngx-translate/core#readme)
 - [`@auth0/angular-jwt`](https://www.npmjs.com/package/@auth0/angular-jwt)
+- [`ngx-markdown`](https://www.npmjs.com/package/ngx-markdown)
 
 ### Libraries/frameworks in use in the back-end/server API
 
