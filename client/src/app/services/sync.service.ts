@@ -142,7 +142,7 @@ export class SyncService implements OnDestroy {
 
       // Let the last request signal that "we're done for now"
       if (syncTasks.length === 0) {
-        this.pubSub.publish(PubSubEvent.didSyncQueue);
+        this.pubSub.publish(PubSubEvent.didCompleteSyncQueue);
       }
     });
 

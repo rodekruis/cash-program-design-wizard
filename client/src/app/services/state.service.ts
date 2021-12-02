@@ -63,7 +63,7 @@ export class StateService {
       }
     });
 
-    this.pubSub.subscribe(PubSubEvent.didSyncQueue, () => {
+    this.pubSub.subscribe(PubSubEvent.didCompleteSyncQueue, () => {
       this.refreshSections();
     });
   }

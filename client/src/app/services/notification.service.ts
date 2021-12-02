@@ -31,7 +31,7 @@ export class NotificationService {
     this.pubSub.subscribe(PubSubEvent.didAddSyncTask, () => {
       this.notifyOffline();
     });
-    this.pubSub.subscribe(PubSubEvent.didSyncQueue, () => {
+    this.pubSub.subscribe(PubSubEvent.didCompleteSyncQueue, () => {
       this.notifySyncDone();
     });
     console.log('NotificationService created.');
