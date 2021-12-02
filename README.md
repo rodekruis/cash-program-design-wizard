@@ -2,6 +2,8 @@
 
 > The Cash Program Design Wizard tries to help Aid Workers who want to set up best practice Cash Programs for People Affected in multiple contexts.
 
+---
+
 ## Status
 
 Latest releases and notable changes are in the [CHANGELOG](CHANGELOG.md).
@@ -11,20 +13,21 @@ Preview of the latest (development) versions:
 - Front-end/client app: <https://orange-grass-0aefaa103.azurestaticapps.net/>
 - Back-end/server API: <https://cpdw-development.azurewebsites.net/api/>
 
----
+Latest test-runs:
 
-[![CI Tests](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml)
-[![CodeQL](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml)
+- [![CI Tests](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml)
+- [![CodeQL](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/codeql-analysis.yml)
 
-[![CD [client] Azure Static Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)  
-[![CD [server] - Azure Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml)  
-.
+Latest deployments:
+
+- [![CD [client] Azure Static Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/azure-static-web-apps-orange-grass-0aefaa103.yml)
+- [![CD [server] - Azure Web App - development](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/main_CPDW-Development.yml)
 
 ---
 
 ## Getting Started
 
-To set up a local development-environment:
+### Set up a local development-environment
 
 - Install Node.js: <https://nodejs.org/en/download/>
 
@@ -81,8 +84,6 @@ All initial database-contents are hard-coded in the [`server/src/seed-data`](./s
   | --------- | ------ | ------------------------- |
   | `name`    | string | identifier of the program |
 
-  <br>
-
 - ### Section - [`sections.json`](./server/src/seed-data/sections.json)
 
   | attribute       | type   | explanation                                |
@@ -100,8 +101,6 @@ All initial database-contents are hard-coded in the [`server/src/seed-data`](./s
     "orderPriority": 1
   }
   ```
-
-  <br>
 
 - ### Subsection - [`subsections.json`](./server/src/seed-data/subsections.json)
 
@@ -121,8 +120,6 @@ All initial database-contents are hard-coded in the [`server/src/seed-data`](./s
   },
   ```
 
-  <br>
-
 - ### Question - [`questions.json`](./server/src/seed-data/questions.json)
 
   | attribute       | type           | explanation                                                                              |
@@ -135,7 +132,8 @@ All initial database-contents are hard-coded in the [`server/src/seed-data`](./s
   | `tags`          | [string]       | array of strings. possible values: `cash`, `people`, `data`. write it as: "cash", "data" |
   | `optionChoices` | [optionChoice] | array of optionChoice objects, **used only for types `select-1` and `select-n`**         |
 
-  - #### optionChoice (part of the `optionChoices` array attribute inside questions with types `select-1` and `select-2` )
+  - **`optionChoice`** (part of the `optionChoices` array attribute inside questions with types `select-1` and `select-2` )
+
     | attribute       | type   | explanation                    |
     | --------------- | ------ | ------------------------------ |
     | `label`         | object | what users see in the platform |
@@ -185,10 +183,8 @@ All initial database-contents are hard-coded in the [`server/src/seed-data`](./s
   }
   ```
 
-  <br>
-
-- ### Narrative Report - [narrativeReportTemplate-demo-en.ts](./server/src/seed-data/narrativeReportTemplate-demo-en.ts)
-<br>
+- ### Narrative Report - [`narrativeReportTemplate-demo-en.ts`](./server/src/seed-data/narrativeReportTemplate-demo-en.ts)
+  ...
 
 So the hierarchy is:
 
@@ -196,8 +192,6 @@ So the hierarchy is:
   - `section` (1 or more)
     - `subsection` (1 or more)
       - `question` (1 or more)
-
-<br>
 
 When these files are changed, a 'reset' of the database is required. This can be done via the endpoint: <http://localhost:3001/scripts/reset>
 
