@@ -1,10 +1,9 @@
-<ion-header>
-  <app-header>
+<ion-header *ngIf="isDebug">
+  <ion-toolbar>
     <ion-title>{{ '_common.app-name' | translate }}</ion-title>
-  </app-header>
+  </ion-toolbar>
 </ion-header>
-
-<ion-content class="ion-padding">
+<ion-content *ngIf="isDebug" class="ion-padding">
   <!-- ------------------------------------------------------------------------- -->
   <!-- This content is not for production-use, so doesn't need to be translated: -->
   <!-- ------------------------------------------------------------------------- -->
@@ -97,6 +96,4 @@
   <ion-button (click)="apiTestGet()" [disabled]="apiTestInProgress">
     API: GET /
   </ion-button>
-
-  <hr class="ion-margin-vertical" style="border-top-width: 1px" />
 </ion-content>
