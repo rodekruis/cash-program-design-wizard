@@ -1,12 +1,31 @@
-<ion-header>
-  <app-header>
-    <ion-title> {{ 'login-form.button.label' | translate }} </ion-title>
-  </app-header>
-</ion-header>
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-justify-content-center ion-align-items-center">
+    <ion-row class="ion-justify-content-center">
       <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="6" size-xl="4">
+        <div class="ion-margin-vertical ion-text-center">
+          <h1>{{ '_common.app-name' | translate }}</h1>
+        </div>
+        <div class="ion-margin-vertical">
+          <p>{{ 'login-page.introduction' | translate }}</p>
+
+          <h2>{{ 'login-page.requirements.label' | translate }}</h2>
+          <p markdown>
+            {{ 'login-page.requirements.browser.explanation' | translate }}
+          </p>
+          <p markdown>
+            {{ 'login-page.requirements.connectivity.explanation' | translate }}
+          </p>
+
+          <h2>{{ 'login-page.contact.label' | translate }}</h2>
+          <p markdown>
+            {{ 'login-page.contact.intro' | translate }}
+          </p>
+          <p markdown>
+            {{ 'login-page.contact.github' | translate }}
+          </p>
+
+          <br />
+        </div>
         <app-login-form></app-login-form>
       </ion-col>
     </ion-row>

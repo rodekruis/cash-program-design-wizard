@@ -108,5 +108,22 @@
   "notification": {
     "offline": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later.",
     "sync-done": "Your locally saved answers are stored on the server."
+  },
+  "login-page": {
+    "introduction": "Welcome to the Cash Program Design Wizard.",
+    "requirements": {
+      "label": "Requirements",
+      "browser": {
+        "explanation": "To be able to use the app easily and efficiently, a recent version of a browser is required.\n Internet Explorer 11 is unfortunately not supported."
+      },
+      "connectivity": {
+        "explanation": "After log-in it is possible to '_go offline_' and work without an active internet-connection, storing your work locally on you own computer.\n When connected or when '_going online_', changes will be saved to the server automatically."
+      }
+    },
+    "contact": {
+      "label": "Contact",
+      "intro": "If you have any questions or experience bugs or issues, let us know.",
+      "github": "You can find us on GitHub at: [rodekruis/cash-program-design-wizard](https://github.com/rodekruis/cash-program-design-wizard/)"
+    }
   }
 }
