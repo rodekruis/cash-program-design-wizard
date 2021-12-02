@@ -6,6 +6,7 @@ import { ProgramEntity } from '../programs/program.entity';
 import { QuestionEntity } from '../questions/question.entity';
 import { SectionEntity } from '../sections/section.entity';
 import { narrativeReportTemplateDemoEn } from '../seed-data/narrativeReportTemplate-demo-en';
+import { narrativeReportTemplateTestEn } from '../seed-data/narrativeReportTemplate-test-en';
 import * as programDemo from '../seed-data/program-demo.json';
 import * as programTest from '../seed-data/program-test.json';
 import * as questionsSeedTest from '../seed-data/questions-test.json';
@@ -18,7 +19,6 @@ import { SubsectionEntity } from '../sub-sections/sub-section.entity';
 import { TagEntity } from '../tags/tag.entity';
 import { UserRoleEnum } from '../users/enum/user-role.enum';
 import { UserService } from '../users/user.service';
-import { narrativeReportTemplateTestEn } from './../seed-data/narrativeReportTemplate-test-en ';
 import { SeedScript } from './scripts.controller';
 import { InterfaceScript } from './scripts.module';
 

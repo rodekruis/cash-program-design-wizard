@@ -2,8 +2,16 @@ export const narrativeReportTemplateTestEn = `
 ## Section-heading
 ### With sub-sections
 
+The answers where: (bullet-list)
+{{test-2-select-n}}
+
+And also {{test-2-select-1}} or {{test-2-text}}.
+
 Output answers multiple times:
 {{test-2-text}} + {{test-2-text}} + {{test-2-text}}
+
+Concluding:
+{{test-2-text-long}}
 
 And more content.
 
