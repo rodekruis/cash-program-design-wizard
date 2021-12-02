@@ -75,7 +75,7 @@ export class NotificationService {
       buttons = [
         {
           role: 'cancel',
-          text: this.translate.instant('common.ok'),
+          text: this.translate.instant('_common.ok'),
           side: 'end',
         },
       ];

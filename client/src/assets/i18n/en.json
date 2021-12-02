@@ -1,7 +1,11 @@
 {
   "_dir": "ltr",
-  "app-header": {
+  "_common": {
     "app-name": "Cash Program Design Wizard",
+    "cancel": "Cancel",
+    "ok": "Ok"
+  },
+  "app-header": {
     "home": "Home",
     "toggle-dark-mode": "Toggle light/dark mode"
   },
@@ -74,10 +78,6 @@
     "current-section": "Current section: {{nr}} ({{name}})",
     "go-section": "Go to section: {{nr}} ({{name}})",
     "next-section": "Next section"
-  },
-  "common": {
-    "ok": "Ok",
-    "cancel": "Cancel"
   },
   "filters": {
     "tags": {
