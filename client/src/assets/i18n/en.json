@@ -1,4 +1,5 @@
 {
+  "_$about": "All keys in this file should be sorted alphabetically",
   "_dir": "ltr",
   "_common": {
     "app-name": "Cash Program Design Wizard",
@@ -9,75 +10,23 @@
     "home": "Home",
     "toggle-dark-mode": "Toggle light/dark mode"
   },
-  "phases": {
-    "overview": "Program overview",
-    "design": "Design",
-    "registration": "Registration",
-    "validation": "Validation",
-    "inclusion": "Inclusion",
-    "review-inclusion": "Review inclusion",
-    "payment": "Payment",
-    "monitoring-evaluation": "Monitoring & evaluation",
-    "report": "Narrative report"
+  "comment-input": {
+    "add-comment": "Add comment",
+    "submit": "Submit"
   },
-  "program": {
-    "page-title": "Program: {{name}}",
-    "not-found": "No program found."
-  },
-  "question-section": {
-    "no-questions": "No questions available with the current filters.",
-    "fields": {
-      "select-1": {
-        "placeholder": "Select 1 from the list"
-      },
-      "select-n": {
-        "placeholder": "Select 1 or more from the list"
-      }
+  "connection-status": {
+    "go": {
+      "offline": "Prepare for offline",
+      "online": "Go online and sync"
     },
-    "no-comments": "Start a conversation",
-    "comments": "Comment(s):"
-  },
-  "report": {
-    "page-title": "Report for program: {{name}}",
-    "not-found": "No report found.",
-    "title": "Narrative Report",
-    "appendix": "Appendix"
-  },
-  "report-narrative": {
-    "missing-explanation": "Nothing filled in.",
-    "answer-prefix": "Answer to question:",
-    "copy-to-clipboard": "Copy text to clipboard",
-    "print": "Print",
-    "last-updated": "Last updated:"
-  },
-  "report-section": {
-    "go-to-input": "Go to section"
-  },
-  "login-form": {
-    "e-mail": {
-      "label": "E-mail"
+    "offline": {
+      "label": "Offline",
+      "label-long": "You are currently offline"
     },
-    "password": {
-      "label": "Password"
-    },
-    "button": {
-      "label": "Log in"
-    },
-    "error": "Log in failed:"
-  },
-  "user-state": {
-    "log-in": "Log in",
-    "logged-in-as": "Logged in as",
-    "log-out": "Log out"
-  },
-  "nav-progress": {
-    "save-answers": {
-      "label": "Save answers"
-    },
-    "prev-section": "Previous section",
-    "current-section": "Current section: {{nr}} ({{name}})",
-    "go-section": "Go to section: {{nr}} ({{name}})",
-    "next-section": "Next section"
+    "online": {
+      "label": "Online",
+      "label-long": "You are currently online"
+    }
   },
   "filters": {
     "tags": {
@@ -87,29 +36,24 @@
       "people": "People"
     }
   },
-  "comment-input": {
-    "add-comment": "Add comment",
-    "submit": "Submit"
-  },
-  "connection-status": {
-    "online": {
-      "label": "Online",
-      "label-long": "You are currently online"
+  "login-form": {
+    "e-mail": {
+      "label": "E-mail"
     },
-    "offline": {
-      "label": "Offline",
-      "label-long": "You are currently offline"
+    "error": "Log in failed:",
+    "password": {
+      "label": "Password"
     },
-    "go": {
-      "online": "Go online and sync",
-      "offline": "Prepare for offline"
+    "submit": {
+      "label": "Log in"
     }
   },
-  "notification": {
-    "offline": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later.",
-    "sync-done": "Your locally saved answers are stored on the server."
-  },
   "login-page": {
+    "contact": {
+      "github": "You can find us on GitHub at: [rodekruis/cash-program-design-wizard](https://github.com/rodekruis/cash-program-design-wizard/)",
+      "intro": "If you have any questions or experience bugs or issues, let us know.",
+      "label": "Contact"
+    },
     "introduction": "Welcome to the Cash Program Design Wizard.",
     "requirements": {
       "label": "Requirements",
@@ -119,11 +63,67 @@
       "connectivity": {
         "explanation": "After log-in it is possible to '_go offline_' and work without an active internet-connection, storing your work locally on you own computer.\n When connected or when '_going online_', changes will be saved to the server automatically."
       }
-    },
-    "contact": {
-      "label": "Contact",
-      "intro": "If you have any questions or experience bugs or issues, let us know.",
-      "github": "You can find us on GitHub at: [rodekruis/cash-program-design-wizard](https://github.com/rodekruis/cash-program-design-wizard/)"
     }
+  },
+  "nav-progress": {
+    "current-section": "Current section: {{nr}} ({{name}})",
+    "go-section": "Go to section: {{nr}} ({{name}})",
+    "next-section": "Next section",
+    "prev-section": "Previous section",
+    "save-answers": {
+      "label": "Save answers"
+    }
+  },
+  "notification": {
+    "offline": "You currently seem to be offline, your answers are saved locally and will be uploaded when you get back online later.",
+    "sync-done": "Your locally saved answers are stored on the server."
+  },
+  "phases": {
+    "design": "Design",
+    "inclusion": "Inclusion",
+    "monitoring-evaluation": "Monitoring & evaluation",
+    "overview": "Program overview",
+    "payment": "Payment",
+    "registration": "Registration",
+    "report": "Narrative report",
+    "review-inclusion": "Review inclusion",
+    "validation": "Validation"
+  },
+  "program": {
+    "page-title": "Program: {{name}}"
+  },
+  "question-section": {
+    "comments": "Comment(s):",
+    "fields": {
+      "select-1": {
+        "placeholder": "Select 1 from the list"
+      },
+      "select-n": {
+        "placeholder": "Select 1 or more from the list"
+      }
+    },
+    "no-comments": "Start a conversation",
+    "no-questions": "No questions available with the current filters."
+  },
+  "report": {
+    "appendix": "Appendix",
+    "not-found": "No report found.",
+    "page-title": "Report for program: {{name}}",
+    "title": "Narrative Report"
+  },
+  "report-narrative": {
+    "answer-prefix": "Answer to question:",
+    "copy-to-clipboard": "Copy text to clipboard",
+    "last-updated": "Last updated:",
+    "missing-explanation": "Nothing filled in.",
+    "print": "Print"
+  },
+  "report-section": {
+    "go-to-input": "Go to section"
+  },
+  "user-state": {
+    "log-in": "Log in",
+    "log-out": "Log out",
+    "logged-in-as": "Logged in as"
   }
 }
