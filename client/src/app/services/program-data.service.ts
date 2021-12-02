@@ -10,6 +10,7 @@ import {
 } from '../types/question-section.type';
 import { ApiPath, ApiService } from './api.service';
 import { AuthService } from './auth.service';
+import { PubSubEvent, PubSubService } from './pub-sub.service';
 import { SyncService } from './sync.service';
 
 @Injectable({
@@ -22,6 +23,7 @@ export class ProgramDataService {
     private apiService: ApiService,
     private authService: AuthService,
     private syncService: SyncService,
+    private pubSub: PubSubService,
   ) {
     this.authService.authenticationState$.subscribe((user) => {
       if (!user || !user.userName) {
@@ -96,10 +98,14 @@ export class ProgramDataService {
     });
 
     theRequest.subscribe(
-      () => {
+      (response) => {
         // Update the stored (backend)state in the local state
         question.storedAnswer = question.answer;
         question.isInProgress = false;
+
+        this.pubSub.publish(PubSubEvent.didSaveAnswerToServer, {
+          timestamp: response.updated,
+        });
       },
       (error) => {
         console.error('Answer save failed.', error);

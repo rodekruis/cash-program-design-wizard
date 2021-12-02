@@ -126,9 +126,17 @@ export class SyncService implements OnDestroy {
       const params = new HttpParams({
         fromString: task.params,
       });
-      const request$ = this.apiService
-        .post(task.url, task.body, params)
-        .pipe(map((_) => task));
+      const request$ = this.apiService.post(task.url, task.body, params).pipe(
+        map((response) => {
+          if (task.url === ApiPath.answers) {
+            this.pubSub.publish(PubSubEvent.didSaveAnswerToServer, {
+              timestamp: response.updated,
+            });
+          }
+          return response;
+        }),
+        map((_) => task),
+      );
 
       requests.push(request$);
     });
@@ -142,7 +150,7 @@ export class SyncService implements OnDestroy {
 
       // Let the last request signal that "we're done for now"
       if (syncTasks.length === 0) {
-        this.pubSub.publish(PubSubEvent.didSyncQueue);
+        this.pubSub.publish(PubSubEvent.didCompleteSyncQueue);
       }
     });
 

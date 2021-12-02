@@ -3,10 +3,11 @@ import { Subject, Subscription } from 'rxjs';
 
 export const enum PubSubEvent {
   test = 'test',
-  didSyncQueue = 'didSyncQueue',
   didAddSyncTask = 'didAddSyncTask',
+  didCompleteSyncQueue = 'didCompleteSyncQueue',
   didConnectionOffline = 'didConnectionOffline',
   didConnectionOnline = 'didConnectionOnline',
+  didSaveAnswerToServer = 'didSaveAnswerToServer',
 }
 
 @Injectable({

@@ -1,5 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import {
+  createAnswersSet,
+  getLatestAnswerDate,
+} from 'src/app/helpers/answers.helpers';
+import { PubSubEvent, PubSubService } from 'src/app/services/pub-sub.service';
 import { StateService } from 'src/app/services/state.service';
 import { QuestionSection } from 'src/app/types/question-section.type';
 
@@ -9,15 +14,24 @@ import { QuestionSection } from 'src/app/types/question-section.type';
   styleUrls: ['./nav-progress.component.scss'],
 })
 export class NavProgressComponent implements OnInit, OnDestroy {
+  public lastSaved: Date | string;
+
   public sections: QuestionSection[];
 
   private sectionUpdates: Subscription;
 
-  constructor(public state: StateService) {}
+  constructor(public state: StateService, private pubSub: PubSubService) {}
 
   ngOnInit() {
-    this.sectionUpdates = this.state.sections$.subscribe(
-      (sections) => (this.sections = sections),
+    this.sectionUpdates = this.state.sections$.subscribe((sections) => {
+      this.sections = sections;
+
+      const answers = createAnswersSet(sections);
+      this.lastSaved = getLatestAnswerDate(answers);
+    });
+    this.pubSub.subscribe(
+      PubSubEvent.didSaveAnswerToServer,
+      (data) => (this.lastSaved = data.timestamp),
     );
   }
 
