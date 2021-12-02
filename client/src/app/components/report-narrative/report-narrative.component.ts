@@ -13,22 +13,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { MarkdownService } from 'ngx-markdown';
 import { Subscription } from 'rxjs';
 import {
-  flatten,
+  AnswerSet,
+  createAnswersSet,
+  getLatestAnswerDate,
   getOptionChoiceAnswer,
-} from 'src/app/pages/report/report-helpers';
+} from 'src/app/helpers/answers.helpers';
 import { StateService } from 'src/app/services/state.service';
-import { QuestionInput, QuestionType } from 'src/app/types/question-input.type';
-import {
-  QuestionSection,
-  QuestionSubsection,
-} from 'src/app/types/question-section.type';
-
-type AnswerSet = {
-  name: string;
-  answer: string | string[];
-  answerUpdated: string | Date;
-  question: QuestionInput;
-};
+import { QuestionType } from 'src/app/types/question-input.type';
 
 @Component({
   selector: 'app-report-narrative',
@@ -85,8 +76,8 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
       if (!sections.length) {
         return;
       }
-      this.answers = this.createAnswersSet(sections);
-      this.lastUpdate = this.findLatestAnswer();
+      this.answers = createAnswersSet(sections);
+      this.lastUpdate = getLatestAnswerDate(this.answers);
       this.renderTemplate();
     });
   }
@@ -114,24 +105,6 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     const output = document.createElement('output');
     output.innerHTML = source;
     return output.innerText || '';
-  }
-
-  private createAnswersSet(sections: QuestionSection[]): AnswerSet[] {
-    const subsections = flatten(
-      sections.map((section) => section.subsections),
-    ) as QuestionSubsection[];
-    const questions = flatten(
-      subsections.map((subsection) => subsection.questions),
-    ) as QuestionInput[];
-    const answers = questions
-      .filter((question) => !!question.answer)
-      .map((question) => ({
-        name: question.name,
-        answer: question.answer,
-        answerUpdated: question.answerUpdated,
-        question,
-      }));
-    return answers;
   }
 
   private renderTemplate() {
@@ -196,15 +169,5 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     }
 
     return answer.answer.toString();
-  }
-
-  private findLatestAnswer() {
-    if (!this.answers.length) {
-      return '';
-    }
-    // Sort latest first
-    this.answers.sort((a, b) => (a.answerUpdated > b.answerUpdated ? -1 : 1));
-
-    return this.answers[0].answerUpdated;
   }
 }
