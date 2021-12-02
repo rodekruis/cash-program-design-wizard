@@ -37,6 +37,6 @@
   "lint-staged": {
     "./*": "prettier --write --ignore-unknown",
     "client/**/*": "npm run fix:syntax --prefix client -- --ignore-unknown",
-    "server/**/*": "npm run format --prefix server -- --ignore-unknown"
+    "server/**/*": "npm run fix:syntax --prefix server -- --ignore-unknown"
   }
 }
