@@ -7,6 +7,7 @@ export const enum PubSubEvent {
   didCompleteSyncQueue = 'didCompleteSyncQueue',
   didConnectionOffline = 'didConnectionOffline',
   didConnectionOnline = 'didConnectionOnline',
+  didSaveAnswerToServer = 'didSaveAnswerToServer',
 }
 
 @Injectable({

@@ -68,10 +68,14 @@
   "nav-progress": {
     "current-section": "Current section: {{nr}} ({{name}})",
     "go-section": "Go to section: {{nr}} ({{name}})",
+    "last-saved": {
+      "label": "Last saved:",
+      "not-yet": "not yet"
+    },
     "next-section": "Next section",
     "prev-section": "Previous section",
     "save-answers": {
-      "label": "Save answers"
+      "label": "Save"
     }
   },
   "notification": {
