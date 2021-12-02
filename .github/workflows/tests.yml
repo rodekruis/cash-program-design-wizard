@@ -36,16 +36,21 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Lint
-        run: npm run lint
+      - name: Test Repository
+        run: |
+          npm install --ignore-scripts
+          npm run lint
 
       - name: Test Client
         if: contains(steps.changed-files.outputs.all_changed_and_modified_files, 'client/')
-        run: npm test --prefix client
+        run: |
+          cd client
+          npm install
+          npm test
 
       - name: Test Server
         if: contains(steps.changed-files.outputs.all_changed_and_modified_files, 'server/')
-        run: npm test --prefix server
+        run: |
+          cd server
+          npm install
+          npm test
