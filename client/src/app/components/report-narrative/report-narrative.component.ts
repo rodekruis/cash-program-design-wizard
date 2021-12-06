@@ -21,6 +21,11 @@ import {
 import { StateService } from 'src/app/services/state.service';
 import { QuestionType } from 'src/app/types/question-input.type';
 
+type QuestionSet = {
+  name: string;
+  sectionName: string;
+};
+
 @Component({
   selector: 'app-report-narrative',
   templateUrl: './report-narrative.component.html',
@@ -38,12 +43,15 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
 
   private reportTemplate: string;
   private answers: AnswerSet[];
+  private allQuestionsWithSectionNames: QuestionSet[];
 
   private missingExplanation: string;
   private answerPrefix: string;
+  private missingQuestionSuffix: string;
 
   private translation1Updates: Subscription;
   private translation2Updates: Subscription;
+  private translation3Updates: Subscription;
   private programUpdates: Subscription;
   private sectionUpdates: Subscription;
 
@@ -68,6 +76,12 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
         this.answerPrefix = label;
         this.renderTemplate();
       });
+    this.translation3Updates = this.translate
+      .get('report-narrative.missing-question-suffix')
+      .subscribe((label) => {
+        this.missingQuestionSuffix = label;
+        this.renderTemplate();
+      });
     this.programUpdates = this.state.programMetaData$.subscribe((program) => {
       this.reportTemplate = program.narrativeReportTemplate;
       this.renderTemplate();
@@ -76,6 +90,7 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
       if (!sections.length) {
         return;
       }
+      this.allQuestionsWithSectionNames = this.createAllQuestionsSet(sections);
       this.answers = createAnswersSet(sections);
       this.lastUpdate = getLatestAnswerDate(this.answers);
       this.renderTemplate();
@@ -85,6 +100,7 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.translation1Updates.unsubscribe();
     this.translation2Updates.unsubscribe();
+    this.translation3Updates.unsubscribe();
     this.programUpdates.unsubscribe();
     this.sectionUpdates.unsubscribe();
   }
@@ -105,6 +121,20 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     const output = document.createElement('output');
     output.innerHTML = source;
     return output.innerText || '';
+  }
+
+  private createAllQuestionsSet(sections: QuestionSection[]): QuestionSet[] {
+    const subsections = flatten(
+      sections.map((section) => section.subsections),
+    ) as QuestionSubsection[];
+    const questions = flatten(
+      subsections.map((subsection) => subsection.questions),
+    ) as QuestionInput[];
+    const emptyAnswers = questions.map((question) => ({
+      name: question.name,
+      sectionName: question.sectionName,
+    }));
+    return emptyAnswers;
   }
 
   private renderTemplate() {
@@ -130,8 +160,22 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     return template.replace(/{{([^{]+)}}/gi, (_token, variable) => {
       const answer = this.getAnswerByName(variable);
 
+      const urlPrefix = `/program/${this.state.programId}/overview?section=`;
+
       if (!answer || !answer.length) {
-        return `<em class="variable variable--empty" title="${this.missingExplanation}"> <code>${variable}</code> </em>`;
+        const question = this.allQuestionsWithSectionNames.find(
+          (q) => q.name === variable,
+        );
+
+        const questionPlaceholder = (varType, suffix, toolTip) =>
+          `<em class="variable variable--${varType}" title="${toolTip}"><code>${variable}</code>${suffix}</em>`;
+
+        if (!question) {
+          return questionPlaceholder('missing', this.missingQuestionSuffix, '');
+        }
+        return `<a href="${urlPrefix}${
+          question.sectionName
+        }">${questionPlaceholder('empty', '', this.missingExplanation)}</a>`;
       }
 
       if (Array.isArray(answer)) {

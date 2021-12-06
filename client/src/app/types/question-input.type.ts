@@ -21,6 +21,7 @@ export interface QuestionInput {
   comments?: QuestionComment[];
   isInProgress?: boolean;
   hasError?: boolean;
+  sectionName?: string;
 }
 
 export interface OptionChoice {

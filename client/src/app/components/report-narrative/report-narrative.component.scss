@@ -2,10 +2,15 @@
   display: inline-block;
   padding: 0.3em;
 }
+
 .variable--empty {
   color: var(--ion-color-warning-shade);
   border-bottom: 1px dashed var(--ion-color-medium-tint);
 }
 .variable--filled {
   background-color: var(--ion-color-light-tint);
+}
+.variable--missing {
+  color: var(--ion-color-danger);
+  border-bottom: 1px dashed var(--ion-color-medium-tint);
 }
