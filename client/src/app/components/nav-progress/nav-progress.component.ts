@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {
   createAnswersSet,
+  getAllQuestionsFromSections,
   getLatestAnswerDate,
 } from 'src/app/helpers/answers.helpers';
 import { PubSubEvent, PubSubService } from 'src/app/services/pub-sub.service';
@@ -26,7 +27,8 @@ export class NavProgressComponent implements OnInit, OnDestroy {
     this.sectionUpdates = this.state.sections$.subscribe((sections) => {
       this.sections = sections;
 
-      const answers = createAnswersSet(sections);
+      const questions = getAllQuestionsFromSections(sections);
+      const answers = createAnswersSet(questions);
       this.lastSaved = getLatestAnswerDate(answers);
     });
     this.pubSub.subscribe(

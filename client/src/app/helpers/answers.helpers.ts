@@ -17,13 +17,25 @@ export type AnswerSet = {
   question: QuestionInput;
 };
 
-export const createAnswersSet = (sections: QuestionSection[]): AnswerSet[] => {
+export type QuestionSet = {
+  name: string;
+  sectionName: string;
+};
+
+export const getAllQuestionsFromSections = (
+  sections: QuestionSection[],
+): QuestionInput[] => {
   const subsections = flatten(
     sections.map((section) => section.subsections),
   ) as QuestionSubsection[];
   const questions = flatten(
     subsections.map((subsection) => subsection.questions),
   ) as QuestionInput[];
+
+  return questions;
+};
+
+export const createAnswersSet = (questions: QuestionInput[]): AnswerSet[] => {
   const answers = questions
     .filter((question) => !!question.answer)
     .map((question) => ({
@@ -33,6 +45,16 @@ export const createAnswersSet = (sections: QuestionSection[]): AnswerSet[] => {
       question,
     }));
   return answers;
+};
+
+export const createAllQuestionsSet = (
+  questions: QuestionInput[],
+): QuestionSet[] => {
+  const emptyAnswers = questions.map((question) => ({
+    name: question.name,
+    sectionName: question.sectionName,
+  }));
+  return emptyAnswers;
 };
 
 export const getLatestAnswerDate = (answers: AnswerSet[]): Date | string => {

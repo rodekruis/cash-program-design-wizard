@@ -229,7 +229,6 @@ export class ProgramDataService {
           delete question.subsectionName;
           delete question.subsectionLabel;
           delete question.sectionId;
-          delete question.sectionName;
           delete question.sectionLabel;
 
           if (this.isMultipleChoice(question) && question.answer) {

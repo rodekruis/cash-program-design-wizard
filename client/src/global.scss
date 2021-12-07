@@ -141,7 +141,10 @@ input[type='number'] {
     text-decoration: underline;
   }
 
-  a[href]::after {
+  // Only show full URL for 'non-internal'-links
+  a[href^='tel']::after,
+  a[href^='mailto']::after,
+  a[href^='http']::after {
     content: ' (' attr(href) ')';
   }
 
