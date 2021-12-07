@@ -1,0 +1,64 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+# Also, see: https://github.com/Azure/actions-workflow-samples
+
+name: CD [server] - Azure Web App - staging
+
+on:
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: 'CPDW-Staging'
+  AZURE_WEBAPP_PACKAGE_PATH: 'server'
+  NODE_VERSION: '14.x'
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js version ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/package-lock.json
+
+      - name: Update to npm v7
+        run: npm install --global npm@7
+
+      - name: Install, Build, Test
+        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        run: |
+          npm ci
+          npm run build
+          npm run test
+
+      - name: Reduce build package size
+        working-directory: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        run: |
+          npm prune --production
+          rm -r coverage/
+          rm -r test/
+          rm -r src/
+          rm .env
+          rm .eslintrc.js
+          rm .gitignore
+          rm .prettierignore
+          rm .prettierrc.yml
+          rm docker-compose.yml
+          rm nest-cli.json
+
+      - name: Deploy to Azure
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
