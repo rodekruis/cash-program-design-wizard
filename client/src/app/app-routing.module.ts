@@ -26,6 +26,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'program-navigation',
+    loadChildren: () =>
+      import('./pages/program-navigation/program-navigation.module').then(
+        (m) => m.ProgramNavigationPageModule,
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',

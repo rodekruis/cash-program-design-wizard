@@ -96,6 +96,10 @@
   "program": {
     "page-title": "Program: {{name}}"
   },
+  "program-navigation": {
+    "page-title": "Programs",
+    "select": "Select program:"
+  },
   "question-section": {
     "comments": "Comment(s):",
     "fields": {

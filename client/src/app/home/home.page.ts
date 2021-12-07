@@ -27,7 +27,7 @@ export class HomePage {
       return;
     }
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/program']);
+      this.router.navigate(['/program-navigation']);
     } else {
       this.router.navigate(['/login']);
     }

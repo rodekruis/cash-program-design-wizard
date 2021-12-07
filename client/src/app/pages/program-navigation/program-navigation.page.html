@@ -1,0 +1,27 @@
+<ion-header>
+  <app-header>
+    <ion-title>
+      {{ 'program-navigation.page-title' | translate: { name: name || '' } }}
+    </ion-title>
+  </app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>
+    {{ 'program-navigation.select' | translate }}
+  </h2>
+  <p></p>
+  <ul>
+    <div *ngFor="let program of programs" class="ion-padding-bottom">
+      <li>
+        <ion-label>
+          <ion-router-link
+            color="secondary"
+            href="{{ 'program/' + program.id }}"
+            >{{ program.name }}</ion-router-link
+          >
+        </ion-label>
+      </li>
+    </div>
+  </ul>
+</ion-content>
