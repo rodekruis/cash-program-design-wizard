@@ -68,7 +68,7 @@
   },
   "nav-progress": {
     "save-answers": {
-      "label": "Save answers"
+      "label": "Save"
     },
     "prev-section": "Previous section",
     "current-section": "Current section: {{nr}} ({{name}})",
