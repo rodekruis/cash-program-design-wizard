@@ -2,8 +2,7 @@
   <div class="ion-padding-vertical">
     <ion-badge
       *ngFor="let tag of question.tags"
-      class="ion-margin-start ion-float-end"
-      color="medium"
+      class="ion-margin-start ion-float-end tag-label"
       >{{ tagLabels[tag] }}</ion-badge
     >
     <strong>{{ question.label }}</strong>
