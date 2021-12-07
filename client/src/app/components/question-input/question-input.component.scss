@@ -20,14 +20,18 @@ ion-item.is-readonly {
     border-inline-end-color: var(--ion-color-danger);
   }
   &.is-saved {
-    border-inline-end-color: purple;
+    border-inline-end-color: var(--ion-color-tertiary);
   }
   &.is-in-progress {
     border-inline-end-style: dotted;
     border-inline-end-color: gold;
   }
   &.is-pending {
-    border-inline-end-color: var(--ion-color-primary);
+    border-inline-end-color: var(--ion-color-dark);
     border-inline-end-style: solid; // `is-pending` is always applied together with `is-in-progress`
   }
+}
+
+.tag-label {
+  background: rgba(var(--ion-color-dark-rgb), 0.5);
 }

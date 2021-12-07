@@ -2,11 +2,11 @@
   <app-connection-status></app-connection-status>
 
   <ion-button
-    color="primary"
-    fill="outline"
+    color="light"
+    fill="clear"
     size="small"
     (click)="state.saveAnswersActiveSection()"
-    class="ion-margin-horizontal"
+    class="ion-margin-horizontal ion-padding-horizontal save-btn"
   >
     {{ 'nav-progress.save-answers.label' | translate }}
   </ion-button>
@@ -28,10 +28,11 @@
       (click)="goPrevSection()"
       [disabled]="!hasPrevSection()"
       [fill]="!hasPrevSection() ? 'clear' : 'solid'"
-      color="medium"
+      color="light"
       size="small"
       [attr.title]="'nav-progress.prev-section' | translate"
       [attr.aria-label]="'nav-progress.prev-section' | translate"
+      class="nav-progress"
     >
       <ion-icon
         name="chevron-back"
@@ -62,7 +63,7 @@
             | translate: { nr: index + 1, name: section.name })
       "
       [attr.aria-current]="sectionLink.isActive ? 'step' : null"
-      color="medium"
+      color="dark"
       size="small"
       class="ion-no-margin"
       style="--border-radius: 0; border-right: 1px solid transparent"
@@ -74,10 +75,11 @@
       (click)="goNextSection()"
       [disabled]="!hasNextSection()"
       [fill]="!hasNextSection() ? 'clear' : 'solid'"
-      color="medium"
+      color="light"
       size="small"
       [attr.title]="'nav-progress.next-section' | translate"
       [attr.aria-label]="'nav-progress.next-section' | translate"
+      class="nav-progress"
     >
       <ion-icon
         name="chevron-forward"

@@ -1,7 +1,7 @@
 <ion-button
   *ngIf="!isOnline || showOffline"
   (click)="changeSync(true)"
-  color="warning"
+  color="tertiary"
   size="small"
   fill="clear"
   attr.title="{{ 'connection-status.offline.label-long' | translate }} - {{
@@ -26,6 +26,11 @@
   size="small"
   fill="clear"
 >
-  <ion-icon name="cloud" slot="start" aria-hidden="true"></ion-icon>
+  <ion-icon
+    name="cloud"
+    slot="start"
+    aria-hidden="true"
+    color="dark"
+  ></ion-icon>
   <ion-label>{{ 'connection-status.online.label' | translate }}</ion-label>
 </ion-button>
