@@ -14,17 +14,14 @@ import { MarkdownService } from 'ngx-markdown';
 import { Subscription } from 'rxjs';
 import {
   AnswerSet,
+  createAllQuestionsSet,
   createAnswersSet,
   getLatestAnswerDate,
   getOptionChoiceAnswer,
+  QuestionSet,
 } from 'src/app/helpers/answers.helpers';
 import { StateService } from 'src/app/services/state.service';
 import { QuestionType } from 'src/app/types/question-input.type';
-
-type QuestionSet = {
-  name: string;
-  sectionName: string;
-};
 
 @Component({
   selector: 'app-report-narrative',
@@ -90,7 +87,7 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
       if (!sections.length) {
         return;
       }
-      this.allQuestionsWithSectionNames = this.createAllQuestionsSet(sections);
+      this.allQuestionsWithSectionNames = createAllQuestionsSet(sections);
       this.answers = createAnswersSet(sections);
       this.lastUpdate = getLatestAnswerDate(this.answers);
       this.renderTemplate();
@@ -121,20 +118,6 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     const output = document.createElement('output');
     output.innerHTML = source;
     return output.innerText || '';
-  }
-
-  private createAllQuestionsSet(sections: QuestionSection[]): QuestionSet[] {
-    const subsections = flatten(
-      sections.map((section) => section.subsections),
-    ) as QuestionSubsection[];
-    const questions = flatten(
-      subsections.map((subsection) => subsection.questions),
-    ) as QuestionInput[];
-    const emptyAnswers = questions.map((question) => ({
-      name: question.name,
-      sectionName: question.sectionName,
-    }));
-    return emptyAnswers;
   }
 
   private renderTemplate() {

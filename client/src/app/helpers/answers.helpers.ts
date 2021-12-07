@@ -17,6 +17,11 @@ export type AnswerSet = {
   question: QuestionInput;
 };
 
+export type QuestionSet = {
+  name: string;
+  sectionName: string;
+};
+
 export const createAnswersSet = (sections: QuestionSection[]): AnswerSet[] => {
   const subsections = flatten(
     sections.map((section) => section.subsections),
@@ -33,6 +38,22 @@ export const createAnswersSet = (sections: QuestionSection[]): AnswerSet[] => {
       question,
     }));
   return answers;
+};
+
+export const createAllQuestionsSet = (
+  sections: QuestionSection[],
+): QuestionSet[] => {
+  const subsections = flatten(
+    sections.map((section) => section.subsections),
+  ) as QuestionSubsection[];
+  const questions = flatten(
+    subsections.map((subsection) => subsection.questions),
+  ) as QuestionInput[];
+  const emptyAnswers = questions.map((question) => ({
+    name: question.name,
+    sectionName: question.sectionName,
+  }));
+  return emptyAnswers;
 };
 
 export const getLatestAnswerDate = (answers: AnswerSet[]): Date | string => {
