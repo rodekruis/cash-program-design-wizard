@@ -1,4 +1,13 @@
-<ng-container *ngIf="question">
+<div
+  *ngIf="question"
+  [attr.id]="question.name"
+  tabindex="-1"
+  [ngClass]="{
+    'is-highlighted': isHighlighted,
+    'question-input': true
+  }"
+  (animationend)="isHighlighted = false"
+>
   <div class="ion-padding-vertical">
     <ion-badge
       *ngFor="let tag of question.tags"
@@ -115,4 +124,4 @@
       </ng-container>
     </ng-container>
   </ion-item>
-</ng-container>
+</div>
