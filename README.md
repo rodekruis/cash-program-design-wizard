@@ -13,6 +13,11 @@ Preview of the latest (development) versions:
 - Front-end/client app: <https://orange-grass-0aefaa103.azurestaticapps.net/>
 - Back-end/server API: <https://cpdw-development.azurewebsites.net/api/>
 
+Stable, staging versions:
+
+- Front-end/client app: <https://gentle-bay-081e19d03.azurestaticapps.net/>
+- Back-end/server API: <https://cpdw-staging.azurewebsites.net/api/>
+
 Latest test-runs:
 
 - [![CI Tests](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml/badge.svg)](https://github.com/rodekruis/cash-program-design-wizard/actions/workflows/tests.yml)
