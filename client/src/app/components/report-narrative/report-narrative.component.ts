@@ -18,7 +18,6 @@ import {
   getAllQuestionsFromSections,
   getLatestAnswerDate,
   getOptionChoiceAnswer,
-  QuestionSet,
 } from 'src/app/helpers/answers.helpers';
 import { StateService } from 'src/app/services/state.service';
 import { QuestionInput, QuestionType } from 'src/app/types/question-input.type';
@@ -41,7 +40,6 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
   private reportTemplate: string;
   private questions: QuestionInput[];
   private answers: AnswerSet[];
-  private allQuestionsWithSectionNames: QuestionSet[];
 
   private answerPrefix: string;
   private missingAnswerTitle: string;
