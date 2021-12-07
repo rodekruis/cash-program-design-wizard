@@ -1,4 +1,44 @@
-// Make 'readonly'-inputs look less 'active;:
+.question-input {
+  position: relative; // For positioning of highlighter-element
+  display: block; // For positioning of highlighter-element
+
+  // Highlighter-element:
+  &::before {
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    z-index: 3;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  &.is-highlighted::before,
+  &:target::before {
+    content: '';
+    animation: highlight-fade-out 4s 0s 1 forwards;
+    outline: none; // Is replaced by border-style
+  }
+}
+
+@keyframes highlight-fade-out {
+  0% {
+    background-color: var(--ion-color-primary);
+    border-color: var(--ion-color-primary);
+  }
+  80% {
+    border-color: var(--ion-color-primary);
+  }
+  100% {
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+// Make 'readonly'-inputs look less 'active':
 ion-item.is-readonly {
   --full-highlight-height: 0;
 
