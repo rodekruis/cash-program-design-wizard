@@ -4,8 +4,8 @@ import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
 import SeedDemoProgram from './seed-program';
 
 export enum SeedScript {
-  demo = 'demo',
-  test = 'test',
+  dev = 'dev',
+  staging = 'staging',
 }
 
 class ResetDto {
@@ -31,7 +31,7 @@ export class ScriptsController {
     if (body.secret !== process.env.RESET_SECRET) {
       return res.status(HttpStatus.FORBIDDEN).send('Not allowed');
     }
-    await this.seedDemoProgram.run(body.script);
+    await this.seedDemoProgram.run(body.script as SeedScript);
     return res.status(HttpStatus.ACCEPTED).send('Reset done.');
   }
 }

@@ -58,14 +58,31 @@ export class RolesProgramGuard implements CanActivate {
       );
     }
 
+    let programIdToCheck;
+
+    if (request.body.programId && request.body.programId) {
+      // if request has program id in body and param and it is not equal -> no access
+      if (request.body.programId !== request.body.programId) {
+        return false;
+      } else {
+        programIdToCheck = request.body.programId;
+      }
+    } else if (request.body.programId) {
+      programIdToCheck = request.body.programId;
+    } else if (request.param.programId) {
+      programIdToCheck = request.body.programId;
+    }
+
     const userRoles = [];
     if (user.programAssignments) {
       for (const programAssignment of user.programAssignments) {
-        if (
-          programAssignment.program.id === request.params.programId ||
-          programAssignment.program.id === request.body.programId
-        )
+        if (programIdToCheck) {
+          if (programIdToCheck === programAssignment.program.id) {
+            userRoles.push(programAssignment.role);
+          }
+        } else {
           userRoles.push(programAssignment.role);
+        }
       }
     }
 
