@@ -14,14 +14,14 @@ import { MarkdownService } from 'ngx-markdown';
 import { Subscription } from 'rxjs';
 import {
   AnswerSet,
-  createAllQuestionsSet,
   createAnswersSet,
+  getAllQuestionsFromSections,
   getLatestAnswerDate,
   getOptionChoiceAnswer,
   QuestionSet,
 } from 'src/app/helpers/answers.helpers';
 import { StateService } from 'src/app/services/state.service';
-import { QuestionType } from 'src/app/types/question-input.type';
+import { QuestionInput, QuestionType } from 'src/app/types/question-input.type';
 
 @Component({
   selector: 'app-report-narrative',
@@ -39,6 +39,7 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
   public lastUpdate: string | Date;
 
   private reportTemplate: string;
+  private questions: QuestionInput[];
   private answers: AnswerSet[];
   private allQuestionsWithSectionNames: QuestionSet[];
 
@@ -87,9 +88,10 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
       if (!sections.length) {
         return;
       }
-      this.allQuestionsWithSectionNames = createAllQuestionsSet(sections);
-      this.answers = createAnswersSet(sections);
+      this.questions = getAllQuestionsFromSections(sections);
+      this.answers = createAnswersSet(this.questions);
       this.lastUpdate = getLatestAnswerDate(this.answers);
+
       this.renderTemplate();
     });
   }

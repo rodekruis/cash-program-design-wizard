@@ -22,13 +22,20 @@ export type QuestionSet = {
   sectionName: string;
 };
 
-export const createAnswersSet = (sections: QuestionSection[]): AnswerSet[] => {
+export const getAllQuestionsFromSections = (
+  sections: QuestionSection[],
+): QuestionInput[] => {
   const subsections = flatten(
     sections.map((section) => section.subsections),
   ) as QuestionSubsection[];
   const questions = flatten(
     subsections.map((subsection) => subsection.questions),
   ) as QuestionInput[];
+
+  return questions;
+};
+
+export const createAnswersSet = (questions: QuestionInput[]): AnswerSet[] => {
   const answers = questions
     .filter((question) => !!question.answer)
     .map((question) => ({
@@ -41,14 +48,8 @@ export const createAnswersSet = (sections: QuestionSection[]): AnswerSet[] => {
 };
 
 export const createAllQuestionsSet = (
-  sections: QuestionSection[],
+  questions: QuestionInput[],
 ): QuestionSet[] => {
-  const subsections = flatten(
-    sections.map((section) => section.subsections),
-  ) as QuestionSubsection[];
-  const questions = flatten(
-    subsections.map((subsection) => subsection.questions),
-  ) as QuestionInput[];
   const emptyAnswers = questions.map((question) => ({
     name: question.name,
     sectionName: question.sectionName,
