@@ -6,6 +6,7 @@ import { QuestionEntity } from './../questions/question.entity';
 import { SectionEntity } from './../sections/section.entity';
 import { SubsectionEntity } from './../sub-sections/sub-section.entity';
 import { TagEntity } from './../tags/tag.entity';
+import { UserEntity } from './../users/user.entity';
 import { UserModule } from './../users/user.module';
 import { ScriptsController } from './scripts.controller';
 import SeedDemoProgram from './seed-program';
@@ -19,6 +20,7 @@ import SeedDemoProgram from './seed-program';
       QuestionEntity,
       SubsectionEntity,
       OptionChoiceEntity,
+      UserEntity,
     ]),
     UserModule,
   ],
@@ -28,5 +30,5 @@ import SeedDemoProgram from './seed-program';
 export class ScriptsModule {}
 
 export interface InterfaceScript {
-  run(seedUsers: boolean): Promise<void>;
+  run(seed): Promise<void>;
 }
