@@ -119,8 +119,8 @@
     "answer-prefix": "Answer to question:",
     "copy-to-clipboard": "Copy text to clipboard",
     "last-updated": "Last updated:",
-    "missing-explanation": "Nothing filled in.",
-    "missing-question-suffix": " missing from program!",
+    "missing-answer-title": "Nothing filled in for this question.",
+    "missing-question-title": "This questions is missing from the program.",
     "print": "Print"
   },
   "report-section": {

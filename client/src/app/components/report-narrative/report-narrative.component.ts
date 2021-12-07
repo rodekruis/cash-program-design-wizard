@@ -43,9 +43,9 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
   private answers: AnswerSet[];
   private allQuestionsWithSectionNames: QuestionSet[];
 
-  private missingExplanation: string;
   private answerPrefix: string;
-  private missingQuestionSuffix: string;
+  private missingAnswerTitle: string;
+  private missingQuestionTitle: string;
 
   private translation1Updates: Subscription;
   private translation2Updates: Subscription;
@@ -63,9 +63,9 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // All these operations will not run/finish in order, so each tries to render the template
     this.translation1Updates = this.translate
-      .get('report-narrative.missing-explanation')
+      .get('report-narrative.missing-answer-title')
       .subscribe((label) => {
-        this.missingExplanation = label;
+        this.missingAnswerTitle = label;
         this.renderTemplate();
       });
     this.translation2Updates = this.translate
@@ -75,9 +75,9 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
         this.renderTemplate();
       });
     this.translation3Updates = this.translate
-      .get('report-narrative.missing-question-suffix')
+      .get('report-narrative.missing-question-title')
       .subscribe((label) => {
-        this.missingQuestionSuffix = label;
+        this.missingQuestionTitle = label;
         this.renderTemplate();
       });
     this.programUpdates = this.state.programMetaData$.subscribe((program) => {
@@ -127,7 +127,7 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     if (
       !this.reportTemplate ||
       !this.answers ||
-      !this.missingExplanation ||
+      !this.missingAnswerTitle ||
       !this.answerPrefix
     ) {
       return;
@@ -145,22 +145,24 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     return template.replace(/{{([^{]+)}}/gi, (_token, variable) => {
       const answer = this.getAnswerByName(variable);
 
-      const urlPrefix = `/program/${this.state.programId}/overview?section=`;
-
       if (!answer || !answer.length) {
-        const question = this.allQuestionsWithSectionNames.find(
-          (q) => q.name === variable,
-        );
-
-        const questionPlaceholder = (varType, suffix, toolTip) =>
-          `<em class="variable variable--${varType}" title="${toolTip}"><code>${variable}</code>${suffix}</em>`;
+        const question = this.questions.find((q) => q.name === variable);
 
         if (!question) {
-          return questionPlaceholder('missing', this.missingQuestionSuffix, '');
+          return this.createAnswerPlaceholder(
+            variable,
+            'missing',
+            this.missingQuestionTitle,
+          );
         }
-        return `<a href="${urlPrefix}${
-          question.sectionName
-        }">${questionPlaceholder('empty', '', this.missingExplanation)}</a>`;
+
+        const answerPlaceholder = this.createAnswerPlaceholder(
+          variable,
+          'empty',
+          this.missingAnswerTitle,
+        );
+
+        return `<a href="/program/${this.state.programId}/overview?section=${question.sectionName}">${answerPlaceholder}</a>`;
       }
 
       if (Array.isArray(answer)) {
@@ -175,6 +177,14 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
 
       return `<strong class="variable variable--filled" title="${this.answerPrefix} ${variable}">${answer}</strong>`;
     });
+  }
+
+  private createAnswerPlaceholder(
+    variable: string,
+    type: 'missing' | 'empty',
+    title: string = '',
+  ) {
+    return `<em class="variable variable--${type}" title="${title}"><code>${variable}</code></em>`;
   }
 
   private getAnswerByName(name: string): string | string[] {

@@ -13,4 +13,5 @@
 .variable--missing {
   color: var(--ion-color-danger);
   border-bottom: 1px dashed var(--ion-color-medium-tint);
+  cursor: not-allowed;
 }
