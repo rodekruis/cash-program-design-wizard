@@ -46,10 +46,14 @@ export class QuestionsService {
       ])
       .leftJoin('question.subsection', 'subsection')
       .leftJoin('subsection.section', 'section')
-      .leftJoin('question.answers', 'answers')
-      .leftJoin('answers.program', 'program', 'program.id = :programId', {
-        programId: programId,
-      })
+      .leftJoin(
+        'question.answers',
+        'answers',
+        'answers.programId = :programId',
+        {
+          programId: programId,
+        },
+      )
       .leftJoin('question.tags', 'tags')
       .groupBy('question.id')
       .addGroupBy('question.name')

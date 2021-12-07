@@ -33,8 +33,8 @@
           [multiple]="false"
           [attr.title]="question.label"
           [(ngModel)]="question.answer"
-          [cancelText]="'common.cancel' | translate"
-          [okText]="'common.ok' | translate"
+          [cancelText]="'_common.cancel' | translate"
+          [okText]="'_common.ok' | translate"
           (ionChange)="onChangeAnswer(question)"
         >
           <ion-select-option
@@ -62,8 +62,8 @@
           [multiple]="true"
           [attr.title]="question.label"
           [(ngModel)]="question.answer"
-          [cancelText]="'common.cancel' | translate"
-          [okText]="'common.ok' | translate"
+          [cancelText]="'_common.cancel' | translate"
+          [okText]="'_common.ok' | translate"
           (ionChange)="onChangeAnswer(question)"
         >
           <ion-select-option

@@ -31,7 +31,7 @@ export class NotificationService {
     this.pubSub.subscribe(PubSubEvent.didAddSyncTask, () => {
       this.notifyOffline();
     });
-    this.pubSub.subscribe(PubSubEvent.didSyncQueue, () => {
+    this.pubSub.subscribe(PubSubEvent.didCompleteSyncQueue, () => {
       this.notifySyncDone();
     });
     console.log('NotificationService created.');
@@ -75,7 +75,7 @@ export class NotificationService {
       buttons = [
         {
           role: 'cancel',
-          text: this.translate.instant('common.ok'),
+          text: this.translate.instant('_common.ok'),
           side: 'end',
         },
       ];

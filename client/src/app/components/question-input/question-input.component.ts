@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { getOptionChoiceAnswer } from 'src/app/pages/report/report-helpers';
+import { getOptionChoiceAnswer } from 'src/app/helpers/answers.helpers';
 import { ProgramDataService } from 'src/app/services/program-data.service';
 import { StateService } from 'src/app/services/state.service';
 import { QuestionInput, QuestionType } from 'src/app/types/question-input.type';

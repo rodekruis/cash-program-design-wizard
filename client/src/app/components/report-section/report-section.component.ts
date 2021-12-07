@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { getOptionChoiceAnswer } from 'src/app/pages/report/report-helpers';
+import { getOptionChoiceAnswer } from 'src/app/helpers/answers.helpers';
 import { QuestionType } from 'src/app/types/question-input.type';
 import { QuestionSection } from 'src/app/types/question-section.type';
 

@@ -1,4 +1,6 @@
 <ion-row class="ion-justify-content-end ion-align-items-center">
+  <app-connection-status></app-connection-status>
+
   <ion-button
     color="light"
     fill="clear"
@@ -9,6 +11,19 @@
     {{ 'nav-progress.save-answers.label' | translate }}
   </ion-button>
   <span class="ion-nowrap">
+    <small>{{ 'nav-progress.last-saved.label' | translate }}</small>
+    <br />
+    <small *ngIf="!lastSaved">
+      ({{ 'nav-progress.last-saved.not-yet' | translate }})
+    </small>
+    <small *ngIf="lastSaved">
+      {{ lastSaved | date: 'YYYY-MM-dd @ HH:mm' }}
+    </small>
+  </span>
+  <span
+    style="margin-top: 4px; display: flex"
+    class="ion-margin-start ion-nowrap ion-align-items-center"
+  >
     <ion-button
       (click)="goPrevSection()"
       [disabled]="!hasPrevSection()"
