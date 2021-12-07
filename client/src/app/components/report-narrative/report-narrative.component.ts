@@ -1,10 +1,8 @@
 import {
   Component,
-  ElementRef,
   OnDestroy,
   OnInit,
   SecurityContext,
-  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -29,9 +27,6 @@ import { QuestionInput, QuestionType } from 'src/app/types/question-input.type';
   encapsulation: ViewEncapsulation.None,
 })
 export class ReportNarrativeComponent implements OnInit, OnDestroy {
-  @ViewChild('reportOutput', { static: true })
-  public reportOutput: ElementRef;
-
   public rawReport: string;
   public report: string;
 
