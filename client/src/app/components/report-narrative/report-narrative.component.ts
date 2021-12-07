@@ -1,11 +1,13 @@
 import {
   Component,
+  HostListener,
   OnDestroy,
   OnInit,
   SecurityContext,
   ViewEncapsulation,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Clipboard } from '@capacitor/clipboard';
 import { TranslateService } from '@ngx-translate/core';
 import { MarkdownService } from 'ngx-markdown';
@@ -39,10 +41,12 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
   private answerPrefix: string;
   private missingAnswerTitle: string;
   private missingQuestionTitle: string;
+  private goToQuestionTitle: string;
 
   private translation1Updates: Subscription;
   private translation2Updates: Subscription;
   private translation3Updates: Subscription;
+  private translation4Updates: Subscription;
   private programUpdates: Subscription;
   private sectionUpdates: Subscription;
 
@@ -51,7 +55,25 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     private translate: TranslateService,
     private markdownService: MarkdownService,
     private domSanitizer: DomSanitizer,
+    private router: Router,
   ) {}
+
+  @HostListener('click', ['$event'])
+  public onReportClick($event: any) {
+    // Only take over clicks on variable-placeholders:
+    if ($event.target.hasAttribute('itemprop')) {
+      $event.preventDefault();
+      const destination = $event.target.getAttribute('itemprop').split('#');
+      const goToSection = destination[0];
+      const goToQuestion = destination[1];
+      this.router.navigate(['/program', this.state.programId, 'overview'], {
+        queryParams: {
+          section: goToSection,
+        },
+        fragment: goToQuestion,
+      });
+    }
+  }
 
   ngOnInit() {
     // All these operations will not run/finish in order, so each tries to render the template
@@ -71,6 +93,12 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
       .get('report-narrative.missing-question-title')
       .subscribe((label) => {
         this.missingQuestionTitle = label;
+        this.renderTemplate();
+      });
+    this.translation4Updates = this.translate
+      .get('report-narrative.go-to-input')
+      .subscribe((label) => {
+        this.goToQuestionTitle = label;
         this.renderTemplate();
       });
     this.programUpdates = this.state.programMetaData$.subscribe((program) => {
@@ -93,6 +121,7 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     this.translation1Updates.unsubscribe();
     this.translation2Updates.unsubscribe();
     this.translation3Updates.unsubscribe();
+    this.translation4Updates.unsubscribe();
     this.programUpdates.unsubscribe();
     this.sectionUpdates.unsubscribe();
   }
@@ -137,10 +166,9 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
   private parseTemplate(template: string) {
     return template.replace(/{{([^{]+)}}/gi, (_token, variable) => {
       const answer = this.getAnswerByName(variable);
+      const question = this.questions.find((q) => q.name === variable);
 
       if (!answer || !answer.length) {
-        const question = this.questions.find((q) => q.name === variable);
-
         if (!question) {
           return this.createAnswerPlaceholder(
             variable,
@@ -153,8 +181,8 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
           variable,
           'empty',
           this.missingAnswerTitle,
+          question.sectionName,
         );
-
         return `<a href="/program/${this.state.programId}/overview?section=${question.sectionName}">${answerPlaceholder}</a>`;
       }
 
@@ -163,12 +191,24 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
           (option) =>
             `<li><strong class="variable variable--filled">${option}</strong></li>`,
         );
-        return `<ul title="${this.answerPrefix} ${variable}">
-          ${listOptions.join('')}
-        </ul>`;
+        return (
+          `<div class="variable-list"><ul title="${this.answerPrefix} ${variable}">` +
+          listOptions.join('') +
+          `</ul>${this.createQuestionLink(
+            question.sectionName,
+            variable,
+          )}</div>`
+        );
       }
 
-      return `<strong class="variable variable--filled" title="${this.answerPrefix} ${variable}">${answer}</strong>`;
+      return (
+        `<strong class="variable variable--filled" title="${this.answerPrefix} ${variable}">` +
+        `${answer} ${this.createQuestionLink(
+          question.sectionName,
+          variable,
+        )} ` +
+        `</strong>`
+      );
     });
   }
 
@@ -176,8 +216,19 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     variable: string,
     type: 'missing' | 'empty',
     title: string = '',
+    section?: string,
   ) {
-    return `<em class="variable variable--${type}" title="${title}"><code>${variable}</code></em>`;
+    let code = `<code>${variable}</code>`;
+    if (section) {
+      code =
+        `<code itemprop="${section}#${variable}">${variable}</code>` +
+        this.createQuestionLink(section, variable);
+    }
+    return `<em class="variable variable--${type}" title="${title}">${code}</em>`;
+  }
+
+  private createQuestionLink(section: string, variable: string): string {
+    return `<code class="variable-link no-print" title="${this.goToQuestionTitle}" itemprop="${section}#${variable}">#</code>`;
   }
 
   private getAnswerByName(name: string): string | string[] {

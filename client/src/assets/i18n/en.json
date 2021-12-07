@@ -118,6 +118,7 @@
   "report-narrative": {
     "answer-prefix": "Answer to question:",
     "copy-to-clipboard": "Copy text to clipboard",
+    "go-to-input": "Jump to question",
     "last-updated": "Last updated:",
     "missing-answer-title": "Nothing filled in for this question.",
     "missing-question-title": "This questions is missing from the program.",

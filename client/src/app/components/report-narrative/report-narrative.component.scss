@@ -15,3 +15,22 @@
   border-bottom: 1px dashed var(--ion-color-medium-tint);
   cursor: not-allowed;
 }
+
+// Fake link styles:
+.variable-link {
+  color: var(--ion-color-primary);
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 80%;
+}
+
+// Position link at the start of a bullet-list
+.variable-list {
+  position: relative;
+
+  .variable-link {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+  }
+}
