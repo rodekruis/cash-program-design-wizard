@@ -1,44 +1,31 @@
 [
   {
     "name": "pa-info",
-    "label": { "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY...." },
+    "label": {
+      "en": "THESE QUESTIONS ARE BEING TESTED IN THIS MVP LET US KNOW IN THE FEEDBACK FORM WHAT YOU WOULD LIKE CHANGED THE PEOPLE WE ARE HELPING ARE MOSTLY…"
+    },
     "orderPriority": 1
   },
   {
     "name": "pa-support",
-    "label": { "en": "THE PEOPLE WE ARE HELPING...." },
+    "label": { "en": "THE PEOPLE WE ARE HELPING…" },
     "orderPriority": 2
   },
   {
     "name": "pa-skills",
-    "label": { "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY FAMILIAR WITH …" },
+    "label": { "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY FAMILIAR WITH…" },
     "orderPriority": 3
   },
   {
     "name": "help-wanted",
-    "label": { "en": "THE PEOPLE WE ARE HELPING MOSTLY …" },
+    "label": { "en": "THE PEOPLE WE ARE HELPING MOSTLY…" },
     "orderPriority": 4
   },
   {
     "name": "services",
     "label": {
-      "en": "THE PEOPLE WE ARE HELPING HAVE PHYSICAL, FINANCIAL AND SOCIAL ACCESS TO …"
+      "en": "THE PEOPLE WE ARE HELPING HAVE PHYSICAL, FINANCIAL AND SOCIAL ACCESS TO…"
     },
     "orderPriority": 5
-  },
-
-  {
-    "name": "test1",
-    "label": {
-      "en": "Test Section 1"
-    },
-    "orderPriority": 9991
-  },
-  {
-    "name": "test2",
-    "label": {
-      "en": "Test Section 2 - Edge-cases"
-    },
-    "orderPriority": 9992
   }
 ]
