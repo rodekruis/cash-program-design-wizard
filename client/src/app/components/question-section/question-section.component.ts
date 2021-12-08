@@ -4,7 +4,7 @@ import { Tag } from 'src/app/models/tag.enum';
 import { UserRole } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { StateService } from 'src/app/services/state.service';
-import { QuestionInput, QuestionType } from 'src/app/types/question-input.type';
+import { QuestionInput } from 'src/app/types/question-input.type';
 import {
   QuestionSection,
   QuestionSubsection,
@@ -18,8 +18,6 @@ import {
 export class QuestionSectionComponent implements OnInit, OnDestroy {
   @Input()
   section: QuestionSection;
-
-  public questionTypes = QuestionType;
 
   public canEdit = false;
 
@@ -61,12 +59,5 @@ export class QuestionSectionComponent implements OnInit, OnDestroy {
 
   public userCanEdit(): boolean {
     return this.authService.hasUserRole([UserRole.edit], this.state.programId);
-  }
-
-  public showComments(question: QuestionInput): boolean {
-    return (
-      question.type !== QuestionType.select1 &&
-      question.type !== QuestionType.selectN
-    );
   }
 }

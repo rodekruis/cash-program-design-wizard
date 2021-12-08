@@ -207,7 +207,14 @@ const mockProgramData: Program = {
               label:
                 'Very, very, very long question for Text-input that runs over several, multple lines of text',
               tags: [getRandomTag()],
-              comments: [],
+            },
+            {
+              id: getMockId(),
+              name: 'test-1-numeric',
+              type: QuestionType.numeric,
+              label:
+                'Very, very, very long question for Numeric-input that runs over several, multple lines of text',
+              tags: [getRandomTag()],
             },
             {
               id: getMockId(),
@@ -235,23 +242,13 @@ const mockProgramData: Program = {
                   userName: 'ruben',
                   created: new Date('2021-11-08T11:24').toISOString(),
                 },
-                getRandomComment(),
-              ],
-            },
-            {
-              id: getMockId(),
-              name: 'test-1-numeric',
-              type: QuestionType.numeric,
-              label:
-                'Very, very, very long question for Numeric-input that runs over several, multple lines of text',
-              tags: [getRandomTag()],
-              comments: [
                 {
                   id: getMockId(),
                   text: `Comment. \n with multiple \n lines \n of text.`,
                   userName: 'ruben',
                   created: new Date('2021-11-08T11:24').toISOString(),
                 },
+                getRandomComment(),
               ],
             },
           ],
