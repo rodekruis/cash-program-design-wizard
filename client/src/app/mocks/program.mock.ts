@@ -7,13 +7,16 @@ import {
   getRandomTag,
 } from './mock-helpers';
 
+const mockSectionName1 = 'test1';
+const mockSectionName2 = 'test2-answers';
+
 const mockProgramData: Program = {
   id: getMockId(),
   name: 'Mock Program',
   sections: [
     {
       id: getMockId(),
-      name: 'test1',
+      name: mockSectionName1,
       order: 0,
       label: {
         en: 'Test Section 1',
@@ -26,6 +29,7 @@ const mockProgramData: Program = {
           order: 1,
           questions: [
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-text',
               type: QuestionType.text,
@@ -37,6 +41,7 @@ const mockProgramData: Program = {
               comments: [getRandomComment()],
             },
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-text-long',
               type: QuestionType.textLong,
@@ -45,6 +50,7 @@ const mockProgramData: Program = {
               comments: [getRandomComment()],
             },
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-numeric',
               type: QuestionType.numeric,
@@ -60,6 +66,7 @@ const mockProgramData: Program = {
           order: 2,
           questions: [
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-select-1',
               type: QuestionType.select1,
@@ -84,6 +91,7 @@ const mockProgramData: Program = {
               ],
             },
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-select-2',
               type: QuestionType.select1,
@@ -98,6 +106,7 @@ const mockProgramData: Program = {
               ],
             },
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-select-3',
               type: QuestionType.select1,
@@ -130,6 +139,7 @@ const mockProgramData: Program = {
           order: 3,
           questions: [
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-select-n',
               type: QuestionType.selectN,
@@ -154,6 +164,7 @@ const mockProgramData: Program = {
               ],
             },
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-select-n-2',
               type: QuestionType.selectN,
@@ -168,6 +179,7 @@ const mockProgramData: Program = {
               ],
             },
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-select-n',
               type: QuestionType.selectN,
@@ -201,6 +213,7 @@ const mockProgramData: Program = {
           order: 1,
           questions: [
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-text-2',
               type: QuestionType.text,
@@ -209,6 +222,7 @@ const mockProgramData: Program = {
               tags: [getRandomTag()],
             },
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-numeric',
               type: QuestionType.numeric,
@@ -217,6 +231,7 @@ const mockProgramData: Program = {
               tags: [getRandomTag()],
             },
             {
+              sectionName: mockSectionName1,
               id: getMockId(),
               name: 'test-1-text-long',
               type: QuestionType.textLong,
@@ -258,7 +273,7 @@ const mockProgramData: Program = {
     },
     {
       id: getMockId(),
-      name: 'test2-answers',
+      name: mockSectionName2,
       order: 0,
       label: 'Test Section 2 - Answers',
       subsections: [
@@ -268,6 +283,7 @@ const mockProgramData: Program = {
           order: 1,
           questions: [
             {
+              sectionName: mockSectionName2,
               id: getMockId(),
               name: 'test-2-text',
               type: QuestionType.text,
@@ -277,6 +293,7 @@ const mockProgramData: Program = {
               answer: 'test answer',
             },
             {
+              sectionName: mockSectionName2,
               id: getMockId(),
               name: 'test-2-text-long',
               type: QuestionType.textLong,
@@ -286,6 +303,7 @@ const mockProgramData: Program = {
               answer: 'Long test answer\n\nwith multiple\nlines\nof\ntext...',
             },
             {
+              sectionName: mockSectionName2,
               id: getMockId(),
               name: 'test-2-numeric',
               type: QuestionType.numeric,
@@ -302,6 +320,7 @@ const mockProgramData: Program = {
           order: 2,
           questions: [
             {
+              sectionName: mockSectionName2,
               id: getMockId(),
               name: 'test-2-select-1',
               type: QuestionType.select1,
@@ -336,6 +355,7 @@ const mockProgramData: Program = {
           order: 3,
           questions: [
             {
+              sectionName: mockSectionName2,
               id: getMockId(),
               name: 'test-2-select-n',
               type: QuestionType.selectN,
@@ -369,28 +389,25 @@ const mockProgramData: Program = {
     },
   ],
   narrativeReportTemplate: `
-The answers where: (bullet-list)
-{{test-2-select-n}}
+## Example Program Overview
 
-And also {{test-2-select-1}} or {{test-2-text}}.
+- Project mame: {{program-name}}
+- Start date: {{start-date}}
+- End date: {{end-date}}
 
-Concluding:
-{{text-2-text-long}}
+### Operational Area:
+{{operatiional-area}}
 
-## Section-heading
-### With sub-sections
-
-Output answers multiple times:
-{{test-2-text}} + {{test-2-text}} + {{test-2-text}}
-
-And more content.
+- Location 1 of program: {{location-1}}
+- Location 2 of program: {{location-2}}
 
 - - -
 
-Like this.
+## All features of a Narrative-report template
 
-## Using **Markdown**
-For easy text-__formatting__ or **emphasize**. And showing ~~changes~~updates explicitly.
+### Using Markdown
+It is possible to use Markdown to add structure and styling to the text.
+For example; Easy text-__formatting__ or **emphasize**. And showing ~~changes~~updates explicitly.
 See [more about Markdown](https://en.wikipedia.org/wiki/Markdown)
 And lists:
 
@@ -401,6 +418,23 @@ Or ordered lists:
 
 1. A list-item
 1. With numbered items
+
+### Using variables
+
+To use the filled-in answers to the questions, variables can be used.
+They can appear in a sentence, like what is chosen as the single-choice option({{test-2-select-1}}) for example.
+Multiple-choice answers will show as a bullet-list:
+{{test-2-select-n}}
+
+An answer (like {{test-2-text}}) can also appear multiple times in the report, like this: {{test-2-text}}.
+
+The report will show if there isn't any answer filled in yet:
+{{test-1-text-long}}
+
+- - -
+
+...
+
 `,
 };
 
