@@ -34,7 +34,7 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
 
   public lastUpdate: string | Date;
 
-  private reportTemplate: string;
+  public reportTemplate: string;
   private questions: QuestionInput[];
   private answers: AnswerSet[];
 
@@ -124,6 +124,10 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
     this.translation4Updates.unsubscribe();
     this.programUpdates.unsubscribe();
     this.sectionUpdates.unsubscribe();
+  }
+
+  public previewTemplate() {
+    this.renderTemplate();
   }
 
   public print() {
