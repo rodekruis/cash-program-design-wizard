@@ -6,7 +6,7 @@
     fill="clear"
     size="small"
     (click)="state.saveAnswersActiveSection()"
-    class="ion-margin-horizontal ion-padding-horizontal save-btn"
+    class="ion-margin-horizontal ion-padding-horizontal nav-progress--save"
   >
     {{ 'nav-progress.save-answers.label' | translate }}
   </ion-button>
@@ -32,7 +32,6 @@
       size="small"
       [attr.title]="'nav-progress.prev-section' | translate"
       [attr.aria-label]="'nav-progress.prev-section' | translate"
-      class="nav-progress"
     >
       <ion-icon
         name="chevron-back"
@@ -79,7 +78,6 @@
       size="small"
       [attr.title]="'nav-progress.next-section' | translate"
       [attr.aria-label]="'nav-progress.next-section' | translate"
-      class="nav-progress"
     >
       <ion-icon
         name="chevron-forward"

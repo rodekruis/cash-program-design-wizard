@@ -18,7 +18,10 @@
           </ion-note>
         </div>
         <div
-          *ngFor="let question of subsection?.questions"
+          *ngFor="
+            let question of subsection?.questions;
+            let isLastQuestion = last
+          "
           [hidden]="!shouldShowQuestion(question.tags)"
         >
           <app-question-input
@@ -26,11 +29,11 @@
             [canEdit]="canEdit"
           ></app-question-input>
 
-          <details *ngIf="showComments(question)" class="ion-margin-vertical">
+          <details *ngIf="isLastQuestion" class="ion-margin-vertical">
             <summary>
               <div style="display: flex">
                 <div
-                  [ngSwitch]="question.comments.length"
+                  [ngSwitch]="question.comments?.length"
                   style="flex: 1 1 auto"
                 >
                   <ion-label *ngSwitchCase="0" color="primary">
@@ -41,7 +44,7 @@
                   <ion-label *ngSwitchDefault color="primary">
                     <strong>
                       {{ 'question-section.comments' | translate }}
-                      {{ question.comments.length }}
+                      {{ question.comments?.length }}
                     </strong>
                   </ion-label>
                 </div>
