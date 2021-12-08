@@ -11,14 +11,6 @@
   <br />
 </div>
 <div *ngIf="report">
-  <div class="ion-margin-vertical">
-    <ion-textarea
-      [(ngModel)]="reportTemplate"
-      [rows]="24"
-      style="width: 100%; font-family: monospace"
-    ></ion-textarea>
-    <ion-button color="warning" (click)="previewTemplate()">Preview</ion-button>
-  </div>
   <ion-row class="no-print ion-justify-content-end">
     <ion-button
       type="button"
