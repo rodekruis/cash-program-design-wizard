@@ -8,22 +8,23 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     versioning-strategy: increase-if-necessary
   - package-ecosystem: 'npm'
     directory: 'client/'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     versioning-strategy: increase-if-necessary
+    open-pull-requests-limit: 5
     ignore:
       - dependency-name: '@angular/*'
         update-types:
           - 'version-update:semver-major'
-          - 'version-update:semver-patch'
+          - 'version-update:semver-minor'
       - dependency-name: '@angular-devkit/*'
         update-types:
           - 'version-update:semver-major'
-          - 'version-update:semver-patch'
+          - 'version-update:semver-minor'
       - dependency-name: '@capacitor/*'
         update-types:
           - 'version-update:semver-major'
@@ -48,8 +49,9 @@ updates:
   - package-ecosystem: 'npm'
     directory: 'server/'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     versioning-strategy: increase-if-necessary
+    open-pull-requests-limit: 5
     ignore:
       - dependency-name: '*'
         update-types:
