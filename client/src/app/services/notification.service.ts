@@ -82,7 +82,7 @@ export class NotificationService {
     }
     const toast = await this.toastController.create({
       position: 'top',
-      cssClass: 'notification ion-padding',
+      cssClass: 'notification',
       color: 'tertiary',
       message,
       buttons,

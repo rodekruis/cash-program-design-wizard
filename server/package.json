@@ -22,7 +22,7 @@
     "lint": "npm run lint:syntax",
     "test": "npm run lint && npm run test:cov",
     "lint:syntax": "npx prettier --check .",
-    "fix:syntax": "npm run lint -- --write .",
+    "fix:syntax": "npm run lint:syntax -- --write .",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "migration:generate": "npm run typeorm migration:generate -- -n",
     "migration:run": "npm run typeorm migration:run"

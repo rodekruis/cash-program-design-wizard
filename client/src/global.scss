@@ -81,9 +81,7 @@ input[type='number'] {
 // <ion-toast> customizations:
 .notification {
   --start: auto;
-  --end: var(--padding-end);
-
-  top: calc(56px + 0.5 * var(--padding-top)); // See <ion-toolbar> min-height
+  --end: 8px;
 
   --width: 42%;
   --min-width: 20rem;

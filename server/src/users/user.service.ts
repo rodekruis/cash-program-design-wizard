@@ -94,7 +94,6 @@ export class UserService {
     const findOneOptions = {
       userName: assignUserDto.userName,
     };
-    console.log('findOneOptions: ', findOneOptions);
     const user = await this.userRepository.findOne({
       where: findOneOptions,
       relations: ['programAssignments', 'programAssignments.program'],

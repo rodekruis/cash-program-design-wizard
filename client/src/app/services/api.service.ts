@@ -50,14 +50,17 @@ export class ApiService {
         headers: this.createHeaders(),
       })
       .pipe(
-        tap((response) =>
+        tap((response) => {
+          if (body.password) {
+            body.password = '********';
+          }
           console.log(
             `ApiService POST: ${path}:`,
             body,
             `\nResponse:`,
             response,
-          ),
-        ),
+          );
+        }),
       );
   }
 
