@@ -27,6 +27,9 @@
     "migration:generate": "npm run typeorm migration:generate -- -n",
     "migration:run": "npm run typeorm migration:run"
   },
+  "engines": {
+    "npm": "^7.x"
+  },
   "dependencies": {
     "@nestjs/common": "^8.2.0",
     "@nestjs/config": "^1.1.0",
