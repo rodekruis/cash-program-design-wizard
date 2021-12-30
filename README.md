@@ -41,15 +41,11 @@ Latest deployments:
 
   - [`fnm`](https://github.com/Schniz/fnm#readme) (for Windows/macOS/Linux) After installing, run in this directory:
 
-        fnm use
+        fnm use && npm --install --global npm@7
 
   - [NVM - Node Version Manager](http://nvm.sh/) (for macOS/Linux) After installing, run in this directory:
 
-        nvm install && nvm install-latest-npm
-
-  - After installing, run in this directory:
-
-        nvm use
+        nvm install && nvm use && npm --install --global npm@7
 
 - Install Docker
   - On macOS, install Docker Desktop: <https://docs.docker.com/docker-for-mac/install/>
