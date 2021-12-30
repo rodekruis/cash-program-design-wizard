@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased](https://github.com/rodekruis/cash-program-design-wizard/compare/bef4ef7...main)
+## [Unreleased](https://github.com/rodekruis/cash-program-design-wizard/compare/v1...main)
 
 ---
+
+## [v1](https://github.com/rodekruis/cash-program-design-wizard/compare/bef4ef7...v1)
 
 ## Start - 2021-08-19
