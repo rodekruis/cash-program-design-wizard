@@ -26,6 +26,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'transfer-questions',
+    loadChildren: () =>
+      import('./pages/transfer-questions/transfer-questions.module').then(
+        (m) => m.TransferQuestionsModule,
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',
