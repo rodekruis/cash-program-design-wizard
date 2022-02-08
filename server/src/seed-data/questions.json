@@ -2,45 +2,68 @@
   {
     "name": "pa-gender-01",
     "type": "select-n",
-    "label": { "en": "GENDER:" },
+    "label": {
+      "en": "GENDER:"
+    },
     "orderPriority": 1,
     "subsection": "pa-gender",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Anyone" },
+        "label": {
+          "en": "Anyone"
+        },
         "name": "anyone",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Currently unknown" },
+        "label": {
+          "en": "Currently unknown"
+        },
         "name": "unknown",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Female" },
+        "label": {
+          "en": "Female"
+        },
         "name": "female",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Male" },
+        "label": {
+          "en": "Male"
+        },
         "name": "male",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Non Binary" },
+        "label": {
+          "en": "Non Binary"
+        },
         "name": "non-binary",
         "orderPriority": 5
       },
       {
-        "label": { "en": "A mix of both with majority women" },
-        "name": "mix",
+        "label": {
+          "en": "A mix of both with majority women"
+        },
+        "name": "mix-women",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Other" },
-        "name": "other",
+        "label": {
+          "en": "A mix of both with majority men"
+        },
+        "name": "mix-men",
         "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "Other please add in comments"
+        },
+        "name": "other",
+        "orderPriority": 8
       }
     ]
   },
@@ -57,64 +80,88 @@
   {
     "name": "pa-age-01",
     "type": "select-n",
-    "label": { "en": "AGE" },
+    "label": {
+      "en": "AGE"
+    },
     "orderPriority": 3,
     "subsection": "pa-age",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Anyone" },
+        "label": {
+          "en": "Anyone"
+        },
         "name": "anyone",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 2
       },
       {
-        "label": { "en": "less than 5 years old" },
+        "label": {
+          "en": "less than 5 years old"
+        },
         "name": "0-5",
         "orderPriority": 3
       },
       {
-        "label": { "en": "5 - 9 years old" },
+        "label": {
+          "en": "5 - 9 years old"
+        },
         "name": "5-9",
         "orderPriority": 4
       },
       {
-        "label": { "en": "9 - 17 years old" },
+        "label": {
+          "en": "9 - 17 years old"
+        },
         "name": "9-17",
         "orderPriority": 5
       },
       {
-        "label": { "en": "18 - 24 years old" },
+        "label": {
+          "en": "18 - 24 years old"
+        },
         "name": "18-24",
         "orderPriority": 6
       },
       {
-        "label": { "en": "25 - 34 years old" },
+        "label": {
+          "en": "25 - 34 years old"
+        },
         "name": "25-34",
         "orderPriority": 7
       },
       {
-        "label": { "en": "35 - 44 years old" },
+        "label": {
+          "en": "35 - 44 years old"
+        },
         "name": "35-44",
         "orderPriority": 8
       },
       {
-        "label": { "en": "45 - 54 years old" },
+        "label": {
+          "en": "45 - 54 years old"
+        },
         "name": "45-54",
         "orderPriority": 9
       },
       {
-        "label": { "en": "55 - 64 years old" },
+        "label": {
+          "en": "55 - 64 years old"
+        },
         "name": "55-64",
         "orderPriority": 10
       },
       {
-        "label": { "en": "65 and more" },
-        "name": "64+",
+        "label": {
+          "en": "65 and more"
+        },
+        "name": "65-plus",
         "orderPriority": 11
       }
     ]
@@ -131,53 +178,69 @@
   },
   {
     "name": "pa-marital-status-01",
-    "type": "select-1",
-    "label": { "en": "MARITAL STATUS" },
+    "type": "select-n",
+    "label": {
+      "en": "MARITAL STATUS"
+    },
     "orderPriority": 5,
     "subsection": "pa-marital-status",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Anyone" },
+        "label": {
+          "en": "Anyone"
+        },
         "name": "anyone",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
-        "orderPriority": 2
+        "orderPriority": 3
       },
       {
-        "label": { "en": "Single" },
+        "label": {
+          "en": "Single"
+        },
         "name": "single",
-        "orderPriority": 3
+        "orderPriority": 4
       },
       {
         "label": {
           "en": "Married with Partner"
         },
         "name": "married-with-partner",
-        "orderPriority": 4
-      },
-      {
-        "label": { "en": "Married but Partner Estranged" },
-        "name": "married-partner-estranged",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Parent" },
-        "name": "parent",
+        "label": {
+          "en": "Married but Partner Estranged"
+        },
+        "name": "married-partner-estranged",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Parent to be" },
-        "name": "parent-to-be",
+        "label": {
+          "en": "Parent"
+        },
+        "name": "parent",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Other" },
-        "name": "other",
+        "label": {
+          "en": "Parent to be"
+        },
+        "name": "parent-to-be",
         "orderPriority": 8
+      },
+      {
+        "label": {
+          "en": "Other please add in comments"
+        },
+        "name": "other",
+        "orderPriority": 9
       }
     ]
   },
@@ -194,48 +257,66 @@
   {
     "name": "pa-shelter-status-01",
     "type": "select-n",
-    "label": { "en": "SHELTER STATUS" },
+    "label": {
+      "en": "SHELTER STATUS"
+    },
     "orderPriority": 7,
     "subsection": "pa-shelter-status",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Anyone" },
+        "label": {
+          "en": "Anyone"
+        },
         "name": "anyone",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Homeless" },
+        "label": {
+          "en": "Homeless"
+        },
         "name": "homeless",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Home in a camp" },
+        "label": {
+          "en": "Home in a camp"
+        },
         "name": "home-in-a-camp",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Temporary shelter" },
+        "label": {
+          "en": "Temporary shelter"
+        },
         "name": "temporary-shelter",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Rental home" },
+        "label": {
+          "en": "Rental home"
+        },
         "name": "rental-home",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Owner of home" },
+        "label": {
+          "en": "Owner of home"
+        },
         "name": "owner-of-home",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Shared Accomodation" },
+        "label": {
+          "en": "Shared Accomodation"
+        },
         "name": "shared-accomodation",
         "orderPriority": 8
       }
@@ -253,45 +334,61 @@
   },
   {
     "name": "pa-lives-01",
-    "type": "select-1",
-    "label": { "en": "LIVES WITH (HOUSEHOLD SIZE)" },
+    "type": "select-n",
+    "label": {
+      "en": "LIVES WITH (HOUSEHOLD SIZE)"
+    },
     "orderPriority": 9,
     "subsection": "pa-lives",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Anyone" },
+        "label": {
+          "en": "Anyone"
+        },
         "name": "anyone",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Alone" },
+        "label": {
+          "en": "Alone"
+        },
         "name": "alone",
         "orderPriority": 3
       },
       {
-        "label": { "en": "In shared household" },
+        "label": {
+          "en": "In shared household"
+        },
         "name": "shared-household",
         "orderPriority": 4
       },
       {
-        "label": { "en": "In household size 3 or less" },
+        "label": {
+          "en": "In household size 3 or less"
+        },
         "name": "household-1-3",
         "orderPriority": 5
       },
       {
-        "label": { "en": "In household size 5 or less" },
+        "label": {
+          "en": "In household size 5 or less"
+        },
         "name": "household-1-5",
         "orderPriority": 6
       },
       {
-        "label": { "en": "In household size 6 or more" },
-        "name": "household-6+",
+        "label": {
+          "en": "In household size 6 or more"
+        },
+        "name": "household-6-plus",
         "orderPriority": 7
       }
     ]
@@ -308,39 +405,53 @@
   },
   {
     "name": "pa-dependants-01",
-    "type": "select-1",
-    "label": { "en": "DEPENDANTS" },
+    "type": "select-n",
+    "label": {
+      "en": "DEPENDANTS"
+    },
     "orderPriority": 11,
     "subsection": "pa-dependants",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Anyone" },
+        "label": {
+          "en": "Anyone"
+        },
         "name": "anyone",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 2
       },
       {
-        "label": { "en": "No Dependants" },
+        "label": {
+          "en": "No Dependants"
+        },
         "name": "no-depedants",
         "orderPriority": 3
       },
       {
-        "label": { "en": "3 or more dependants" },
+        "label": {
+          "en": "3 or more dependants"
+        },
         "name": "3-dependants",
         "orderPriority": 4
       },
       {
-        "label": { "en": "5 or more dependants" },
+        "label": {
+          "en": "5 or more dependants"
+        },
         "name": "5-dependants",
         "orderPriority": 5
       },
       {
-        "label": { "en": "6 or more dependants" },
+        "label": {
+          "en": "6 or more dependants"
+        },
         "name": "6-dependants",
         "orderPriority": 6
       }
@@ -357,126 +468,168 @@
     "tags": ["people"]
   },
   {
-    "name": "pa-leagal-status-01",
-    "type": "select-1",
-    "label": { "en": "LEGAL STATUS" },
+    "name": "pa-legal-status-01",
+    "type": "select-n",
+    "label": {
+      "en": "LEGAL STATUS"
+    },
     "orderPriority": 13,
-    "subsection": "pa-leagal-status",
+    "subsection": "pa-legal-status",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Any" },
-        "name": "anyone",
+        "label": {
+          "en": "Currently Unknown"
+        },
+        "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Currently Unknown" },
-        "name": "unknown",
+        "label": {
+          "en": "Documented"
+        },
+        "name": "documented",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Documented" },
-        "name": "documented",
+        "label": {
+          "en": "Undocumented"
+        },
+        "name": "undocumented",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Undocumented" },
-        "name": "undocumented",
+        "label": {
+          "en": "Refugee"
+        },
+        "name": "refugee",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Refugee" },
-        "name": "refugee",
+        "label": {
+          "en": "Hosted by a community"
+        },
+        "name": "hosted-by-community",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Hosted by a community" },
-        "name": "hosted-by-community",
+        "label": {
+          "en": "IDP "
+        },
+        "name": "idp",
         "orderPriority": 6
       },
       {
-        "label": { "en": "OCP Status" },
-        "name": "ocp-status",
+        "label": {
+          "en": "Residence status"
+        },
+        "name": "residence-status",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Residence status" },
-        "name": "residence-status",
+        "label": {
+          "en": "Other please add in comments"
+        },
+        "name": "other",
         "orderPriority": 8
       }
     ]
   },
   {
-    "name": "pa-leagal-status-02",
+    "name": "pa-legal-status-02",
     "type": "text-long",
     "label": {
       "en": "LIVING STATUS: Are there local laws/regulations for the target group that positivly/negativly impacts the intended Program?"
     },
     "orderPriority": 14,
-    "subsection": "pa-leagal-status",
-    "tags": ["people"]
+    "subsection": "pa-legal-status",
+    "tags": ["people", "coordination"]
   },
   {
     "name": "pa-job-type-01",
-    "type": "select-1",
-    "label": { "en": "JOB TYPE" },
+    "type": "select-n",
+    "label": {
+      "en": "JOB TYPE"
+    },
     "orderPriority": 15,
     "subsection": "pa-job-type",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "None" },
-        "name": "none",
+        "label": {
+          "en": "Currently Unknown"
+        },
+        "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Currently Unknown" },
-        "name": "unknown",
+        "label": {
+          "en": "Farmers"
+        },
+        "name": "farmers",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Farmers" },
-        "name": "farmers",
+        "label": {
+          "en": "Merchants"
+        },
+        "name": "merchants",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Merchants" },
-        "name": "merchants",
+        "label": {
+          "en": "Fishing"
+        },
+        "name": "fishing",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Fishing" },
-        "name": "fishing",
+        "label": {
+          "en": "Ocasional workers"
+        },
+        "name": "ocasional-workers",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Ocasional workers" },
-        "name": "ocasional-workers",
+        "label": {
+          "en": "Unemployed"
+        },
+        "name": "unemployed",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Unemployed" },
-        "name": "unemployed",
+        "label": {
+          "en": "casual work"
+        },
+        "name": "casual-work",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Ilegal work" },
-        "name": "ilegal-work",
+        "label": {
+          "en": "Potential Entrepeneurs"
+        },
+        "name": "potential-entrepeneurs",
         "orderPriority": 8
       },
       {
-        "label": { "en": "Potential Entrepeneurs" },
-        "name": "potential-entrepeneurs",
+        "label": {
+          "en": "Business registration & license"
+        },
+        "name": "business-registration-license",
         "orderPriority": 9
       },
       {
-        "label": { "en": "Business registration & license" },
-        "name": "business-registration-license",
+        "label": {
+          "en": "Renting business license from community"
+        },
+        "name": "renting-license-from-community",
         "orderPriority": 10
       },
       {
-        "label": { "en": "Renting business license from community" },
-        "name": "renting-license-from-community",
+        "label": {
+          "en": "Other please add in comments"
+        },
+        "name": "other",
         "orderPriority": 11
       }
     ]
@@ -499,73 +652,99 @@
     },
     "orderPriority": 17,
     "subsection": "pa-job-type",
-    "tags": ["people"]
+    "tags": ["people", "coordination"]
   },
   {
     "name": "pa-support-areas-01",
     "type": "select-n",
-    "label": { "en": "HAVE A NEED OF SUPPORT IN THE FOLLOWING AREA(S)" },
+    "label": {
+      "en": "HAVE A NEED OF SUPPORT IN THE FOLLOWING AREA(S)"
+    },
     "orderPriority": 18,
     "subsection": "pa-support-areas",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Health" },
+        "label": {
+          "en": "Health"
+        },
         "name": "health",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Food security" },
+        "label": {
+          "en": "Food security"
+        },
         "name": "food-security",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Nutrition" },
+        "label": {
+          "en": "Nutrition"
+        },
         "name": "nutrition",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Protection" },
+        "label": {
+          "en": "Protection"
+        },
         "name": "protection",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Shelter" },
+        "label": {
+          "en": "Shelter"
+        },
         "name": "shelter",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Water Sanitation & Hygiene" },
+        "label": {
+          "en": "Water Sanitation & Hygiene"
+        },
         "name": "water-sanitation-hygiene",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Education" },
+        "label": {
+          "en": "Education"
+        },
         "name": "education",
         "orderPriority": 8
       },
       {
-        "label": { "en": "Financial Stability" },
+        "label": {
+          "en": "Financial Stability"
+        },
         "name": "financial-stability",
         "orderPriority": 9
       },
       {
-        "label": { "en": "Business license" },
+        "label": {
+          "en": "Business license"
+        },
         "name": "business-license",
         "orderPriority": 10
       },
       {
-        "label": { "en": "Access to loans micro finance institutions" },
+        "label": {
+          "en": "Access to loans micro finance institutions"
+        },
         "name": "micro-finance-institutions",
         "orderPriority": 11
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other please add in comments"
+        },
         "name": "other",
         "orderPriority": 12
       }
@@ -589,7 +768,7 @@
     },
     "orderPriority": 20,
     "subsection": "pa-support-areas",
-    "tags": ["people"]
+    "tags": ["people", "coordination"]
   },
   {
     "name": "pa-support-areas-04",
@@ -604,73 +783,101 @@
   {
     "name": "pa-disaster-type-01",
     "type": "select-n",
-    "label": { "en": "DISASTER TYPE(S): How the people are/were affected" },
+    "label": {
+      "en": "DISASTER TYPE(S): How the people are/were affected"
+    },
     "orderPriority": 22,
     "subsection": "pa-disaster-type",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Floods" },
+        "label": {
+          "en": "Floods"
+        },
         "name": "floods",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Typhoons/Hurricane/Cyclones" },
+        "label": {
+          "en": "Typhoons/Hurricane/Cyclones"
+        },
         "name": "typhoons-hurricane-cyclones",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Earthquake" },
+        "label": {
+          "en": "Earthquake"
+        },
         "name": "earthquake",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Tsunami" },
+        "label": {
+          "en": "Tsunami"
+        },
         "name": "tsunami",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Drought" },
+        "label": {
+          "en": "Drought"
+        },
         "name": "drought",
         "orderPriority": 6
       },
       {
-        "label": { "en": "War" },
+        "label": {
+          "en": "War"
+        },
         "name": "war",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Civil Unrest" },
+        "label": {
+          "en": "Civil Unrest"
+        },
         "name": "civil-unrest",
         "orderPriority": 8
       },
       {
-        "label": { "en": "Poor Economy" },
+        "label": {
+          "en": "Poor Economy"
+        },
         "name": "poor-economy",
         "orderPriority": 9
       },
       {
-        "label": { "en": "Epedemic" },
+        "label": {
+          "en": "Epedemic"
+        },
         "name": "epedemic",
         "orderPriority": 10
       },
       {
-        "label": { "en": "Pandemic" },
+        "label": {
+          "en": "Pandemic"
+        },
         "name": "pandemic",
         "orderPriority": 11
       },
       {
-        "label": { "en": "Explosion" },
+        "label": {
+          "en": "Explosion"
+        },
         "name": "explosion",
         "orderPriority": 12
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other please add in comments"
+        },
         "name": "other",
         "orderPriority": 13
       }
@@ -689,55 +896,68 @@
   {
     "name": "pa-current-disaster-phase-01",
     "type": "select-n",
-    "label": { "en": "CURRENT DISASTER PHASE:" },
+    "label": {
+      "en": "CURRENT DISASTER PHASE:"
+    },
     "orderPriority": 24,
     "subsection": "pa-current-disaster-phase",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Prevention" },
+        "label": {
+          "en": "Prevention"
+        },
         "name": "prevention",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Mitigation" },
+        "label": {
+          "en": "Mitigation"
+        },
         "name": "mitigation",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Preparedness" },
+        "label": {
+          "en": "Preparedness"
+        },
         "name": "preparedness",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Disaster" },
+        "label": {
+          "en": "Disaster"
+        },
         "name": "disaster",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Response" },
+        "label": {
+          "en": "Response"
+        },
         "name": "response",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Recovery" },
+        "label": {
+          "en": "Recovery"
+        },
         "name": "recovery",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Reconstruction" },
+        "label": {
+          "en": "Reconstruction"
+        },
         "name": "reconstruction",
         "orderPriority": 7
       },
       {
-        "label": { "en": "A combination of options above" },
-        "name": "combination-above",
-        "orderPriority": 8
-      },
-      {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other please add in comments"
+        },
         "name": "other",
-        "orderPriority": 9
+        "orderPriority": 8
       }
     ]
   },
@@ -754,83 +974,115 @@
   {
     "name": "pa-languages-spoken-01",
     "type": "select-n",
-    "label": { "en": "LANGUAGES SPOKEN: BY PEOPLE AFFECTED" },
+    "label": {
+      "en": "LANGUAGES SPOKEN: BY PEOPLE AFFECTED"
+    },
     "orderPriority": 26,
     "subsection": "pa-languages-spoken",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Arabic (Multiple countries)" },
+        "label": {
+          "en": "Arabic (Multiple countries)"
+        },
         "name": "ar",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Amharic (Ethiopia)" },
+        "label": {
+          "en": "Amharic (Ethiopia)"
+        },
         "name": "am",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Dutch (The Netherlands, some Carribean Islands)" },
+        "label": {
+          "en": "Dutch (The Netherlands, some Carribean Islands)"
+        },
         "name": "nl",
         "orderPriority": 4
       },
       {
-        "label": { "en": "English (Multiple countries)" },
+        "label": {
+          "en": "English (Multiple countries)"
+        },
         "name": "en",
         "orderPriority": 5
       },
       {
-        "label": { "en": "French (Multiple Countries)" },
+        "label": {
+          "en": "French (Multiple Countries)"
+        },
         "name": "fr",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Kirundi (Burundi)" },
+        "label": {
+          "en": "Kirundi (Burundi)"
+        },
         "name": "rn",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Tagalog (Philippines)" },
+        "label": {
+          "en": "Tagalog (Philippines)"
+        },
         "name": "tl",
         "orderPriority": 8
       },
       {
-        "label": { "en": "Turkana (Kenya)" },
+        "label": {
+          "en": "Turkana (Kenya)"
+        },
         "name": "tuv",
         "orderPriority": 9
       },
       {
-        "label": { "en": "Spanish (Multiple countries)" },
+        "label": {
+          "en": "Spanish (Multiple countries)"
+        },
         "name": "es",
         "orderPriority": 10
       },
       {
-        "label": { "en": "Samburu (Kenya)" },
+        "label": {
+          "en": "Samburu (Kenya)"
+        },
         "name": "saq",
         "orderPriority": 11
       },
       {
-        "label": { "en": "Swahili (Kenya)" },
+        "label": {
+          "en": "Swahili (Kenya)"
+        },
         "name": "swa",
         "orderPriority": 12
       },
       {
-        "label": { "en": "Sinhala (Sri Lanken)" },
+        "label": {
+          "en": "Sinhala (Sri Lanken)"
+        },
         "name": "si",
         "orderPriority": 13
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 14
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other please add in comments"
+        },
         "name": "other",
         "orderPriority": 15
       }
@@ -844,7 +1096,7 @@
     },
     "orderPriority": 27,
     "subsection": "pa-languages-spoken",
-    "tags": ["people"]
+    "tags": ["people", "registration", "payment"]
   },
   {
     "name": "pa-languages-spoken-03",
@@ -854,43 +1106,57 @@
     },
     "orderPriority": 28,
     "subsection": "pa-languages-spoken",
-    "tags": ["people"]
+    "tags": ["people", "coordination"]
   },
   {
     "name": "pa-literacy-01",
     "type": "select-n",
-    "label": { "en": "LITERACY LEVELS" },
+    "label": {
+      "en": "LITERACY LEVELS"
+    },
     "orderPriority": 29,
     "subsection": "pa-literacy",
     "tags": ["people"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Highly literate" },
+        "label": {
+          "en": "Highly literate"
+        },
         "name": "highly-literate",
         "orderPriority": 2
       },
       {
-        "label": { "en": "No literacy" },
+        "label": {
+          "en": "No literacy"
+        },
         "name": "no-literacy",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Illiterate" },
+        "label": {
+          "en": "Illiterate"
+        },
         "name": "illiterate",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Basic Literacy" },
+        "label": {
+          "en": "Basic Literacy"
+        },
         "name": "basic-literacy",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other please add in comments"
+        },
         "name": "other",
         "orderPriority": 6
       }
@@ -904,78 +1170,106 @@
     },
     "orderPriority": 30,
     "subsection": "pa-literacy",
-    "tags": ["people"]
+    "tags": ["people", "coordination"]
   },
   {
     "name": "digital-devices-01",
     "type": "select-n",
-    "label": { "en": "DIGITAL DEVICES (IF ANY)" },
+    "label": {
+      "en": "DIGITAL DEVICES (IF ANY)"
+    },
     "orderPriority": 31,
     "subsection": "digital-devices",
-    "tags": ["data"],
+    "tags": ["people", "registration", "payment"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Land Line" },
+        "label": {
+          "en": "Land Line"
+        },
         "name": "land-line",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Simcard only with Proxy phone" },
+        "label": {
+          "en": "Simcard only with Proxy phone"
+        },
         "name": "simcard-proxy-phone",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Proxy phone with Proxy phone number" },
+        "label": {
+          "en": "Proxy phone with Proxy phone number"
+        },
         "name": "proxy-phone-number",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Mobile feature phone" },
-        "name": "feature-phone",
+        "label": {
+          "en": "Mobile feature phone"
+        },
+        "name": "phone-feature",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Mobile smart phone android (i.e Samsung Huwawei)" },
-        "name": "android-phone",
+        "label": {
+          "en": "Mobile smart phone Android (i.e Samsung, Huwawei)"
+        },
+        "name": "phone-android",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Mobile smart phone IOS (i.e Apple)" },
-        "name": "iso-phone",
+        "label": {
+          "en": "Mobile smart phone iOS (i.e Apple)"
+        },
+        "name": "phone-ios",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Tablet android (i.e Samsung Huwawei)" },
-        "name": "android-tablet",
+        "label": {
+          "en": "Tablet android (i.e Samsung, Huwawei)"
+        },
+        "name": "tablet-android",
         "orderPriority": 8
       },
       {
-        "label": { "en": "Tablet IOS (i.e Apple)" },
-        "name": "iso-tablet",
+        "label": {
+          "en": "Tablet iOS (i.e Apple)"
+        },
+        "name": "tablet-ios",
         "orderPriority": 9
       },
       {
-        "label": { "en": "PC Laptop" },
+        "label": {
+          "en": "PC Laptop"
+        },
         "name": "laptop",
         "orderPriority": 10
       },
       {
-        "label": { "en": "PC Desktop" },
+        "label": {
+          "en": "PC Desktop"
+        },
         "name": "desktop",
         "orderPriority": 11
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 12
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other please add in comments"
+        },
         "name": "other",
         "orderPriority": 13
       }
@@ -989,68 +1283,92 @@
     },
     "orderPriority": 32,
     "subsection": "digital-devices",
-    "tags": ["data"]
+    "tags": ["people", "registration", "payment"]
   },
   {
     "name": "pa-trusted-information-sources-01",
     "type": "select-n",
-    "label": { "en": "TRUSTED INFORMATION SOURCES" },
+    "label": {
+      "en": "TRUSTED INFORMATION SOURCES"
+    },
     "orderPriority": 33,
     "subsection": "pa-trusted-information-sources",
-    "tags": ["data"],
+    "tags": ["people", "registration", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Community/Religious meetings" },
+        "label": {
+          "en": "Community/Religious meetings"
+        },
         "name": "community",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Casual street meetings" },
+        "label": {
+          "en": "Casual street meetings"
+        },
         "name": "casual-meeting",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Radio" },
+        "label": {
+          "en": "Radio"
+        },
         "name": "radio",
         "orderPriority": 4
       },
       {
-        "label": { "en": "TV" },
+        "label": {
+          "en": "TV"
+        },
         "name": "tv",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Social media platforms" },
+        "label": {
+          "en": "Social media platforms"
+        },
         "name": "sns",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Websites" },
+        "label": {
+          "en": "Websites"
+        },
         "name": "websites",
         "orderPriority": 7
       },
       {
-        "label": { "en": "flyers" },
+        "label": {
+          "en": "flyers"
+        },
         "name": "flyers",
         "orderPriority": 8
       },
       {
-        "label": { "en": "WhatsApp" },
+        "label": {
+          "en": "WhatsApp"
+        },
         "name": "whatsapp",
         "orderPriority": 9
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 10
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other please add in comments"
+        },
         "name": "other",
         "orderPriority": 11
       }
@@ -1064,45 +1382,61 @@
     },
     "orderPriority": 34,
     "subsection": "pa-social-media",
-    "tags": ["data"],
+    "tags": ["people", "registration", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Radio" },
+        "label": {
+          "en": "Radio"
+        },
         "name": "radio",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Television" },
+        "label": {
+          "en": "Television"
+        },
         "name": "tv",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Facebook" },
+        "label": {
+          "en": "Facebook"
+        },
         "name": "facebook",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Instagram" },
+        "label": {
+          "en": "Instagram"
+        },
         "name": "instagram",
         "orderPriority": 5
       },
       {
-        "label": { "en": "TikTok" },
+        "label": {
+          "en": "TikTok"
+        },
         "name": "tiktok",
         "orderPriority": 6
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 8
       }
@@ -1110,31 +1444,39 @@
   },
   {
     "name": "pa-social-media-02",
-    "type": "select-1",
+    "type": "select-n",
     "label": {
       "en": "ONLINE SOCIAL MEDIA PLATFORMS: Do you already have preexisting accounts / presence on these platforms that you intend to use?"
     },
     "orderPriority": 35,
     "subsection": "pa-social-media",
-    "tags": ["data"],
+    "tags": ["people", "registration", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": { "en": "Yes we use it all the time" },
+        "label": {
+          "en": "Yes we use it all the time"
+        },
         "name": "all-time",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Yes but we use it iregularly" },
+        "label": {
+          "en": "Yes but we use it iregularly"
+        },
         "name": "iregulaly",
         "orderPriority": 2
       },
       {
-        "label": { "en": "No" },
+        "label": {
+          "en": "No"
+        },
         "name": "no",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 4
       }
@@ -1148,7 +1490,7 @@
     },
     "orderPriority": 36,
     "subsection": "pa-social-media",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "payment", "CEA"]
   },
   {
     "name": "pa-communication-channels-01",
@@ -1158,65 +1500,89 @@
     },
     "orderPriority": 37,
     "subsection": "pa-communication-channels",
-    "tags": ["data"],
+    "tags": ["people", "coordination", "registration", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Community/Religious meetings" },
+        "label": {
+          "en": "Community/Religious meetings"
+        },
         "name": "community",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Casual Street Meetings" },
+        "label": {
+          "en": "Casual Street Meetings"
+        },
         "name": "casual-meeting",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Phone Calls" },
+        "label": {
+          "en": "Phone Calls"
+        },
         "name": "phone-calls",
         "orderPriority": 4
       },
       {
-        "label": { "en": "SMS" },
+        "label": {
+          "en": "SMS"
+        },
         "name": "sms",
         "orderPriority": 5
       },
       {
-        "label": { "en": "WhatsApp" },
+        "label": {
+          "en": "WhatsApp"
+        },
         "name": "whatsapp",
         "orderPriority": 6
       },
       {
-        "label": { "en": "FB Messenger" },
-        "name": "fb-messanger",
+        "label": {
+          "en": "FB Messenger"
+        },
+        "name": "fb-messenger",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Viber" },
+        "label": {
+          "en": "Viber"
+        },
         "name": "viber",
         "orderPriority": 8
       },
       {
-        "label": { "en": "Signal" },
+        "label": {
+          "en": "Signal"
+        },
         "name": "signal",
         "orderPriority": 9
       },
       {
-        "label": { "en": "Email" },
+        "label": {
+          "en": "Email"
+        },
         "name": "email",
         "orderPriority": 10
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 11
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 12
       }
@@ -1230,7 +1596,7 @@
     },
     "orderPriority": 38,
     "subsection": "pa-communication-channels",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "payment", "CEA"]
   },
   {
     "name": "pa-communication-channels-03",
@@ -1240,7 +1606,7 @@
     },
     "orderPriority": 39,
     "subsection": "pa-communication-channels",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "payment", "CEA"]
   },
   {
     "name": "pa-communication-system-01",
@@ -1250,7 +1616,7 @@
     },
     "orderPriority": 40,
     "subsection": "pa-communication-system",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "payment", "CEA"]
   },
   {
     "name": "pa-communication-system-02",
@@ -1260,7 +1626,7 @@
     },
     "orderPriority": 41,
     "subsection": "pa-communication-system",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "payment", "CEA"]
   },
   {
     "name": "pa-communication-system-03",
@@ -1270,43 +1636,57 @@
     },
     "orderPriority": 42,
     "subsection": "pa-communication-system",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "payment", "CEA"]
   },
   {
     "name": "shop-in-01",
-    "type": "select-1",
-    "label": { "en": "SHOP IN" },
+    "type": "select-n",
+    "label": {
+      "en": "SHOP IN"
+    },
     "orderPriority": 43,
     "subsection": "shop-in",
-    "tags": ["cash"],
+    "tags": ["people", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Open air markets" },
-        "name": "opne-air-markets",
+        "label": {
+          "en": "Open air markets"
+        },
+        "name": "open-air-markets",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Supermarkets" },
+        "label": {
+          "en": "Supermarkets"
+        },
         "name": "supermarkets",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Small stores" },
+        "label": {
+          "en": "Small stores"
+        },
         "name": "small-stores",
         "orderPriority": 4
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 6
       }
@@ -1320,63 +1700,77 @@
     },
     "orderPriority": 44,
     "subsection": "shop-in",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
-    "name": "voucher",
+    "name": "shop-in-03",
     "type": "text-long",
     "label": {
       "en": "Which stores should we best target to work with if offering vouchers?"
     },
     "orderPriority": 45,
     "subsection": "voucher",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "organization-guidelines",
     "type": "text-long",
     "label": {
-      "en": "Have you checked your own organization guidelines on setting up a CVA project?"
+      "en": "Have you checked your own organization guidelines on setting up a CVA or Cash based Aid project?"
     },
     "orderPriority": 46,
     "subsection": "organization-guidelines",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "shopping-frequency-01",
-    "type": "select-1",
-    "label": { "en": "FREQUENCY OF SHOPPING OF TARGET GROUP" },
+    "type": "select-n",
+    "label": {
+      "en": "FREQUENCY OF SHOPPING OF TARGET GROUP"
+    },
     "orderPriority": 47,
     "subsection": "shopping-frequency",
     "tags": ["cash"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Weekly Market" },
+        "label": {
+          "en": "Weekly Market"
+        },
         "name": "weekly-market",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Bi weekly Market (every second week)" },
+        "label": {
+          "en": "Bi weekly Market (every second week)"
+        },
         "name": "bi-weekly-market",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Monthly Market" },
+        "label": {
+          "en": "Monthly Market"
+        },
         "name": "monthly-market",
         "orderPriority": 4
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 6
       }
@@ -1390,7 +1784,7 @@
     },
     "orderPriority": 48,
     "subsection": "shopping-frequency",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "working-days-01",
@@ -1400,58 +1794,78 @@
     },
     "orderPriority": 49,
     "subsection": "working-days",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "market-location-01",
-    "type": "select-1",
-    "label": { "en": "LOCATION OF MARKET/FOOD SUPPLIES USED BY TARGET GROUP" },
+    "type": "select-n",
+    "label": {
+      "en": "LOCATION OF MARKET/FOOD SUPPLIES USED BY TARGET GROUP"
+    },
     "orderPriority": 50,
     "subsection": "market-location",
-    "tags": ["cash"],
+    "tags": ["people", "coordination", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "travel 30 mins or less walking" },
+        "label": {
+          "en": "travel 30 mins or less walking"
+        },
         "name": "0-30min-walk",
         "orderPriority": 2
       },
       {
-        "label": { "en": "travel 1 hours or less walking" },
+        "label": {
+          "en": "travel 1 hours or less walking"
+        },
         "name": "0-60min-walk",
         "orderPriority": 3
       },
       {
-        "label": { "en": "travel 3 hours or less walking" },
+        "label": {
+          "en": "travel 3 hours or less walking"
+        },
         "name": "0-180min-walk",
         "orderPriority": 4
       },
       {
-        "label": { "en": "travel 30 mins or less paid transport" },
+        "label": {
+          "en": "travel 30 mins or less paid transport"
+        },
         "name": "0-30min-transport",
         "orderPriority": 5
       },
       {
-        "label": { "en": "travel 1 hours or less paid transport" },
+        "label": {
+          "en": "travel 1 hours or less paid transport"
+        },
         "name": "0-60min-transport",
         "orderPriority": 6
       },
       {
-        "label": { "en": "travel 3 hours or less paid transport" },
+        "label": {
+          "en": "travel 3 hours or less paid transport"
+        },
         "name": "0-180min-transport",
         "orderPriority": 7
       },
       {
-        "label": { "en": "More than 1 or all of above" },
-        "name": "1+",
+        "label": {
+          "en": "More than 1 or all of above"
+        },
+        "name": "1-plus",
         "orderPriority": 8
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 9
       }
@@ -1460,10 +1874,12 @@
   {
     "name": "market-location-02",
     "type": "text-long",
-    "label": { "en": "What is the nearest Market(s) for our targets PA's?" },
+    "label": {
+      "en": "What is the nearest Market(s) for our targets PA's?"
+    },
     "orderPriority": 51,
     "subsection": "market-location",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "market-location-04",
@@ -1478,26 +1894,34 @@
   {
     "name": "transport-cost-01",
     "type": "text-long",
-    "label": { "en": "Do we know the cost of transport in this area?" },
+    "label": {
+      "en": "Do we know the cost of transport in this area?"
+    },
     "orderPriority": 53,
     "subsection": "transport-cost",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "basket-size-01",
-    "type": "select-1",
-    "label": { "en": "BASKET SIZE" },
+    "type": "select-n",
+    "label": {
+      "en": "BASKET SIZE"
+    },
     "orderPriority": 54,
     "subsection": "basket-size",
-    "tags": ["cash"],
+    "tags": ["people", "coordination", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 2
       }
@@ -1511,7 +1935,7 @@
     },
     "orderPriority": 55,
     "subsection": "basket-size",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "basket-size-03",
@@ -1525,44 +1949,60 @@
   },
   {
     "name": "basket-size-04",
-    "type": "select-1",
-    "label": { "en": "CURRENCY USED BY TARGET GROUP" },
+    "type": "select-n",
+    "label": {
+      "en": "CURRENCY USED BY TARGET GROUP"
+    },
     "orderPriority": 57,
     "subsection": "currencies",
-    "tags": ["cash"],
+    "tags": ["people", "coordination", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": { "en": "$ US Dollar" },
+        "label": {
+          "en": "$ US Dollar"
+        },
         "name": "us-dollar",
         "orderPriority": 1
       },
       {
-        "label": { "en": "€ Euro" },
+        "label": {
+          "en": "€ Euro"
+        },
         "name": "euro",
         "orderPriority": 2
       },
       {
-        "label": { "en": "CHF Swiss Franc" },
+        "label": {
+          "en": "CHF Swiss Franc"
+        },
         "name": "chd-swiss-franc",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Kenyan shilling" },
+        "label": {
+          "en": "Kenyan shilling"
+        },
         "name": "kenyan-shilling",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Ethiopia Birr" },
+        "label": {
+          "en": "Ethiopia Birr"
+        },
         "name": "ethiopia-birr",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Lebanese Pound" },
+        "label": {
+          "en": "Lebanese Pound"
+        },
         "name": "lebanese-pound",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 7
       }
@@ -1576,68 +2016,88 @@
     },
     "orderPriority": 58,
     "subsection": "currencies",
-    "tags": ["cash"],
+    "tags": ["people", "coordination", "payment", "CEA"]
+  },
+  {
+    "name": "currencies-02",
+    "type": "text-long",
+    "label": {
+      "en": "What is its rate pinned to US dollar?"
+    },
+    "orderPriority": 59,
+    "subsection": "currencies",
+    "tags": ["people", "coordination", "payment", "CEA"]
+  },
+  {
+    "name": "currencies-03",
+    "type": "select-n",
+    "label": {
+      "en": "What is the donor currency?"
+    },
+    "orderPriority": 60,
+    "subsection": "currencies",
+    "tags": ["people", "coordination", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": { "en": "$ US Dollar" },
+        "label": {
+          "en": "$ US Dollar"
+        },
         "name": "us-dollar",
         "orderPriority": 1
       },
       {
-        "label": { "en": "€ Euro" },
+        "label": {
+          "en": "€ Euro"
+        },
         "name": "euro",
         "orderPriority": 2
       },
       {
-        "label": { "en": "CHF Swiss Franc" },
+        "label": {
+          "en": "CHF Swiss Franc"
+        },
         "name": "chd-swiss-franc",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Kenyan shilling" },
+        "label": {
+          "en": "Kenyan shilling"
+        },
         "name": "kenyan-shilling",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Ethiopia Birr" },
+        "label": {
+          "en": "Ethiopia Birr"
+        },
         "name": "ethiopia-birr",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Lebanese Pound" },
+        "label": {
+          "en": "Lebanese Pound"
+        },
         "name": "lebanese-pound",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 7
       }
     ]
   },
   {
-    "name": "currencies-02",
-    "type": "text-long",
-    "label": { "en": "What is its rate pinned to US dollar?" },
-    "orderPriority": 59,
-    "subsection": "currencies",
-    "tags": ["cash"]
-  },
-  {
-    "name": "currencies-03",
-    "type": "text-long",
-    "label": { "en": "What is the donor currency?" },
-    "orderPriority": 60,
-    "subsection": "currencies",
-    "tags": ["cash"]
-  },
-  {
     "name": "budget-01",
     "type": "text-long",
-    "label": { "en": "Which currency do you intend to distribute?" },
+    "label": {
+      "en": "Which currency do you intend to distribute?"
+    },
     "orderPriority": 61,
     "subsection": "basket-size",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "budget-02",
@@ -1647,20 +2107,26 @@
     },
     "orderPriority": 62,
     "subsection": "basket-size",
-    "tags": ["cash"],
+    "tags": ["people", "coordination", "payment", "CEA"],
     "optionChoices": [
       {
-        "label": "Person",
+        "label": {
+          "en": "Person"
+        },
         "name": "person",
         "orderPriority": 1
       },
       {
-        "label": "Household",
+        "label": {
+          "en": "Household"
+        },
         "name": "household",
         "orderPriority": 2
       },
       {
-        "label": "Other",
+        "label": {
+          "en": "Other"
+        },
         "name": "other",
         "orderPriority": 3
       }
@@ -1674,7 +2140,7 @@
     },
     "orderPriority": 63,
     "subsection": "basket-size",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "budget-all-01",
@@ -1684,7 +2150,7 @@
     },
     "orderPriority": 64,
     "subsection": "basket-size",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
   },
   {
     "name": "budget-all-02",
@@ -1694,7 +2160,7 @@
     },
     "orderPriority": 65,
     "subsection": "basket-size",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
   },
   {
     "name": "budget-all-03",
@@ -1704,35 +2170,43 @@
     },
     "orderPriority": 66,
     "subsection": "basket-size",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
   },
   {
     "name": "budget-all-04",
     "type": "select-n",
     "label": {
-      "en": "How often will you conduct these transfers?... Every week/month/quarter/once?"
+      "en": "How often will you conduct these transfers?..."
     },
     "orderPriority": 67,
     "subsection": "basket-size",
-    "tags": ["cash"],
+    "tags": ["people", "coordination", "payment", "CEA", "Budget"],
     "optionChoices": [
       {
-        "label": "Every week",
+        "label": {
+          "en": "Weekly"
+        },
         "name": "weekly",
         "orderPriority": 1
       },
       {
-        "label": "Every month",
+        "label": {
+          "en": "Monthly"
+        },
         "name": "monthly",
         "orderPriority": 2
       },
       {
-        "label": "Every quarter",
+        "label": {
+          "en": "Quarterly"
+        },
         "name": "quarterly",
         "orderPriority": 3
       },
       {
-        "label": "Once",
+        "label": {
+          "en": "Once"
+        },
         "name": "once",
         "orderPriority": 4
       }
@@ -1746,40 +2220,52 @@
     },
     "orderPriority": 68,
     "subsection": "basket-size",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
   },
   {
     "name": "called-01",
     "type": "select-n",
-    "label": { "en": "FINANCIAL SERVICE (BRANDS) USED BY TARGET GROUP" },
+    "label": {
+      "en": "FINANCIAL SERVICE (BRANDS) USED BY TARGET GROUP"
+    },
     "orderPriority": 69,
     "subsection": "called",
-    "tags": ["cash"],
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
     "optionChoices": [
       {
-        "label": { "en": "MPESA" },
+        "label": {
+          "en": "MPESA"
+        },
         "name": "mpesa",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Cash United" },
+        "label": {
+          "en": "Cash United"
+        },
         "name": "cash-united",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Lebon Post"
+        },
+        "name": "lebon-post",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Lebon Post" },
-        "name": "lebon-post",
+        "label": {
+          "en": "banque lebanon franciase"
+        },
+        "name": "banque-lebanon-franciase",
         "orderPriority": 4
       },
       {
-        "label": { "en": "banque lebanon franciase" },
-        "name": "banque-lebanon-franciase",
-        "orderPriority": 5
-      },
-      {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
-        "orderPriority": 6
+        "orderPriority": 5
       }
     ]
   },
@@ -1791,53 +2277,71 @@
     },
     "orderPriority": 70,
     "subsection": "called",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
   },
   {
     "name": "financial-services-01",
-    "type": "select-1",
-    "label": { "en": "FINANCIAL SERVICES (TYPE) USED BY TARGET GROUP" },
+    "type": "select-n",
+    "label": {
+      "en": "FINANCIAL SERVICES (TYPE) USED BY TARGET GROUP"
+    },
     "orderPriority": 71,
     "subsection": "financial-services",
-    "tags": ["cash"],
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
     "optionChoices": [
       {
-        "label": { "en": "Currently Unknown" },
+        "label": {
+          "en": "Currently Unknown"
+        },
         "name": "unknown",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Bank Accounts" },
+        "label": {
+          "en": "Bank Accounts"
+        },
         "name": "bank-accounts",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Post offices" },
+        "label": {
+          "en": "Post offices"
+        },
         "name": "post-offices",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Mobile Cash Company" },
+        "label": {
+          "en": "Mobile Cash Company"
+        },
         "name": "mobile-cash-company",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Remittance company" },
+        "label": {
+          "en": "Remittance company"
+        },
         "name": "remittance-company",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Communications & Payments Company" },
+        "label": {
+          "en": "Communications & Payments Company"
+        },
         "name": "communication-payments-company",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Various" },
-        "name": "carious",
+        "label": {
+          "en": "Various"
+        },
+        "name": "various",
         "orderPriority": 7
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 8
       }
@@ -1851,30 +2355,38 @@
     },
     "orderPriority": 72,
     "subsection": "financial-services",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
   },
   {
     "name": "cash-use-01",
     "type": "select-n",
-    "label": { "en": "USE THE FOLLOWING METHODS TO" },
+    "label": {
+      "en": "USE THE FOLLOWING METHODS TO SEND/SAVE/RECEIVE CASH"
+    },
     "orderPriority": 73,
     "subsection": "cash-use",
-    "tags": ["cash"],
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
     "optionChoices": [
       {
-        "label": "Send cash",
+        "label": {
+          "en": "Send cash"
+        },
         "name": "send-cash",
         "orderPriority": 1
       },
       {
-        "label": "Save cash",
+        "label": {
+          "en": "Save cash"
+        },
         "name": "save-cash",
-        "orderPriority": 1
+        "orderPriority": 2
       },
       {
-        "label": "Receive cash",
+        "label": {
+          "en": "Receive cash"
+        },
         "name": "receive-cash",
-        "orderPriority": 1
+        "orderPriority": 3
       }
     ]
   },
@@ -1886,7 +2398,7 @@
     },
     "orderPriority": 74,
     "subsection": "cash-use",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
   },
   {
     "name": "cash-01",
@@ -1896,7 +2408,7 @@
     },
     "orderPriority": 75,
     "subsection": "cash",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
   },
   {
     "name": "cash-02",
@@ -1906,7 +2418,7 @@
     },
     "orderPriority": 76,
     "subsection": "cash",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
   },
   {
     "name": "cash-03",
@@ -1916,17 +2428,17 @@
     },
     "orderPriority": 77,
     "subsection": "cash",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
   },
   {
     "name": "cash-04",
     "type": "text-long",
     "label": {
-      "en": "Will your chosen FSP guarentee there will be enough cash available for target group at time of distribution?"
+      "en": "Will your chosen FSP or their agents, guarentee there will be enough cash available for target group at time of distribution?"
     },
     "orderPriority": 78,
     "subsection": "cash",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
   },
   {
     "name": "cash-05",
@@ -1936,33 +2448,43 @@
     },
     "orderPriority": 79,
     "subsection": "cash",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
   },
   {
     "name": "electricity-01",
-    "type": "select-1",
-    "label": { "en": "ELECTRICITY" },
+    "type": "select-n",
+    "label": {
+      "en": "ELECTRICITY"
+    },
     "orderPriority": 80,
     "subsection": "electricity",
-    "tags": ["data"],
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
     "optionChoices": [
       {
-        "label": { "en": "Electricity" },
+        "label": {
+          "en": "Electricity"
+        },
         "name": "electricity",
         "orderPriority": 1
       },
       {
-        "label": { "en": "No electricity" },
+        "label": {
+          "en": "No electricity"
+        },
         "name": "no-electricity",
         "orderPriority": 2
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 4
       }
@@ -1976,38 +2498,66 @@
     },
     "orderPriority": 81,
     "subsection": "electricity",
-    "tags": ["data"]
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
   },
   {
     "name": "electricity-frequency-01",
-    "type": "select-1",
-    "label": { "en": "FREQUENCY OF ELECTRICITY" },
+    "type": "select-n",
+    "label": {
+      "en": "FREQUENCY OF ELECTRICITY"
+    },
     "orderPriority": 82,
     "subsection": "electricity-frequency",
-    "tags": ["data"],
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ],
     "optionChoices": [
       {
-        "label": { "en": "Constant" },
+        "label": {
+          "en": "Constant"
+        },
         "name": "constant",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Intermitant" },
+        "label": {
+          "en": "Intermitant"
+        },
         "name": "intermitant",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Unknown" },
+        "label": {
+          "en": "Unknown"
+        },
         "name": "unknown",
         "orderPriority": 3
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 5
       }
@@ -2021,7 +2571,15 @@
     },
     "orderPriority": 83,
     "subsection": "electricity-frequency",
-    "tags": ["data"]
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
   },
   {
     "name": "electricity-frequency-03",
@@ -2031,43 +2589,73 @@
     },
     "orderPriority": 84,
     "subsection": "electricity-frequency",
-    "tags": ["data"]
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
   },
   {
     "name": "connectivity-01",
-    "type": "select-1",
-    "label": { "en": "INFORMATION CHANNELS" },
+    "type": "select-n",
+    "label": {
+      "en": "INFORMATION CHANNELS"
+    },
     "orderPriority": 85,
     "subsection": "connectivity",
-    "tags": ["data"],
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ],
     "optionChoices": [
       {
-        "label": { "en": "Internet" },
+        "label": {
+          "en": "Internet"
+        },
         "name": "internet",
         "orderPriority": 1
       },
       {
-        "label": { "en": "TV" },
+        "label": {
+          "en": "TV"
+        },
         "name": "tv",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Radio" },
+        "label": {
+          "en": "Radio"
+        },
         "name": "radio",
         "orderPriority": 3
       },
       {
-        "label": { "en": "No internet" },
+        "label": {
+          "en": "No internet"
+        },
         "name": "no-internet",
         "orderPriority": 4
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 6
       }
@@ -2081,58 +2669,90 @@
     },
     "orderPriority": 86,
     "subsection": "connectivity",
-    "tags": ["data"]
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
   },
   {
     "name": "connectivity-03",
     "type": "text-long",
     "label": {
-      "en": "Do you know the bandwidth/ stability of the internet connection of the locations you ant to operate in? If not here is how you can find out!"
+      "en": "Do you know the bandwidth/ stability of the internet connection of the locations you ant to operate in? If not here is a link as to how you can find out!"
     },
     "orderPriority": 87,
     "subsection": "connectivity",
-    "tags": ["data"]
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
   },
   {
     "name": "connectivity-frequency-01",
-    "type": "select-1",
-    "label": { "en": "INTERNET CONNECTIVITY FREQUENCY" },
+    "type": "select-n",
+    "label": {
+      "en": "INTERNET CONNECTIVITY FREQUENCY"
+    },
     "orderPriority": 88,
     "subsection": "connectivity-frequency",
     "tags": ["data"],
     "optionChoices": [
       {
-        "label": { "en": "Constant" },
+        "label": {
+          "en": "Constant"
+        },
         "name": "constant",
         "orderPriority": 1
       },
       {
-        "label": { "en": "Intermittent" },
+        "label": {
+          "en": "Intermittent"
+        },
         "name": "intermittent",
         "orderPriority": 2
       },
       {
-        "label": { "en": "Free" },
+        "label": {
+          "en": "Free"
+        },
         "name": "free",
         "orderPriority": 3
       },
       {
-        "label": { "en": "Paid" },
+        "label": {
+          "en": "Paid"
+        },
         "name": "paid",
         "orderPriority": 4
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Unknown" },
+        "label": {
+          "en": "Unknown"
+        },
         "name": "unknown",
         "orderPriority": 6
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 7
       }
@@ -2146,43 +2766,73 @@
     },
     "orderPriority": 89,
     "subsection": "connectivity-frequency",
-    "tags": ["data"]
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
   },
   {
     "name": "connectivity-access-01",
-    "type": "select-1",
-    "label": { "en": "CONNECTIVITY ACCESS" },
+    "type": "select-n",
+    "label": {
+      "en": "CONNECTIVITY ACCESS"
+    },
     "orderPriority": 90,
     "subsection": "connectivity-access",
-    "tags": ["data"],
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ],
     "optionChoices": [
       {
-        "label": { "en": "At home" },
+        "label": {
+          "en": "At home"
+        },
         "name": "home",
         "orderPriority": 1
       },
       {
-        "label": { "en": "At a community location" },
+        "label": {
+          "en": "At a community location"
+        },
         "name": "at-community-location",
         "orderPriority": 2
       },
       {
-        "label": { "en": "At a store" },
+        "label": {
+          "en": "At a store"
+        },
         "name": "at-store",
         "orderPriority": 3
       },
       {
-        "label": { "en": "More than 1 or all of above" },
+        "label": {
+          "en": "More than 1 or all of above"
+        },
         "name": "more-than-or-all-above",
         "orderPriority": 4
       },
       {
-        "label": { "en": "Unknown" },
+        "label": {
+          "en": "Unknown"
+        },
         "name": "unknown",
         "orderPriority": 5
       },
       {
-        "label": { "en": "Other" },
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
         "name": "other",
         "orderPriority": 6
       }
@@ -2196,15 +2846,33 @@
     },
     "orderPriority": 91,
     "subsection": "connectivity-access",
-    "tags": ["data"]
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
   },
   {
     "name": "communication-orgs-01",
     "type": "text-long",
-    "label": { "en": "COMMUNICATION ORGS" },
+    "label": {
+      "en": "COMMUNICATION ORGS"
+    },
     "orderPriority": 92,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
   },
   {
     "name": "communication-orgs-02",
@@ -2214,7 +2882,7 @@
     },
     "orderPriority": 93,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-01",
@@ -2224,7 +2892,7 @@
     },
     "orderPriority": 94,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-02",
@@ -2234,7 +2902,7 @@
     },
     "orderPriority": 95,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-03",
@@ -2244,7 +2912,7 @@
     },
     "orderPriority": 96,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-04",
@@ -2254,7 +2922,7 @@
     },
     "orderPriority": 97,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-tools-01",
@@ -2264,7 +2932,17 @@
     },
     "orderPriority": 98,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "CEA"]
+  },
+  {
+    "name": "registration-tools-02",
+    "type": "text-long",
+    "label": {
+      "en": "REGISTRATION: How many trained assistants will you have avaialbe to help at registration?"
+    },
+    "orderPriority": 99,
+    "subsection": "communication-orgs",
+    "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-tools-02",
@@ -2272,9 +2950,9 @@
     "label": {
       "en": "If you plan to ask the target groups own devices, do you have a back up for those without a device?"
     },
-    "orderPriority": 99,
+    "orderPriority": 100,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-tools-03",
@@ -2282,9 +2960,9 @@
     "label": {
       "en": "If you need to use your organisations devices for the program do you have enough?"
     },
-    "orderPriority": 100,
+    "orderPriority": 101,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-tools-04",
@@ -2292,8 +2970,8 @@
     "label": {
       "en": "If you are thinking about supplying sim cards to you know the local law re KYC? (Know your customer)"
     },
-    "orderPriority": 101,
+    "orderPriority": 102,
     "subsection": "communication-orgs",
-    "tags": ["data"]
+    "tags": ["people", "coordination", "registration", "CEA", "FSP"]
   }
 ]

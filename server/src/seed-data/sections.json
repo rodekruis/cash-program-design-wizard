@@ -2,23 +2,29 @@
   {
     "name": "pa-info",
     "label": {
-      "en": "THESE QUESTIONS ARE BEING TESTED IN THIS MVP LET US KNOW IN THE FEEDBACK FORM WHAT YOU WOULD LIKE CHANGED THE PEOPLE WE ARE HELPING ARE MOSTLY…"
+      "en": "Please note this is a user test flow! Please let us know in the comment section what you would like changed By typing &quot;<i>Change request: Please add/remove....</i>&quot;<br> Lets start! Below will take you through the program design flow.  You can skip and change answers at any time. <br><br> THE PEOPLE WE ARE HELPING ARE MOSTLY…"
     },
     "orderPriority": 1
   },
   {
     "name": "pa-support",
-    "label": { "en": "THE PEOPLE WE ARE HELPING…" },
+    "label": {
+      "en": "THE PEOPLE WE ARE HELPING…"
+    },
     "orderPriority": 2
   },
   {
     "name": "pa-skills",
-    "label": { "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY FAMILIAR WITH…" },
+    "label": {
+      "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY FAMILIAR WITH…"
+    },
     "orderPriority": 3
   },
   {
     "name": "help-wanted",
-    "label": { "en": "THE PEOPLE WE ARE HELPING MOSTLY…" },
+    "label": {
+      "en": "THE PEOPLE WE ARE HELPING MOSTLY…"
+    },
     "orderPriority": 4
   },
   {
