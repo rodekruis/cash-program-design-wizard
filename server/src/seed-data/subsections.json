@@ -1,14 +1,54 @@
 [
-  { "name": "pa-gender", "orderPriority": 1, "section": "pa-info" },
-  { "name": "pa-age", "orderPriority": 2, "section": "pa-info" },
-  { "name": "pa-marital-status", "orderPriority": 3, "section": "pa-info" },
-  { "name": "pa-shelter-status", "orderPriority": 4, "section": "pa-info" },
-  { "name": "pa-lives", "orderPriority": 5, "section": "pa-info" },
-  { "name": "pa-dependants", "orderPriority": 6, "section": "pa-info" },
-  { "name": "pa-leagal-status", "orderPriority": 7, "section": "pa-info" },
-  { "name": "pa-job-type", "orderPriority": 8, "section": "pa-info" },
-  { "name": "pa-support-areas", "orderPriority": 9, "section": "pa-support" },
-  { "name": "pa-disaster-type", "orderPriority": 10, "section": "pa-support" },
+  {
+    "name": "pa-gender",
+    "orderPriority": 1,
+    "section": "pa-info"
+  },
+  {
+    "name": "pa-age",
+    "orderPriority": 2,
+    "section": "pa-info"
+  },
+  {
+    "name": "pa-marital-status",
+    "orderPriority": 3,
+    "section": "pa-info"
+  },
+  {
+    "name": "pa-shelter-status",
+    "orderPriority": 4,
+    "section": "pa-info"
+  },
+  {
+    "name": "pa-lives",
+    "orderPriority": 5,
+    "section": "pa-info"
+  },
+  {
+    "name": "pa-dependants",
+    "orderPriority": 6,
+    "section": "pa-info"
+  },
+  {
+    "name": "pa-legal-status",
+    "orderPriority": 7,
+    "section": "pa-info"
+  },
+  {
+    "name": "pa-job-type",
+    "orderPriority": 8,
+    "section": "pa-info"
+  },
+  {
+    "name": "pa-support-areas",
+    "orderPriority": 9,
+    "section": "pa-support"
+  },
+  {
+    "name": "pa-disaster-type",
+    "orderPriority": 10,
+    "section": "pa-support"
+  },
   {
     "name": "pa-current-disaster-phase",
     "orderPriority": 11,
@@ -19,14 +59,26 @@
     "orderPriority": 12,
     "section": "pa-skills"
   },
-  { "name": "pa-literacy", "orderPriority": 13, "section": "pa-skills" },
-  { "name": "digital-devices", "orderPriority": 14, "section": "pa-skills" },
+  {
+    "name": "pa-literacy",
+    "orderPriority": 13,
+    "section": "pa-skills"
+  },
+  {
+    "name": "digital-devices",
+    "orderPriority": 14,
+    "section": "pa-skills"
+  },
   {
     "name": "pa-trusted-information-sources",
     "orderPriority": 15,
     "section": "pa-skills"
   },
-  { "name": "pa-social-media", "orderPriority": 16, "section": "pa-skills" },
+  {
+    "name": "pa-social-media",
+    "orderPriority": 16,
+    "section": "pa-skills"
+  },
   {
     "name": "pa-communication-channels",
     "orderPriority": 17,
@@ -37,8 +89,16 @@
     "orderPriority": 18,
     "section": "pa-skills"
   },
-  { "name": "shop-in", "orderPriority": 19, "section": "help-wanted" },
-  { "name": "voucher", "orderPriority": 20, "section": "help-wanted" },
+  {
+    "name": "shop-in",
+    "orderPriority": 19,
+    "section": "help-wanted"
+  },
+  {
+    "name": "voucher",
+    "orderPriority": 20,
+    "section": "help-wanted"
+  },
   {
     "name": "organization-guidelines",
     "orderPriority": 21,
@@ -49,31 +109,99 @@
     "orderPriority": 22,
     "section": "help-wanted"
   },
-  { "name": "working-days", "orderPriority": 23, "section": "help-wanted" },
-  { "name": "market-location", "orderPriority": 24, "section": "help-wanted" },
-  { "name": "transport-cost", "orderPriority": 25, "section": "help-wanted" },
-  { "name": "basket-size", "orderPriority": 26, "section": "help-wanted" },
-  { "name": "currencies", "orderPriority": 27, "section": "help-wanted" },
-  { "name": "budget", "orderPriority": 28, "section": "services" },
-  { "name": "budget-all", "orderPriority": 29, "section": "services" },
-  { "name": "called", "orderPriority": 30, "section": "services" },
-  { "name": "financial-services", "orderPriority": 31, "section": "services" },
-  { "name": "cash-use", "orderPriority": 32, "section": "services" },
-  { "name": "cash", "orderPriority": 33, "section": "services" },
-  { "name": "electricity", "orderPriority": 34, "section": "services" },
+  {
+    "name": "working-days",
+    "orderPriority": 23,
+    "section": "help-wanted"
+  },
+  {
+    "name": "market-location",
+    "orderPriority": 24,
+    "section": "help-wanted"
+  },
+  {
+    "name": "transport-cost",
+    "orderPriority": 25,
+    "section": "help-wanted"
+  },
+  {
+    "name": "basket-size",
+    "orderPriority": 26,
+    "section": "help-wanted"
+  },
+  {
+    "name": "currencies",
+    "orderPriority": 27,
+    "section": "help-wanted"
+  },
+  {
+    "name": "budget",
+    "orderPriority": 28,
+    "section": "services"
+  },
+  {
+    "name": "budget-all",
+    "orderPriority": 29,
+    "section": "services"
+  },
+  {
+    "name": "called",
+    "orderPriority": 30,
+    "section": "services"
+  },
+  {
+    "name": "financial-services",
+    "orderPriority": 31,
+    "section": "services"
+  },
+  {
+    "name": "cash-use",
+    "orderPriority": 32,
+    "section": "services"
+  },
+  {
+    "name": "cash",
+    "orderPriority": 33,
+    "section": "services"
+  },
+  {
+    "name": "electricity",
+    "orderPriority": 34,
+    "section": "services"
+  },
   {
     "name": "electricity-frequency",
     "orderPriority": 35,
     "section": "services"
   },
-  { "name": "connectivity", "orderPriority": 36, "section": "services" },
+  {
+    "name": "connectivity",
+    "orderPriority": 36,
+    "section": "services"
+  },
   {
     "name": "connectivity-frequency",
     "orderPriority": 37,
     "section": "services"
   },
-  { "name": "connectivity-access", "orderPriority": 38, "section": "services" },
-  { "name": "communication-orgs", "orderPriority": 39, "section": "services" },
-  { "name": "registration", "orderPriority": 40, "section": "services" },
-  { "name": "registration-tools", "orderPriority": 41, "section": "services" }
+  {
+    "name": "connectivity-access",
+    "orderPriority": 38,
+    "section": "services"
+  },
+  {
+    "name": "communication-orgs",
+    "orderPriority": 39,
+    "section": "services"
+  },
+  {
+    "name": "registration",
+    "orderPriority": 40,
+    "section": "services"
+  },
+  {
+    "name": "registration-tools",
+    "orderPriority": 41,
+    "section": "services"
+  }
 ]
