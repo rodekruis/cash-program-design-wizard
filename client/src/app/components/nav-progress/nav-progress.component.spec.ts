@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { StateService } from 'src/app/services/state.service';
+import { SharedModule } from '../shared.module';
 import { NavProgressComponent } from './nav-progress.component';
 
 describe('NavProgressComponent', () => {
@@ -20,6 +21,7 @@ describe('NavProgressComponent', () => {
           TranslateModule.forRoot(),
           RouterTestingModule,
           HttpClientTestingModule,
+          SharedModule,
         ],
         providers: [StateService, AuthService],
       }).compileComponents();
