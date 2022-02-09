@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/app/components/shared.module';
-import { TransferQuestionsPageRoutingModule } from './transfer-questions-routing.module';
-import { TransferQuestionsPage } from './transfer-questions.page';
+import { ManageQuestionsPageRoutingModule } from './manage-questions-routing.module';
+import { ManageQuestionsPage } from './manage-questions.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TransferQuestionsPageRoutingModule,
+    ManageQuestionsPageRoutingModule,
     SharedModule,
   ],
-  declarations: [TransferQuestionsPage],
+  declarations: [ManageQuestionsPage],
 })
-export class TransferQuestionsModule {}
+export class ManageQuestionsModule {}

@@ -1,11 +1,9 @@
 import {
   Body,
   Controller,
-  Get,
   HttpException,
   HttpStatus,
   Post,
-  Query,
   Res,
 } from '@nestjs/common';
 import { ApiOperation, ApiProperty } from '@nestjs/swagger';
@@ -32,6 +30,13 @@ class ResetDto {
   public readonly script: string;
 }
 
+class ExportDto {
+  @ApiProperty({ example: 'fill_in_secret' })
+  @IsNotEmpty()
+  @IsString()
+  public readonly secret: string;
+}
+
 @Controller('scripts')
 export class ScriptsController {
   public constructor(
@@ -49,12 +54,10 @@ export class ScriptsController {
     return res.status(HttpStatus.ACCEPTED).send('Reset done.');
   }
 
-  @ApiOperation({ summary: 'Exports questions as csv' })
-  @Get('/export')
-  public async export(
-    @Query('secret') secret: string,
-  ): Promise<QuestionTransferDto[]> {
-    if (secret !== process.env.RESET_SECRET) {
+  @ApiOperation({ summary: 'Exports questions as CSV' })
+  @Post('/export')
+  public async export(@Body() body: ExportDto): Promise<QuestionTransferDto[]> {
+    if (body.secret !== process.env.RESET_SECRET) {
       throw new HttpException('Not authorized.', HttpStatus.UNAUTHORIZED);
     }
     return await this.transferQuestionsService.export();

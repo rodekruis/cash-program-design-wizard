@@ -26,10 +26,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'transfer-questions',
+    path: 'manage-questions',
     loadChildren: () =>
-      import('./pages/transfer-questions/transfer-questions.module').then(
-        (m) => m.TransferQuestionsModule,
+      import('./pages/manage-questions/manage-questions.module').then(
+        (m) => m.ManageQuestionsModule,
       ),
     canActivate: [AuthGuard],
   },

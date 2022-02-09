@@ -1,0 +1,65 @@
+<app-header>
+  <ion-title>
+    {{ 'manage-questions.pageTitle' | translate }}
+  </ion-title>
+</app-header>
+
+<ion-content class="ion-padding">
+  <h2>
+    {{ 'manage-questions.export.header' | translate }}
+  </h2>
+  <form method="POST" class="ion-margin-vertical" (submit)="exportCsv()">
+    <p style="display: flex" class="ion-align-items-center">
+      <label for="secret" class="ion-margin-end">
+        <code> {{ 'manage-questions.export.secret.label' | translate }} </code>:
+      </label>
+      <input
+        type="password"
+        name="secret"
+        id="secret"
+        [(ngModel)]="secret"
+        [disabled]="exportInProgress"
+        spellcheck="false"
+        autocomplete="one-time-code"
+        autocapitalize="off"
+        autocorrect="off"
+        [size]="42"
+        onfocus="this.type='text'"
+        onblur="this.type='password'"
+        style="
+          font-family: monospace;
+          padding: 0.5em;
+          color: #111;
+          background: #eee;
+          border: 1px solid currentColor;
+        "
+      />
+    </p>
+    <p style="display: flex" class="ion-align-items-center">
+      <ion-button
+        type="submit"
+        color="tertiary"
+        size="small"
+        [disabled]="exportInProgress"
+        class="ion-margin-end"
+      >
+        {{ 'manage-questions.export.submit.label' | translate }}
+      </ion-button>
+
+      <ion-spinner
+        *ngIf="exportInProgress"
+        class="ion-margin-end"
+      ></ion-spinner>
+
+      <ion-text *ngIf="exportError" color="warning">
+        <ion-icon
+          name="warning"
+          size="large"
+          aria-hidden="true"
+          style="vertical-align: middle"
+        ></ion-icon>
+        {{ 'manage-questions.export.error' | translate }}
+      </ion-text>
+    </p>
+  </form>
+</ion-content>
