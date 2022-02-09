@@ -26,6 +26,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'manage-questions',
+    loadChildren: () =>
+      import('./pages/manage-questions/manage-questions.module').then(
+        (m) => m.ManageQuestionsModule,
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',

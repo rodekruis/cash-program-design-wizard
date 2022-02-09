@@ -1,7 +1,16 @@
-import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpException,
+  HttpStatus,
+  Post,
+  Res,
+} from '@nestjs/common';
 import { ApiOperation, ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { QuestionTransferDto } from './dto/question-tranfer.dto';
 import SeedDemoProgram from './seed-program';
+import { TransferQuestionsService } from './transfer-questions';
 
 export enum SeedScript {
   dev = 'dev',
@@ -21,9 +30,19 @@ class ResetDto {
   public readonly script: string;
 }
 
+class ExportDto {
+  @ApiProperty({ example: 'fill_in_secret' })
+  @IsNotEmpty()
+  @IsString()
+  public readonly secret: string;
+}
+
 @Controller('scripts')
 export class ScriptsController {
-  public constructor(private seedDemoProgram: SeedDemoProgram) {}
+  public constructor(
+    private seedDemoProgram: SeedDemoProgram,
+    private transferQuestionsService: TransferQuestionsService,
+  ) {}
 
   @ApiOperation({ summary: 'Reset database' })
   @Post('/reset')
@@ -33,5 +52,14 @@ export class ScriptsController {
     }
     await this.seedDemoProgram.run(body.script as SeedScript);
     return res.status(HttpStatus.ACCEPTED).send('Reset done.');
+  }
+
+  @ApiOperation({ summary: 'Exports questions as CSV' })
+  @Post('/export')
+  public async export(@Body() body: ExportDto): Promise<QuestionTransferDto[]> {
+    if (body.secret !== process.env.RESET_SECRET) {
+      throw new HttpException('Not authorized.', HttpStatus.UNAUTHORIZED);
+    }
+    return await this.transferQuestionsService.export();
   }
 }

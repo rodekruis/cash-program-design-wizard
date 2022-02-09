@@ -10,6 +10,7 @@ import { UserEntity } from './../users/user.entity';
 import { UserModule } from './../users/user.module';
 import { ScriptsController } from './scripts.controller';
 import SeedDemoProgram from './seed-program';
+import { TransferQuestionsService } from './transfer-questions';
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ import SeedDemoProgram from './seed-program';
     ]),
     UserModule,
   ],
-  providers: [SeedDemoProgram],
+  providers: [SeedDemoProgram, TransferQuestionsService],
   controllers: [ScriptsController],
 })
 export class ScriptsModule {}

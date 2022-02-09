@@ -65,6 +65,19 @@
       }
     }
   },
+  "manage-questions": {
+    "pageTitle": "Manage questions",
+    "export": {
+      "header": "Export",
+      "secret": {
+        "label": "Secret"
+      },
+      "submit": {
+        "label": "Export all questions as CSV"
+      },
+      "error": "Something went wrong..."
+    }
+  },
   "nav-progress": {
     "current-section": "Current section: {{nr}} ({{name}})",
     "go-section": "Go to section: {{nr}} ({{name}})",
