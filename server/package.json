@@ -28,7 +28,8 @@
     "migration:run": "npm run typeorm migration:run"
   },
   "engines": {
-    "npm": "^7.x"
+    "node": "^16.x",
+    "npm": "^8.x"
   },
   "dependencies": {
     "@nestjs/common": "^8.2.6",
