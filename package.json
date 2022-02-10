@@ -26,7 +26,8 @@
     "url": "https://github.com/rodekruis/cash-program-design-wizard/issues"
   },
   "engines": {
-    "npm": "^7.x"
+    "node": "^16.x",
+    "npm": "^8.x"
   },
   "devDependencies": {
     "husky": "^7.0.1",
