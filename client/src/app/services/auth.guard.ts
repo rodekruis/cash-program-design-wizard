@@ -29,12 +29,8 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    if (
-      route.data.roles &&
-      route.params.id &&
-      this.authService.hasUserRole(route.data.roles, route.params.id)
-    ) {
-      return true;
+    if (route.data.roles && route.params.id) {
+      return this.authService.hasUserRole(route.data.roles, route.params.id);
     }
 
     // Store the attempted URL for redirecting
