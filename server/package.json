@@ -42,12 +42,12 @@
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.4.0",
+    "rxjs": "^7.5.4",
     "swagger-ui-express": "^4.3.0",
     "ts-node": "^10.5.0",
     "tsconfig-paths": "^3.12.0",
     "typeorm": "^0.2.41",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.5"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.2.0",
