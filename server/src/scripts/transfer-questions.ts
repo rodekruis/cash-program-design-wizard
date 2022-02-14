@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { parse } from 'csv-parse/sync';
 import { Repository } from 'typeorm';
 import { OptionChoiceEntity } from '../option-choices/option-choice.entity';
 import { QuestionEntity } from '../questions/question.entity';
@@ -56,6 +57,88 @@ export class TransferQuestionsService {
       question = await this.findOptionChoices(question);
     }
     return questions;
+  }
+
+  public async import(file: Buffer): Promise<{
+    status: string;
+    length?: number;
+    error?: any;
+  }> {
+    let records;
+
+    try {
+      records = parse(file, {
+        cast: true,
+        columns: true,
+        delimiter: [';', ','],
+        skipEmptyLines: true,
+        skipRecordsWithEmptyValues: true,
+        trim: true,
+      });
+    } catch (error) {
+      console.error(error);
+      return {
+        status: 'error',
+        error,
+      };
+    }
+
+    const importSections = this.extractUniqueProperty(records, 'section');
+    const importSubSections = this.extractUniqueProperty(
+      records,
+      'subsectionName',
+    );
+    const importQuestions = records.map((row) => {
+      return {
+        name: row.questionName,
+        type: row.questionType,
+        label: {
+          en: row.questionLabelEn,
+        },
+        orderPriority: row.orderPriority,
+        tags: row.tags ? row.tags.split(',') : [],
+        section: row.section,
+        subSection: row.subsectionName,
+      };
+    });
+
+    const importData = {
+      sections: Object.keys(importSections),
+      subsections: Object.keys(importSubSections),
+      questions: importQuestions,
+    };
+
+    console.info('Imported Data: ', JSON.stringify(importData, null, 2));
+
+    if (
+      importData.sections.length < 1 ||
+      importData.subsections.length < 1 ||
+      importData.questions.length < 1
+    ) {
+      return {
+        status: 'error',
+        error: {
+          message: 'Incorrect or mismatched data',
+        },
+      };
+    }
+
+    // TODO: Perform actual import into database here.
+
+    return {
+      status: 'success',
+      length: importData.questions.length,
+    };
+  }
+
+  private extractUniqueProperty(array: any[], property: string) {
+    return array.reduce(
+      (previous, current) => (
+        (previous[current[property]] = ++previous[current[property]] || 1),
+        previous
+      ),
+      {},
+    );
   }
 
   private async findTags(question): Promise<string> {

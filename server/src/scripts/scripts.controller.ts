@@ -5,8 +5,16 @@ import {
   HttpStatus,
   Post,
   Res,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
-import { ApiOperation, ApiProperty } from '@nestjs/swagger';
+import { FileInterceptor } from '@nestjs/platform-express';
+import {
+  ApiBody,
+  ApiConsumes,
+  ApiOperation,
+  ApiProperty,
+} from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
 import { QuestionTransferDto } from './dto/question-tranfer.dto';
 import SeedDemoProgram from './seed-program';
@@ -61,5 +69,56 @@ export class ScriptsController {
       throw new HttpException('Not authorized.', HttpStatus.UNAUTHORIZED);
     }
     return await this.transferQuestionsService.export();
+  }
+
+  @ApiOperation({ summary: 'Import/update questions via CSV' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    // See: https://github.com/nestjs/swagger/issues/417#issuecomment-562869578
+    schema: {
+      type: 'object',
+      properties: {
+        secret: {
+          type: 'string',
+          minLength: 1,
+        },
+        file: {
+          type: 'string',
+          format: 'binary',
+          minLength: 1,
+        },
+      },
+    },
+  })
+  @UseInterceptors(
+    FileInterceptor('file', {
+      limits: {
+        files: 1,
+      },
+    }),
+  )
+  @Post('/import')
+  public async import(
+    @Body() body: ExportDto,
+    @UploadedFile() file: Express.Multer.File,
+  ): Promise<any> {
+    if (body.secret !== process.env.RESET_SECRET) {
+      throw new HttpException('Not authorized.', HttpStatus.UNAUTHORIZED);
+    }
+
+    if (!file || !file.buffer) {
+      throw new HttpException('Missing file', HttpStatus.BAD_REQUEST);
+    }
+
+    const allowedTypes = [
+      'text/csv',
+      'text/comma-separated-values',
+      'application/csv',
+    ];
+    if (file && !allowedTypes.includes(file.mimetype)) {
+      throw new HttpException('Invalid file', HttpStatus.BAD_REQUEST);
+    }
+
+    return await this.transferQuestionsService.import(file.buffer);
   }
 }
