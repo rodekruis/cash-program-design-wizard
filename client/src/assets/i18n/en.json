@@ -67,6 +67,7 @@
   },
   "manage-questions": {
     "pageTitle": "Manage questions",
+    "error": "Something went wrong...",
     "export": {
       "header": "Export",
       "secret": {
@@ -74,8 +75,17 @@
       },
       "submit": {
         "label": "Export all questions as CSV"
+      }
+    },
+    "import": {
+      "header": "Import",
+      "secret": {
+        "label": "Secret"
       },
-      "error": "Something went wrong..."
+      "submit": {
+        "label": "Import all questions from CSV"
+      },
+      "result": "Imported: {{number}} question(s)"
     }
   },
   "nav-progress": {
