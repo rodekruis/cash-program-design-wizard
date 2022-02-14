@@ -10,6 +10,7 @@ updates:
     schedule:
       interval: 'monthly'
     versioning-strategy: increase-if-necessary
+
   - package-ecosystem: 'npm'
     directory: 'client/'
     schedule:
@@ -20,11 +21,11 @@ updates:
       - dependency-name: '@angular/*'
         update-types:
           - 'version-update:semver-major'
-          - 'version-update:semver-minor'
+          - 'version-update:semver-patch'
       - dependency-name: '@angular-devkit/*'
         update-types:
           - 'version-update:semver-major'
-          - 'version-update:semver-minor'
+          - 'version-update:semver-patch'
       - dependency-name: '@capacitor/*'
         update-types:
           - 'version-update:semver-major'
@@ -41,11 +42,12 @@ updates:
       - dependency-name: ts-node
         update-types:
           - 'version-update:semver-major'
-          - 'version-update:semver-minor'
+          - 'version-update:semver-patch'
       - dependency-name: typescript
         update-types:
           - 'version-update:semver-major'
-          - 'version-update:semver-minor'
+          - 'version-update:semver-patch'
+
   - package-ecosystem: 'npm'
     directory: 'server/'
     schedule:

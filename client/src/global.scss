@@ -111,6 +111,13 @@ input[type='number'] {
  * Utilities:
  */
 
+.position-absolute--top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 /****************************************************************************
  * Overrides for PRINT:
  */
