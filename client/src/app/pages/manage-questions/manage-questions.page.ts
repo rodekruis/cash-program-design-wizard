@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
+import { StateService } from 'src/app/services/state.service';
 import { ApiPath, ApiService } from '../../services/api.service';
 
 @Component({
@@ -13,13 +14,14 @@ export class ManageQuestionsPage implements OnInit {
 
   public secret: string;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, public state: StateService) {}
 
   ngOnInit() {}
 
   public exportCsv() {
     this.exportError = false;
     this.exportInProgress = true;
+    this.state.isLoading = true;
 
     this.apiService
       .post(ApiPath.scriptsExport, { secret: this.secret })
@@ -33,6 +35,7 @@ export class ManageQuestionsPage implements OnInit {
           this.secret = '';
           this.exportError = false;
           this.exportInProgress = false;
+          this.state.isLoading = false;
         },
         () => {
           this.exportError = true;

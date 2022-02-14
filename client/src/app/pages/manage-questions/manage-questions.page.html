@@ -5,6 +5,12 @@
 </app-header>
 
 <ion-content class="ion-padding">
+  <ion-progress-bar
+    *ngIf="state?.isLoading"
+    type="indeterminate"
+    class="position-absolute--top"
+  ></ion-progress-bar>
+
   <h2>
     {{ 'manage-questions.export.header' | translate }}
   </h2>
@@ -45,11 +51,6 @@
       >
         {{ 'manage-questions.export.submit.label' | translate }}
       </ion-button>
-
-      <ion-spinner
-        *ngIf="exportInProgress"
-        class="ion-margin-end"
-      ></ion-spinner>
 
       <ion-text *ngIf="exportError" color="warning">
         <ion-icon
