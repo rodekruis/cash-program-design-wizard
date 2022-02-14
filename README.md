@@ -212,7 +212,7 @@ Example:
   The text of the narrative report is based on this template.  
   For marking up and lay-outing the contents, [Markdown](https://en.wikipedia.org/wiki/Markdown) can be used.
 
-  See the working examples for the [`demo`-report](./server/src/seed-data/narrativeReportTemplate-demo-en.ts) or the [`test`-report](server/src/seed-data/narrativeReportTemplate-test-en.ts).
+  See the working examples for the [`demo`-report](server/src/seed-data/narrativeReportTemplate-demo-en.ts) or the [`test`-report](server/src/seed-data/narrativeReportTemplate-test-en.ts).
 
   A good introduction to the possibilities can be found on:  
   [GiHub Docs: Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
