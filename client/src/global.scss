@@ -63,11 +63,30 @@ ion-select::part(text) {
 // Force text-wrap on <ion-select-option>'s in an Alert
 ion-alert.select-alert {
   --width: 33vw !important;
-  --max-width: 66vw !important;
+  --max-width: 70vw !important;
+  --max-height: 70vh !important;
 
   .select-interface-option .alert-radio-label,
   .select-interface-option .alert-checkbox-label {
     white-space: normal !important;
+  }
+}
+
+// Fix scrollbar in <ion-select>'s radio-group
+// See: https://github.com/ionic-team/ionic-framework/issues/18487
+.plt-desktop .select-alert {
+  .alert-checkbox-group::-webkit-scrollbar,
+  .alert-radio-group::-webkit-scrollbar {
+    display: block !important;
+  }
+  .alert-radio-group::-webkit-scrollbar-track,
+  .alert-checkbox-group::-webkit-scrollbar-track {
+    background-color: #ddd;
+  }
+  .alert-radio-group::-webkit-scrollbar-thumb,
+  .alert-checkbox-group::-webkit-scrollbar-thumb {
+    background-color: #777;
+    border: 1px solid #ddd;
   }
 }
 
