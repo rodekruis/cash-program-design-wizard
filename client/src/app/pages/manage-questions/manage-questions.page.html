@@ -14,16 +14,16 @@
   <h2>
     {{ 'manage-questions.export.header' | translate }}
   </h2>
-  <form method="POST" class="ion-margin-vertical" (submit)="exportCsv()">
+  <form method="POST" (ngSubmit)="exportCsv()" class="ion-margin-vertical">
     <p style="display: flex" class="ion-align-items-center">
-      <label for="secret" class="ion-margin-end">
+      <label for="exportSecret" class="ion-margin-end">
         <code> {{ 'manage-questions.export.secret.label' | translate }} </code>:
       </label>
       <input
         type="password"
         name="secret"
-        id="secret"
-        [(ngModel)]="secret"
+        [(ngModel)]="exportSecret"
+        id="exportSecret"
         [disabled]="exportInProgress"
         spellcheck="false"
         autocomplete="one-time-code"
@@ -46,7 +46,7 @@
         type="submit"
         color="tertiary"
         size="small"
-        [disabled]="exportInProgress"
+        [disabled]="exportInProgress || !exportSecret"
         class="ion-margin-end"
       >
         {{ 'manage-questions.export.submit.label' | translate }}
@@ -59,7 +59,85 @@
           aria-hidden="true"
           style="vertical-align: middle"
         ></ion-icon>
-        {{ 'manage-questions.export.error' | translate }}
+        {{ 'manage-questions.error' | translate }}
+      </ion-text>
+    </p>
+  </form>
+
+  <br />
+  <hr style="border-top: 1px solid currentColor" />
+  <br />
+
+  <h2>
+    {{ 'manage-questions.import.header' | translate }}
+  </h2>
+  <form method="POST" (ngSubmit)="importCsv()" class="ion-margin-vertical">
+    <p style="display: flex" class="ion-align-items-center">
+      <label for="importSecret" class="ion-margin-end">
+        <code> {{ 'manage-questions.import.secret.label' | translate }} </code>:
+      </label>
+      <input
+        type="password"
+        name="secret"
+        [(ngModel)]="importSecret"
+        id="importSecret"
+        [disabled]="importInProgress"
+        spellcheck="false"
+        autocomplete="one-time-code"
+        autocapitalize="off"
+        autocorrect="off"
+        [size]="42"
+        onfocus="this.type='text'"
+        onblur="this.type='password'"
+        style="
+          font-family: monospace;
+          padding: 0.5em;
+          color: #111;
+          background: #eee;
+          border: 1px solid currentColor;
+        "
+      />
+    </p>
+    <p style="display: flex" class="ion-align-items-center">
+      <ion-input
+        #importFile
+        type="file"
+        name="import-file"
+        accept=".csv,text/csv,text/comma-separated-values,application/csv"
+        [required]="true"
+      ></ion-input>
+    </p>
+    <p>
+      <ion-button
+        type="submit"
+        color="tertiary"
+        size="small"
+        [disabled]="
+          importInProgress || !importSecret || !importFile || !importFile.value
+        "
+        class="ion-margin-end"
+      >
+        {{ 'manage-questions.import.submit.label' | translate }}
+      </ion-button>
+    </p>
+    <p>
+      <ion-text *ngIf="importError" color="warning">
+        <ion-icon
+          name="warning"
+          size="large"
+          aria-hidden="true"
+          style="vertical-align: middle"
+        ></ion-icon>
+        {{ 'manage-questions.error' | translate }}
+        <code>{{ importError }}</code>
+      </ion-text>
+      <ion-text *ngIf="importResult && !importError" color="success">
+        <code>
+          {{
+            'manage-questions.import.result'
+              | translate: { number: importResult }
+          }}
+        </code>
       </ion-text>
     </p>
   </form>
