@@ -62,7 +62,7 @@
     "@angular/cli": "~13.2.3",
     "@angular/compiler-cli": "~13.2.2",
     "@angular/language-service": "~13.2.2",
-    "@capacitor/cli": "3.4.0",
+    "@capacitor/cli": "3.4.1",
     "@ionic/angular-toolkit": "^6.0.0",
     "@ionic/cli": "^6.18.1",
     "@types/file-saver": "^2.0.5",
