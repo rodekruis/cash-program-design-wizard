@@ -27,8 +27,10 @@ class SeedInput {
   sections: any;
   subsections: any;
   questions: any;
-  program: any;
-  narrativeReportTemplate: any;
+  program: {
+    [_property: string]: any;
+    narrativeReportTemplate: string;
+  };
   users: any;
 }
 
@@ -66,7 +68,7 @@ export class SeedDemoProgram implements InterfaceScript {
   ) {}
 
   public async run(environment: SeedScript): Promise<void> {
-    const inputArray = await this.setInput(environment);
+    const inputArray = this.setInput(environment);
 
     await this.truncateAll();
 
@@ -76,18 +78,20 @@ export class SeedDemoProgram implements InterfaceScript {
       await this.seedSections(input);
       await this.seedQuestions(input);
     }
-    console.log('Run SeedDemoProgram: done');
+    console.log('SeedDemoProgram: done');
   }
 
   private setInput(seedScript: string): SeedInput[] {
     if (seedScript === SeedScript.dev) {
       return [
         {
-          sections: sectionsSeed,
-          subsections: subsectionsSeed,
-          questions: questionsSeed,
-          program: programDemo,
-          narrativeReportTemplate: narrativeReportTemplateDemoEn,
+          sections: sectionsSeedTest,
+          subsections: subsectionsSeedTest,
+          questions: questionsSeedTest,
+          program: {
+            ...programTest,
+            narrativeReportTemplate: narrativeReportTemplateTestEn,
+          },
           users: {
             edit: {
               username: process.env.USERCONFIG_EDIT_USERNAME,
@@ -100,11 +104,13 @@ export class SeedDemoProgram implements InterfaceScript {
           },
         },
         {
-          sections: sectionsSeedTest,
-          subsections: subsectionsSeedTest,
-          questions: questionsSeedTest,
-          program: programTest,
-          narrativeReportTemplate: narrativeReportTemplateTestEn,
+          sections: sectionsSeed,
+          subsections: subsectionsSeed,
+          questions: questionsSeed,
+          program: {
+            ...programDemo,
+            narrativeReportTemplate: narrativeReportTemplateDemoEn,
+          },
           users: {
             edit: {
               username: process.env.USERCONFIG_EDIT_USERNAME,
@@ -153,14 +159,13 @@ export class SeedDemoProgram implements InterfaceScript {
   }
 
   private async seedProgram(seedInput: SeedInput): Promise<ProgramEntity> {
-    seedInput.program['narrativeReportTemplate'] =
-      narrativeReportTemplateDemoEn;
     const earlierProgram = await this.programRepository.findOne({
       where: { name: seedInput.program.name },
     });
     if (earlierProgram) {
       return earlierProgram;
     }
+    console.log(`SeedDemoProgram: Seeding program: ${seedInput.program.name}`);
     return await this.programRepository.save(seedInput.program);
   }
 
@@ -222,6 +227,11 @@ export class SeedDemoProgram implements InterfaceScript {
         sections.push(section);
       }
     }
+    console.log(
+      `SeedDemoProgram: Seeding ${sections.length} sections: ${sections
+        .map((s) => s.name)
+        .join(', ')}`,
+    );
     await this.sectionRepository.save(sections);
 
     const subsections = [];
@@ -239,6 +249,11 @@ export class SeedDemoProgram implements InterfaceScript {
         subsections.push(subsection);
       }
     }
+    console.log(
+      `SeedDemoProgram: Seeding ${
+        subsections.length
+      } sub-sections: ${subsections.map((s) => s.name).join(', ')}`,
+    );
     await this.subsectionRepository.save(subsections);
   }
 
@@ -266,6 +281,7 @@ export class SeedDemoProgram implements InterfaceScript {
         questions.push(question);
       }
     }
+    console.log(`SeedDemoProgram: Seeding ${questions.length} questions`);
     await this.questionRepository.save(questions);
   }
 
