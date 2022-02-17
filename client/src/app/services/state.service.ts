@@ -145,9 +145,10 @@ export class StateService {
     );
 
     // Update all sections
-    const sections = program.sections.map((section) =>
-      this.translateLabels(section),
-    );
+    const sections = program.sections.map((section, index) => {
+      section.sectionNr = index + 1;
+      return this.translateLabels(section);
+    });
     this.sections = sections;
     this.sectionsStore.next(sections);
     this.isLoading = false;

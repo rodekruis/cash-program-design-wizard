@@ -1,7 +1,10 @@
 <ion-grid>
   <ion-row>
     <ion-col class="ion-padding-horizontal">
-      <h3 class="ion-no-margin" [innerHTML]="section?.label"></h3>
+      <h3 class="ion-no-margin">
+        #{{ section?.sectionNr }}:&nbsp;
+        <span [innerHTML]="section?.label"></span>
+      </h3>
     </ion-col>
   </ion-row>
   <ion-row class="ion-align-items-stretch ion-margin-vertical">
