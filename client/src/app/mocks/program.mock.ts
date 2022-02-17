@@ -181,7 +181,7 @@ const mockProgramData: Program = {
             {
               sectionName: mockSectionName1,
               id: getMockId(),
-              name: 'test-1-select-n',
+              name: 'test-1-select-n-3',
               type: QuestionType.selectN,
               label: 'Select-Multiple with extreme options',
               tags: [getRandomTag()],
@@ -224,7 +224,7 @@ const mockProgramData: Program = {
             {
               sectionName: mockSectionName1,
               id: getMockId(),
-              name: 'test-1-numeric',
+              name: 'test-1-numeric-long',
               type: QuestionType.numeric,
               label:
                 'Very, very, very long question for Numeric-input that runs over several, multple lines of text',

@@ -13,6 +13,9 @@ export class ReportSectionComponent {
   @Input()
   public section: QuestionSection;
 
+  @Input()
+  public sectionNr: number;
+
   public programId: string;
 
   public questionType = QuestionType;

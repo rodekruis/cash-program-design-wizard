@@ -32,16 +32,19 @@
 
           <hr style="border-top: 1px dashed var(--ion-color-medium)" />
 
-          <section *ngIf="sections?.length">
+          <section *ngIf="sections?.length" id="appendix">
             <h2 class="only-print--page-break-before">
               {{ 'report.appendix' | translate }}
             </h2>
 
             <ng-container
-              *ngFor="let section of sections"
+              *ngFor="let section of sections; index as sectionNr"
               class="ion-margin-vertical ion-padding-vertical"
             >
-              <app-report-section [section]="section"></app-report-section>
+              <app-report-section
+                [section]="section"
+                [sectionNr]="sectionNr + 1"
+              ></app-report-section>
             </ng-container>
           </section>
         </div>

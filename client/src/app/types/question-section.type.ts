@@ -3,6 +3,7 @@ import { TranslatableString } from './translatable-string.type';
 
 export interface QuestionSection {
   id: string;
+  sectionNr?: number;
   name: string;
   order: number;
   label: string | TranslatableString;

@@ -17,6 +17,9 @@ export class QuestionInputComponent implements OnInit, OnDestroy {
   public question: QuestionInput;
 
   @Input()
+  public questionNr: string;
+
+  @Input()
   public canEdit = false;
 
   public isHighlighted: boolean;
