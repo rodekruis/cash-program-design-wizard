@@ -12,10 +12,12 @@
 
 <ion-grid class="report-section-values">
   <div
-    *ngFor="let subsection of section?.subsections"
+    *ngFor="let subsection of section?.subsections; index as subSectionNr"
     class="ion-margin-vertical"
   >
-    <ng-container *ngFor="let question of subsection.questions">
+    <ng-container
+      *ngFor="let question of subsection.questions; index as questionNr"
+    >
       <ion-row class="report-section-values--row">
         <ion-col
           [size]="12"
@@ -23,6 +25,14 @@
           [sizeLg]="4"
           class="report-section-values--question"
         >
+          <a
+            [routerLink]="['../overview']"
+            [queryParams]="{ section: section.name }"
+            [fragment]="question.name"
+            class="report-section--question-link"
+            >#{{ sectionNr }}.{{ subSectionNr + 1 }}.{{ questionNr + 1 }}</a
+          >
+          <br />
           <strong>{{ question.label }}</strong>
           <br />
           <small>
