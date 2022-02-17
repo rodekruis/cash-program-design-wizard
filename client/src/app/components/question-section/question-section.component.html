@@ -1,7 +1,7 @@
 <ion-grid>
   <ion-row>
     <ion-col class="ion-padding-horizontal">
-      <h3 class="ion-no-margin">
+      <h3 *ngIf="section" class="ion-no-margin">
         #{{ section?.sectionNr }}:&nbsp;
         <span [innerHTML]="section?.label"></span>
       </h3>
