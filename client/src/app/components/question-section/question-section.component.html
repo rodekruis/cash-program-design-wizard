@@ -31,34 +31,31 @@
 
           <details *ngIf="isLastQuestion" class="ion-margin-vertical">
             <summary>
-              <div style="display: flex">
-                <div
-                  [ngSwitch]="question.comments?.length"
-                  style="flex: 1 1 auto"
-                >
-                  <ion-label *ngSwitchCase="0" color="primary">
-                    <strong>
-                      {{ 'question-section.no-comments' | translate }}
-                    </strong>
-                  </ion-label>
-                  <ion-label *ngSwitchDefault color="primary">
-                    <strong>
+              <div style="display: flex; align-items: center">
+                <div style="flex: 1 1 auto">
+                  <ion-label color="tertiary">
+                    <strong
+                      *ngIf="question.comments && question.comments?.length > 0"
+                    >
                       {{ 'question-section.comments' | translate }}
                       {{ question.comments?.length }}
+                    </strong>
+                    <strong
+                      *ngIf="!question.comments || !question.comments?.length"
+                    >
+                      {{ 'question-section.no-comments' | translate }}
                     </strong>
                   </ion-label>
                 </div>
                 <ion-icon
                   name="chevron-down"
-                  color="primary"
+                  color="tertiary"
                   class="details-closed"
-                  style="align-self: flex-end"
                 ></ion-icon>
                 <ion-icon
                   name="chevron-up"
-                  color="primary"
+                  color="tertiary"
                   class="details-open"
-                  style="align-self: flex-end"
                 ></ion-icon>
               </div>
             </summary>
