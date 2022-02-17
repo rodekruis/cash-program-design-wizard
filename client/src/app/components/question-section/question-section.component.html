@@ -9,7 +9,7 @@
   </ion-row>
   <ion-row class="ion-align-items-stretch ion-margin-vertical">
     <ion-col
-      *ngFor="let subsection of section?.subsections"
+      *ngFor="let subsection of section?.subsections; let subSectionNr = index"
       [sizeXs]="12"
       [sizeMd]="6"
       [sizeLg]="4"
@@ -23,12 +23,20 @@
         <div
           *ngFor="
             let question of subsection?.questions;
+            let questionNr = index;
             let isLastQuestion = last
           "
           [hidden]="!shouldShowQuestion(question.tags)"
         >
           <app-question-input
             [question]="question"
+            [questionNr]="
+              section?.sectionNr +
+              '.' +
+              (subSectionNr + 1) +
+              '.' +
+              (questionNr + 1)
+            "
             [canEdit]="canEdit"
           ></app-question-input>
 
