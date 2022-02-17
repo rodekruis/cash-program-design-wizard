@@ -148,7 +148,7 @@
     "print": "Print"
   },
   "report-section": {
-    "go-to-input": "Go to section"
+    "go-to-input": "Go to section {{nr}}"
   },
   "user-state": {
     "log-in": "Log in",

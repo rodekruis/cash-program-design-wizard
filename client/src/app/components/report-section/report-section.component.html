@@ -2,11 +2,11 @@
   <a
     [routerLink]="['/', 'program', this.programId, 'overview']"
     [queryParams]="{ section: section?.name }"
-    [title]="'report-section.go-to-input' | translate"
+    [title]="'report-section.go-to-input' | translate: { nr: sectionNr }"
     class="no-print"
     style="text-decoration: none"
-    >#</a
-  >
+    >{{ '#' + sectionNr }}</a
+  >&nbsp;
   <span [innerHTML]="section?.label"></span>
 </h3>
 
