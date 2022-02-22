@@ -2,36 +2,29 @@
   {
     "name": "pa-info",
     "label": {
-      "en": "Please note this is a user test flow! Please let us know in the comment section what you would like changed By typing &quot;<i>Change request: Please add/remove....</i>&quot;<br> Lets start! Below will take you through the program design flow.  You can skip and change answers at any time. <br><br> THE PEOPLE WE ARE HELPING ARE MOSTLY…"
+      "en": "We have updated the text based on the usertest! And saved your previous answers elsewhere!<br><br>THE PEOPLE WE ARE HELPING MOSTLY HAVE THE FOLLOWING…"
     },
     "orderPriority": 1
   },
   {
     "name": "pa-support",
     "label": {
-      "en": "THE PEOPLE WE ARE HELPING…"
+      "en": "THE PEOPLE WE ARE HELPING MOSTLY…"
     },
     "orderPriority": 2
   },
   {
-    "name": "pa-skills",
+    "name": "pa-familiar",
     "label": {
-      "en": "THE PEOPLE WE ARE HELPING ARE MOSTLY FAMILIAR WITH…"
+      "en": "THE PEOPLE WE ARE HELPING MOSTLY…"
     },
     "orderPriority": 3
   },
   {
-    "name": "help-wanted",
+    "name": "services",
     "label": {
       "en": "THE PEOPLE WE ARE HELPING MOSTLY…"
     },
     "orderPriority": 4
-  },
-  {
-    "name": "services",
-    "label": {
-      "en": "THE PEOPLE WE ARE HELPING HAVE PHYSICAL, FINANCIAL AND SOCIAL ACCESS TO…"
-    },
-    "orderPriority": 5
   }
 ]
