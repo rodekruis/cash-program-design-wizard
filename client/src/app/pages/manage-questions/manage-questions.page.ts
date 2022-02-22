@@ -37,7 +37,7 @@ export class ManageQuestionsPage implements OnInit {
       })
       .subscribe(
         (response) => {
-          const csvData = this.arrayToCsv(response);
+          const csvData = this.arrayToCsv(response, ';');
           saveAs(
             new Blob([csvData], { type: 'text/csv' }),
             `cpdw-export-all_${new Date().toISOString().substring(0, 10)}.csv`,
