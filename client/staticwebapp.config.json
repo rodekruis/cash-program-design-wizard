@@ -3,6 +3,12 @@
   "_docs": "https://docs.microsoft.com/en-us/azure/static-web-apps/configuration",
   "routes": [
     {
+      "route": "/*.html",
+      "headers": {
+        "cache-control": "no-transform, no-cache, must-revalidate, max-age=600"
+      }
+    },
+    {
       "route": "/*.js",
       "headers": {
         "cache-control": "immutable, no-transform, max-age=31536000"
