@@ -11,51 +11,51 @@
     "optionChoices": [
       {
         "label": {
-          "en": "Anyone"
+          "en": "Male"
         },
-        "name": "anyone",
+        "name": "male",
         "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Currently unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 2
       },
       {
         "label": {
           "en": "Female"
         },
         "name": "female",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Male"
-        },
-        "name": "male",
-        "orderPriority": 4
+        "orderPriority": 2
       },
       {
         "label": {
           "en": "Non Binary"
         },
         "name": "non-binary",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "A mix of all genders"
+        },
+        "name": "anyone",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "A mix of all, with majority men"
+        },
+        "name": "mix-men",
         "orderPriority": 5
       },
       {
         "label": {
-          "en": "A mix of both with majority women"
+          "en": "A mix of all, with majority women"
         },
         "name": "mix-women",
         "orderPriority": 6
       },
       {
         "label": {
-          "en": "A mix of both with majority men"
+          "en": "Currently unknown"
         },
-        "name": "mix-men",
+        "name": "unknown",
         "orderPriority": 7
       },
       {
@@ -71,17 +71,17 @@
     "name": "pa-gender-02",
     "type": "text-long",
     "label": {
-      "en": "GENDER: Is there a local culture where gender positivly/negativly impacts the intended Program?"
+      "en": "GENDER: Is there a local culture where gender positively/negatively impacts the intended Program? https://www.calpnetwork.org/publication/collected-papers-on-gender-and-cash-transfer-programmes-in-humanitarian-contexts/"
     },
     "orderPriority": 2,
     "subsection": "pa-gender",
-    "tags": ["people"]
+    "tags": ["people", "cash"]
   },
   {
     "name": "pa-age-01",
     "type": "select-n",
     "label": {
-      "en": "AGE"
+      "en": "AGE:"
     },
     "orderPriority": 3,
     "subsection": "pa-age",
@@ -89,9 +89,108 @@
     "optionChoices": [
       {
         "label": {
-          "en": "Anyone"
+          "en": "All ages"
         },
-        "name": "anyone",
+        "name": "all-ages",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "less than 5 years old"
+        },
+        "name": "0-5",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "5 - 9 years old"
+        },
+        "name": "5-9",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "9 - 17 years old"
+        },
+        "name": "9-17",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "18 - 24 years old"
+        },
+        "name": "18-24",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "25 - 34 years old"
+        },
+        "name": "25-34",
+        "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "35 - 44 years old"
+        },
+        "name": "35-44",
+        "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "45 - 54 years old"
+        },
+        "name": "45-54",
+        "orderPriority": 8
+      },
+      {
+        "label": {
+          "en": "55 - 64 years old"
+        },
+        "name": "55-64",
+        "orderPriority": 9
+      },
+      {
+        "label": {
+          "en": "65 and more"
+        },
+        "name": "65-plus",
+        "orderPriority": 10
+      },
+      {
+        "label": {
+          "en": "Currently Unknown"
+        },
+        "name": "unknown",
+        "orderPriority": 11
+      }
+    ]
+  },
+  {
+    "name": "pa-age-02",
+    "type": "text-long",
+    "label": {
+      "en": "AGE: Is there a local lifestyle of this age group that positively / negatively impacts the intended Program?"
+    },
+    "orderPriority": 4,
+    "subsection": "pa-age",
+    "tags": ["people"]
+  },
+  {
+    "name": "pa-marital-status-01",
+    "type": "select-n",
+    "label": {
+      "en": "MARITAL STATUS: Is there a local stigma where marital status positively / negatively impacts the intended Program?"
+    },
+    "orderPriority": 5,
+    "subsection": "pa-marital-status",
+    "tags": ["people"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Single"
+        },
+        "name": "single",
         "orderPriority": 1
       },
       {
@@ -103,141 +202,49 @@
       },
       {
         "label": {
-          "en": "less than 5 years old"
+          "en": "Married"
         },
-        "name": "0-5",
+        "name": "married",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "5 - 9 years old"
+          "en": "Married (Partner absent)"
         },
-        "name": "5-9",
+        "name": "married-partner-absent",
         "orderPriority": 4
       },
       {
         "label": {
-          "en": "9 - 17 years old"
+          "en": "Widow"
         },
-        "name": "9-17",
+        "name": "widow",
         "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "18 - 24 years old"
-        },
-        "name": "18-24",
-        "orderPriority": 6
-      },
-      {
-        "label": {
-          "en": "25 - 34 years old"
-        },
-        "name": "25-34",
-        "orderPriority": 7
-      },
-      {
-        "label": {
-          "en": "35 - 44 years old"
-        },
-        "name": "35-44",
-        "orderPriority": 8
-      },
-      {
-        "label": {
-          "en": "45 - 54 years old"
-        },
-        "name": "45-54",
-        "orderPriority": 9
-      },
-      {
-        "label": {
-          "en": "55 - 64 years old"
-        },
-        "name": "55-64",
-        "orderPriority": 10
-      },
-      {
-        "label": {
-          "en": "65 and more"
-        },
-        "name": "65-plus",
-        "orderPriority": 11
-      }
-    ]
-  },
-  {
-    "name": "pa-age-02",
-    "type": "text-long",
-    "label": {
-      "en": "AGE: Is there a local lifestyle of this age group that positivly/negativly impacts the intended Program?"
-    },
-    "orderPriority": 4,
-    "subsection": "pa-age",
-    "tags": ["people"]
-  },
-  {
-    "name": "pa-marital-status-01",
-    "type": "select-n",
-    "label": {
-      "en": "MARITAL STATUS"
-    },
-    "orderPriority": 5,
-    "subsection": "pa-marital-status",
-    "tags": ["people"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Anyone"
-        },
-        "name": "anyone",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Currently Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Single"
-        },
-        "name": "single",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "Married with Partner"
-        },
-        "name": "married-with-partner",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "Married but Partner Estranged"
-        },
-        "name": "married-partner-estranged",
-        "orderPriority": 6
       },
       {
         "label": {
           "en": "Parent"
         },
         "name": "parent",
-        "orderPriority": 7
+        "orderPriority": 6
       },
       {
         "label": {
           "en": "Parent to be"
         },
         "name": "parent-to-be",
+        "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "Anyone"
+        },
+        "name": "anyone",
         "orderPriority": 8
       },
       {
         "label": {
-          "en": "Other please add in comments"
+          "en": "Other Please add in comments section below"
         },
         "name": "other",
         "orderPriority": 9
@@ -248,7 +255,7 @@
     "name": "pa-marital-status-02",
     "type": "text-long",
     "label": {
-      "en": "MARITAL STATUS: Is there a local stigma atributed to the target group that impacts the intended Program?"
+      "en": "MARITAL STATUS: Is there a local stigma where marital status positively / negatively impacts the intended Program?"
     },
     "orderPriority": 6,
     "subsection": "pa-marital-status",
@@ -258,7 +265,7 @@
     "name": "pa-shelter-status-01",
     "type": "select-n",
     "label": {
-      "en": "SHELTER STATUS"
+      "en": "SHELTER STATUS:"
     },
     "orderPriority": 7,
     "subsection": "pa-shelter-status",
@@ -266,23 +273,23 @@
     "optionChoices": [
       {
         "label": {
-          "en": "Anyone"
+          "en": "Owner of home"
         },
-        "name": "anyone",
+        "name": "owner-of-home",
         "orderPriority": 1
       },
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "Rental home"
         },
-        "name": "unknown",
+        "name": "rental-home",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "Homeless"
+          "en": "Shared Accomodation"
         },
-        "name": "homeless",
+        "name": "shared-accomodation",
         "orderPriority": 3
       },
       {
@@ -301,24 +308,17 @@
       },
       {
         "label": {
-          "en": "Rental home"
+          "en": "Homeless"
         },
-        "name": "rental-home",
+        "name": "homeless",
         "orderPriority": 6
       },
       {
         "label": {
-          "en": "Owner of home"
+          "en": "Currently Unknown"
         },
-        "name": "owner-of-home",
+        "name": "unknown",
         "orderPriority": 7
-      },
-      {
-        "label": {
-          "en": "Shared Accomodation"
-        },
-        "name": "shared-accomodation",
-        "orderPriority": 8
       }
     ]
   },
@@ -326,7 +326,7 @@
     "name": "pa-shelter-status-02",
     "type": "text-long",
     "label": {
-      "en": "SHELTER STATUS : Are there local laws/regulations for the target group that positivly/negativly impacts the intended Program?"
+      "en": "SHELTER STATUS: Are there local laws / regulations for the target group that positively / negatively impacts the intended Program?"
     },
     "orderPriority": 8,
     "subsection": "pa-shelter-status",
@@ -336,7 +336,7 @@
     "name": "pa-lives-01",
     "type": "select-n",
     "label": {
-      "en": "LIVES WITH (HOUSEHOLD SIZE)"
+      "en": "SITUATION:"
     },
     "orderPriority": 9,
     "subsection": "pa-lives",
@@ -344,16 +344,49 @@
     "optionChoices": [
       {
         "label": {
-          "en": "Anyone"
+          "en": "Individual"
         },
-        "name": "anyone",
+        "name": "individual",
         "orderPriority": 1
       },
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "Head of family"
         },
-        "name": "unknown",
+        "name": "head-of-family",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Head of household"
+        },
+        "name": "head-of-household",
+        "orderPriority": 3
+      }
+    ]
+  },
+  {
+    "name": "pa-lives-02",
+    "type": "select-n",
+    "label": {
+      "en": "LIVING SITUATION:"
+    },
+    "orderPriority": 10,
+    "subsection": "pa-lives",
+    "tags": ["people"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "One Family household"
+        },
+        "name": "one-family-household",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "In shared household"
+        },
+        "name": "shared-household",
         "orderPriority": 2
       },
       {
@@ -365,113 +398,38 @@
       },
       {
         "label": {
-          "en": "In shared household"
+          "en": "Currently Unknown"
         },
-        "name": "shared-household",
+        "name": "unknown",
         "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "In household size 3 or less"
-        },
-        "name": "household-1-3",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "In household size 5 or less"
-        },
-        "name": "household-1-5",
-        "orderPriority": 6
-      },
-      {
-        "label": {
-          "en": "In household size 6 or more"
-        },
-        "name": "household-6-plus",
-        "orderPriority": 7
       }
     ]
   },
   {
-    "name": "pa-lives-02",
-    "type": "text-long",
+    "name": "pa-lives-03",
+    "type": "numeric",
     "label": {
-      "en": "LIVES: Is there a positive/negative trend for the target groups(s) that impacts the intended Program?"
+      "en": "SIZE: What is the standard size of a family / household in the program area?"
     },
-    "orderPriority": 10,
+    "orderPriority": 11,
     "subsection": "pa-lives",
     "tags": ["people"]
   },
   {
-    "name": "pa-dependants-01",
-    "type": "select-n",
-    "label": {
-      "en": "DEPENDANTS"
-    },
-    "orderPriority": 11,
-    "subsection": "pa-dependants",
-    "tags": ["people"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Anyone"
-        },
-        "name": "anyone",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Currently Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "No Dependants"
-        },
-        "name": "no-depedants",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "3 or more dependants"
-        },
-        "name": "3-dependants",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "5 or more dependants"
-        },
-        "name": "5-dependants",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "6 or more dependants"
-        },
-        "name": "6-dependants",
-        "orderPriority": 6
-      }
-    ]
-  },
-  {
-    "name": "pa-dependants-02",
+    "name": "pa-lives-04",
     "type": "text-long",
     "label": {
-      "en": "DEPENDANTS: Is there a positive/negative trend for the target groups(s) that impacts the intended Program?"
+      "en": "SIZE: Is there a local situation where family / household sizes  can change? And positively / negatively impact the intended Program?"
     },
     "orderPriority": 12,
-    "subsection": "pa-dependants",
+    "subsection": "pa-lives",
     "tags": ["people"]
   },
   {
     "name": "pa-legal-status-01",
     "type": "select-n",
     "label": {
-      "en": "LEGAL STATUS"
+      "en": "IDENTIFICATION:"
     },
     "orderPriority": 13,
     "subsection": "pa-legal-status",
@@ -479,69 +437,88 @@
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "ID issued by country where program is intended"
         },
-        "name": "unknown",
+        "name": "id-issued-by-country-where-program-is-intended",
         "orderPriority": 1
       },
       {
         "label": {
-          "en": "Documented"
+          "en": "ID of country outside of where program is intended"
         },
-        "name": "documented",
+        "name": "id-of-country-outside-of-where-program-is-intended",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "Undocumented"
+          "en": "No ID (local nor international)"
         },
-        "name": "undocumented",
+        "name": "no-id",
+        "orderPriority": 3
+      }
+    ]
+  },
+  {
+    "name": "pa-legal-status-02",
+    "type": "select-n",
+    "label": {
+      "en": "LIVING STATUS:"
+    },
+    "orderPriority": 14,
+    "subsection": "pa-legal-status",
+    "tags": ["people"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Citizen"
+        },
+        "name": "Citizen",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "IDP"
+        },
+        "name": "idp",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Refugee with Residence permit"
+        },
+        "name": "refugee-with-residence-permit",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "Refugee"
+          "en": "Refugee without Residence permit"
         },
-        "name": "refugee",
+        "name": "refugee-without-residence-permit",
         "orderPriority": 4
       },
       {
         "label": {
-          "en": "Hosted by a community"
+          "en": "Currently Unknown"
         },
-        "name": "hosted-by-community",
+        "name": "unknown",
         "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "IDP "
-        },
-        "name": "idp",
-        "orderPriority": 6
-      },
-      {
-        "label": {
-          "en": "Residence status"
-        },
-        "name": "residence-status",
-        "orderPriority": 7
       },
       {
         "label": {
           "en": "Other please add in comments"
         },
         "name": "other",
-        "orderPriority": 8
+        "orderPriority": 6
       }
     ]
   },
   {
-    "name": "pa-legal-status-02",
+    "name": "pa-legal-status-03",
     "type": "text-long",
     "label": {
-      "en": "LIVING STATUS: Are there local laws/regulations for the target group that positivly/negativly impacts the intended Program?"
+      "en": "IDENTIFICATION: Are there local laws / regulations for the target group that positively / negatively impacts the intended Program?"
     },
-    "orderPriority": 14,
+    "orderPriority": 16,
     "subsection": "pa-legal-status",
     "tags": ["people", "coordination"]
   },
@@ -549,108 +526,127 @@
     "name": "pa-job-type-01",
     "type": "select-n",
     "label": {
-      "en": "JOB TYPE"
+      "en": "ARE…"
     },
-    "orderPriority": 15,
+    "orderPriority": 17,
     "subsection": "pa-job-type",
-    "tags": ["people"],
+    "tags": [],
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "Employed"
         },
-        "name": "unknown",
+        "name": "employed",
         "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Farmers"
-        },
-        "name": "farmers",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Merchants"
-        },
-        "name": "merchants",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Fishing"
-        },
-        "name": "fishing",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "Ocasional workers"
-        },
-        "name": "ocasional-workers",
-        "orderPriority": 5
       },
       {
         "label": {
           "en": "Unemployed"
         },
         "name": "unemployed",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Currently Unknown"
+        },
+        "name": "currently-unknown",
+        "orderPriority": 3
+      }
+    ]
+  },
+  {
+    "name": "pa-job-type-02",
+    "type": "select-n",
+    "label": {
+      "en": "WORK(ED) AS..."
+    },
+    "orderPriority": 18,
+    "subsection": "pa-job-type",
+    "tags": ["people"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Farmers"
+        },
+        "name": "farmers",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "Merchants"
+        },
+        "name": "merchants",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Fishermen"
+        },
+        "name": "fishermen",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "Office Job"
+        },
+        "name": "office-job",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "Ocasional / Temporary / Casual workers"
+        },
+        "name": "ocasional-temporary-casual-workers",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Entrepeneurs with Business registration & license"
+        },
+        "name": "entrepeneurs-with-business-registration-license",
         "orderPriority": 6
       },
       {
         "label": {
-          "en": "casual work"
+          "en": "Potential Entrepeneurs without Business registration & license"
         },
-        "name": "casual-work",
+        "name": "potential-entrepeneurs-without-business-registration-license",
         "orderPriority": 7
       },
       {
         "label": {
-          "en": "Potential Entrepeneurs"
+          "en": "Currently Unknown"
         },
-        "name": "potential-entrepeneurs",
+        "name": "unknown",
         "orderPriority": 8
-      },
-      {
-        "label": {
-          "en": "Business registration & license"
-        },
-        "name": "business-registration-license",
-        "orderPriority": 9
-      },
-      {
-        "label": {
-          "en": "Renting business license from community"
-        },
-        "name": "renting-license-from-community",
-        "orderPriority": 10
       },
       {
         "label": {
           "en": "Other please add in comments"
         },
         "name": "other",
-        "orderPriority": 11
+        "orderPriority": 9
       }
     ]
-  },
-  {
-    "name": "pa-job-type-02",
-    "type": "text-long",
-    "label": {
-      "en": "JOB TYPE: Is there an economic trend positive or negative that impacts the intended Program?"
-    },
-    "orderPriority": 16,
-    "subsection": "pa-job-type",
-    "tags": ["people"]
   },
   {
     "name": "pa-job-type-03",
     "type": "text-long",
     "label": {
-      "en": "JOB TYPE: Is there a governmental ministry that you need to align with with regards to the program? These can included among others Min of Social welfare/Min of... "
+      "en": "WORK: Is there an economic trend positive or negative that impacts the intended Program?"
     },
-    "orderPriority": 17,
+    "orderPriority": 19,
+    "subsection": "pa-job-type",
+    "tags": ["people"]
+  },
+  {
+    "name": "pa-job-type-04",
+    "type": "text-long",
+    "label": {
+      "en": "WORK: Is there a governmental ministry that you need to align with with regards to the program? These can included among others Min of Social welfare / Min of..."
+    },
+    "orderPriority": 20,
     "subsection": "pa-job-type",
     "tags": ["people", "coordination"]
   },
@@ -658,59 +654,59 @@
     "name": "pa-support-areas-01",
     "type": "select-n",
     "label": {
-      "en": "HAVE A NEED OF SUPPORT IN THE FOLLOWING AREA(S)"
+      "en": "NEED  SUPPORT IN THE FOLLOWING AREA(S)…"
     },
-    "orderPriority": 18,
+    "orderPriority": 21,
     "subsection": "pa-support-areas",
     "tags": ["people"],
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "Shelter"
         },
-        "name": "unknown",
+        "name": "shelter",
         "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Health"
-        },
-        "name": "health",
-        "orderPriority": 2
       },
       {
         "label": {
           "en": "Food security"
         },
         "name": "food-security",
-        "orderPriority": 3
+        "orderPriority": 2
       },
       {
         "label": {
           "en": "Nutrition"
         },
         "name": "nutrition",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "Health"
+        },
+        "name": "health",
         "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "Protection"
-        },
-        "name": "protection",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "Shelter"
-        },
-        "name": "shelter",
-        "orderPriority": 6
       },
       {
         "label": {
           "en": "Water Sanitation & Hygiene"
         },
         "name": "water-sanitation-hygiene",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Protection"
+        },
+        "name": "protection",
+        "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "Psycological support"
+        },
+        "name": "protection",
         "orderPriority": 7
       },
       {
@@ -743,10 +739,17 @@
       },
       {
         "label": {
-          "en": "Other please add in comments"
+          "en": "Currently Unknown"
+        },
+        "name": "unknown",
+        "orderPriority": 12
+      },
+      {
+        "label": {
+          "en": "Other Please add in comments section below"
         },
         "name": "other",
-        "orderPriority": 12
+        "orderPriority": 13
       }
     ]
   },
@@ -754,9 +757,9 @@
     "name": "pa-support-areas-02",
     "type": "text-long",
     "label": {
-      "en": "SUPPORT IN THESE AREAS: Are their other programs for the/these PA's that affect the intended Program?"
+      "en": "SUPPORT IN THESE AREAS: Are there other programs for the People affected that impact the intended Program?"
     },
-    "orderPriority": 19,
+    "orderPriority": 22,
     "subsection": "pa-support-areas",
     "tags": ["people"]
   },
@@ -764,9 +767,9 @@
     "name": "pa-support-areas-03",
     "type": "text-long",
     "label": {
-      "en": "SUPPORT IN THESE AREAS:  Is there a governmental ministry that you need to align with with regards to the program? These can included among others Min of Social welfare/Min of... "
+      "en": "SUPPORT IN THESE AREAS:  Is there a governmental ministry that you need to align with in regards to the program? These can include among others Min of Social welfare / Min of..."
     },
-    "orderPriority": 20,
+    "orderPriority": 23,
     "subsection": "pa-support-areas",
     "tags": ["people", "coordination"]
   },
@@ -774,9 +777,9 @@
     "name": "pa-support-areas-04",
     "type": "text-long",
     "label": {
-      "en": "Have you reached out to your local CWG (Cash working group) to learn from and inform them on the intended program? You can find a list of CWG here https://www.calpnetwork.org/community/cash-working-groups/"
+      "en": "CWG Cash Working Group: Have you reached out to your local CWG to learn from and inform them on the intended program? You can find a list with the CWG in your country here. https://www.calpnetwork.org/community/cash-working-groups/"
     },
-    "orderPriority": 21,
+    "orderPriority": 24,
     "subsection": "pa-support-areas",
     "tags": ["people"]
   },
@@ -784,31 +787,31 @@
     "name": "pa-disaster-type-01",
     "type": "select-n",
     "label": {
-      "en": "DISASTER TYPE(S): How the people are/were affected"
+      "en": "ARE / WERE AFFECTED BY DISASTER TYPES…"
     },
-    "orderPriority": 22,
+    "orderPriority": 25,
     "subsection": "pa-disaster-type",
     "tags": ["people"],
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "Floods"
         },
-        "name": "unknown",
+        "name": "floods",
         "orderPriority": 1
       },
       {
         "label": {
-          "en": "Floods"
+          "en": "Typhoon / Hurricane / Cyclone"
         },
-        "name": "floods",
+        "name": "typhoon-hurricane-cyclone",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "Typhoons/Hurricane/Cyclones"
+          "en": "Drought"
         },
-        "name": "typhoons-hurricane-cyclones",
+        "name": "drought",
         "orderPriority": 3
       },
       {
@@ -827,56 +830,56 @@
       },
       {
         "label": {
-          "en": "Drought"
-        },
-        "name": "drought",
-        "orderPriority": 6
-      },
-      {
-        "label": {
           "en": "War"
         },
         "name": "war",
-        "orderPriority": 7
+        "orderPriority": 6
       },
       {
         "label": {
           "en": "Civil Unrest"
         },
         "name": "civil-unrest",
-        "orderPriority": 8
+        "orderPriority": 7
       },
       {
         "label": {
           "en": "Poor Economy"
         },
         "name": "poor-economy",
-        "orderPriority": 9
+        "orderPriority": 8
       },
       {
         "label": {
           "en": "Epedemic"
         },
         "name": "epedemic",
-        "orderPriority": 10
+        "orderPriority": 9
       },
       {
         "label": {
           "en": "Pandemic"
         },
         "name": "pandemic",
+        "orderPriority": 10
+      },
+      {
+        "label": {
+          "en": "Industrial Disaster"
+        },
+        "name": "industrial-disaster",
         "orderPriority": 11
       },
       {
         "label": {
-          "en": "Explosion"
+          "en": "Currently Unknown"
         },
-        "name": "explosion",
+        "name": "unknown",
         "orderPriority": 12
       },
       {
         "label": {
-          "en": "Other please add in comments"
+          "en": "Other Please add in comments section below"
         },
         "name": "other",
         "orderPriority": 13
@@ -889,7 +892,7 @@
     "label": {
       "en": "DISASTER TYPE: Is there potential for other combined Disasters to occur during the intended program?"
     },
-    "orderPriority": 23,
+    "orderPriority": 26,
     "subsection": "pa-disaster-type",
     "tags": ["people"]
   },
@@ -897,9 +900,9 @@
     "name": "pa-current-disaster-phase-01",
     "type": "select-n",
     "label": {
-      "en": "CURRENT DISASTER PHASE:"
+      "en": "ARE FACING THE CURRENT DISASTER PHASE…"
     },
-    "orderPriority": 24,
+    "orderPriority": 27,
     "subsection": "pa-current-disaster-phase",
     "tags": ["people"],
     "optionChoices": [
@@ -912,16 +915,16 @@
       },
       {
         "label": {
-          "en": "Mitigation"
+          "en": "Preparedness"
         },
-        "name": "mitigation",
+        "name": "preparedness",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "Preparedness"
+          "en": "Anticipatory Action (Early Warning Early action)"
         },
-        "name": "preparedness",
+        "name": "anticipatory-action-early-warning-early-action",
         "orderPriority": 3
       },
       {
@@ -947,17 +950,10 @@
       },
       {
         "label": {
-          "en": "Reconstruction"
-        },
-        "name": "reconstruction",
-        "orderPriority": 7
-      },
-      {
-        "label": {
-          "en": "Other please add in comments"
+          "en": "Other Please add in comments section below"
         },
         "name": "other",
-        "orderPriority": 8
+        "orderPriority": 7
       }
     ]
   },
@@ -967,7 +963,7 @@
     "label": {
       "en": "CURRENT DISASTER PHASE: Is this disaster potentially reoccurring or in a phase of the intended Program?"
     },
-    "orderPriority": 25,
+    "orderPriority": 28,
     "subsection": "pa-current-disaster-phase",
     "tags": ["people"]
   },
@@ -975,66 +971,66 @@
     "name": "pa-languages-spoken-01",
     "type": "select-n",
     "label": {
-      "en": "LANGUAGES SPOKEN: BY PEOPLE AFFECTED"
+      "en": "SPEAK THESE LANGUAGES…"
     },
-    "orderPriority": 26,
+    "orderPriority": 29,
     "subsection": "pa-languages-spoken",
     "tags": ["people"],
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "THIS WILL BE A SEARCH LIST FOR LANGUAGES"
         },
-        "name": "unknown",
+        "name": "wip-note-languages",
         "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Arabic (Multiple countries)"
-        },
-        "name": "ar",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Amharic (Ethiopia)"
-        },
-        "name": "am",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Dutch (The Netherlands, some Carribean Islands)"
-        },
-        "name": "nl",
-        "orderPriority": 4
       },
       {
         "label": {
           "en": "English (Multiple countries)"
         },
         "name": "en",
-        "orderPriority": 5
+        "orderPriority": 2
       },
       {
         "label": {
           "en": "French (Multiple Countries)"
         },
         "name": "fr",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "Spanish (Multiple countries)"
+        },
+        "name": "es",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "Arabic (Multiple countries)"
+        },
+        "name": "ar",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Swahili  (Multiple countries)"
+        },
+        "name": "swa",
         "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "Amharic (Ethiopia)"
+        },
+        "name": "am",
+        "orderPriority": 7
       },
       {
         "label": {
           "en": "Kirundi (Burundi)"
         },
         "name": "rn",
-        "orderPriority": 7
-      },
-      {
-        "label": {
-          "en": "Tagalog (Philippines)"
-        },
-        "name": "tl",
         "orderPriority": 8
       },
       {
@@ -1046,42 +1042,42 @@
       },
       {
         "label": {
-          "en": "Spanish (Multiple countries)"
+          "en": "Samburu (Kenya)"
         },
-        "name": "es",
+        "name": "saq",
         "orderPriority": 10
       },
       {
         "label": {
-          "en": "Samburu (Kenya)"
+          "en": "Tagalog (Philippines)"
         },
-        "name": "saq",
+        "name": "tl",
         "orderPriority": 11
-      },
-      {
-        "label": {
-          "en": "Swahili (Kenya)"
-        },
-        "name": "swa",
-        "orderPriority": 12
       },
       {
         "label": {
           "en": "Sinhala (Sri Lanken)"
         },
         "name": "si",
+        "orderPriority": 12
+      },
+      {
+        "label": {
+          "en": "Dutch (The Netherlands, some Carribean Islands)"
+        },
+        "name": "nl",
         "orderPriority": 13
       },
       {
         "label": {
-          "en": "More than 1 or all of above"
+          "en": "Currently Unknown"
         },
-        "name": "more-than-or-all-above",
+        "name": "unknown",
         "orderPriority": 14
       },
       {
         "label": {
-          "en": "Other please add in comments"
+          "en": "Other Please add in comments section below"
         },
         "name": "other",
         "orderPriority": 15
@@ -1092,9 +1088,9 @@
     "name": "pa-languages-spoken-02",
     "type": "text-long",
     "label": {
-      "en": "LANGUAGES SPOKEN: What is the best language(s) to communicate with majority of PA's?"
+      "en": "LANGUAGES SPOKEN: What is the best language(s) to communicate with majority of PA's? Is this there native language or is it their secondary language"
     },
-    "orderPriority": 27,
+    "orderPriority": 30,
     "subsection": "pa-languages-spoken",
     "tags": ["people", "registration", "payment"]
   },
@@ -1102,9 +1098,9 @@
     "name": "pa-languages-spoken-03",
     "type": "text-long",
     "label": {
-      "en": "LANGUAGES SPOKEN: How much translation work is needed for the program?"
+      "en": "LANGUAGES SPOKEN: If multiple languages, can your team / volunteers easily translate it in written or spoken form? Do you need to hire someone in?"
     },
-    "orderPriority": 28,
+    "orderPriority": 31,
     "subsection": "pa-languages-spoken",
     "tags": ["people", "coordination"]
   },
@@ -1112,53 +1108,67 @@
     "name": "pa-literacy-01",
     "type": "select-n",
     "label": {
-      "en": "LITERACY LEVELS"
+      "en": "HAVE THE FOLLOWING SPOKEN, WRITTEN AND READING (LITERACY) LEVELS.."
     },
-    "orderPriority": 29,
+    "orderPriority": 32,
     "subsection": "pa-literacy",
     "tags": ["people"],
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "High literacy: Speaks reads and writes, in Native language"
         },
-        "name": "unknown",
+        "name": "high-literacy-native",
         "orderPriority": 1
       },
       {
         "label": {
-          "en": "Highly literate"
+          "en": "Medium literacy: Speaks and reads, in Native Language (can not write)"
         },
-        "name": "highly-literate",
+        "name": "medium-literacy-native",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "No literacy"
+          "en": "No literacy: Speaks in Native Language (can not read & write)"
         },
-        "name": "no-literacy",
+        "name": "no-literacy-native",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "Illiterate"
+          "en": "High literacy: Speaks reads and writes, in Non Native language(s) offered in program"
         },
-        "name": "illiterate",
+        "name": "high-literacy-non-native",
         "orderPriority": 4
       },
       {
         "label": {
-          "en": "Basic Literacy"
+          "en": "Medium literacy: Speaks and reads, in in Non Native language(s) offered in program (can not write)"
         },
-        "name": "basic-literacy",
+        "name": "medium-literacy-non-native",
         "orderPriority": 5
       },
       {
         "label": {
-          "en": "Other please add in comments"
+          "en": "Low literacy: Speaks in Non Native language(s) offered in program (can not read & write)"
+        },
+        "name": "no-literacy-non-native",
+        "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "Currently Unknown"
+        },
+        "name": "unknown",
+        "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "Other Please add in comments section below"
         },
         "name": "other",
-        "orderPriority": 6
+        "orderPriority": 8
       }
     ]
   },
@@ -1166,9 +1176,9 @@
     "name": "pa-literacy-02",
     "type": "text-long",
     "label": {
-      "en": "LITERACY: Do you need a combination of both Spoken and written? (In the context of this program)"
+      "en": "Do you need a combination of both Spoken and written? (In the context of this program)"
     },
-    "orderPriority": 30,
+    "orderPriority": 33,
     "subsection": "pa-literacy",
     "tags": ["people", "coordination"]
   },
@@ -1176,17 +1186,17 @@
     "name": "digital-devices-01",
     "type": "select-n",
     "label": {
-      "en": "DIGITAL DEVICES (IF ANY)"
+      "en": "HAVE ACCESS TO THE FOLLOWING DIGITAL DEVICES (IF ANY)…"
     },
-    "orderPriority": 31,
+    "orderPriority": 34,
     "subsection": "digital-devices",
     "tags": ["people", "registration", "payment"],
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "No devices"
         },
-        "name": "unknown",
+        "name": "no-devices",
         "orderPriority": 1
       },
       {
@@ -1198,14 +1208,14 @@
       },
       {
         "label": {
-          "en": "Simcard only with Proxy phone"
+          "en": "Own Simcard with proxy phone access (access to another person's phone)"
         },
         "name": "simcard-proxy-phone",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "Proxy phone with Proxy phone number"
+          "en": "No simcard with proxy phone access  (access to another person's phone & phone number)"
         },
         "name": "proxy-phone-number",
         "orderPriority": 4
@@ -1219,56 +1229,56 @@
       },
       {
         "label": {
-          "en": "Mobile smart phone Android (i.e Samsung, Huwawei)"
+          "en": "Mobile smart phone Android (for example Tecno, Itel, Infinix, Xiaomi ,Samsung, Huwawei)"
         },
         "name": "phone-android",
         "orderPriority": 6
       },
       {
         "label": {
-          "en": "Mobile smart phone iOS (i.e Apple)"
+          "en": "Mobile smart phone iOS (Apple products)"
         },
         "name": "phone-ios",
         "orderPriority": 7
       },
       {
         "label": {
-          "en": "Tablet android (i.e Samsung, Huwawei)"
+          "en": "Tablet android (for example Tecno, Itel, Infinix, Xiaomi ,Samsung, Huwawei)"
         },
         "name": "tablet-android",
         "orderPriority": 8
       },
       {
         "label": {
-          "en": "Tablet iOS (i.e Apple)"
+          "en": "Tablet iOS (Apple products)"
         },
         "name": "tablet-ios",
         "orderPriority": 9
       },
       {
         "label": {
-          "en": "PC Laptop"
+          "en": "PC / MAC  Laptop"
         },
         "name": "laptop",
         "orderPriority": 10
       },
       {
         "label": {
-          "en": "PC Desktop"
+          "en": "PC / MAC Desktop"
         },
         "name": "desktop",
         "orderPriority": 11
       },
       {
         "label": {
-          "en": "More than 1 or all of above"
+          "en": "Currently Unknown"
         },
-        "name": "more-than-or-all-above",
+        "name": "unknown",
         "orderPriority": 12
       },
       {
         "label": {
-          "en": "Other please add in comments"
+          "en": "Other Please add in comments section below"
         },
         "name": "other",
         "orderPriority": 13
@@ -1279,9 +1289,9 @@
     "name": "digital-devices-02",
     "type": "text-long",
     "label": {
-      "en": "DIGITAL DEVICES (IF ANY): What is the best form of communicating with the target group? Written/Spoken/Meetings/Voice messages/Videos/other?"
+      "en": "What is the best form of communicating with the target group? Written / Spoken / Meetings / Voice messages / Videos / other?"
     },
-    "orderPriority": 32,
+    "orderPriority": 35,
     "subsection": "digital-devices",
     "tags": ["people", "registration", "payment"]
   },
@@ -1289,31 +1299,31 @@
     "name": "pa-trusted-information-sources-01",
     "type": "select-n",
     "label": {
-      "en": "TRUSTED INFORMATION SOURCES"
+      "en": "USE THE FOLLOWING CHANNELS TO SHARE AND RECIEVE INFORMATION…"
     },
-    "orderPriority": 33,
+    "orderPriority": 36,
     "subsection": "pa-trusted-information-sources",
     "tags": ["people", "registration", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Community/Religious meetings"
+          "en": "Community / Religious meetings"
         },
         "name": "community",
-        "orderPriority": 2
+        "orderPriority": 1
       },
       {
         "label": {
           "en": "Casual street meetings"
         },
         "name": "casual-meeting",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Flyers / Posters"
+        },
+        "name": "flyers-posters",
         "orderPriority": 3
       },
       {
@@ -1332,363 +1342,212 @@
       },
       {
         "label": {
-          "en": "Social media platforms"
-        },
-        "name": "sns",
-        "orderPriority": 6
-      },
-      {
-        "label": {
-          "en": "Websites"
+          "en": "Website"
         },
         "name": "websites",
-        "orderPriority": 7
-      },
-      {
-        "label": {
-          "en": "flyers"
-        },
-        "name": "flyers",
-        "orderPriority": 8
-      },
-      {
-        "label": {
-          "en": "WhatsApp"
-        },
-        "name": "whatsapp",
-        "orderPriority": 9
-      },
-      {
-        "label": {
-          "en": "More than 1 or all of above"
-        },
-        "name": "more-than-or-all-above",
-        "orderPriority": 10
-      },
-      {
-        "label": {
-          "en": "Other please add in comments"
-        },
-        "name": "other",
-        "orderPriority": 11
-      }
-    ]
-  },
-  {
-    "name": "pa-social-media-01",
-    "type": "select-n",
-    "label": {
-      "en": "ONLINE SOCIAL MEDIA PLATFORMS USED BY YOUR ORGANISATION TO COMMUNICATE WITH PEOPLE AFFECTED:"
-    },
-    "orderPriority": 34,
-    "subsection": "pa-social-media",
-    "tags": ["people", "registration", "payment", "CEA"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Currently Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Radio"
-        },
-        "name": "radio",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Television"
-        },
-        "name": "tv",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Facebook"
-        },
-        "name": "facebook",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "Instagram"
-        },
-        "name": "instagram",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "TikTok"
-        },
-        "name": "tiktok",
         "orderPriority": 6
       },
       {
         "label": {
-          "en": "More than 1 or all of above"
+          "en": "Phone call"
         },
-        "name": "more-than-or-all-above",
+        "name": "phone-call",
         "orderPriority": 7
-      },
-      {
-        "label": {
-          "en": "Other Please add in comments section below"
-        },
-        "name": "other",
-        "orderPriority": 8
-      }
-    ]
-  },
-  {
-    "name": "pa-social-media-02",
-    "type": "select-n",
-    "label": {
-      "en": "ONLINE SOCIAL MEDIA PLATFORMS: Do you already have preexisting accounts / presence on these platforms that you intend to use?"
-    },
-    "orderPriority": 35,
-    "subsection": "pa-social-media",
-    "tags": ["people", "registration", "payment", "CEA"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Yes we use it all the time"
-        },
-        "name": "all-time",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Yes but we use it iregularly"
-        },
-        "name": "iregulaly",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "No"
-        },
-        "name": "no",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Other Please add in comments section below"
-        },
-        "name": "other",
-        "orderPriority": 4
-      }
-    ]
-  },
-  {
-    "name": "pa-social-media-03",
-    "type": "text-long",
-    "label": {
-      "en": "OFFLINE SOCIAL PLATFORMS: Do you already have a relationship with the heads of the community?"
-    },
-    "orderPriority": 36,
-    "subsection": "pa-social-media",
-    "tags": ["people", "coordination", "registration", "payment", "CEA"]
-  },
-  {
-    "name": "pa-communication-channels-01",
-    "type": "select-n",
-    "label": {
-      "en": "FAMILIAR COMMUNICATION CHANNELS: To reach the targeted people affected"
-    },
-    "orderPriority": 37,
-    "subsection": "pa-communication-channels",
-    "tags": ["people", "coordination", "registration", "payment", "CEA"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Currently Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Community/Religious meetings"
-        },
-        "name": "community",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Casual Street Meetings"
-        },
-        "name": "casual-meeting",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Phone Calls"
-        },
-        "name": "phone-calls",
-        "orderPriority": 4
       },
       {
         "label": {
           "en": "SMS"
         },
-        "name": "sms",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "WhatsApp"
-        },
-        "name": "whatsapp",
-        "orderPriority": 6
-      },
-      {
-        "label": {
-          "en": "FB Messenger"
-        },
-        "name": "fb-messenger",
-        "orderPriority": 7
-      },
-      {
-        "label": {
-          "en": "Viber"
-        },
-        "name": "viber",
+        "name": "SMS",
         "orderPriority": 8
-      },
-      {
-        "label": {
-          "en": "Signal"
-        },
-        "name": "signal",
-        "orderPriority": 9
       },
       {
         "label": {
           "en": "Email"
         },
         "name": "email",
+        "orderPriority": 9
+      },
+      {
+        "label": {
+          "en": "WhatsApp"
+        },
+        "name": "whatsApp",
         "orderPriority": 10
       },
       {
         "label": {
-          "en": "More than 1 or all of above"
+          "en": "Facebook / Facebook messenger"
         },
-        "name": "more-than-or-all-above",
+        "name": "facebook-facebook-messenger",
         "orderPriority": 11
       },
       {
         "label": {
-          "en": "Other Please add in comments section below"
+          "en": "Instagram"
         },
-        "name": "other",
+        "name": "instagram",
         "orderPriority": 12
-      }
-    ]
-  },
-  {
-    "name": "pa-communication-channels-02",
-    "type": "text-long",
-    "label": {
-      "en": "Do you already have reputation and trust as a brand on these communication channels?"
-    },
-    "orderPriority": 38,
-    "subsection": "pa-communication-channels",
-    "tags": ["people", "coordination", "registration", "payment", "CEA"]
-  },
-  {
-    "name": "pa-communication-channels-03",
-    "type": "text-long",
-    "label": {
-      "en": "Are there partners of other stakeholders you can team up with to ensure you reach the targeted people affected?"
-    },
-    "orderPriority": 39,
-    "subsection": "pa-communication-channels",
-    "tags": ["people", "coordination", "registration", "payment", "CEA"]
-  },
-  {
-    "name": "pa-communication-system-01",
-    "type": "text-long",
-    "label": {
-      "en": "Do you have a 1 way system to send out (mass) messages to targetd people affected?"
-    },
-    "orderPriority": 40,
-    "subsection": "pa-communication-system",
-    "tags": ["people", "coordination", "registration", "payment", "CEA"]
-  },
-  {
-    "name": "pa-communication-system-02",
-    "type": "text-long",
-    "label": {
-      "en": "Do you have a 2 way system to send out & receive / respond to (mass) messages?"
-    },
-    "orderPriority": 41,
-    "subsection": "pa-communication-system",
-    "tags": ["people", "coordination", "registration", "payment", "CEA"]
-  },
-  {
-    "name": "pa-communication-system-03",
-    "type": "text-long",
-    "label": {
-      "en": "Do you have enough staff to manage these 1/2way mass message systems?"
-    },
-    "orderPriority": 42,
-    "subsection": "pa-communication-system",
-    "tags": ["people", "coordination", "registration", "payment", "CEA"]
-  },
-  {
-    "name": "shop-in-01",
-    "type": "select-n",
-    "label": {
-      "en": "SHOP IN"
-    },
-    "orderPriority": 43,
-    "subsection": "shop-in",
-    "tags": ["people", "payment", "CEA"],
-    "optionChoices": [
+      },
+      {
+        "label": {
+          "en": "Tik Tok"
+        },
+        "name": "tik-tok",
+        "orderPriority": 13
+      },
+      {
+        "label": {
+          "en": "Viber"
+        },
+        "name": "viber",
+        "orderPriority": 14
+      },
+      {
+        "label": {
+          "en": "Signal"
+        },
+        "name": "signal",
+        "orderPriority": 15
+      },
+      {
+        "label": {
+          "en": "Telegram"
+        },
+        "name": "telegram",
+        "orderPriority": 16
+      },
       {
         "label": {
           "en": "Currently Unknown"
         },
         "name": "unknown",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Open air markets"
-        },
-        "name": "open-air-markets",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Supermarkets"
-        },
-        "name": "supermarkets",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Small stores"
-        },
-        "name": "small-stores",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "More than 1 or all of above"
-        },
-        "name": "more-than-or-all-above",
-        "orderPriority": 5
+        "orderPriority": 17
       },
       {
         "label": {
           "en": "Other Please add in comments section below"
         },
         "name": "other",
+        "orderPriority": 18
+      }
+    ]
+  },
+  {
+    "name": "pa-trusted-information-sources-02",
+    "type": "text-long",
+    "label": {
+      "en": "Does your organization already have preexisting accounts / presence on these platforms that people affected often use?"
+    },
+    "orderPriority": 37,
+    "subsection": "pa-trusted-information-sources",
+    "tags": ["people", "registration", "payment", "CEA"]
+  },
+  {
+    "name": "pa-trusted-information-sources-03",
+    "type": "text-long",
+    "label": {
+      "en": "Does your organization have a 1 way system to send out bulk messages to targeted people affected?"
+    },
+    "orderPriority": 38,
+    "subsection": "pa-trusted-information-sources",
+    "tags": ["people", "registration", "payment", "CEA"]
+  },
+  {
+    "name": "pa-trusted-information-sources-04",
+    "type": "text-long",
+    "label": {
+      "en": "Does your organization have a 2 way system to send out & receive / respond to bulk messages?"
+    },
+    "orderPriority": 39,
+    "subsection": "pa-trusted-information-sources",
+    "tags": ["people", "registration", "payment", "CEA"]
+  },
+  {
+    "name": "pa-trusted-information-sources-05",
+    "type": "text-long",
+    "label": {
+      "en": "Does your organization already have a relationship with partners or other stakeholders that can help you reach the targeted people affected? (for example community leaders)"
+    },
+    "orderPriority": 40,
+    "subsection": "pa-trusted-information-sources",
+    "tags": ["people", "registration", "payment", "CEA"]
+  },
+  {
+    "name": "pa-trusted-information-sources-06",
+    "type": "text-long",
+    "label": {
+      "en": "Does your organization need to plan extra staff to manage the chosen channel of communicating with the targeted people affected?"
+    },
+    "orderPriority": 41,
+    "subsection": "pa-trusted-information-sources",
+    "tags": ["people", "registration", "payment", "CEA"]
+  },
+  {
+    "name": "shop-in-01",
+    "type": "select-n",
+    "label": {
+      "en": "SHOP IN THE FOLLOWING PLACES…"
+    },
+    "orderPriority": 50,
+    "subsection": "shop-in",
+    "tags": ["people", "payment", "CEA"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Open air markets"
+        },
+        "name": "open-air-markets",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "Small stores / Kiosks"
+        },
+        "name": "small-stores-kiosks",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Supermarket (Independent store in program area)"
+        },
+        "name": "supermarkets-independent",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "Supermarket Chain (Small less than 4 stores in program area)"
+        },
+        "name": "supermarkets-chain-small",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "Supermarket Chain (Medium 4-10 stores in program area)"
+        },
+        "name": "supermarkets-chain-medium",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Supermarket Chain (Large national coverage)"
+        },
+        "name": "supermarkets-chain-large",
         "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "Currently Unknown"
+        },
+        "name": "unknown",
+        "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
+        "name": "other",
+        "orderPriority": 8
       }
     ]
   },
@@ -1696,75 +1555,55 @@
     "name": "shop-in-02",
     "type": "text-long",
     "label": {
-      "en": "Have we or other CWG members done a market assessment? If so when? Please copy a link to the assessment in your answer."
+      "en": "Has your organization or other Cash Working Group members done a market assessment? If so when? Please copy a link to the assessment in your answer."
     },
-    "orderPriority": 44,
+    "orderPriority": 51,
     "subsection": "shop-in",
-    "tags": ["people", "coordination", "payment", "CEA"]
-  },
-  {
-    "name": "shop-in-03",
-    "type": "text-long",
-    "label": {
-      "en": "Which stores should we best target to work with if offering vouchers?"
-    },
-    "orderPriority": 45,
-    "subsection": "voucher",
-    "tags": ["people", "coordination", "payment", "CEA"]
-  },
-  {
-    "name": "organization-guidelines",
-    "type": "text-long",
-    "label": {
-      "en": "Have you checked your own organization guidelines on setting up a CVA or Cash based Aid project?"
-    },
-    "orderPriority": 46,
-    "subsection": "organization-guidelines",
     "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "shopping-frequency-01",
     "type": "select-n",
     "label": {
-      "en": "FREQUENCY OF SHOPPING OF TARGET GROUP"
+      "en": "SHOP THIS OFTEN…"
     },
-    "orderPriority": 47,
+    "orderPriority": 54,
     "subsection": "shopping-frequency",
     "tags": ["cash"],
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
+          "en": "Daily"
         },
-        "name": "unknown",
+        "name": "daily-market",
         "orderPriority": 1
       },
       {
         "label": {
-          "en": "Weekly Market"
+          "en": "Weekly"
         },
         "name": "weekly-market",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "Bi weekly Market (every second week)"
+          "en": "Bi weekly  (every second week)"
         },
         "name": "bi-weekly-market",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "Monthly Market"
+          "en": "Monthly"
         },
         "name": "monthly-market",
         "orderPriority": 4
       },
       {
         "label": {
-          "en": "More than 1 or all of above"
+          "en": "Currently Unknown"
         },
-        "name": "more-than-or-all-above",
+        "name": "unknown",
         "orderPriority": 5
       },
       {
@@ -1780,86 +1619,184 @@
     "name": "shopping-frequency-02",
     "type": "text-long",
     "label": {
-      "en": "What should be the frequency of the indented payments be?"
+      "en": "What day of the week / month / quarter works best for CVA distribution to the people affected?"
     },
-    "orderPriority": 48,
+    "orderPriority": 55,
     "subsection": "shopping-frequency",
     "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
-    "name": "working-days-01",
-    "type": "numeric",
+    "name": "shopping-frequency-03",
+    "type": "text-long",
     "label": {
-      "en": "What day of the week/month/qtr. works best for the group of Targeted PA's?"
+      "en": "Have you checked your own organization guidelines on setting up a Cash Voucher Asistance or Cash based Aid project? If yes please link it here."
     },
-    "orderPriority": 49,
-    "subsection": "working-days",
+    "orderPriority": 56,
+    "subsection": "shopping-frequency",
     "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "market-location-01",
     "type": "select-n",
     "label": {
-      "en": "LOCATION OF MARKET/FOOD SUPPLIES USED BY TARGET GROUP"
+      "en": "TRAVELS THIS FAR FOR BASIC NEEDS…"
     },
-    "orderPriority": 50,
+    "orderPriority": 58,
     "subsection": "market-location",
     "tags": ["people", "coordination", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
-          "en": "Currently Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 1
-      },
-      {
-        "label": {
           "en": "travel 30 mins or less walking"
         },
         "name": "0-30min-walk",
-        "orderPriority": 2
+        "orderPriority": 1
       },
       {
         "label": {
           "en": "travel 1 hours or less walking"
         },
         "name": "0-60min-walk",
-        "orderPriority": 3
+        "orderPriority": 2
       },
       {
         "label": {
           "en": "travel 3 hours or less walking"
         },
         "name": "0-180min-walk",
-        "orderPriority": 4
+        "orderPriority": 3
       },
       {
         "label": {
           "en": "travel 30 mins or less paid transport"
         },
         "name": "0-30min-transport",
-        "orderPriority": 5
+        "orderPriority": 4
       },
       {
         "label": {
           "en": "travel 1 hours or less paid transport"
         },
         "name": "0-60min-transport",
-        "orderPriority": 6
+        "orderPriority": 5
       },
       {
         "label": {
           "en": "travel 3 hours or less paid transport"
         },
         "name": "0-180min-transport",
+        "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "Currently Unknown"
+        },
+        "name": "unknown",
         "orderPriority": 7
       },
       {
         "label": {
-          "en": "More than 1 or all of above"
+          "en": "Other Please add in comments section below"
         },
-        "name": "1-plus",
+        "name": "other",
+        "orderPriority": 8
+      }
+    ]
+  },
+  {
+    "name": "market-location-02",
+    "type": "text-long",
+    "label": {
+      "en": "What is the nearest Market(s) for our targets PA's? Can you add a link to a map?"
+    },
+    "orderPriority": 59,
+    "subsection": "market-location",
+    "tags": ["people", "coordination", "payment", "CEA"]
+  },
+  {
+    "name": "market-location-03",
+    "type": "text-long",
+    "label": {
+      "en": "Is the Market near the chosen service provider for CVA distribution?"
+    },
+    "orderPriority": 60,
+    "subsection": "market-location",
+    "tags": ["cash"]
+  },
+  {
+    "name": "market-location-04",
+    "type": "text-long",
+    "label": {
+      "en": "Do we know the cost of transport in this area?"
+    },
+    "orderPriority": 61,
+    "subsection": "market-location",
+    "tags": ["people", "coordination", "payment", "CEA"]
+  },
+  {
+    "name": "basket-size-01",
+    "type": "select-n",
+    "label": {
+      "en": "USES THIS CURRENCY"
+    },
+    "orderPriority": 62,
+    "subsection": "basket-size",
+    "tags": [],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "THIS WILL BE A SEARCH LIST FOR CURRENCY"
+        },
+        "name": "wip-note-currency",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "$ US Dollar"
+        },
+        "name": "us-dollar",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "€ Euro"
+        },
+        "name": "euro",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "CHF Swiss Franc"
+        },
+        "name": "chd-swiss-franc",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "Kenyan shilling"
+        },
+        "name": "kenyan-shilling",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Ethiopia Birr"
+        },
+        "name": "ethiopia-birr",
+        "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "Lebanese Pound"
+        },
+        "name": "lebanese-pound",
+        "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "Burundian franc"
+        },
+        "name": "burundian-franc",
         "orderPriority": 8
       },
       {
@@ -1872,159 +1809,58 @@
     ]
   },
   {
-    "name": "market-location-02",
-    "type": "text-long",
-    "label": {
-      "en": "What is the nearest Market(s) for our targets PA's?"
-    },
-    "orderPriority": 51,
-    "subsection": "market-location",
-    "tags": ["people", "coordination", "payment", "CEA"]
-  },
-  {
-    "name": "market-location-04",
-    "type": "text-long",
-    "label": {
-      "en": "Is the Market near the chosen service provider for CVA distribution?"
-    },
-    "orderPriority": 52,
-    "subsection": "market-location",
-    "tags": ["cash"]
-  },
-  {
-    "name": "transport-cost-01",
-    "type": "text-long",
-    "label": {
-      "en": "Do we know the cost of transport in this area?"
-    },
-    "orderPriority": 53,
-    "subsection": "transport-cost",
-    "tags": ["people", "coordination", "payment", "CEA"]
-  },
-  {
-    "name": "basket-size-01",
-    "type": "select-n",
-    "label": {
-      "en": "BASKET SIZE"
-    },
-    "orderPriority": 54,
-    "subsection": "basket-size",
-    "tags": ["people", "coordination", "payment", "CEA"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Currently Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Other Please add in comments section below"
-        },
-        "name": "other",
-        "orderPriority": 2
-      }
-    ]
-  },
-  {
     "name": "basket-size-02",
-    "type": "text-long",
+    "type": "numeric",
     "label": {
-      "en": "Have we checked with your CWG if there has already been an agreed basket size for the targetd area?"
+      "en": "SPENDS THIS AMOUNT ON AVERAGE"
     },
-    "orderPriority": 55,
+    "orderPriority": 63,
     "subsection": "basket-size",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["cash"]
   },
   {
     "name": "basket-size-03",
     "type": "text-long",
     "label": {
-      "en": "Do you know the best basic required amount needed for targeted group to meet their needs?"
+      "en": "Have you checked with your CWG if there has already been an agreed basket size? (Basket size= see link here https://www.calpnetwork.org/publication/minimum-expenditure-basket-harmonization-guidance)"
     },
-    "orderPriority": 56,
+    "orderPriority": 64,
     "subsection": "basket-size",
-    "tags": ["cash"]
+    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
-    "name": "basket-size-04",
+    "name": "currencies-01",
     "type": "select-n",
     "label": {
-      "en": "CURRENCY USED BY TARGET GROUP"
+      "en": "USES A CURRENCY THAT IS…"
     },
-    "orderPriority": 57,
+    "orderPriority": 67,
     "subsection": "currencies",
     "tags": ["people", "coordination", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
-          "en": "$ US Dollar"
+          "en": "Stable"
         },
-        "name": "us-dollar",
+        "name": "stable",
         "orderPriority": 1
       },
       {
         "label": {
-          "en": "€ Euro"
+          "en": "Unstable"
         },
-        "name": "euro",
+        "name": "unstable",
         "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "CHF Swiss Franc"
-        },
-        "name": "chd-swiss-franc",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Kenyan shilling"
-        },
-        "name": "kenyan-shilling",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "Ethiopia Birr"
-        },
-        "name": "ethiopia-birr",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "Lebanese Pound"
-        },
-        "name": "lebanese-pound",
-        "orderPriority": 6
-      },
-      {
-        "label": {
-          "en": "Other Please add in comments section below"
-        },
-        "name": "other",
-        "orderPriority": 7
       }
     ]
-  },
-  {
-    "name": "currencies-01",
-    "type": "text-long",
-    "label": {
-      "en": "Is the local currency used by PA stable? Please add link or reference."
-    },
-    "orderPriority": 58,
-    "subsection": "currencies",
-    "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
     "name": "currencies-02",
     "type": "text-long",
     "label": {
-      "en": "What is its rate pinned to US dollar?"
+      "en": "Please indicate how long its been stable / unstable and the reasons why."
     },
-    "orderPriority": 59,
+    "orderPriority": 68,
     "subsection": "currencies",
     "tags": ["people", "coordination", "payment", "CEA"]
   },
@@ -2032,155 +1868,485 @@
     "name": "currencies-03",
     "type": "select-n",
     "label": {
-      "en": "What is the donor currency?"
+      "en": "What currency does your organization intend to distribute?"
     },
-    "orderPriority": 60,
+    "orderPriority": 69,
     "subsection": "currencies",
     "tags": ["people", "coordination", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
+          "en": "THIS WILL BE A SEARCH LIST FOR CURRENCY"
+        },
+        "name": "wip-note-currency",
+        "orderPriority": 1
+      },
+      {
+        "label": {
           "en": "$ US Dollar"
         },
         "name": "us-dollar",
-        "orderPriority": 1
+        "orderPriority": 2
       },
       {
         "label": {
           "en": "€ Euro"
         },
         "name": "euro",
-        "orderPriority": 2
+        "orderPriority": 3
       },
       {
         "label": {
           "en": "CHF Swiss Franc"
         },
         "name": "chd-swiss-franc",
-        "orderPriority": 3
+        "orderPriority": 4
       },
       {
         "label": {
           "en": "Kenyan shilling"
         },
         "name": "kenyan-shilling",
-        "orderPriority": 4
+        "orderPriority": 5
       },
       {
         "label": {
           "en": "Ethiopia Birr"
         },
         "name": "ethiopia-birr",
-        "orderPriority": 5
+        "orderPriority": 6
       },
       {
         "label": {
           "en": "Lebanese Pound"
         },
         "name": "lebanese-pound",
-        "orderPriority": 6
+        "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "Burundian franc"
+        },
+        "name": "burundian-franc",
+        "orderPriority": 8
       },
       {
         "label": {
           "en": "Other Please add in comments section below"
         },
         "name": "other",
-        "orderPriority": 7
+        "orderPriority": 9
       }
     ]
   },
   {
-    "name": "budget-01",
-    "type": "text-long",
-    "label": {
-      "en": "Which currency do you intend to distribute?"
-    },
-    "orderPriority": 61,
-    "subsection": "basket-size",
-    "tags": ["people", "coordination", "payment", "CEA"]
-  },
-  {
-    "name": "budget-02",
+    "name": "currencies-04",
     "type": "select-n",
     "label": {
-      "en": "Do you intend to transfer ammount per…"
+      "en": "What currency does your organization operate in?"
     },
-    "orderPriority": 62,
-    "subsection": "basket-size",
+    "orderPriority": 70,
+    "subsection": "currencies",
     "tags": ["people", "coordination", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
-          "en": "Person"
+          "en": "THIS WILL BE A SEARCH LIST FOR CURRENCY"
         },
-        "name": "person",
+        "name": "wip-note-currency",
         "orderPriority": 1
       },
       {
         "label": {
-          "en": "Household"
+          "en": "$ US Dollar"
         },
-        "name": "household",
+        "name": "us-dollar",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "Other"
+          "en": "€ Euro"
+        },
+        "name": "euro",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "CHF Swiss Franc"
+        },
+        "name": "chd-swiss-franc",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "Kenyan shilling"
+        },
+        "name": "kenyan-shilling",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Ethiopia Birr"
+        },
+        "name": "ethiopia-birr",
+        "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "Lebanese Pound"
+        },
+        "name": "lebanese-pound",
+        "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "Burundian franc"
+        },
+        "name": "burundian-franc",
+        "orderPriority": 8
+      },
+      {
+        "label": {
+          "en": "Other Please add in comments section below"
         },
         "name": "other",
-        "orderPriority": 3
+        "orderPriority": 9
       }
     ]
+  },
+  {
+    "name": "currencies-05",
+    "type": "select-n",
+    "label": {
+      "en": "What is the donor currency?"
+    },
+    "orderPriority": 71,
+    "subsection": "currencies",
+    "tags": ["people", "coordination", "payment", "CEA"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "THIS WILL BE A SEARCH LIST FOR CURRENCY"
+        },
+        "name": "wip-note-currency",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "$ US Dollar"
+        },
+        "name": "us-dollar",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "€ Euro"
+        },
+        "name": "euro",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "CHF Swiss Franc"
+        },
+        "name": "chd-swiss-franc",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "Kenyan shilling"
+        },
+        "name": "kenyan-shilling",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Ethiopia Birr"
+        },
+        "name": "ethiopia-birr",
+        "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "Lebanese Pound"
+        },
+        "name": "lebanese-pound",
+        "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "Burundian franc"
+        },
+        "name": "burundian-franc",
+        "orderPriority": 8
+      },
+      {
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
+        "name": "other",
+        "orderPriority": 9
+      }
+    ]
+  },
+  {
+    "name": "currencies-06",
+    "type": "select-n",
+    "label": {
+      "en": "What currency does you organization report in?"
+    },
+    "orderPriority": 72,
+    "subsection": "currencies",
+    "tags": ["people", "coordination", "payment", "CEA"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "THIS WILL BE A SEARCH LIST FOR CURRENCY"
+        },
+        "name": "wip-note-currency",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "$ US Dollar"
+        },
+        "name": "us-dollar",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "€ Euro"
+        },
+        "name": "euro",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "CHF Swiss Franc"
+        },
+        "name": "chd-swiss-franc",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "Kenyan shilling"
+        },
+        "name": "kenyan-shilling",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Ethiopia Birr"
+        },
+        "name": "ethiopia-birr",
+        "orderPriority": 6
+      },
+      {
+        "label": {
+          "en": "Lebanese Pound"
+        },
+        "name": "lebanese-pound",
+        "orderPriority": 7
+      },
+      {
+        "label": {
+          "en": "Burundian franc"
+        },
+        "name": "burundian-franc",
+        "orderPriority": 8
+      },
+      {
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
+        "name": "other",
+        "orderPriority": 9
+      }
+    ]
+  },
+  {
+    "name": "currencies-07",
+    "type": "text-long",
+    "label": {
+      "en": "Which currency converter do you use? (please add link to website)"
+    },
+    "orderPriority": 73,
+    "subsection": "currencies",
+    "tags": ["people", "coordination", "payment", "CEA"]
+  },
+  {
+    "name": "financial-services-01",
+    "type": "select-n",
+    "label": {
+      "en": "USES THE FOLLOWING FINANCIAL SERVICES PROVIDERS (FSP) TO SEND RECEIVE / SAVE CASH…"
+    },
+    "orderPriority": 75,
+    "subsection": "financial-services",
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Bank Accounts"
+        },
+        "name": "bank-accounts",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "Post office Accounts"
+        },
+        "name": "post-offices",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Mobile Cash Account"
+        },
+        "name": "mobile-cash-company",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "Remittance Account"
+        },
+        "name": "remittance-company",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "Currently Unknown"
+        },
+        "name": "unknown",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
+        "name": "other",
+        "orderPriority": 6
+      }
+    ]
+  },
+  {
+    "name": "financial-services-02",
+    "type": "text-long",
+    "label": {
+      "en": "FSP: Please list the FSP company names and links used by the people affected in the program area."
+    },
+    "orderPriority": 76,
+    "subsection": "financial-services",
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+  },
+  {
+    "name": "financial-services-03",
+    "type": "text-long",
+    "label": {
+      "en": "FSP: Do you as an organization have an existing contract with any of these FSP's preferred by the People Affected? https://www.calpnetwork.org/publication/mobile-money-assessment-and-contracting-guide/"
+    },
+    "orderPriority": 77,
+    "subsection": "financial-services",
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+  },
+  {
+    "name": "financial-services-04",
+    "type": "text-long",
+    "label": {
+      "en": "FSP: What is your chosen FSP's Know Your Customer (KYC) policies / regulations that need to be met? Read more here https://www.calpnetwork.org/publication/know-your-customer-standards-and-privacy-recommendations-for-cash-transfers/"
+    },
+    "orderPriority": 78,
+    "subsection": "financial-services",
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+  },
+  {
+    "name": "financial-services-05",
+    "type": "text-long",
+    "label": {
+      "en": "FSP: What are the service costs asked by the chosen FSP?  For example they may charge per transfer or per month Please note this may increase your budget needs!"
+    },
+    "orderPriority": 79,
+    "subsection": "financial-services",
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+  },
+  {
+    "name": "financial-services-06",
+    "type": "text-long",
+    "label": {
+      "en": "FSP: Will your chosen FSP or their agents, guarantee there will be enough cash available at time of distribution?"
+    },
+    "orderPriority": 80,
+    "subsection": "financial-services",
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+  },
+  {
+    "name": "budget-01",
+    "type": "select-n",
+    "label": {
+      "en": "TARGETED TO RECEIVE MONEY BECAUSE THEY ARE THE..."
+    },
+    "orderPriority": 83,
+    "subsection": "budget",
+    "tags": ["people", "coordination", "payment", "CEA"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Head of family"
+        },
+        "name": "head-of-family",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "Head of household"
+        },
+        "name": "head-of-household",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Eligible Individual"
+        },
+        "name": "eligible-individual",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "Eligible Family member (other than Head of Family)"
+        },
+        "name": "eligible-family-member",
+        "orderPriority": 4
+      }
+    ]
+  },
+  {
+    "name": "budget-02",
+    "type": "numeric",
+    "label": {
+      "en": "How much is each transfer?"
+    },
+    "orderPriority": 84,
+    "subsection": "budget",
+    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
   },
   {
     "name": "budget-03",
     "type": "text-long",
     "label": {
-      "en": "If per household, does the ammount differ per size of household? If so how?"
+      "en": "Does the transfer amount differ per Household size / Family size / Eligible individual? If so how?"
     },
-    "orderPriority": 63,
-    "subsection": "basket-size",
+    "orderPriority": 85,
+    "subsection": "budget",
     "tags": ["people", "coordination", "payment", "CEA"]
   },
   {
-    "name": "budget-all-01",
-    "type": "numeric",
-    "label": {
-      "en": "What is the base ammount you intend to transfer to people/HH included in program? (you can put down initial idea and can always update change!)"
-    },
-    "orderPriority": 64,
-    "subsection": "basket-size",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
-  },
-  {
-    "name": "budget-all-02",
-    "type": "numeric",
-    "label": {
-      "en": "How many people/ households are affected in the targetd area?"
-    },
-    "orderPriority": 65,
-    "subsection": "basket-size",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
-  },
-  {
-    "name": "budget-all-03",
-    "type": "numeric",
-    "label": {
-      "en": "How many people / households do you intend to include in the cash program?"
-    },
-    "orderPriority": 66,
-    "subsection": "basket-size",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
-  },
-  {
-    "name": "budget-all-04",
+    "name": "budget-04",
     "type": "select-n",
     "label": {
-      "en": "How often will you conduct these transfers?..."
+      "en": "How often will you will you transfer?"
     },
-    "orderPriority": 67,
-    "subsection": "basket-size",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget"],
+    "orderPriority": 86,
+    "subsection": "budget",
+    "tags": [],
     "optionChoices": [
       {
         "label": {
@@ -2213,399 +2379,139 @@
     ]
   },
   {
-    "name": "budget-all-05",
+    "name": "budget-05",
+    "type": "text-long",
+    "label": {
+      "en": "When do you plan your first transfer?"
+    },
+    "orderPriority": 87,
+    "subsection": "budget",
+    "tags": []
+  },
+  {
+    "name": "budget-06",
+    "type": "text-long",
+    "label": {
+      "en": "When do you plan your final transfer?"
+    },
+    "orderPriority": 88,
+    "subsection": "budget",
+    "tags": []
+  },
+  {
+    "name": "budget-07",
     "type": "numeric",
+    "label": {
+      "en": "How many transfers will the Household / Family / Eligible individual receive in total?"
+    },
+    "orderPriority": 89,
+    "subsection": "budget",
+    "tags": []
+  },
+  {
+    "name": "budget-08",
+    "type": "text-long",
     "label": {
       "en": "What is the budget needed for the intended cash program? (you can put down initial idea and can always update change!)"
     },
-    "orderPriority": 68,
-    "subsection": "basket-size",
+    "orderPriority": 90,
+    "subsection": "budget",
+    "tags": []
+  },
+  {
+    "name": "community-01",
+    "type": "text-long",
+    "label": {
+      "en": "LIVE WITHIN THIS AREA: please ad link to a map where the program area is."
+    },
+    "orderPriority": 91,
+    "subsection": "community",
     "tags": ["people", "coordination", "payment", "CEA", "Budget"]
   },
   {
-    "name": "called-01",
-    "type": "select-n",
+    "name": "community-02",
+    "type": "numeric",
     "label": {
-      "en": "FINANCIAL SERVICE (BRANDS) USED BY TARGET GROUP"
+      "en": "COMMUNITY SIZE"
     },
-    "orderPriority": 69,
-    "subsection": "called",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "MPESA"
-        },
-        "name": "mpesa",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Cash United"
-        },
-        "name": "cash-united",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Lebon Post"
-        },
-        "name": "lebon-post",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "banque lebanon franciase"
-        },
-        "name": "banque-lebanon-franciase",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "Other Please add in comments section below"
-        },
-        "name": "other",
-        "orderPriority": 5
-      }
-    ]
+    "orderPriority": 92,
+    "subsection": "community",
+    "tags": []
   },
   {
-    "name": "called-02",
+    "name": "community-03",
+    "type": "numeric",
+    "label": {
+      "en": "How many Household / Family / Eligible individual will you target within the / each community?"
+    },
+    "orderPriority": 93,
+    "subsection": "community",
+    "tags": []
+  },
+  {
+    "name": "community-04",
     "type": "text-long",
     "label": {
-      "en": "Do we as an organization have an existing contract with these any of these FSP's familiar to target group?"
+      "en": "Where is / are these communities? Please add a link to a map."
     },
-    "orderPriority": 70,
-    "subsection": "called",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
-  },
-  {
-    "name": "financial-services-01",
-    "type": "select-n",
-    "label": {
-      "en": "FINANCIAL SERVICES (TYPE) USED BY TARGET GROUP"
-    },
-    "orderPriority": 71,
-    "subsection": "financial-services",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Currently Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Bank Accounts"
-        },
-        "name": "bank-accounts",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Post offices"
-        },
-        "name": "post-offices",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Mobile Cash Company"
-        },
-        "name": "mobile-cash-company",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "Remittance company"
-        },
-        "name": "remittance-company",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "Communications & Payments Company"
-        },
-        "name": "communication-payments-company",
-        "orderPriority": 6
-      },
-      {
-        "label": {
-          "en": "Various"
-        },
-        "name": "various",
-        "orderPriority": 7
-      },
-      {
-        "label": {
-          "en": "Other Please add in comments section below"
-        },
-        "name": "other",
-        "orderPriority": 8
-      }
-    ]
-  },
-  {
-    "name": "financial-services-02",
-    "type": "text-long",
-    "label": {
-      "en": "Which Service type best fits the PA? Is this Service type Near the majority of the PA's?"
-    },
-    "orderPriority": 72,
-    "subsection": "financial-services",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
-  },
-  {
-    "name": "cash-use-01",
-    "type": "select-n",
-    "label": {
-      "en": "USE THE FOLLOWING METHODS TO SEND/SAVE/RECEIVE CASH"
-    },
-    "orderPriority": 73,
-    "subsection": "cash-use",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Send cash"
-        },
-        "name": "send-cash",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Save cash"
-        },
-        "name": "save-cash",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Receive cash"
-        },
-        "name": "receive-cash",
-        "orderPriority": 3
-      }
-    ]
-  },
-  {
-    "name": "cash-use-02",
-    "type": "text-long",
-    "label": {
-      "en": "Is there a preferd FSP in the area of the target group?"
-    },
-    "orderPriority": 74,
-    "subsection": "cash-use",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
-  },
-  {
-    "name": "cash-01",
-    "type": "text-long",
-    "label": {
-      "en": "What is your chosen FSP for the program? (if not decided list the options for dicussion in comments)"
-    },
-    "orderPriority": 75,
-    "subsection": "cash",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
-  },
-  {
-    "name": "cash-02",
-    "type": "text-long",
-    "label": {
-      "en": "What is your chosen FSP's know your customer (KYC) policies / regulations that need to be met?"
-    },
-    "orderPriority": 76,
-    "subsection": "cash",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
-  },
-  {
-    "name": "cash-03",
-    "type": "text-long",
-    "label": {
-      "en": "What are the service costs asked by the chosen FSP?  For example the FSP may charge per transfer or per month Please note this may increase your budget needs! "
-    },
-    "orderPriority": 77,
-    "subsection": "cash",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
-  },
-  {
-    "name": "cash-04",
-    "type": "text-long",
-    "label": {
-      "en": "Will your chosen FSP or their agents, guarentee there will be enough cash available for target group at time of distribution?"
-    },
-    "orderPriority": 78,
-    "subsection": "cash",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
-  },
-  {
-    "name": "cash-05",
-    "type": "text-long",
-    "label": {
-      "en": "Which modality will the cash program use?  ‘Cash modality’ refers to the different types of cash or voucher transfer – e.g. conditional (cash for work, etc.), unconditional, restricted, unrestricted, multipurpose, etc. A single transfer can generally be categorized in terms of several of these variables e.g. a conditional, unrestricted transfer."
-    },
-    "orderPriority": 79,
-    "subsection": "cash",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
-  },
-  {
-    "name": "electricity-01",
-    "type": "select-n",
-    "label": {
-      "en": "ELECTRICITY"
-    },
-    "orderPriority": 80,
-    "subsection": "electricity",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Electricity"
-        },
-        "name": "electricity",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "No electricity"
-        },
-        "name": "no-electricity",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "More than 1 or all of above"
-        },
-        "name": "more-than-or-all-above",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "Other Please add in comments section below"
-        },
-        "name": "other",
-        "orderPriority": 4
-      }
-    ]
-  },
-  {
-    "name": "electricity-02",
-    "type": "text-long",
-    "label": {
-      "en": "Have you checked if electricity is widely available for both PA's and AW's in targetd area?"
-    },
-    "orderPriority": 81,
-    "subsection": "electricity",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
-  },
-  {
-    "name": "electricity-frequency-01",
-    "type": "select-n",
-    "label": {
-      "en": "FREQUENCY OF ELECTRICITY"
-    },
-    "orderPriority": 82,
-    "subsection": "electricity-frequency",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Constant"
-        },
-        "name": "constant",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "Intermitant"
-        },
-        "name": "intermitant",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "More than 1 or all of above"
-        },
-        "name": "more-than-or-all-above",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "Other Please add in comments section below"
-        },
-        "name": "other",
-        "orderPriority": 5
-      }
-    ]
-  },
-  {
-    "name": "electricity-frequency-02",
-    "type": "text-long",
-    "label": {
-      "en": "Are there specific times where it would not be a good idea to plan a registration?"
-    },
-    "orderPriority": 83,
-    "subsection": "electricity-frequency",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
-  },
-  {
-    "name": "electricity-frequency-03",
-    "type": "text-long",
-    "label": {
-      "en": "Can you insert the GPS location of the intended target PA's registration location."
-    },
-    "orderPriority": 84,
-    "subsection": "electricity-frequency",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
+    "orderPriority": 94,
+    "subsection": "community",
+    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
   },
   {
     "name": "connectivity-01",
     "type": "select-n",
     "label": {
-      "en": "INFORMATION CHANNELS"
+      "en": "ACCESS TO ELECTRICITY THAT IS…"
     },
-    "orderPriority": 85,
+    "orderPriority": 104,
+    "subsection": "connectivity",
+    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "Available Constantly"
+        },
+        "name": "constant",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "Avaialbel at Iregular times"
+        },
+        "name": "iregular",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "Avaialbel at specific times"
+        },
+        "name": "specific-times",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "Not avialable"
+        },
+        "name": "not-avaialable",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "Other Please add in comments section below"
+        },
+        "name": "other",
+        "orderPriority": 5
+      }
+    ]
+  },
+  {
+    "name": "connectivity-02",
+    "type": "select-n",
+    "label": {
+      "en": "ACCESS TO INTERNET THAT IS…"
+    },
+    "orderPriority": 105,
     "subsection": "connectivity",
     "tags": [
       "people",
@@ -2619,171 +2525,49 @@
     "optionChoices": [
       {
         "label": {
-          "en": "Internet"
-        },
-        "name": "internet",
-        "orderPriority": 1
-      },
-      {
-        "label": {
-          "en": "TV"
-        },
-        "name": "tv",
-        "orderPriority": 2
-      },
-      {
-        "label": {
-          "en": "Radio"
-        },
-        "name": "radio",
-        "orderPriority": 3
-      },
-      {
-        "label": {
-          "en": "No internet"
-        },
-        "name": "no-internet",
-        "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "More than 1 or all of above"
-        },
-        "name": "more-than-or-all-above",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "Other Please add in comments section below"
-        },
-        "name": "other",
-        "orderPriority": 6
-      }
-    ]
-  },
-  {
-    "name": "connectivity-02",
-    "type": "text-long",
-    "label": {
-      "en": "Are there specific times where it would be good/bad to communicate/plan about a program registration?"
-    },
-    "orderPriority": 86,
-    "subsection": "connectivity",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
-  },
-  {
-    "name": "connectivity-03",
-    "type": "text-long",
-    "label": {
-      "en": "Do you know the bandwidth/ stability of the internet connection of the locations you ant to operate in? If not here is a link as to how you can find out!"
-    },
-    "orderPriority": 87,
-    "subsection": "connectivity",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
-  },
-  {
-    "name": "connectivity-frequency-01",
-    "type": "select-n",
-    "label": {
-      "en": "INTERNET CONNECTIVITY FREQUENCY"
-    },
-    "orderPriority": 88,
-    "subsection": "connectivity-frequency",
-    "tags": ["data"],
-    "optionChoices": [
-      {
-        "label": {
-          "en": "Constant"
+          "en": "Available Constantly"
         },
         "name": "constant",
         "orderPriority": 1
       },
       {
         "label": {
-          "en": "Intermittent"
+          "en": "Avaialbel at Iregular times"
         },
-        "name": "intermittent",
+        "name": "iregular",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "Free"
+          "en": "Avaialbel at specific times"
         },
-        "name": "free",
+        "name": "specific-times",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "Paid"
+          "en": "Not avialable"
         },
-        "name": "paid",
+        "name": "not-avaialable",
         "orderPriority": 4
-      },
-      {
-        "label": {
-          "en": "More than 1 or all of above"
-        },
-        "name": "more-than-or-all-above",
-        "orderPriority": 5
-      },
-      {
-        "label": {
-          "en": "Unknown"
-        },
-        "name": "unknown",
-        "orderPriority": 6
       },
       {
         "label": {
           "en": "Other Please add in comments section below"
         },
         "name": "other",
-        "orderPriority": 7
+        "orderPriority": 5
       }
     ]
   },
   {
-    "name": "connectivity-frequency-02",
-    "type": "text-long",
-    "label": {
-      "en": "Are there specific situations you need to be aware of that the intended program depends upon?"
-    },
-    "orderPriority": 89,
-    "subsection": "connectivity-frequency",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
-  },
-  {
-    "name": "connectivity-access-01",
+    "name": "connectivity-03",
     "type": "select-n",
     "label": {
-      "en": "CONNECTIVITY ACCESS"
+      "en": "ACCESS TO INTERNET AT THESE LOCATIONS"
     },
-    "orderPriority": 90,
-    "subsection": "connectivity-access",
+    "orderPriority": 106,
+    "subsection": "connectivity",
     "tags": [
       "people",
       "coordination",
@@ -2839,13 +2623,13 @@
     ]
   },
   {
-    "name": "connectivity-access-02",
+    "name": "connectivity-04",
     "type": "text-long",
     "label": {
-      "en": "Are there specific partners you need to work with? Or be aware of that the intended program depends upon?"
+      "en": "Are there specific times where it would be good / bad to communicate about or plan a program registration?"
     },
-    "orderPriority": 91,
-    "subsection": "connectivity-access",
+    "orderPriority": 107,
+    "subsection": "connectivity",
     "tags": [
       "people",
       "coordination",
@@ -2857,13 +2641,67 @@
     ]
   },
   {
-    "name": "communication-orgs-01",
+    "name": "connectivity-05",
+    "type": "select-n",
+    "label": {
+      "en": "Please select how your organization plans to register the target people affected"
+    },
+    "orderPriority": 108,
+    "subsection": "connectivity",
+    "tags": [],
+    "optionChoices": [
+      {
+        "label": {
+          "en": "paper self registration form at location (with person affected filling in form)"
+        },
+        "name": "paper-self",
+        "orderPriority": 1
+      },
+      {
+        "label": {
+          "en": "paper registration form at location (with staff memebr filling in form)"
+        },
+        "name": "paper-staff",
+        "orderPriority": 2
+      },
+      {
+        "label": {
+          "en": "digital registration at location ( with staff member filling in form)"
+        },
+        "name": "digital-staff",
+        "orderPriority": 3
+      },
+      {
+        "label": {
+          "en": "digital self registration at location ( with organizations device only)"
+        },
+        "name": "digital-self-org-device",
+        "orderPriority": 4
+      },
+      {
+        "label": {
+          "en": "digital self registration at location ( with person affected's device)"
+        },
+        "name": "digital-self-pa-device",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "digital self registration remote ( with person affected's own / proxy device)"
+        },
+        "name": "digital-self-proxy-device",
+        "orderPriority": 6
+      }
+    ]
+  },
+  {
+    "name": "connectivity-06",
     "type": "text-long",
     "label": {
-      "en": "COMMUNICATION ORGS"
+      "en": "Where do you plan to invite the target group to register for program? Online or offline at a location(s)?"
     },
-    "orderPriority": 92,
-    "subsection": "communication-orgs",
+    "orderPriority": 109,
+    "subsection": "connectivity",
     "tags": [
       "people",
       "coordination",
@@ -2875,43 +2713,69 @@
     ]
   },
   {
-    "name": "communication-orgs-02",
+    "name": "connectivity-07",
     "type": "text-long",
     "label": {
-      "en": "Do you already have an account with any of the above mentioned orgs?"
+      "en": "Do you know the bandwidth / stability of the internet connection of the locations you ant to operate in? If not here is a link as to how you can find out!"
     },
-    "orderPriority": 93,
-    "subsection": "communication-orgs",
-    "tags": ["people", "coordination", "registration", "CEA"]
+    "orderPriority": 110,
+    "subsection": "connectivity",
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
+  },
+  {
+    "name": "connectivity-08",
+    "type": "text-long",
+    "label": {
+      "en": "Have you checked if electricity is available for both PA's and AW's in targeted registration location?"
+    },
+    "orderPriority": 111,
+    "subsection": "connectivity",
+    "tags": [
+      "people",
+      "coordination",
+      "registration",
+      "payment",
+      "CEA",
+      "Budget",
+      "FSP"
+    ]
   },
   {
     "name": "registration-01",
-    "type": "text-long",
+    "type": "text",
     "label": {
-      "en": "When do you plan to invite the target group to register for program?"
+      "en": "ABILITY TO REGISTER ON THIS DATE(S)"
     },
-    "orderPriority": 94,
-    "subsection": "communication-orgs",
+    "orderPriority": 119,
+    "subsection": "registration",
     "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-02",
     "type": "text-long",
     "label": {
-      "en": "How do you plan to invite the target group to register for program? Community Meeting/Phonecall/SMS/Other?"
+      "en": "How do you plan to invite the target group to register for program? Community Meeting / Phonecall / SMS / Other?"
     },
-    "orderPriority": 95,
-    "subsection": "communication-orgs",
+    "orderPriority": 120,
+    "subsection": "registration",
     "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
     "name": "registration-03",
     "type": "text-long",
     "label": {
-      "en": "Where do you plan to invite the target group to register for program? Online or offline at a location(s)?"
+      "en": "Can you insert the GPS location of the intended program registration location."
     },
-    "orderPriority": 96,
-    "subsection": "communication-orgs",
+    "orderPriority": 121,
+    "subsection": "registration",
     "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
@@ -2920,58 +2784,78 @@
     "label": {
       "en": "What documents does the target group need for registration?"
     },
-    "orderPriority": 97,
-    "subsection": "communication-orgs",
+    "orderPriority": 122,
+    "subsection": "registration",
     "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
-    "name": "registration-tools-01",
+    "name": "registration-05",
     "type": "text-long",
     "label": {
-      "en": "REGISTRATION: What tools do you plan to use for registration? Paper form/Digital Devices? If Digtial devices Org own or Target Peoples oen devices?"
+      "en": "Does your organization have everything its needs for registration? (Paper forms / Pens / Digital Devices)"
     },
-    "orderPriority": 98,
-    "subsection": "communication-orgs",
+    "orderPriority": 123,
+    "subsection": "registration",
     "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
-    "name": "registration-tools-02",
+    "name": "registration-06",
     "type": "text-long",
     "label": {
-      "en": "REGISTRATION: How many trained assistants will you have avaialbe to help at registration?"
+      "en": "How many trained staff or volunteers will you need to help at registration? What do you need to plan to arrange their availability?"
     },
-    "orderPriority": 99,
-    "subsection": "communication-orgs",
+    "orderPriority": 124,
+    "subsection": "registration",
     "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
-    "name": "registration-tools-02",
+    "name": "registration-07",
     "type": "text-long",
     "label": {
       "en": "If you plan to ask the target groups own devices, do you have a back up for those without a device?"
     },
-    "orderPriority": 100,
-    "subsection": "communication-orgs",
+    "orderPriority": 125,
+    "subsection": "registration",
     "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
-    "name": "registration-tools-03",
+    "name": "registration-08",
     "type": "text-long",
     "label": {
-      "en": "If you need to use your organisations devices for the program do you have enough?"
+      "en": "If you need to use your organizations devices for the program do you have enough? Do you have enough battery power"
     },
-    "orderPriority": 101,
-    "subsection": "communication-orgs",
+    "orderPriority": 126,
+    "subsection": "registration",
     "tags": ["people", "coordination", "registration", "CEA"]
   },
   {
-    "name": "registration-tools-04",
+    "name": "registration-09",
     "type": "text-long",
     "label": {
       "en": "If you are thinking about supplying sim cards to you know the local law re KYC? (Know your customer)"
     },
-    "orderPriority": 102,
-    "subsection": "communication-orgs",
+    "orderPriority": 127,
+    "subsection": "registration",
     "tags": ["people", "coordination", "registration", "CEA", "FSP"]
+  },
+  {
+    "name": "distribution-01",
+    "type": "text-long",
+    "label": {
+      "en": "ABILITY TO RECIEVE CASH AID ON THE FOLLOWING DATE(S)"
+    },
+    "orderPriority": 128,
+    "subsection": "distribution",
+    "tags": []
+  },
+  {
+    "name": "distribution-02",
+    "type": "text-long",
+    "label": {
+      "en": "Are there any things you need to consider about when you send out the payments?"
+    },
+    "orderPriority": 129,
+    "subsection": "distribution",
+    "tags": []
   }
 ]
