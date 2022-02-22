@@ -103,25 +103,6 @@ export class SeedDemoProgram implements InterfaceScript {
             },
           },
         },
-        {
-          sections: sectionsSeed,
-          subsections: subsectionsSeed,
-          questions: questionsSeed,
-          program: {
-            ...programDemo,
-            narrativeReportTemplate: narrativeReportTemplateDemoEn,
-          },
-          users: {
-            edit: {
-              username: process.env.USERCONFIG_EDIT_USERNAME,
-              password: process.env.USERCONFIG_EDIT_PASSWORD,
-            },
-            view: {
-              username: process.env.USERCONFIG_VIEW_USERNAME,
-              password: process.env.USERCONFIG_VIEW_PASSWORD,
-            },
-          },
-        },
       ];
     }
     if (seedScript === SeedScript.staging) {
@@ -130,13 +111,14 @@ export class SeedDemoProgram implements InterfaceScript {
       while (i <= 50) {
         i++;
         const programDemoInput = JSON.parse(JSON.stringify(programDemo));
-        programDemoInput.name = `${programDemoInput.name}${i}`;
         const input = {
           sections: sectionsSeed,
           subsections: subsectionsSeed,
           questions: questionsSeed,
-          program: programDemoInput,
-          narrativeReportTemplate: narrativeReportTemplateDemoEn,
+          program: {
+            name: `${programDemoInput.name}${i}`,
+            narrativeReportTemplate: narrativeReportTemplateDemoEn,
+          },
           users: {
             edit: {
               username: `${
