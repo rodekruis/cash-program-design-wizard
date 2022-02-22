@@ -287,9 +287,9 @@
       },
       {
         "label": {
-          "en": "Shared Accomodation"
+          "en": "Shared Accommodation"
         },
-        "name": "shared-accomodation",
+        "name": "shared-accommodation",
         "orderPriority": 3
       },
       {
@@ -595,23 +595,23 @@
       },
       {
         "label": {
-          "en": "Ocasional / Temporary / Casual workers"
+          "en": "Occasional / Temporary / Casual workers"
         },
-        "name": "ocasional-temporary-casual-workers",
+        "name": "occasional-temporary-casual-workers",
         "orderPriority": 5
       },
       {
         "label": {
-          "en": "Entrepeneurs with Business registration & license"
+          "en": "Entrepreneurs with Business registration & license"
         },
-        "name": "entrepeneurs-with-business-registration-license",
+        "name": "entrepreneurs-with-business-registration-license",
         "orderPriority": 6
       },
       {
         "label": {
-          "en": "Potential Entrepeneurs without Business registration & license"
+          "en": "Potential Entrepreneurs without Business registration & license"
         },
-        "name": "potential-entrepeneurs-without-business-registration-license",
+        "name": "potential-entrepreneurs-without-business-registration-license",
         "orderPriority": 7
       },
       {
@@ -704,7 +704,7 @@
       },
       {
         "label": {
-          "en": "Psycological support"
+          "en": "Psychological support"
         },
         "name": "protection",
         "orderPriority": 7
@@ -851,9 +851,9 @@
       },
       {
         "label": {
-          "en": "Epedemic"
+          "en": "Epidemic"
         },
-        "name": "epedemic",
+        "name": "epidemic",
         "orderPriority": 9
       },
       {
@@ -1063,7 +1063,7 @@
       },
       {
         "label": {
-          "en": "Dutch (The Netherlands, some Carribean Islands)"
+          "en": "Dutch (The Netherlands, some Caribbean Islands)"
         },
         "name": "nl",
         "orderPriority": 13
@@ -1229,7 +1229,7 @@
       },
       {
         "label": {
-          "en": "Mobile smart phone Android (for example Tecno, Itel, Infinix, Xiaomi ,Samsung, Huwawei)"
+          "en": "Mobile smart phone Android (for example Tecno, Itel, Infinix, Xiaomi, Samsung, Huawei)"
         },
         "name": "phone-android",
         "orderPriority": 6
@@ -1243,7 +1243,7 @@
       },
       {
         "label": {
-          "en": "Tablet android (for example Tecno, Itel, Infinix, Xiaomi ,Samsung, Huwawei)"
+          "en": "Tablet android (for example Tecno, Itel, Infinix, Xiaomi, Samsung, Huawei)"
         },
         "name": "tablet-android",
         "orderPriority": 8
@@ -1299,7 +1299,7 @@
     "name": "pa-trusted-information-sources-01",
     "type": "select-n",
     "label": {
-      "en": "USE THE FOLLOWING CHANNELS TO SHARE AND RECIEVE INFORMATION…"
+      "en": "USE THE FOLLOWING CHANNELS TO SHARE AND RECEIVE INFORMATION…"
     },
     "orderPriority": 36,
     "subsection": "pa-trusted-information-sources",
@@ -1629,7 +1629,7 @@
     "name": "shopping-frequency-03",
     "type": "text-long",
     "label": {
-      "en": "Have you checked your own organization guidelines on setting up a Cash Voucher Asistance or Cash based Aid project? If yes please link it here."
+      "en": "Have you checked your own organization guidelines on setting up a Cash Voucher Assistance or Cash based Aid project? If yes please link it here."
     },
     "orderPriority": 56,
     "subsection": "shopping-frequency",
@@ -2477,23 +2477,23 @@
       },
       {
         "label": {
-          "en": "Avaialbel at Iregular times"
+          "en": "Available at Irregular times"
         },
-        "name": "iregular",
+        "name": "irregular",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "Avaialbel at specific times"
+          "en": "Available at specific times"
         },
         "name": "specific-times",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "Not avialable"
+          "en": "Not available"
         },
-        "name": "not-avaialable",
+        "name": "not-available",
         "orderPriority": 4
       },
       {
@@ -2532,23 +2532,23 @@
       },
       {
         "label": {
-          "en": "Avaialbel at Iregular times"
+          "en": "Available at Irregular times"
         },
-        "name": "iregular",
+        "name": "irregular",
         "orderPriority": 2
       },
       {
         "label": {
-          "en": "Avaialbel at specific times"
+          "en": "Available at specific times"
         },
         "name": "specific-times",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "Not avialable"
+          "en": "Not available"
         },
-        "name": "not-avaialable",
+        "name": "not-available",
         "orderPriority": 4
       },
       {
@@ -2659,7 +2659,7 @@
       },
       {
         "label": {
-          "en": "paper registration form at location (with staff memebr filling in form)"
+          "en": "paper registration form at location (with staff member filling in form)"
         },
         "name": "paper-staff",
         "orderPriority": 2
@@ -2842,7 +2842,7 @@
     "name": "distribution-01",
     "type": "text-long",
     "label": {
-      "en": "ABILITY TO RECIEVE CASH AID ON THE FOLLOWING DATE(S)"
+      "en": "ABILITY TO RECEIVE CASH AID ON THE FOLLOWING DATE(S)"
     },
     "orderPriority": 128,
     "subsection": "distribution",
