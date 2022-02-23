@@ -1,11 +1,26 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiParam,
+  ApiTags,
+} from '@nestjs/swagger';
+import { IsUUID } from 'class-validator';
+import { RolesProgram } from 'src/auth/roles-program.decorator';
+import { RolesProgramGuard } from 'src/auth/roles-program.guard';
 import { Roles } from '../auth/roles.decorator';
 import { User } from '../users/user.decorator';
 import { RolesGuard } from './../auth/roles.guard';
 import { UserRoleEnum } from './../users/enum/user-role.enum';
+import { ProgramDto } from './dto/program.dto';
+import { ProgramEntity } from './program.entity';
 import { ProgramsRO } from './program.interface';
 import { ProgramsService } from './programs.service';
+
+class UpdateProgramParams {
+  @IsUUID()
+  programId: string;
+}
 
 @ApiBearerAuth()
 @ApiTags('programs')
@@ -23,5 +38,18 @@ export class ProgramsController {
   @Get()
   public async findAll(@User('id') userId: string): Promise<ProgramsRO> {
     return await this.programService.findAll(userId);
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(RolesProgramGuard)
+  @ApiOperation({ summary: 'Update a program-property (overwrites)' })
+  @ApiParam({ name: 'programId', required: true, type: 'string' })
+  @RolesProgram(UserRoleEnum.edit)
+  @Post('/:programId/update')
+  public async updateOne(
+    @Param() params: UpdateProgramParams,
+    @Body() programUpdate: ProgramDto,
+  ): Promise<ProgramEntity> {
+    return await this.programService.update(params.programId, programUpdate);
   }
 }
