@@ -47,7 +47,7 @@ export class TransferQuestionsService {
         'question.name AS "questionName"',
         'question.type AS "questionType"',
         `question.label::json->'en' AS "questionLabelEn"`,
-        `question.orderPriority as orderPriority`,
+        `question.orderPriority as "orderPriority"`,
       ])
       .leftJoin('question.subsection', 'subsection')
       .leftJoin('subsection.section', 'section')
@@ -438,7 +438,7 @@ export class TransferQuestionsService {
       where: { name: questionName },
       relations: ['answers', 'comments', 'optionChoices'],
     });
-    console.log('question: ', question);
+
     if (!question) {
       throw new HttpException(
         `Question not found: '${questionName}''`,
