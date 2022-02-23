@@ -1,12 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { parse } from 'csv-parse/sync';
-import { Repository } from 'typeorm';
-import { OptionChoiceEntity } from '../option-choices/option-choice.entity';
+import { Connection, QueryRunner, Repository } from 'typeorm';
 import { QuestionEntity } from '../questions/question.entity';
+import { SubsectionEntity } from '../sub-sections/sub-section.entity';
 import { TagEntity } from '../tags/tag.entity';
-import { UserService } from '../users/user.service';
+import { OptionChoiceEntity } from './../option-choices/option-choice.entity';
+import { ImportDataDto } from './dto/import-data.dto';
 import { QuestionTransferDto } from './dto/question-tranfer.dto';
+
+enum OptionChoiceNameEnum {
+  name = 'optionChoice',
+  label = 'optionChoiceLabelEn',
+}
 
 @Injectable()
 export class TransferQuestionsService {
@@ -14,12 +20,15 @@ export class TransferQuestionsService {
   private readonly questionRepository: Repository<QuestionEntity>;
 
   @InjectRepository(TagEntity)
-  private readonly tagsRepository: Repository<TagEntity>;
+  private readonly tagRepository: Repository<TagEntity>;
+
+  @InjectRepository(SubsectionEntity)
+  private readonly subsectionRepository: Repository<SubsectionEntity>;
 
   @InjectRepository(OptionChoiceEntity)
   private readonly optionChoiceRepository: Repository<OptionChoiceEntity>;
 
-  public constructor(private readonly userService: UserService) {}
+  public constructor(private readonly connection: Connection) {}
 
   public async export(): Promise<QuestionTransferDto[]> {
     const questions = (await this.questionRepository
@@ -50,6 +59,15 @@ export class TransferQuestionsService {
       .addOrderBy('question.orderPriority', 'ASC')
       .leftJoin('question.tags', 'tags_filter')
       .addGroupBy('tags_filter')
+      .groupBy('question.id')
+      .addGroupBy('question.name')
+      .addGroupBy('question.type')
+      .addGroupBy('question.label')
+      .addGroupBy('section.name')
+      .addGroupBy('section.id')
+      .addGroupBy('section.label')
+      .addGroupBy('subsection.name')
+      .addGroupBy('subsection.id')
       .getRawMany()) as QuestionTransferDto[];
 
     for (let question of questions) {
@@ -64,23 +82,26 @@ export class TransferQuestionsService {
     length?: number;
     error?: any;
   }> {
+    console.log('Starting import...');
     let records;
 
     try {
       records = parse(file, {
         cast: true,
         columns: true,
-        delimiter: [';', ','],
+        delimiter: [';'],
         skipEmptyLines: true,
         skipRecordsWithEmptyValues: true,
         trim: true,
       });
     } catch (error) {
       console.error(error);
-      return {
-        status: 'error',
-        error,
-      };
+      throw new HttpException(
+        `File could not be parsed.\n\nPotential cause: Make sure to save CSV with ';' separator'\n\n Details:${JSON.stringify(
+          error,
+        )}`,
+        HttpStatus.BAD_REQUEST,
+      );
     }
 
     const importSections = this.extractUniqueProperty(records, 'section');
@@ -96,9 +117,12 @@ export class TransferQuestionsService {
           en: row.questionLabelEn,
         },
         orderPriority: row.orderPriority,
-        tags: row.tags ? row.tags.split(',') : [],
+        tags: row.tags
+          ? row.tags.split(',').map((item: string) => item.trim())
+          : [],
         section: row.section,
         subSection: row.subsectionName,
+        optionChoices: this.getOptionChoicesFromRow(row),
       };
     });
 
@@ -106,7 +130,7 @@ export class TransferQuestionsService {
       sections: Object.keys(importSections),
       subsections: Object.keys(importSubSections),
       questions: importQuestions,
-    };
+    } as ImportDataDto;
 
     console.info('Imported Data: ', JSON.stringify(importData, null, 2));
 
@@ -115,20 +139,58 @@ export class TransferQuestionsService {
       importData.subsections.length < 1 ||
       importData.questions.length < 1
     ) {
-      return {
-        status: 'error',
-        error: {
-          message: 'Incorrect or mismatched data',
-        },
-      };
+      throw new HttpException(
+        'Incorrect or mismatched data',
+        HttpStatus.UNAUTHORIZED,
+      );
     }
 
-    // TODO: Perform actual import into database here.
+    await this.insertUpdateImportData(importData);
 
     return {
       status: 'success',
       length: importData.questions.length,
     };
+  }
+
+  private getOptionChoicesFromRow(row: any): any {
+    const optionChoices = [];
+    let i = 0;
+    let emptyOptionCellCount = 0;
+    while (emptyOptionCellCount < 5) {
+      const optionChoiceName = row[`${OptionChoiceNameEnum.name}${i + 1}`];
+      const optionChoiceLabel = row[`${OptionChoiceNameEnum.label}${i + 1}`];
+      const questionName = row['questionName'];
+      if (!optionChoiceName && optionChoiceLabel) {
+        const error = `Question '${questionName}': ${
+          OptionChoiceNameEnum.name
+        }${i + 1} is not filled in`;
+        throw new HttpException(error, HttpStatus.BAD_REQUEST);
+      }
+      if (optionChoiceName && !optionChoiceLabel) {
+        const error = `Question '${questionName}': ${
+          OptionChoiceNameEnum.label
+        }${i + 1} is not filled in`;
+        throw new HttpException(error, HttpStatus.BAD_REQUEST);
+      }
+
+      // If a count of 5 options cannot be found break loop
+      if (!optionChoiceName && !optionChoiceLabel) {
+        emptyOptionCellCount++;
+      }
+      if (optionChoiceName && optionChoiceLabel) {
+        optionChoices.push({
+          name: optionChoiceName,
+          label: {
+            en: optionChoiceLabel,
+          },
+          questionName: questionName,
+          orderPriority: i,
+        });
+      }
+      i++;
+    }
+    return optionChoices;
   }
 
   private extractUniqueProperty(array: any[], property: string) {
@@ -142,7 +204,7 @@ export class TransferQuestionsService {
   }
 
   private async findTags(question): Promise<string> {
-    const qb = this.tagsRepository
+    const qb = this.tagRepository
       .createQueryBuilder('tag')
       .select(['to_json(array_agg(tag.name)) as tags'])
       .leftJoin('tag.questions', 'questions')
@@ -173,5 +235,182 @@ export class TransferQuestionsService {
       question[`optionChoiceLabelEn${i + 1}`] = choice.label['en'];
     }
     return question;
+  }
+
+  private async insertUpdateImportData(importData: ImportDataDto) {
+    const queryRunner = this.connection.createQueryRunner();
+    queryRunner.startTransaction();
+    await this.updateQuestions(importData.questions, queryRunner);
+    queryRunner.commitTransaction();
+  }
+
+  private updateEntityWithImport(dbEntity: any, importEntry: any) {
+    let changed = false;
+    for (const key in dbEntity) {
+      if (
+        importEntry[key] !== undefined &&
+        dbEntity[key] !== importEntry[key]
+      ) {
+        dbEntity[key] = importEntry[key];
+        changed = true;
+      }
+    }
+    return changed;
+  }
+
+  private async updateQuestions(importQuestions: any[], queryRunner) {
+    for (const importQuestion of importQuestions) {
+      let dbQuestion = await this.questionRepository.findOne({
+        where: { name: importQuestion.name },
+        relations: ['tags', 'optionChoices', 'subsection'],
+      });
+      if (!dbQuestion) {
+        dbQuestion = new QuestionEntity();
+        dbQuestion.name = importQuestion.name;
+
+        dbQuestion.orderPriority = importQuestion.orderPriority;
+        dbQuestion.label = importQuestion.label;
+        dbQuestion.type = importQuestion.type;
+        dbQuestion.tags = [];
+        dbQuestion.optionChoices = [];
+      }
+      const changed = this.updateEntityWithImport(dbQuestion, importQuestion);
+      // Do not save unchange entities so the update propery stays useful
+      if (changed) {
+        await queryRunner.manager.save(dbQuestion);
+      }
+      if (importQuestion.optionChoices.length > 0) {
+        await this.updateOptionsChoicesQuestion(
+          importQuestion.optionChoices,
+          queryRunner,
+        );
+      }
+      await this.updateTagsForQuestion(
+        JSON.parse(JSON.stringify(importQuestion.tags)),
+        dbQuestion,
+        queryRunner,
+      );
+      await this.updateSubsectionForQ(
+        importQuestion.subSection,
+        dbQuestion,
+        queryRunner,
+      );
+    }
+  }
+
+  private async updateOptionsChoicesQuestion(
+    importedOptionChoices,
+    queryRunner,
+  ) {
+    const dbQuestion = await this.questionRepository.findOne({
+      where: { name: importedOptionChoices[0].questionName },
+      relations: ['optionChoices'],
+    });
+    for (const importedOptionChoice of importedOptionChoices) {
+      const dbOptionChoice = dbQuestion.optionChoices.find(
+        (dbOptionChoice) =>
+          dbOptionChoice.orderPriority === importedOptionChoice.orderPriority,
+      );
+      if (dbOptionChoice) {
+        const changed = this.updateEntityWithImport(
+          dbOptionChoice,
+          importedOptionChoice,
+        );
+        if (changed) {
+          await queryRunner.manager.save(dbOptionChoice);
+        }
+      } else {
+        const newOptionChoice = new OptionChoiceEntity();
+        newOptionChoice.question = dbQuestion;
+        newOptionChoice.label = importedOptionChoice.label;
+        newOptionChoice.orderPriority = importedOptionChoice.orderPriority;
+        newOptionChoice.name = importedOptionChoice.name;
+        await queryRunner.manager.save(newOptionChoice);
+      }
+    }
+    await this.removeOptionChoicesFromQ(
+      importedOptionChoices,
+      dbQuestion,
+      queryRunner,
+    );
+  }
+
+  private async removeOptionChoicesFromQ(
+    importedOptionChoices,
+    question,
+    queryRunner: QueryRunner,
+  ) {
+    const orderProArrayImport = importedOptionChoices.map(
+      (o) => o.orderPriority,
+    );
+    for (const dbOptionChoice of question.optionChoices) {
+      if (!orderProArrayImport.includes(dbOptionChoice.orderPriority)) {
+        await queryRunner.manager.remove(dbOptionChoice);
+      }
+    }
+  }
+
+  private async updateTagsForQuestion(
+    importedTags: string[],
+    dbQuestion: QuestionEntity,
+    queryRunner: QueryRunner,
+  ) {
+    let questionTagsChanged = false;
+    for (const importTag of importedTags) {
+      const foundDbTag = dbQuestion.tags.find(
+        (dbTag) => dbTag.name === importTag,
+      );
+      if (!foundDbTag) {
+        questionTagsChanged = true;
+        const existingTag = await this.tagRepository.findOne({
+          where: { name: importTag },
+        });
+        if (existingTag) {
+          dbQuestion.tags.push(existingTag);
+        } else {
+          throw new HttpException(
+            `Tag not found '${importTag}' at question: '${dbQuestion.name}'`,
+            HttpStatus.UNAUTHORIZED,
+          );
+        }
+      }
+    }
+
+    // Remove tags that are not in import
+    const newRelatedTags = dbQuestion.tags.filter((dbTag) =>
+      importedTags.includes(dbTag.name),
+    );
+    if (newRelatedTags.length < dbQuestion.tags.length) {
+      dbQuestion.tags = newRelatedTags;
+
+      questionTagsChanged = true;
+    }
+    if (questionTagsChanged) {
+      await queryRunner.manager.save(dbQuestion);
+    }
+  }
+
+  private async updateSubsectionForQ(
+    importSubsectionName: string,
+
+    dbQuestion: QuestionEntity,
+    queryRunner: QueryRunner,
+  ) {
+    const subsection = await this.subsectionRepository.findOne({
+      where: { name: importSubsectionName },
+    });
+    if (!subsection) {
+      throw new HttpException(
+        `Subsection does not exist: '${importSubsectionName}`,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    if (
+      !dbQuestion.subsection ||
+      dbQuestion.subsection.name !== importSubsectionName
+    ) {
+      dbQuestion.subsection = subsection;
+      await queryRunner.manager.save(dbQuestion);
+    }
   }
 }
