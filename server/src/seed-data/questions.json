@@ -1208,7 +1208,7 @@
       },
       {
         "label": {
-          "en": "Own Simcard with proxy phone access (access to another person's phone)"
+          "en": "Own simcard with proxy phone access (access to another person's phone)"
         },
         "name": "simcard-proxy-phone",
         "orderPriority": 3
@@ -1391,9 +1391,9 @@
       },
       {
         "label": {
-          "en": "Tik Tok"
+          "en": "TikTok"
         },
-        "name": "tik-tok",
+        "name": "tiktok",
         "orderPriority": 13
       },
       {
@@ -1754,49 +1754,49 @@
         "label": {
           "en": "$ US Dollar"
         },
-        "name": "us-dollar",
+        "name": "USD",
         "orderPriority": 2
       },
       {
         "label": {
           "en": "€ Euro"
         },
-        "name": "euro",
+        "name": "EUR",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "CHF Swiss Franc"
+          "en": "CHF Swiss franc"
         },
-        "name": "chd-swiss-franc",
+        "name": "CHF",
         "orderPriority": 4
       },
       {
         "label": {
           "en": "Kenyan shilling"
         },
-        "name": "kenyan-shilling",
+        "name": "KES",
         "orderPriority": 5
       },
       {
         "label": {
-          "en": "Ethiopia Birr"
+          "en": "Ethiopian birr"
         },
-        "name": "ethiopia-birr",
+        "name": "ETB",
         "orderPriority": 6
       },
       {
         "label": {
-          "en": "Lebanese Pound"
+          "en": "Lebanese pound"
         },
-        "name": "lebanese-pound",
+        "name": "LBP",
         "orderPriority": 7
       },
       {
         "label": {
           "en": "Burundian franc"
         },
-        "name": "burundian-franc",
+        "name": "BIF",
         "orderPriority": 8
       },
       {
@@ -1885,49 +1885,49 @@
         "label": {
           "en": "$ US Dollar"
         },
-        "name": "us-dollar",
+        "name": "USD",
         "orderPriority": 2
       },
       {
         "label": {
           "en": "€ Euro"
         },
-        "name": "euro",
+        "name": "EUR",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "CHF Swiss Franc"
+          "en": "CHF Swiss franc"
         },
-        "name": "chd-swiss-franc",
+        "name": "CHF",
         "orderPriority": 4
       },
       {
         "label": {
           "en": "Kenyan shilling"
         },
-        "name": "kenyan-shilling",
+        "name": "KES",
         "orderPriority": 5
       },
       {
         "label": {
-          "en": "Ethiopia Birr"
+          "en": "Ethiopian birr"
         },
-        "name": "ethiopia-birr",
+        "name": "ETB",
         "orderPriority": 6
       },
       {
         "label": {
-          "en": "Lebanese Pound"
+          "en": "Lebanese pound"
         },
-        "name": "lebanese-pound",
+        "name": "LBP",
         "orderPriority": 7
       },
       {
         "label": {
           "en": "Burundian franc"
         },
-        "name": "burundian-franc",
+        "name": "BIF",
         "orderPriority": 8
       },
       {
@@ -1960,49 +1960,49 @@
         "label": {
           "en": "$ US Dollar"
         },
-        "name": "us-dollar",
+        "name": "USD",
         "orderPriority": 2
       },
       {
         "label": {
           "en": "€ Euro"
         },
-        "name": "euro",
+        "name": "EUR",
         "orderPriority": 3
       },
       {
         "label": {
-          "en": "CHF Swiss Franc"
+          "en": "CHF Swiss franc"
         },
-        "name": "chd-swiss-franc",
+        "name": "CHF",
         "orderPriority": 4
       },
       {
         "label": {
           "en": "Kenyan shilling"
         },
-        "name": "kenyan-shilling",
+        "name": "KES",
         "orderPriority": 5
       },
       {
         "label": {
-          "en": "Ethiopia Birr"
+          "en": "Ethiopian birr"
         },
-        "name": "ethiopia-birr",
+        "name": "ETB",
         "orderPriority": 6
       },
       {
         "label": {
           "en": "Lebanese Pound"
         },
-        "name": "lebanese-pound",
+        "name": "LBP",
         "orderPriority": 7
       },
       {
         "label": {
           "en": "Burundian franc"
         },
-        "name": "burundian-franc",
+        "name": "BIF",
         "orderPriority": 8
       },
       {
@@ -2035,49 +2035,49 @@
         "label": {
           "en": "$ US Dollar"
         },
-        "name": "us-dollar",
+        "name": "USD",
         "orderPriority": 2
       },
       {
         "label": {
           "en": "€ Euro"
         },
-        "name": "euro",
+        "name": "EUR",
         "orderPriority": 3
       },
       {
         "label": {
           "en": "CHF Swiss Franc"
         },
-        "name": "chd-swiss-franc",
+        "name": "CHF",
         "orderPriority": 4
       },
       {
         "label": {
           "en": "Kenyan shilling"
         },
-        "name": "kenyan-shilling",
+        "name": "KES",
         "orderPriority": 5
       },
       {
         "label": {
-          "en": "Ethiopia Birr"
+          "en": "Ethiopian birr"
         },
-        "name": "ethiopia-birr",
+        "name": "ETB",
         "orderPriority": 6
       },
       {
         "label": {
           "en": "Lebanese Pound"
         },
-        "name": "lebanese-pound",
+        "name": "LBP",
         "orderPriority": 7
       },
       {
         "label": {
           "en": "Burundian franc"
         },
-        "name": "burundian-franc",
+        "name": "BIF",
         "orderPriority": 8
       },
       {
@@ -2110,49 +2110,49 @@
         "label": {
           "en": "$ US Dollar"
         },
-        "name": "us-dollar",
+        "name": "USD",
         "orderPriority": 2
       },
       {
         "label": {
           "en": "€ Euro"
         },
-        "name": "euro",
+        "name": "EUR",
         "orderPriority": 3
       },
       {
         "label": {
           "en": "CHF Swiss Franc"
         },
-        "name": "chd-swiss-franc",
+        "name": "CHF",
         "orderPriority": 4
       },
       {
         "label": {
           "en": "Kenyan shilling"
         },
-        "name": "kenyan-shilling",
+        "name": "KES",
         "orderPriority": 5
       },
       {
         "label": {
-          "en": "Ethiopia Birr"
+          "en": "Ethiopian birr"
         },
-        "name": "ethiopia-birr",
+        "name": "ETB",
         "orderPriority": 6
       },
       {
         "label": {
           "en": "Lebanese Pound"
         },
-        "name": "lebanese-pound",
+        "name": "LBP",
         "orderPriority": 7
       },
       {
         "label": {
           "en": "Burundian franc"
         },
-        "name": "burundian-franc",
+        "name": "BIF",
         "orderPriority": 8
       },
       {
@@ -2762,7 +2762,7 @@
     "name": "registration-02",
     "type": "text-long",
     "label": {
-      "en": "How do you plan to invite the target group to register for program? Community Meeting / Phonecall / SMS / Other?"
+      "en": "How do you plan to invite the target group to register for program? Community Meeting / Phone-call / SMS / Other?"
     },
     "orderPriority": 120,
     "subsection": "registration",
