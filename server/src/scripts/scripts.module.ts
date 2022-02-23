@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProgramEntity } from '../programs/program.entity';
+import { AnswerEntity } from './../answers/answer.entity';
+import { CommentEntity } from './../comments/comment.entity';
 import { OptionChoiceEntity } from './../option-choices/option-choice.entity';
 import { QuestionEntity } from './../questions/question.entity';
 import { SectionEntity } from './../sections/section.entity';
@@ -22,6 +24,8 @@ import { TransferQuestionsService } from './transfer-questions';
       SubsectionEntity,
       OptionChoiceEntity,
       UserEntity,
+      AnswerEntity,
+      CommentEntity,
     ]),
     UserModule,
   ],

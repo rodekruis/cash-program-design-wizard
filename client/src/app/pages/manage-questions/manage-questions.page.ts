@@ -22,6 +22,12 @@ export class ManageQuestionsPage implements OnInit {
   public importResult: string | number;
   public importInProgress = false;
 
+  public deleteSecret: string;
+  public deleteQuestionName: string;
+  public deleteError: string;
+  public deleteResult: string;
+  public deleteInProgress = false;
+
   constructor(private apiService: ApiService, public state: StateService) {}
 
   ngOnInit() {}
@@ -92,6 +98,40 @@ export class ManageQuestionsPage implements OnInit {
         this.state.isLoading = false;
       },
     );
+  }
+
+  public async deleteQuestion() {
+    this.deleteError = '';
+    this.deleteResult = '';
+    this.deleteInProgress = true;
+    this.state.isLoading = true;
+
+    this.apiService
+      .post(ApiPath.scriptsDeleteQuestion, {
+        secret: this.deleteSecret,
+        name: this.deleteQuestionName,
+      })
+      .subscribe(
+        (response) => {
+          this.deleteInProgress = false;
+          this.state.isLoading = false;
+          if (response.status === 'success') {
+            this.deleteError = '';
+            this.deleteResult = response.name;
+            return;
+          }
+          if (response.status === 'error') {
+            this.deleteError = response.message;
+            return;
+          }
+        },
+        (error) => {
+          console.log('Error from delete-endpoint:', error);
+          this.deleteError = error.error.message;
+          this.deleteInProgress = false;
+          this.state.isLoading = false;
+        },
+      );
   }
 
   private arrayToCsv(array: any[], separator: ',' | ';' = ','): string {
