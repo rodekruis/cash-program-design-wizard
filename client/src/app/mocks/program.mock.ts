@@ -268,6 +268,37 @@ const mockProgramData: Program = {
             },
           ],
         },
+        {
+          id: getMockId(),
+          name: 'test1-sub-5',
+          order: 1,
+          questions: [
+            {
+              sectionName: mockSectionName1,
+              id: getMockId(),
+              name: 'test-1-text-link',
+              type: QuestionType.text,
+              label: {
+                en: 'Question with a link: https://example.org/example/',
+                nl: 'Vraag met een link: https://example.nl/voorbeeld/',
+              },
+              tags: [getRandomTag()],
+              comments: [getRandomComment()],
+            },
+            {
+              sectionName: mockSectionName1,
+              id: getMockId(),
+              name: 'test-1-text-markdown',
+              type: QuestionType.text,
+              label: {
+                en: 'Question **with** [Markdown](https://en.wikipedia.org/wiki/Markdown "Yay!") _formatting_.\n And a new line.',
+                nl: 'Vraag **met** [Markdown](https://en.wikipedia.org/wiki/Markdown "Yay!") _opmaak_.\n En een nieuwe regel.',
+              },
+              tags: [getRandomTag()],
+              comments: [getRandomComment()],
+            },
+          ],
+        },
       ],
       state: 'pending',
     },

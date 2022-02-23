@@ -116,6 +116,26 @@
     "tags": ["data"]
   },
   {
+    "name": "test-text-markdown",
+    "type": "text",
+    "label": {
+      "en": "Question **with** [Markdown](https://en.wikipedia.org/wiki/Markdown \"Yay!\") _formatting_.\n And a new line."
+    },
+    "orderPriority": 1210,
+    "subsection": "subtest1-4",
+    "tags": ["data"]
+  },
+  {
+    "name": "test-text-markdown-link",
+    "type": "text",
+    "label": {
+      "en": "Question with a link: https://example.org/example/"
+    },
+    "orderPriority": 1210,
+    "subsection": "subtest1-4",
+    "tags": ["data"]
+  },
+  {
     "name": "test2-text-1",
     "type": "text",
     "label": {

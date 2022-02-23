@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { MarkdownModule } from 'ngx-markdown';
 import { getMockId } from 'src/app/mocks/mock-helpers';
 import { Tag } from 'src/app/models/tag.enum';
 import { ProgramDataService } from 'src/app/services/program-data.service';
@@ -37,6 +38,7 @@ describe('QuestionInputComponent', () => {
         imports: [
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
+          MarkdownModule.forRoot(),
           RouterTestingModule,
           HttpClientTestingModule,
         ],

@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { MarkdownService } from 'ngx-markdown';
 import { Subscription } from 'rxjs';
 import { getOptionChoiceAnswer } from 'src/app/helpers/answers.helpers';
 import { ProgramDataService } from 'src/app/services/program-data.service';
@@ -35,6 +36,7 @@ export class QuestionInputComponent implements OnInit, OnDestroy {
     private state: StateService,
     private programData: ProgramDataService,
     private route: ActivatedRoute,
+    private markdownService: MarkdownService,
   ) {}
 
   ngOnInit() {
@@ -48,6 +50,18 @@ export class QuestionInputComponent implements OnInit, OnDestroy {
         }, 1000);
       }
     });
+
+    // Prevent default wrapping in <p>-element:
+    this.markdownService.renderer.paragraph = (text: string) => `${text}`;
+    // Override markup for (external) links:
+    this.markdownService.renderer.link = (
+      href: string,
+      title: string,
+      text: string,
+    ) =>
+      `<a href="${href}" ${
+        title ? `title="${title}"` : ''
+      }" rel="noopener noreferrer" target="_blank">${text}</a>`;
   }
 
   ngOnDestroy() {

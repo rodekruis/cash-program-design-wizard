@@ -17,7 +17,9 @@
 
     <small>#{{ questionNr }}</small>
     <br />
-    <strong>{{ question.label }}</strong>
+    <strong ngPreserveWhitespaces markdown>
+      {{ question.label }}
+    </strong>
   </div>
   <ion-item
     [ngClass]="{
