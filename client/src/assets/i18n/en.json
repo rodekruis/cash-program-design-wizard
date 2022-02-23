@@ -86,6 +86,19 @@
         "label": "Import all questions from CSV"
       },
       "result": "Imported: {{number}} question(s)"
+    },
+    "delete": {
+      "header": "Delete question",
+      "secret": {
+        "label": "Secret"
+      },
+      "question-name": {
+        "label": "Question name"
+      },
+      "submit": {
+        "label": "Delete question and related answers and comments"
+      },
+      "result": "Succesfully deleted question {{name}}"
     }
   },
   "nav-progress": {

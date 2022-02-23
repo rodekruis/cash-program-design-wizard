@@ -2,6 +2,8 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { parse } from 'csv-parse/sync';
 import { Connection, QueryRunner, Repository } from 'typeorm';
+import { AnswerEntity } from '../answers/answer.entity';
+import { CommentEntity } from '../comments/comment.entity';
 import { QuestionEntity } from '../questions/question.entity';
 import { SubsectionEntity } from '../sub-sections/sub-section.entity';
 import { TagEntity } from '../tags/tag.entity';
@@ -27,6 +29,12 @@ export class TransferQuestionsService {
 
   @InjectRepository(OptionChoiceEntity)
   private readonly optionChoiceRepository: Repository<OptionChoiceEntity>;
+
+  @InjectRepository(AnswerEntity)
+  private readonly answerRepository: Repository<AnswerEntity>;
+
+  @InjectRepository(CommentEntity)
+  private readonly commentRepository: Repository<CommentEntity>;
 
   public constructor(private readonly connection: Connection) {}
 
@@ -423,5 +431,29 @@ export class TransferQuestionsService {
       dbQuestion.subsection = subsection;
       await queryRunner.manager.save(dbQuestion);
     }
+  }
+
+  public async deleteQuestion(questionName: string) {
+    const question = await this.questionRepository.findOne({
+      where: { name: questionName },
+      relations: ['answers', 'comments', 'optionChoices'],
+    });
+    console.log('question: ', question);
+    if (!question) {
+      throw new HttpException(
+        `Question not found: '${questionName}''`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    await this.answerRepository.remove(question.answers);
+    await this.commentRepository.remove(question.comments);
+    await this.optionChoiceRepository.remove(question.optionChoices);
+    await this.questionRepository.remove(question);
+
+    return {
+      status: 'success',
+      name: questionName,
+    };
   }
 }

@@ -16,6 +16,7 @@ import {
   ApiProperty,
 } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { QuestionNameDto } from './dto/question-name.dto';
 import { QuestionTransferDto } from './dto/question-tranfer.dto';
 import SeedDemoProgram from './seed-program';
 import { TransferQuestionsService } from './transfer-questions';
@@ -111,5 +112,14 @@ export class ScriptsController {
     }
 
     return await this.transferQuestionsService.import(file.buffer);
+  }
+
+  @Post('questions/delete')
+  public async deleteQuestion(@Body() body: QuestionNameDto): Promise<any> {
+    console.log('deleteQuestion: ', body);
+    if (body.secret !== process.env.RESET_SECRET) {
+      throw new HttpException('Not authorized.', HttpStatus.UNAUTHORIZED);
+    }
+    return await this.transferQuestionsService.deleteQuestion(body.name);
   }
 }

@@ -14,6 +14,7 @@ export enum ApiPath {
   comments = 'comments',
   scriptsExport = 'scripts/export',
   scriptsImport = 'scripts/import',
+  scriptsDeleteQuestion = 'scripts/questions/delete',
 }
 
 @Injectable({
