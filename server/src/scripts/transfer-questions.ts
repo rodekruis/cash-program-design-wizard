@@ -132,7 +132,7 @@ export class TransferQuestionsService {
       questions: importQuestions,
     } as ImportDataDto;
 
-    console.info('Imported Data: ', JSON.stringify(importData, null, 2));
+    // console.info('Imported Data: ', JSON.stringify(importData, null, 2));
 
     if (
       importData.sections.length < 1 ||
@@ -244,12 +244,17 @@ export class TransferQuestionsService {
     queryRunner.commitTransaction();
   }
 
-  private updateEntityWithImport(dbEntity: any, importEntry: any) {
+  private updateEntityWithImport(
+    dbEntity: any,
+    importEntry: any,
+    keys: string[],
+  ) {
     let changed = false;
-    for (const key in dbEntity) {
+    for (const key of keys) {
       if (
         importEntry[key] !== undefined &&
-        dbEntity[key] !== importEntry[key]
+        dbEntity[key] !== importEntry[key] &&
+        !Array.isArray(importEntry[key])
       ) {
         dbEntity[key] = importEntry[key];
         changed = true;
@@ -267,14 +272,17 @@ export class TransferQuestionsService {
       if (!dbQuestion) {
         dbQuestion = new QuestionEntity();
         dbQuestion.name = importQuestion.name;
-
         dbQuestion.orderPriority = importQuestion.orderPriority;
         dbQuestion.label = importQuestion.label;
         dbQuestion.type = importQuestion.type;
         dbQuestion.tags = [];
         dbQuestion.optionChoices = [];
       }
-      const changed = this.updateEntityWithImport(dbQuestion, importQuestion);
+      const changed = this.updateEntityWithImport(dbQuestion, importQuestion, [
+        'type',
+        'label',
+        'orderPriority',
+      ]);
       // Do not save unchange entities so the update propery stays useful
       if (changed) {
         await queryRunner.manager.save(dbQuestion);
@@ -282,6 +290,7 @@ export class TransferQuestionsService {
       if (importQuestion.optionChoices.length > 0) {
         await this.updateOptionsChoicesQuestion(
           importQuestion.optionChoices,
+          dbQuestion,
           queryRunner,
         );
       }
@@ -300,12 +309,9 @@ export class TransferQuestionsService {
 
   private async updateOptionsChoicesQuestion(
     importedOptionChoices,
-    queryRunner,
+    dbQuestion: QuestionEntity,
+    queryRunner: QueryRunner,
   ) {
-    const dbQuestion = await this.questionRepository.findOne({
-      where: { name: importedOptionChoices[0].questionName },
-      relations: ['optionChoices'],
-    });
     for (const importedOptionChoice of importedOptionChoices) {
       const dbOptionChoice = dbQuestion.optionChoices.find(
         (dbOptionChoice) =>
@@ -315,17 +321,22 @@ export class TransferQuestionsService {
         const changed = this.updateEntityWithImport(
           dbOptionChoice,
           importedOptionChoice,
+          ['label', 'orderPriority'],
         );
         if (changed) {
           await queryRunner.manager.save(dbOptionChoice);
         }
       } else {
         const newOptionChoice = new OptionChoiceEntity();
+        dbQuestion.optionChoices.push(newOptionChoice);
         newOptionChoice.question = dbQuestion;
         newOptionChoice.label = importedOptionChoice.label;
         newOptionChoice.orderPriority = importedOptionChoice.orderPriority;
         newOptionChoice.name = importedOptionChoice.name;
-        await queryRunner.manager.save(newOptionChoice);
+        const newOptionChoiceSaved = await queryRunner.manager.save(
+          newOptionChoice,
+        );
+        dbQuestion.optionChoices.push(newOptionChoiceSaved);
       }
     }
     await this.removeOptionChoicesFromQ(
@@ -340,11 +351,11 @@ export class TransferQuestionsService {
     question,
     queryRunner: QueryRunner,
   ) {
-    const orderProArrayImport = importedOptionChoices.map(
+    const orderPrioArrayImport = importedOptionChoices.map(
       (o) => o.orderPriority,
     );
     for (const dbOptionChoice of question.optionChoices) {
-      if (!orderProArrayImport.includes(dbOptionChoice.orderPriority)) {
+      if (!orderPrioArrayImport.includes(dbOptionChoice.orderPriority)) {
         await queryRunner.manager.remove(dbOptionChoice);
       }
     }
