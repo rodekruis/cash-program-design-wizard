@@ -498,17 +498,31 @@
       },
       {
         "label": {
+          "en": "Returnee"
+        },
+        "name": "returnee",
+        "orderPriority": 5
+      },
+      {
+        "label": {
+          "en": "Returnee in host community"
+        },
+        "name": "returnee-in-host-community",
+        "orderPriority": 6
+      },
+      {
+        "label": {
           "en": "Currently Unknown"
         },
         "name": "unknown",
-        "orderPriority": 5
+        "orderPriority": 7
       },
       {
         "label": {
           "en": "Other please add in comments"
         },
         "name": "other",
-        "orderPriority": 6
+        "orderPriority": 8
       }
     ]
   },
