@@ -13,3 +13,10 @@ export class ProgramDto {
   @IsOptional()
   public readonly narrativeReportTemplate: string;
 }
+
+export class UpdateAllDto extends ProgramDto {
+  @ApiProperty({ example: 'fill_in_secret' })
+  @IsNotEmpty()
+  @IsString()
+  public readonly secret: string;
+}
