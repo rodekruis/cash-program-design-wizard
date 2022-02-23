@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { parse } from 'csv-parse/sync';
 import { Connection, QueryRunner, Repository } from 'typeorm';
 import { QuestionEntity } from '../questions/question.entity';
+import { SubsectionEntity } from '../sub-sections/sub-section.entity';
 import { TagEntity } from '../tags/tag.entity';
 import { OptionChoiceEntity } from './../option-choices/option-choice.entity';
 import { ImportDataDto } from './dto/import-data.dto';
@@ -20,6 +21,9 @@ export class TransferQuestionsService {
 
   @InjectRepository(TagEntity)
   private readonly tagRepository: Repository<TagEntity>;
+
+  @InjectRepository(SubsectionEntity)
+  private readonly subsectionRepository: Repository<SubsectionEntity>;
 
   @InjectRepository(OptionChoiceEntity)
   private readonly optionChoiceRepository: Repository<OptionChoiceEntity>;
@@ -78,6 +82,7 @@ export class TransferQuestionsService {
     length?: number;
     error?: any;
   }> {
+    console.log('Starting import...');
     let records;
 
     try {
@@ -95,7 +100,7 @@ export class TransferQuestionsService {
         `File could not be parsed.\n\nPotential cause: Make sure to save CSV with ';' separator'\n\n Details:${JSON.stringify(
           error,
         )}`,
-        HttpStatus.UNAUTHORIZED,
+        HttpStatus.BAD_REQUEST,
       );
     }
 
@@ -160,13 +165,13 @@ export class TransferQuestionsService {
         const error = `Question '${questionName}': ${
           OptionChoiceNameEnum.name
         }${i + 1} is not filled in`;
-        throw new HttpException(error, HttpStatus.UNAUTHORIZED);
+        throw new HttpException(error, HttpStatus.BAD_REQUEST);
       }
       if (optionChoiceName && !optionChoiceLabel) {
         const error = `Question '${questionName}': ${
           OptionChoiceNameEnum.label
         }${i + 1} is not filled in`;
-        throw new HttpException(error, HttpStatus.UNAUTHORIZED);
+        throw new HttpException(error, HttpStatus.BAD_REQUEST);
       }
 
       // If a count of 5 options cannot be found break loop
@@ -255,17 +260,24 @@ export class TransferQuestionsService {
 
   private async updateQuestions(importQuestions: any[], queryRunner) {
     for (const importQuestion of importQuestions) {
-      const dbQuestion = await this.questionRepository.findOne({
+      let dbQuestion = await this.questionRepository.findOne({
         where: { name: importQuestion.name },
+        relations: ['tags', 'optionChoices', 'subsection'],
       });
       if (!dbQuestion) {
-        const error = `Question with name: '${importQuestion.name}' does not exist`;
-        throw new HttpException(error, HttpStatus.UNAUTHORIZED);
+        dbQuestion = new QuestionEntity();
+        dbQuestion.name = importQuestion.name;
+
+        dbQuestion.orderPriority = importQuestion.orderPriority;
+        dbQuestion.label = importQuestion.label;
+        dbQuestion.type = importQuestion.type;
+        dbQuestion.tags = [];
+        dbQuestion.optionChoices = [];
       }
       const changed = this.updateEntityWithImport(dbQuestion, importQuestion);
       // Do not save unchange entities so the update propery stays useful
       if (changed) {
-        queryRunner.manager.save(dbQuestion);
+        await queryRunner.manager.save(dbQuestion);
       }
       if (importQuestion.optionChoices.length > 0) {
         await this.updateOptionsChoicesQuestion(
@@ -274,8 +286,13 @@ export class TransferQuestionsService {
         );
       }
       await this.updateTagsForQuestion(
-        importQuestion.tags,
-        dbQuestion.name,
+        JSON.parse(JSON.stringify(importQuestion.tags)),
+        dbQuestion,
+        queryRunner,
+      );
+      await this.updateSubsectionForQ(
+        importQuestion.subSection,
+        dbQuestion,
         queryRunner,
       );
     }
@@ -335,46 +352,64 @@ export class TransferQuestionsService {
 
   private async updateTagsForQuestion(
     importedTags: string[],
-    dbQuestionName: string,
+    dbQuestion: QuestionEntity,
     queryRunner: QueryRunner,
   ) {
-    const dbQuestion = await this.questionRepository.findOne({
-      where: { name: dbQuestionName },
-      relations: ['tags'],
-    });
-
     let questionTagsChanged = false;
-    for (const tag of importedTags) {
-      const foundDbTag = dbQuestion.tags.find((dbTag) => dbTag.name === tag);
+    for (const importTag of importedTags) {
+      const foundDbTag = dbQuestion.tags.find(
+        (dbTag) => dbTag.name === importTag,
+      );
       if (!foundDbTag) {
         questionTagsChanged = true;
         const existingTag = await this.tagRepository.findOne({
-          where: { name: tag },
+          where: { name: importTag },
         });
         if (existingTag) {
           dbQuestion.tags.push(existingTag);
         } else {
           throw new HttpException(
-            `Tag not found '${tag}' at question: '${dbQuestionName}'`,
+            `Tag not found '${importTag}' at question: '${dbQuestion.name}'`,
             HttpStatus.UNAUTHORIZED,
           );
-          // const newTag = new TagEntity();
-          // newTag.name = tag;
-          // const savedTag = await queryRunner.manager.save(newTag);
-          // dbQuestion.tags.push(savedTag);
         }
       }
-      // Remove tags that are not in import
-      const newRelatedTags = dbQuestion.tags.filter((dbTag) =>
-        importedTags.includes(dbTag.name),
-      );
-      if (newRelatedTags.length < dbQuestion.tags.length) {
-        dbQuestion.tags = newRelatedTags;
+    }
 
-        questionTagsChanged = true;
-      }
+    // Remove tags that are not in import
+    const newRelatedTags = dbQuestion.tags.filter((dbTag) =>
+      importedTags.includes(dbTag.name),
+    );
+    if (newRelatedTags.length < dbQuestion.tags.length) {
+      dbQuestion.tags = newRelatedTags;
+
+      questionTagsChanged = true;
     }
     if (questionTagsChanged) {
+      await queryRunner.manager.save(dbQuestion);
+    }
+  }
+
+  private async updateSubsectionForQ(
+    importSubsectionName: string,
+
+    dbQuestion: QuestionEntity,
+    queryRunner: QueryRunner,
+  ) {
+    const subsection = await this.subsectionRepository.findOne({
+      where: { name: importSubsectionName },
+    });
+    if (!subsection) {
+      throw new HttpException(
+        `Subsection does not exist: '${importSubsectionName}`,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    if (
+      !dbQuestion.subsection ||
+      dbQuestion.subsection.name !== importSubsectionName
+    ) {
+      dbQuestion.subsection = subsection;
       await queryRunner.manager.save(dbQuestion);
     }
   }
