@@ -60,27 +60,26 @@ export class RolesProgramGuard implements CanActivate {
 
     let programIdToCheck;
 
-    if (request.body.programId && request.body.programId) {
+    if (request.params.programId && request.body.programId) {
       // if request has program id in body and param and it is not equal -> no access
-      if (request.body.programId !== request.body.programId) {
+      if (request.params.programId !== request.body.programId) {
         return false;
       } else {
         programIdToCheck = request.body.programId;
       }
     } else if (request.body.programId) {
       programIdToCheck = request.body.programId;
-    } else if (request.param.programId) {
-      programIdToCheck = request.body.programId;
+    } else if (request.params.programId) {
+      programIdToCheck = request.params.programId;
     }
 
     const userRoles = [];
     if (user.programAssignments) {
       for (const programAssignment of user.programAssignments) {
-        if (programIdToCheck) {
-          if (programIdToCheck === programAssignment.program.id) {
-            userRoles.push(programAssignment.role);
-          }
-        } else {
+        if (
+          programAssignment.program &&
+          programIdToCheck === programAssignment.program.id
+        ) {
           userRoles.push(programAssignment.role);
         }
       }
