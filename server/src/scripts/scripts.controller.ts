@@ -110,15 +110,6 @@ export class ScriptsController {
       throw new HttpException('Missing file', HttpStatus.BAD_REQUEST);
     }
 
-    const allowedTypes = [
-      'text/csv',
-      'text/comma-separated-values',
-      'application/csv',
-    ];
-    if (file && !allowedTypes.includes(file.mimetype)) {
-      throw new HttpException('Invalid file', HttpStatus.BAD_REQUEST);
-    }
-
     return await this.transferQuestionsService.import(file.buffer);
   }
 }
