@@ -1,37 +1,42 @@
 [
   {
     "name": "subtest1-1",
-    "orderPriority": 992,
+    "orderPriority": 110,
     "section": "test1"
   },
   {
     "name": "subtest1-2",
-    "orderPriority": 993,
+    "orderPriority": 120,
     "section": "test1"
   },
   {
     "name": "subtest1-3",
-    "orderPriority": 994,
+    "orderPriority": 130,
+    "section": "test1"
+  },
+  {
+    "name": "subtest1-4",
+    "orderPriority": 140,
     "section": "test1"
   },
   {
     "name": "subtest2-1",
-    "orderPriority": 995,
+    "orderPriority": 210,
     "section": "test2"
   },
   {
     "name": "subtest2-2",
-    "orderPriority": 996,
+    "orderPriority": 220,
     "section": "test2"
   },
   {
     "name": "subtest2-3",
-    "orderPriority": 997,
+    "orderPriority": 230,
     "section": "test2"
   },
   {
     "name": "subtest2-4",
-    "orderPriority": 998,
+    "orderPriority": 240,
     "section": "test2"
   }
 ]
