@@ -285,8 +285,8 @@ To run this file manually, locally, do:
 
 ### Libraries in use in front-end/client app
 
-- [Ionic v5+](https://ionicframework.com/docs/)
-- [Angular v12](https://v12.angular.io/docs/)
+- [Ionic v6+](https://ionicframework.com/docs/)
+- [Angular v13](https://v13.angular.io/docs/)
 - [`ngx-translate`](https://github.com/ngx-translate/core#readme)
 - [`@auth0/angular-jwt`](https://www.npmjs.com/package/@auth0/angular-jwt)
 - [`ngx-markdown`](https://www.npmjs.com/package/ngx-markdown)
