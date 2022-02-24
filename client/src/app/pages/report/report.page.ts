@@ -23,6 +23,10 @@ export class ReportPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
 
+    if (this.id) {
+      this.state.initProgramData(this.id);
+    }
+
     this.programUpdates = this.state.programMetaData$.subscribe((program) => {
       this.name = program.name as string;
     });
