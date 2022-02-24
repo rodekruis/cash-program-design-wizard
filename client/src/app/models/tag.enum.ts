@@ -1,6 +1,8 @@
 export enum Tag {
   all = '',
-  cash = 'cash',
-  data = 'data',
+  fsp = 'fsp',
+  cea = 'cea',
   people = 'people',
+  coordination = 'coordination',
+  registration = 'registration',
 }

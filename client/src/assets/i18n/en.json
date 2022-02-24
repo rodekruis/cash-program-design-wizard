@@ -31,9 +31,11 @@
   "filters": {
     "tags": {
       "all": "All",
-      "cash": "Cash",
-      "data": "Data",
-      "people": "People"
+      "fsp": "FSP",
+      "cea": "CEA",
+      "people": "People",
+      "registration": "Registration",
+      "coordination": "Coordination"
     }
   },
   "login-form": {
