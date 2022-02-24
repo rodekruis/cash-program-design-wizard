@@ -14,6 +14,8 @@
       autocomplete="email username"
       clearInput="true"
       [disabled]="inProgress"
+      enterkeyhint="next"
+      (keyup.enter)="passwordInput.setFocus()"
     ></ion-input>
   </ion-item>
   <ion-item>
@@ -21,6 +23,7 @@
       'login-form.password.label' | translate
     }}</ion-label>
     <ion-input
+      #passwordInput
       [(ngModel)]="model.password"
       name="password"
       type="password"
@@ -30,6 +33,8 @@
       clearInput="true"
       clearOnEdit="false"
       [disabled]="inProgress"
+      enterkeyhint="go"
+      (keyup.enter)="onSubmit()"
     ></ion-input>
   </ion-item>
   <ion-button

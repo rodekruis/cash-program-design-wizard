@@ -25,6 +25,10 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {}
 
   public onSubmit() {
+    if (!this.model.email || !this.model.password) {
+      return;
+    }
+
     this.inProgress = true;
     this.logInError = false;
 
