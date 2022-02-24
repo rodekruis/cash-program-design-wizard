@@ -13,6 +13,8 @@
     "gencer.html-slim-scss-css-class-completion",
     "angular.ng-template",
     "lokalise.i18n-ally",
-    "xshrim.txt-syntax"
+    "xshrim.txt-syntax",
+    "ms-azuretools.vscode-azureappservice",
+    "ms-azuretools.vscode-azurestaticwebapps"
   ]
 }
