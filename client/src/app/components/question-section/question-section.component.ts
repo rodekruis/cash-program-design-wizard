@@ -39,7 +39,9 @@ export class QuestionSectionComponent implements OnInit, OnDestroy {
   public shouldShowQuestion(questionTags: QuestionInput['tags']): boolean {
     return (
       this.state.filters.tag === Tag.all ||
-      questionTags.includes(this.state.filters.tag)
+      (questionTags &&
+        questionTags.length &&
+        questionTags.includes(this.state.filters.tag))
     );
   }
 
@@ -47,8 +49,11 @@ export class QuestionSectionComponent implements OnInit, OnDestroy {
     if (
       !subsection.questions ||
       (this.state.filters.tag !== Tag.all &&
-        !subsection.questions.some((question) =>
-          question.tags.includes(this.state.filters.tag),
+        !subsection.questions.some(
+          (question) =>
+            question.tags &&
+            question.tags.length &&
+            question.tags.includes(this.state.filters.tag),
         ))
     ) {
       return true;

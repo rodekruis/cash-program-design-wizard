@@ -75,7 +75,7 @@
     },
     "orderPriority": 2,
     "subsection": "pa-gender",
-    "tags": ["people", "cash"]
+    "tags": ["people", "fsp"]
   },
   {
     "name": "pa-age-01",
@@ -1569,7 +1569,7 @@
     },
     "orderPriority": 54,
     "subsection": "shopping-frequency",
-    "tags": ["cash"],
+    "tags": ["fsp"],
     "optionChoices": [
       {
         "label": {
@@ -1721,7 +1721,7 @@
     },
     "orderPriority": 60,
     "subsection": "market-location",
-    "tags": ["cash"]
+    "tags": ["fsp"]
   },
   {
     "name": "market-location-04",
@@ -1816,7 +1816,7 @@
     },
     "orderPriority": 63,
     "subsection": "basket-size",
-    "tags": ["cash"]
+    "tags": ["fsp"]
   },
   {
     "name": "basket-size-03",

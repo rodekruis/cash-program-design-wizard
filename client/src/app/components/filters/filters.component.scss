@@ -1,7 +1,11 @@
-:host {
-  .segment-button-checked {
-    background: rgba(var(--ion-color-dark-rgb), 0.3);
-    border-radius: 10px 10px 0 0;
-    border-bottom: 3px solid var(--ion-color-dark);
+ion-segment-button {
+  --padding-start: 0.6em;
+  --padding-end: 0.6em;
+  --border-radius: 0.6em 0.6em 0 0;
+  --indicator-height: 0.3em;
+
+  // Literal override seems to be necessary as `--background-checked` isn't working.
+  &.segment-button-checked {
+    background-color: var(--ion-color-light);
   }
 }
