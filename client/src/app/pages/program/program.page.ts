@@ -24,6 +24,12 @@ export class ProgramPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.programUpdates = this.state.programMetaData$.subscribe((program) => {
+      this.name = program.name as string;
+    });
+  }
+
+  ionViewWillEnter() {
     this.id = this.route.snapshot.params.id;
 
     if (!this.id) {
@@ -41,11 +47,12 @@ export class ProgramPage implements OnInit, OnDestroy {
             });
           }
         });
+      return;
     }
 
-    this.programUpdates = this.state.programMetaData$.subscribe((program) => {
-      this.name = program.name as string;
-    });
+    if (this.id) {
+      this.state.initProgramData(this.id);
+    }
   }
 
   ngOnDestroy() {

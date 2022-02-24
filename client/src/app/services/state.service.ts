@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ActivationStart, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { mockProgram } from '../mocks/program.mock';
@@ -53,7 +53,6 @@ export class StateService {
     this.sections$ = this.sectionsStore.asObservable();
     this.programMetaData$ = this.programMetaDataStore.asObservable();
 
-    this.updateProgramId();
     this.updateFilters();
 
     this.authService.authenticationState$.subscribe((user) => {
@@ -97,23 +96,13 @@ export class StateService {
     });
   }
 
-  private updateProgramId() {
-    // Take the ProgramId from the URL (when/if available)
-    this.router.events.subscribe(async (event: ActivationStart) => {
-      if (
-        event.snapshot &&
-        event.snapshot.params &&
-        event.snapshot.params.id &&
-        this.programId !== event.snapshot.params.id
-      ) {
-        this.programId = event.snapshot.params.id;
-        this.setProgramMetaData('id', event.snapshot.params.id);
+  public async initProgramData(programId: string) {
+    this.programId = programId;
+    this.setProgramMetaData('id', programId);
 
-        // Trigger the retrieval of the Program-data here, for lack of a better mechanism. :/
-        await this.updateSections();
-        this.updateActiveSectionFromUrl();
-      }
-    });
+    // Trigger the retrieval of the Program-data here, for lack of a better mechanism. :/
+    await this.updateSections();
+    this.updateActiveSectionFromUrl();
   }
 
   private async updateFilters() {
@@ -216,6 +205,7 @@ export class StateService {
   }
 
   private clearState() {
+    this.programId = null;
     this.filters = { tag: Tag.all };
     this.activeSection = null;
     this.sections = [];
@@ -223,6 +213,7 @@ export class StateService {
     this.programMetaDataStore.next({
       id: null,
       name: '',
+      narrativeReportTemplate: '',
     });
   }
 }
