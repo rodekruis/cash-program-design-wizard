@@ -17,7 +17,7 @@ describe('CommentInputComponent', () => {
   let fixture: ComponentFixture<CommentInputComponent>;
 
   const mockParams = {
-    tag: Tag.data,
+    tag: Tag.people,
   };
 
   beforeEach(
