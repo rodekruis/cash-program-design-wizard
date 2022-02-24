@@ -100,7 +100,7 @@
       "submit": {
         "label": "Delete question and related answers and comments"
       },
-      "result": "Succesfully deleted question {{name}}"
+      "result": "Successfully deleted question {{name}}"
     }
   },
   "nav-progress": {
