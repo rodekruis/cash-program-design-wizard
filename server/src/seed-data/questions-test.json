@@ -7,7 +7,7 @@
     },
     "orderPriority": 1000,
     "subsection": "subtest1-1",
-    "tags": ["cash"]
+    "tags": ["payment"]
   },
   {
     "name": "test-text-long",
@@ -17,7 +17,7 @@
     },
     "orderPriority": 1010,
     "subsection": "subtest1-1",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "test-numeric",
@@ -27,7 +27,7 @@
     },
     "orderPriority": 1020,
     "subsection": "subtest1-1",
-    "tags": ["data"]
+    "tags": ["registration"]
   },
   {
     "name": "test-select-1",
@@ -37,7 +37,7 @@
     },
     "orderPriority": 1100,
     "subsection": "subtest1-2",
-    "tags": ["cash"],
+    "tags": ["inclusion", "payment"],
     "optionChoices": [
       {
         "label": {
@@ -70,7 +70,7 @@
     },
     "orderPriority": 1110,
     "subsection": "subtest1-2",
-    "tags": ["cash"]
+    "tags": []
   },
   {
     "name": "test-select-n",
@@ -80,7 +80,7 @@
     },
     "orderPriority": 1200,
     "subsection": "subtest1-3",
-    "tags": ["data"],
+    "tags": ["registration"],
     "optionChoices": [
       {
         "label": {
@@ -113,7 +113,7 @@
     },
     "orderPriority": 1210,
     "subsection": "subtest1-3",
-    "tags": ["data"]
+    "tags": ["registration", "monitoring"]
   },
   {
     "name": "test-text-markdown",
@@ -123,7 +123,7 @@
     },
     "orderPriority": 1210,
     "subsection": "subtest1-4",
-    "tags": ["data"]
+    "tags": ["payment", "evaluation"]
   },
   {
     "name": "test-text-markdown-link",
@@ -133,7 +133,7 @@
     },
     "orderPriority": 1210,
     "subsection": "subtest1-4",
-    "tags": ["data"]
+    "tags": ["registration"]
   },
   {
     "name": "test2-text-1",
@@ -153,7 +153,7 @@
     },
     "orderPriority": 1200,
     "subsection": "subtest2-2",
-    "tags": ["data"],
+    "tags": ["registration"],
     "optionChoices": [
       {
         "label": {
@@ -172,7 +172,7 @@
     },
     "orderPriority": 1200,
     "subsection": "subtest2-2",
-    "tags": ["data"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -205,7 +205,7 @@
     },
     "orderPriority": 1300,
     "subsection": "subtest2-3",
-    "tags": ["cash"],
+    "tags": ["payment"],
     "optionChoices": [
       {
         "label": {
@@ -224,6 +224,6 @@
     },
     "orderPriority": 1400,
     "subsection": "subtest2-4",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   }
 ]

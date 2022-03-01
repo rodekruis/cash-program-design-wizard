@@ -31,11 +31,14 @@
   "filters": {
     "tags": {
       "all": "All",
-      "fsp": "FSP",
-      "cea": "CEA",
-      "people": "People",
+      "design": "Design",
       "registration": "Registration",
-      "coordination": "Coordination"
+      "validation": "Validation",
+      "inclusion": "Inclusion",
+      "reviewInclusion": "Review Inclusion",
+      "payment": "Payment",
+      "monitoring": "Monitoring",
+      "evaluation": "Evaluation"
     }
   },
   "login-form": {
@@ -121,15 +124,8 @@
     "sync-done": "Your locally saved answers are stored on the server."
   },
   "phases": {
-    "design": "Design",
-    "inclusion": "Inclusion",
-    "monitoring-evaluation": "Monitoring & evaluation",
     "overview": "Program overview",
-    "payment": "Payment",
-    "registration": "Registration",
-    "report": "Narrative report",
-    "review-inclusion": "Review inclusion",
-    "validation": "Validation"
+    "report": "Narrative report"
   },
   "program": {
     "page-title": "Program: {{name}}"

@@ -7,7 +7,7 @@
     },
     "orderPriority": 1,
     "subsection": "pa-gender",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -75,7 +75,7 @@
     },
     "orderPriority": 2,
     "subsection": "pa-gender",
-    "tags": ["people", "fsp"]
+    "tags": ["inclusion", "payment"]
   },
   {
     "name": "pa-age-01",
@@ -85,7 +85,7 @@
     },
     "orderPriority": 3,
     "subsection": "pa-age",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -174,7 +174,7 @@
     },
     "orderPriority": 4,
     "subsection": "pa-age",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-marital-status-01",
@@ -184,7 +184,7 @@
     },
     "orderPriority": 5,
     "subsection": "pa-marital-status",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -259,7 +259,7 @@
     },
     "orderPriority": 6,
     "subsection": "pa-marital-status",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-shelter-status-01",
@@ -269,7 +269,7 @@
     },
     "orderPriority": 7,
     "subsection": "pa-shelter-status",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -330,7 +330,7 @@
     },
     "orderPriority": 8,
     "subsection": "pa-shelter-status",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-lives-01",
@@ -340,7 +340,7 @@
     },
     "orderPriority": 9,
     "subsection": "pa-lives",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -373,7 +373,7 @@
     },
     "orderPriority": 10,
     "subsection": "pa-lives",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -413,7 +413,7 @@
     },
     "orderPriority": 11,
     "subsection": "pa-lives",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-lives-04",
@@ -423,7 +423,7 @@
     },
     "orderPriority": 12,
     "subsection": "pa-lives",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-legal-status-01",
@@ -433,7 +433,7 @@
     },
     "orderPriority": 13,
     "subsection": "pa-legal-status",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -466,7 +466,7 @@
     },
     "orderPriority": 14,
     "subsection": "pa-legal-status",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -534,7 +534,7 @@
     },
     "orderPriority": 16,
     "subsection": "pa-legal-status",
-    "tags": ["people", "coordination"]
+    "tags": ["inclusion", "validation"]
   },
   {
     "name": "pa-job-type-01",
@@ -577,7 +577,7 @@
     },
     "orderPriority": 18,
     "subsection": "pa-job-type",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -652,7 +652,7 @@
     },
     "orderPriority": 19,
     "subsection": "pa-job-type",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-job-type-04",
@@ -662,7 +662,7 @@
     },
     "orderPriority": 20,
     "subsection": "pa-job-type",
-    "tags": ["people", "coordination"]
+    "tags": ["inclusion", "validation"]
   },
   {
     "name": "pa-support-areas-01",
@@ -672,7 +672,7 @@
     },
     "orderPriority": 21,
     "subsection": "pa-support-areas",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -775,7 +775,7 @@
     },
     "orderPriority": 22,
     "subsection": "pa-support-areas",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-support-areas-03",
@@ -785,7 +785,7 @@
     },
     "orderPriority": 23,
     "subsection": "pa-support-areas",
-    "tags": ["people", "coordination"]
+    "tags": ["inclusion", "validation"]
   },
   {
     "name": "pa-support-areas-04",
@@ -795,7 +795,7 @@
     },
     "orderPriority": 24,
     "subsection": "pa-support-areas",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-disaster-type-01",
@@ -805,7 +805,7 @@
     },
     "orderPriority": 25,
     "subsection": "pa-disaster-type",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -908,7 +908,7 @@
     },
     "orderPriority": 26,
     "subsection": "pa-disaster-type",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-current-disaster-phase-01",
@@ -918,7 +918,7 @@
     },
     "orderPriority": 27,
     "subsection": "pa-current-disaster-phase",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -979,7 +979,7 @@
     },
     "orderPriority": 28,
     "subsection": "pa-current-disaster-phase",
-    "tags": ["people"]
+    "tags": ["inclusion"]
   },
   {
     "name": "pa-languages-spoken-01",
@@ -989,7 +989,7 @@
     },
     "orderPriority": 29,
     "subsection": "pa-languages-spoken",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -1106,7 +1106,7 @@
     },
     "orderPriority": 30,
     "subsection": "pa-languages-spoken",
-    "tags": ["people", "registration", "payment"]
+    "tags": ["inclusion", "registration", "payment"]
   },
   {
     "name": "pa-languages-spoken-03",
@@ -1116,7 +1116,7 @@
     },
     "orderPriority": 31,
     "subsection": "pa-languages-spoken",
-    "tags": ["people", "coordination"]
+    "tags": ["inclusion", "validation"]
   },
   {
     "name": "pa-literacy-01",
@@ -1126,7 +1126,7 @@
     },
     "orderPriority": 32,
     "subsection": "pa-literacy",
-    "tags": ["people"],
+    "tags": ["inclusion"],
     "optionChoices": [
       {
         "label": {
@@ -1194,7 +1194,7 @@
     },
     "orderPriority": 33,
     "subsection": "pa-literacy",
-    "tags": ["people", "coordination"]
+    "tags": ["inclusion", "validation"]
   },
   {
     "name": "digital-devices-01",
@@ -1204,7 +1204,7 @@
     },
     "orderPriority": 34,
     "subsection": "digital-devices",
-    "tags": ["people", "registration", "payment"],
+    "tags": ["inclusion", "registration", "payment"],
     "optionChoices": [
       {
         "label": {
@@ -1307,7 +1307,7 @@
     },
     "orderPriority": 35,
     "subsection": "digital-devices",
-    "tags": ["people", "registration", "payment"]
+    "tags": ["inclusion", "registration", "payment"]
   },
   {
     "name": "pa-trusted-information-sources-01",
@@ -1317,7 +1317,7 @@
     },
     "orderPriority": 36,
     "subsection": "pa-trusted-information-sources",
-    "tags": ["people", "registration", "payment", "CEA"],
+    "tags": ["inclusion", "registration", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -1455,7 +1455,7 @@
     },
     "orderPriority": 37,
     "subsection": "pa-trusted-information-sources",
-    "tags": ["people", "registration", "payment", "CEA"]
+    "tags": ["inclusion", "registration", "payment", "CEA"]
   },
   {
     "name": "pa-trusted-information-sources-03",
@@ -1465,7 +1465,7 @@
     },
     "orderPriority": 38,
     "subsection": "pa-trusted-information-sources",
-    "tags": ["people", "registration", "payment", "CEA"]
+    "tags": ["inclusion", "registration", "payment", "CEA"]
   },
   {
     "name": "pa-trusted-information-sources-04",
@@ -1475,7 +1475,7 @@
     },
     "orderPriority": 39,
     "subsection": "pa-trusted-information-sources",
-    "tags": ["people", "registration", "payment", "CEA"]
+    "tags": ["inclusion", "registration", "payment", "CEA"]
   },
   {
     "name": "pa-trusted-information-sources-05",
@@ -1485,7 +1485,7 @@
     },
     "orderPriority": 40,
     "subsection": "pa-trusted-information-sources",
-    "tags": ["people", "registration", "payment", "CEA"]
+    "tags": ["inclusion", "registration", "payment", "CEA"]
   },
   {
     "name": "pa-trusted-information-sources-06",
@@ -1495,7 +1495,7 @@
     },
     "orderPriority": 41,
     "subsection": "pa-trusted-information-sources",
-    "tags": ["people", "registration", "payment", "CEA"]
+    "tags": ["inclusion", "registration", "payment", "CEA"]
   },
   {
     "name": "shop-in-01",
@@ -1505,7 +1505,7 @@
     },
     "orderPriority": 50,
     "subsection": "shop-in",
-    "tags": ["people", "payment", "CEA"],
+    "tags": ["inclusion", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -1573,7 +1573,7 @@
     },
     "orderPriority": 51,
     "subsection": "shop-in",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "shopping-frequency-01",
@@ -1583,7 +1583,7 @@
     },
     "orderPriority": 54,
     "subsection": "shopping-frequency",
-    "tags": ["fsp"],
+    "tags": ["payment"],
     "optionChoices": [
       {
         "label": {
@@ -1637,7 +1637,7 @@
     },
     "orderPriority": 55,
     "subsection": "shopping-frequency",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "shopping-frequency-03",
@@ -1647,7 +1647,7 @@
     },
     "orderPriority": 56,
     "subsection": "shopping-frequency",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "market-location-01",
@@ -1657,7 +1657,7 @@
     },
     "orderPriority": 58,
     "subsection": "market-location",
-    "tags": ["people", "coordination", "payment", "CEA"],
+    "tags": ["inclusion", "validation", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -1725,7 +1725,7 @@
     },
     "orderPriority": 59,
     "subsection": "market-location",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "market-location-03",
@@ -1735,7 +1735,7 @@
     },
     "orderPriority": 60,
     "subsection": "market-location",
-    "tags": ["fsp"]
+    "tags": ["payment"]
   },
   {
     "name": "market-location-04",
@@ -1745,7 +1745,7 @@
     },
     "orderPriority": 61,
     "subsection": "market-location",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "basket-size-01",
@@ -1830,7 +1830,7 @@
     },
     "orderPriority": 63,
     "subsection": "basket-size",
-    "tags": ["fsp"]
+    "tags": ["payment"]
   },
   {
     "name": "basket-size-03",
@@ -1840,7 +1840,7 @@
     },
     "orderPriority": 64,
     "subsection": "basket-size",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "currencies-01",
@@ -1850,7 +1850,7 @@
     },
     "orderPriority": 67,
     "subsection": "currencies",
-    "tags": ["people", "coordination", "payment", "CEA"],
+    "tags": ["inclusion", "validation", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -1876,7 +1876,7 @@
     },
     "orderPriority": 68,
     "subsection": "currencies",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "currencies-03",
@@ -1886,7 +1886,7 @@
     },
     "orderPriority": 69,
     "subsection": "currencies",
-    "tags": ["people", "coordination", "payment", "CEA"],
+    "tags": ["inclusion", "validation", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -1961,7 +1961,7 @@
     },
     "orderPriority": 70,
     "subsection": "currencies",
-    "tags": ["people", "coordination", "payment", "CEA"],
+    "tags": ["inclusion", "validation", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -2036,7 +2036,7 @@
     },
     "orderPriority": 71,
     "subsection": "currencies",
-    "tags": ["people", "coordination", "payment", "CEA"],
+    "tags": ["inclusion", "validation", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -2111,7 +2111,7 @@
     },
     "orderPriority": 72,
     "subsection": "currencies",
-    "tags": ["people", "coordination", "payment", "CEA"],
+    "tags": ["inclusion", "validation", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -2186,7 +2186,7 @@
     },
     "orderPriority": 73,
     "subsection": "currencies",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "financial-services-01",
@@ -2196,7 +2196,7 @@
     },
     "orderPriority": 75,
     "subsection": "financial-services",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
+    "tags": ["inclusion", "validation", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -2250,7 +2250,7 @@
     },
     "orderPriority": 76,
     "subsection": "financial-services",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "financial-services-03",
@@ -2260,7 +2260,7 @@
     },
     "orderPriority": 77,
     "subsection": "financial-services",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "financial-services-04",
@@ -2270,7 +2270,7 @@
     },
     "orderPriority": 78,
     "subsection": "financial-services",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "financial-services-05",
@@ -2280,7 +2280,7 @@
     },
     "orderPriority": 79,
     "subsection": "financial-services",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "financial-services-06",
@@ -2290,7 +2290,7 @@
     },
     "orderPriority": 80,
     "subsection": "financial-services",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "budget-01",
@@ -2300,7 +2300,7 @@
     },
     "orderPriority": 83,
     "subsection": "budget",
-    "tags": ["people", "coordination", "payment", "CEA"],
+    "tags": ["inclusion", "validation", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -2340,7 +2340,7 @@
     },
     "orderPriority": 84,
     "subsection": "budget",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "budget-03",
@@ -2350,7 +2350,7 @@
     },
     "orderPriority": 85,
     "subsection": "budget",
-    "tags": ["people", "coordination", "payment", "CEA"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "budget-04",
@@ -2440,7 +2440,7 @@
     },
     "orderPriority": 91,
     "subsection": "community",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "community-02",
@@ -2470,7 +2470,7 @@
     },
     "orderPriority": 94,
     "subsection": "community",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget"]
+    "tags": ["inclusion", "validation", "payment", "CEA"]
   },
   {
     "name": "connectivity-01",
@@ -2480,7 +2480,7 @@
     },
     "orderPriority": 104,
     "subsection": "connectivity",
-    "tags": ["people", "coordination", "payment", "CEA", "Budget", "FSP"],
+    "tags": ["inclusion", "validation", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -2527,15 +2527,7 @@
     },
     "orderPriority": 105,
     "subsection": "connectivity",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ],
+    "tags": ["inclusion", "validation", "registration", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -2582,15 +2574,7 @@
     },
     "orderPriority": 106,
     "subsection": "connectivity",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ],
+    "tags": ["inclusion", "validation", "registration", "payment", "CEA"],
     "optionChoices": [
       {
         "label": {
@@ -2644,15 +2628,7 @@
     },
     "orderPriority": 107,
     "subsection": "connectivity",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
+    "tags": ["inclusion", "validation", "registration", "payment", "CEA"]
   },
   {
     "name": "connectivity-05",
@@ -2716,15 +2692,7 @@
     },
     "orderPriority": 109,
     "subsection": "connectivity",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
+    "tags": ["inclusion", "validation", "registration", "payment", "CEA"]
   },
   {
     "name": "connectivity-07",
@@ -2734,15 +2702,7 @@
     },
     "orderPriority": 110,
     "subsection": "connectivity",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
+    "tags": ["inclusion", "validation", "registration", "payment", "CEA"]
   },
   {
     "name": "connectivity-08",
@@ -2752,15 +2712,7 @@
     },
     "orderPriority": 111,
     "subsection": "connectivity",
-    "tags": [
-      "people",
-      "coordination",
-      "registration",
-      "payment",
-      "CEA",
-      "Budget",
-      "FSP"
-    ]
+    "tags": ["inclusion", "validation", "registration", "payment", "CEA"]
   },
   {
     "name": "registration-01",
@@ -2770,7 +2722,7 @@
     },
     "orderPriority": 119,
     "subsection": "registration",
-    "tags": ["people", "coordination", "registration", "CEA"]
+    "tags": ["inclusion", "validation", "registration", "CEA"]
   },
   {
     "name": "registration-02",
@@ -2780,7 +2732,7 @@
     },
     "orderPriority": 120,
     "subsection": "registration",
-    "tags": ["people", "coordination", "registration", "CEA"]
+    "tags": ["inclusion", "validation", "registration", "CEA"]
   },
   {
     "name": "registration-03",
@@ -2790,7 +2742,7 @@
     },
     "orderPriority": 121,
     "subsection": "registration",
-    "tags": ["people", "coordination", "registration", "CEA"]
+    "tags": ["inclusion", "validation", "registration", "CEA"]
   },
   {
     "name": "registration-04",
@@ -2800,7 +2752,7 @@
     },
     "orderPriority": 122,
     "subsection": "registration",
-    "tags": ["people", "coordination", "registration", "CEA"]
+    "tags": ["inclusion", "validation", "registration", "CEA"]
   },
   {
     "name": "registration-05",
@@ -2810,7 +2762,7 @@
     },
     "orderPriority": 123,
     "subsection": "registration",
-    "tags": ["people", "coordination", "registration", "CEA"]
+    "tags": ["inclusion", "validation", "registration", "CEA"]
   },
   {
     "name": "registration-06",
@@ -2820,7 +2772,7 @@
     },
     "orderPriority": 124,
     "subsection": "registration",
-    "tags": ["people", "coordination", "registration", "CEA"]
+    "tags": ["inclusion", "validation", "registration", "CEA"]
   },
   {
     "name": "registration-07",
@@ -2830,7 +2782,7 @@
     },
     "orderPriority": 125,
     "subsection": "registration",
-    "tags": ["people", "coordination", "registration", "CEA"]
+    "tags": ["inclusion", "validation", "registration", "CEA"]
   },
   {
     "name": "registration-08",
@@ -2840,7 +2792,7 @@
     },
     "orderPriority": 126,
     "subsection": "registration",
-    "tags": ["people", "coordination", "registration", "CEA"]
+    "tags": ["inclusion", "validation", "registration", "CEA"]
   },
   {
     "name": "registration-09",
@@ -2850,7 +2802,7 @@
     },
     "orderPriority": 127,
     "subsection": "registration",
-    "tags": ["people", "coordination", "registration", "CEA", "FSP"]
+    "tags": ["inclusion", "validation", "registration", "CEA"]
   },
   {
     "name": "distribution-01",

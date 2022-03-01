@@ -1,8 +1,11 @@
 export enum Tag {
   all = '',
-  fsp = 'fsp',
-  cea = 'cea',
-  people = 'people',
-  coordination = 'coordination',
+  design = 'design',
   registration = 'registration',
+  validation = 'validation',
+  inclusion = 'inclusion',
+  reviewInclusion = 'reviewInclusion',
+  payment = 'payment',
+  monitoring = 'monitoring',
+  evaluation = 'evaluation',
 }
