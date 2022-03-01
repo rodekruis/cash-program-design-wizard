@@ -337,7 +337,6 @@ export class TransferQuestionsService {
       } else {
         const newOptionChoice = new OptionChoiceEntity();
         dbQuestion.optionChoices.push(newOptionChoice);
-        newOptionChoice.question = dbQuestion;
         newOptionChoice.label = importedOptionChoice.label;
         newOptionChoice.orderPriority = importedOptionChoice.orderPriority;
         newOptionChoice.name = importedOptionChoice.name;
@@ -345,6 +344,7 @@ export class TransferQuestionsService {
           newOptionChoice,
         );
         dbQuestion.optionChoices.push(newOptionChoiceSaved);
+        await queryRunner.manager.save(dbQuestion);
       }
     }
     await this.removeOptionChoicesFromQ(
