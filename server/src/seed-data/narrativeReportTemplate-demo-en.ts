@@ -60,7 +60,7 @@ We wil lbe asking the targeted groups to bring the following documents {{registr
 
 Other info depending
 
-### Title
+### OTHER TITLE
 
 Other info depending
 
