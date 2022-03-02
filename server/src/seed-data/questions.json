@@ -7,7 +7,16 @@
     },
     "orderPriority": 1,
     "subsection": "pa-gender",
-    "tags": ["inclusion"],
+    "tags": [
+      "people",
+      "registration",
+      "validation",
+      "inclusion",
+      "reviewInclusion",
+      "payment",
+      "monitoring",
+      "evaluation"
+    ],
     "optionChoices": [
       {
         "label": {
