@@ -21,6 +21,7 @@ import { TransferQuestionsService } from './transfer-questions';
       TagEntity,
       SectionEntity,
       QuestionEntity,
+      SectionEntity,
       SubsectionEntity,
       OptionChoiceEntity,
       UserEntity,
