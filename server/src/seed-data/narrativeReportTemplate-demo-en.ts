@@ -6,8 +6,8 @@ export const narrativeReportTemplateDemoEn = `
 - END DATE: {{program-date-end}}
 - BUDGET: {{program-budget}}
 
-## Situation Assessment
 
+## Situation Assessment
 
 The targeted location has been affected by:
 {{pa-disaster-type-01}}
@@ -28,10 +28,9 @@ The total amount of people/households affected is curerntly estimated at {{budge
 
 ## THE PROGRAM DETAILS ARE AS FOLLOWS
 
-
 ### Budget
 
-The donor currency is {{currencies-03}} and the prefered local curency for districution is {{budget-01}}. Total budget asked {{budget-all-05}} in {{budget-01}}. As mentioned the total amount of people/households affected is {{budget-all-02}} however we will be specifically targeting {{budget-all-03}}
+The donor currency is {{currencies-03}} and the prefered local currency for distribution is {{budget-01}}. Total budget asked {{budget-all-05}} in {{budget-01}}. As mentioned the total amount of people/households affected is {{budget-all-02}} however we will be specifically targeting {{budget-all-03}}
 
 
 ### Stakeholders included and brought into the discussion are:
@@ -42,7 +41,7 @@ The donor currency is {{currencies-03}} and the prefered local curency for distr
 
 ### FSP Financial Service Provider
 
-Common FSP's used by the people targetd is/are {{cash-use-02}}.
+Common FSP's used by the people targeted is/are {{cash-use-02}}.
 
 We will use the following FSP for the program {{cash-01}}
 
@@ -55,13 +54,29 @@ The registration will take place at {{registration-03}}
 We wil lbe asking the targeted groups to bring the following documents {{registration-04}}
 
 
+### Validation
 
-### Title
+...
 
-Other info depending
 
-### Title
+### Inclusion
 
-Other info depending
+...
+
+
+### Review Inclusion
+
+...
+
+
+### Payment
+
+...
+
+
+### Monitoring & Evaluation
+
+...
+
 
 `;
