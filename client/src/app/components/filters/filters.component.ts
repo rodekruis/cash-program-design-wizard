@@ -64,6 +64,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
     if (!sections.length) {
       return;
     }
+    // Start counting from 0
+    this.tagCount.clear();
 
     const allQuestions: QuestionInput[] = [];
 
