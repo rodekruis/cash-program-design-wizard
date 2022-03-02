@@ -1,6 +1,6 @@
 export enum Tag {
   all = '',
-  design = 'design',
+  people = 'people',
   registration = 'registration',
   validation = 'validation',
   inclusion = 'inclusion',
