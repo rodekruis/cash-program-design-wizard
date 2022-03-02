@@ -1,0 +1,18 @@
+# See: https://typescript-eslint.io/docs/linting/#ignoring-unnecessary-files
+# See .gitignore
+
+# IDE / Editor config
+.vscode
+
+# Third-party code
+node_modules
+
+# Generated build artefacts
+coverage
+dist
+
+# Configuration files
+ormconfig.ts
+
+# WIP / Test files
+test/
