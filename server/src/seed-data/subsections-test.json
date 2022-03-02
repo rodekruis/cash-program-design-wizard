@@ -20,6 +20,11 @@
     "section": "test1"
   },
   {
+    "name": "subtest1-5",
+    "orderPriority": 150,
+    "section": "test1"
+  },
+  {
     "name": "subtest2-1",
     "orderPriority": 210,
     "section": "test2"
