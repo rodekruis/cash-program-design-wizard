@@ -1,10 +1,9 @@
 version: '3.7'
 
 services:
-  cpdwdb:
+  db:
     image: 'postgres:9.6'
     init: true
-    container_name: cpdw-db
     environment:
       - POSTGRES_USER=cpdw
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
