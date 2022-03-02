@@ -4,10 +4,9 @@
 # IDE / Editor config
 .vscode
 
+# Third-party code
+node_modules
+
 # Generated build artefacts
 coverage
 dist
-
-# Angular/Ionic related files
-www
-client/src/test.ts
