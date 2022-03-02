@@ -18,7 +18,7 @@ describe('StateService', () => {
   let route: ActivatedRoute;
 
   const mockParams = {
-    tag: Tag.people,
+    tag: Tag.validation,
   };
 
   const mockUser: User = {
@@ -62,6 +62,6 @@ describe('StateService', () => {
   });
 
   it('should set the "tag"-filter to the predefined value', () => {
-    expect(service.filters.tag).toBe(Tag.people);
+    expect(service.filters.tag).toBe(Tag.validation);
   });
 });

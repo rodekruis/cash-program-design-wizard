@@ -15,7 +15,7 @@ describe('ProgramPage', () => {
   let fixture: ComponentFixture<ProgramPage>;
 
   const mockParams = {
-    tag: Tag.people,
+    tag: Tag.validation,
   };
 
   beforeEach(

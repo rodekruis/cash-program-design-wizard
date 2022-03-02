@@ -33,13 +33,13 @@
           *ngIf="state?.activeSection"
           class="toolbar-sticky ion-padding-horizontal"
         >
-          <ion-row class="ion-align-items-end">
-            <ion-col [size]="12" [sizeMd]="5">
+          <ion-row class="ion-align-items-end ion-justify-content-between">
+            <ion-col [size]="12" [sizeLg]="7" [sizeXl]="'auto'">
               <app-filters
                 style="display: inline-block; max-width: 100%"
               ></app-filters>
             </ion-col>
-            <ion-col [size]="12" [sizeMd]="7">
+            <ion-col [size]="12" [sizeLg]="5" [sizeXl]="'auto'">
               <app-nav-progress></app-nav-progress>
             </ion-col>
           </ion-row>

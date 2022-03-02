@@ -18,7 +18,7 @@ describe('QuestionInputComponent', () => {
   const mockStateService: StateService = jasmine.createSpyObj('StateServcie', {
     programId: '123',
     filters: {
-      tags: [Tag.people],
+      tags: [Tag.validation],
     },
   });
   const mockQuestion: QuestionInput = {
@@ -28,7 +28,7 @@ describe('QuestionInputComponent', () => {
     label: { en: 'Question Label' },
     answer: 'test',
     storedAnswer: 'test',
-    tags: [Tag.people],
+    tags: [Tag.validation],
   };
 
   beforeEach(
