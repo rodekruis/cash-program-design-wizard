@@ -8,6 +8,7 @@ import { QuestionEntity } from '../questions/question.entity';
 import { SubsectionEntity } from '../sub-sections/sub-section.entity';
 import { TagEntity } from '../tags/tag.entity';
 import { OptionChoiceEntity } from './../option-choices/option-choice.entity';
+import { SectionEntity } from './../sections/section.entity';
 import { ImportDataDto } from './dto/import-data.dto';
 import { QuestionTransferDto } from './dto/question-tranfer.dto';
 
@@ -27,6 +28,9 @@ export class TransferQuestionsService {
   @InjectRepository(SubsectionEntity)
   private readonly subsectionRepository: Repository<SubsectionEntity>;
 
+  @InjectRepository(SectionEntity)
+  private readonly sectionRepository: Repository<SectionEntity>;
+
   @InjectRepository(OptionChoiceEntity)
   private readonly optionChoiceRepository: Repository<OptionChoiceEntity>;
 
@@ -42,8 +46,11 @@ export class TransferQuestionsService {
     const questions = (await this.questionRepository
       .createQueryBuilder('question')
       .select([
-        'section.name AS "section"',
+        'section.name AS "sectionName"',
+        'section.orderPriority AS "sectionOrderPriority"',
+        `section.label::json->'en' AS "sectionLabelEn"`,
         'subsection.name AS "subsectionName"',
+        'subsection.orderPriority AS "subsectionOrderPriority"',
         'question.name AS "questionName"',
         'question.type AS "questionType"',
         `question.label::json->'en' AS "questionLabelEn"`,
@@ -74,8 +81,10 @@ export class TransferQuestionsService {
       .addGroupBy('section.name')
       .addGroupBy('section.id')
       .addGroupBy('section.label')
+      .addGroupBy('section.orderPriority')
       .addGroupBy('subsection.name')
       .addGroupBy('subsection.id')
+      .addGroupBy('subsection.orderPriority')
       .getRawMany()) as QuestionTransferDto[];
 
     for (let question of questions) {
@@ -112,11 +121,26 @@ export class TransferQuestionsService {
       );
     }
 
-    const importSections = this.extractUniqueProperty(records, 'section');
-    const importSubSections = this.extractUniqueProperty(
+    const nameKeySubsections = 'subsectionName';
+    const keysSubsections = ['subsectionOrderPriority', 'sectionName'].concat([
+      nameKeySubsections,
+    ]);
+    const uniqueSubsections = this.checkAnySectionRows(
       records,
-      'subsectionName',
+      nameKeySubsections,
+      keysSubsections,
     );
+
+    const nameKeySections = 'sectionName';
+    const keysSections = ['sectionOrderPriority', 'sectionLabelEn'].concat([
+      nameKeySections,
+    ]);
+    const uniqueSections = this.checkAnySectionRows(
+      records,
+      nameKeySections,
+      keysSections,
+    );
+
     const importQuestions = records.map((row) => {
       return {
         name: row.questionName,
@@ -135,8 +159,8 @@ export class TransferQuestionsService {
     });
 
     const importData = {
-      sections: Object.keys(importSections),
-      subsections: Object.keys(importSubSections),
+      sections: uniqueSections,
+      subsections: uniqueSubsections,
       questions: importQuestions,
     } as ImportDataDto;
 
@@ -155,10 +179,141 @@ export class TransferQuestionsService {
 
     await this.insertUpdateImportData(importData);
 
+    console.log('Import succesfully completed...');
     return {
       status: 'success',
       length: importData.questions.length,
     };
+  }
+
+  private async insertUpdateSections(
+    sections: any[],
+    queryrunner: QueryRunner,
+  ) {
+    const sectionKeys = ['orderPriority', 'label'];
+    for (const section of sections) {
+      const mappedSection = {
+        name: section['sectionName'],
+        label: JSON.stringify({
+          en: section['sectionLabelEn'],
+        }),
+        orderPriority: section['sectionOrderPriority'],
+      };
+
+      const dbSection = await this.sectionRepository.findOne({
+        where: { name: mappedSection.name },
+      });
+      if (dbSection) {
+        const changed = this.updateEntityWithImport(
+          dbSection,
+          mappedSection,
+          sectionKeys,
+        );
+        if (changed) {
+          await this.sectionRepository.save(dbSection);
+        }
+      } else {
+        const transactionSectionRepository =
+          queryrunner.manager.getRepository(SectionEntity);
+        const s = await transactionSectionRepository.save(mappedSection);
+        console.log('s: ', s);
+      }
+    }
+  }
+
+  private async insertUpdateSubsections(
+    subsections: any[],
+    queryrunner: QueryRunner,
+  ) {
+    const transactionSectionRepository =
+      queryrunner.manager.getRepository(SectionEntity);
+    const subsectionKeys = ['orderPriority'];
+    for (const subsection of subsections) {
+      const mappedSubsection = {
+        name: subsection['subsectionName'],
+        orderPriority: subsection['subsectionOrderPriority'],
+        section: null,
+      };
+
+      const dbSubsection = await this.subsectionRepository.findOne({
+        where: { name: mappedSubsection.name },
+      });
+      if (dbSubsection) {
+        const changed = this.updateEntityWithImport(
+          dbSubsection,
+          mappedSubsection,
+          subsectionKeys,
+        );
+        if (changed) {
+          await this.sectionRepository.save(dbSubsection);
+        }
+      } else {
+        const transactionSubsectionRepository =
+          queryrunner.manager.getRepository(SubsectionEntity);
+
+        const section = await transactionSectionRepository.findOne({
+          where: { name: subsection.sectionName },
+        });
+
+        mappedSubsection.section = section;
+
+        const r = await transactionSubsectionRepository.save(mappedSubsection);
+        const r2 = await transactionSubsectionRepository.findOne(r.id);
+        console.log('r2: ', r2);
+      }
+    }
+  }
+
+  private checkAnySectionRows(
+    rows: any[],
+    nameKey: string,
+    sectionKeys: string[],
+  ) {
+    const uniqueAnySection = {};
+    for (const [i, row] of rows.entries()) {
+      const sectionFromImport = this.filterObjectPropertiesByArray(
+        sectionKeys,
+        row,
+      );
+      sectionFromImport['i'] = i;
+      if (uniqueAnySection[row[nameKey]]) {
+        this.checkSimilarityAnySection(
+          i,
+          uniqueAnySection[row[nameKey]],
+          sectionFromImport,
+          sectionKeys,
+        );
+      } else {
+        uniqueAnySection[row[nameKey]] = sectionFromImport;
+      }
+    }
+    return Object.values(uniqueAnySection);
+  }
+
+  private filterObjectPropertiesByArray(filterArray: string[], object: any) {
+    const newObj = {};
+    for (const val of filterArray) {
+      newObj[val] = object[val];
+    }
+    return newObj;
+  }
+
+  private checkSimilarityAnySection(
+    i: number,
+    earlierFoundSection: any,
+    newlyFoundSection: any,
+    keys: string[],
+  ) {
+    for (const key of keys) {
+      if (earlierFoundSection[key] !== newlyFoundSection[key]) {
+        throw new HttpException(
+          `(Sub)section in row ${i + 2} has different value than in row ${
+            earlierFoundSection['i'] + 2
+          } in column ${key}`,
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+    }
   }
 
   private getOptionChoicesFromRow(row: any): any {
@@ -248,7 +403,12 @@ export class TransferQuestionsService {
   private async insertUpdateImportData(importData: ImportDataDto) {
     const queryRunner = this.connection.createQueryRunner();
     queryRunner.startTransaction();
+    await this.insertUpdateSections(importData.sections, queryRunner);
+    console.log('insertUpdateSections: ');
+    await this.insertUpdateSubsections(importData.subsections, queryRunner);
+    console.log('insertUpdateSubsections: ');
     await this.updateQuestions(importData.questions, queryRunner);
+    console.log('updateQuestions: ');
     queryRunner.commitTransaction();
   }
 
@@ -387,14 +547,12 @@ export class TransferQuestionsService {
         if (existingTag) {
           dbQuestion.tags.push(existingTag);
         } else {
-          throw new HttpException(
-            `Tag not found '${importTag}' at question: '${dbQuestion.name}'`,
-            HttpStatus.UNAUTHORIZED,
-          );
+          const newTag = new TagEntity();
+          newTag.name = importTag;
+          dbQuestion.tags.push(newTag);
         }
       }
     }
-
     // Remove tags that are not in import
     const newRelatedTags = dbQuestion.tags.filter((dbTag) =>
       importedTags.includes(dbTag.name),
@@ -411,13 +569,14 @@ export class TransferQuestionsService {
 
   private async updateSubsectionForQ(
     importSubsectionName: string,
-
     dbQuestion: QuestionEntity,
     queryRunner: QueryRunner,
   ) {
-    const subsection = await this.subsectionRepository.findOne({
-      where: { name: importSubsectionName },
-    });
+    const subsection = await queryRunner.manager
+      .getRepository(SubsectionEntity)
+      .findOne({
+        where: { name: importSubsectionName },
+      });
     if (!subsection) {
       throw new HttpException(
         `Subsection does not exist: '${importSubsectionName}`,
