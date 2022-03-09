@@ -164,8 +164,6 @@ export class TransferQuestionsService {
       questions: importQuestions,
     } as ImportDataDto;
 
-    // console.info('Imported Data: ', JSON.stringify(importData, null, 2));
-
     if (
       importData.sections.length < 1 ||
       importData.subsections.length < 1 ||
@@ -237,6 +235,7 @@ export class TransferQuestionsService {
 
       const dbSubsection = await this.subsectionRepository.findOne({
         where: { name: mappedSubsection.name },
+        relations: ['section'],
       });
       if (dbSubsection) {
         const changed = this.updateEntityWithImport(
@@ -245,21 +244,21 @@ export class TransferQuestionsService {
           subsectionKeys,
         );
         if (changed) {
-          await this.sectionRepository.save(dbSubsection);
+          await this.subsectionRepository.save(dbSubsection);
         }
       } else {
         const transactionSubsectionRepository =
           queryrunner.manager.getRepository(SubsectionEntity);
 
-        const section = await transactionSectionRepository.findOne({
-          where: { name: subsection.sectionName },
-        });
+        if (dbSubsection.section.name !== subsection.sectionName) {
+          const section = await transactionSectionRepository.findOne({
+            where: { name: subsection.sectionName },
+          });
 
-        mappedSubsection.section = section;
+          mappedSubsection.section = section;
 
-        const r = await transactionSubsectionRepository.save(mappedSubsection);
-        const r2 = await transactionSubsectionRepository.findOne(r.id);
-        console.log('r2: ', r2);
+          await transactionSubsectionRepository.save(mappedSubsection);
+        }
       }
     }
   }
@@ -404,11 +403,8 @@ export class TransferQuestionsService {
     const queryRunner = this.connection.createQueryRunner();
     queryRunner.startTransaction();
     await this.insertUpdateSections(importData.sections, queryRunner);
-    console.log('insertUpdateSections: ');
     await this.insertUpdateSubsections(importData.subsections, queryRunner);
-    console.log('insertUpdateSubsections: ');
     await this.updateQuestions(importData.questions, queryRunner);
-    console.log('updateQuestions: ');
     queryRunner.commitTransaction();
   }
 
