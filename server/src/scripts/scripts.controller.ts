@@ -37,6 +37,7 @@ class ResetDto {
   })
   @IsEnum(SeedScript)
   public readonly script: string;
+  public readonly stagingAmount: number;
 }
 
 class ExportDto {
@@ -59,8 +60,11 @@ export class ScriptsController {
     if (body.secret !== process.env.RESET_SECRET) {
       return res.status(HttpStatus.FORBIDDEN).send('Not allowed');
     }
-    await this.seedDemoProgram.run(body.script as SeedScript);
-    return res.status(HttpStatus.ACCEPTED).send('Reset done.');
+    const seedResult = await this.seedDemoProgram.run(
+      body.script as SeedScript,
+      body.stagingAmount,
+    );
+    return res.status(HttpStatus.ACCEPTED).send(seedResult);
   }
 
   @ApiOperation({ summary: 'Exports questions as CSV' })

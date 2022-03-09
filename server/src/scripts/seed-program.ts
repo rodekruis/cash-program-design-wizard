@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as generatePassword from 'password-generator';
 import { Connection, Repository } from 'typeorm';
 import { OptionChoiceEntity } from '../option-choices/option-choice.entity';
 import { ProgramEntity } from '../programs/program.entity';
@@ -67,21 +68,32 @@ export class SeedDemoProgram implements InterfaceScript {
     private readonly connection: Connection,
   ) {}
 
-  public async run(environment: SeedScript): Promise<void> {
-    const inputArray = this.setInput(environment);
+  public async run(environment: SeedScript, stagingAmount = 50): Promise<any> {
+    const inputArray = this.setInput(environment, stagingAmount);
 
+    // Do not await or swagger request times out
+    this.seedInput(inputArray);
+
+    console.log('SeedDemoProgram done');
+    return inputArray.map((input) => input.users);
+  }
+
+  private async seedInput(inputArray: SeedInput[]) {
     await this.truncateAll();
-
+    let seedSectionsQuestions = true;
     for (const input of inputArray) {
       const programEntity = await this.seedProgram(input);
       await this.createUsers(programEntity, input);
-      await this.seedSections(input);
-      await this.seedQuestions(input);
+      if (seedSectionsQuestions) {
+        await this.seedSections(input);
+        await this.seedQuestions(input);
+        seedSectionsQuestions = false;
+      }
     }
-    console.log('SeedDemoProgram: done');
+    console.log('SeedDemoProgram done');
   }
 
-  private setInput(seedScript: string): SeedInput[] {
+  private setInput(seedScript: string, stagingAmount): SeedInput[] {
     if (seedScript === SeedScript.dev) {
       return [
         {
@@ -108,7 +120,7 @@ export class SeedDemoProgram implements InterfaceScript {
     if (seedScript === SeedScript.staging) {
       const inputArray = [];
       let i = 0;
-      while (i <= 50) {
+      while (i <= stagingAmount) {
         i++;
         const programDemoInput = JSON.parse(JSON.stringify(programDemo));
         const input = {
@@ -124,13 +136,13 @@ export class SeedDemoProgram implements InterfaceScript {
               username: `${
                 process.env.USERCONFIG_EDIT_USERNAME.split('@')[0]
               }${i}@${process.env.USERCONFIG_EDIT_USERNAME.split('@')[1]}`,
-              password: process.env.USERCONFIG_EDIT_PASSWORD,
+              password: generatePassword(5),
             },
             view: {
               username: `${
                 process.env.USERCONFIG_VIEW_USERNAME.split('@')[0]
               }${i}@${process.env.USERCONFIG_VIEW_USERNAME.split('@')[1]}`,
-              password: process.env.USERCONFIG_VIEW_PASSWORD,
+              password: generatePassword(5),
             },
           },
         };
@@ -141,12 +153,6 @@ export class SeedDemoProgram implements InterfaceScript {
   }
 
   private async seedProgram(seedInput: SeedInput): Promise<ProgramEntity> {
-    const earlierProgram = await this.programRepository.findOne({
-      where: { name: seedInput.program.name },
-    });
-    if (earlierProgram) {
-      return earlierProgram;
-    }
     console.log(`SeedDemoProgram: Seeding program: ${seedInput.program.name}`);
     return await this.programRepository.save(seedInput.program);
   }
@@ -155,38 +161,23 @@ export class SeedDemoProgram implements InterfaceScript {
     program: ProgramEntity,
     seedInput: SeedInput,
   ): Promise<void> {
-    let userView;
-    userView = {
-      user: await this.userRepository.findOne({
-        where: { userName: seedInput.users.view.username },
-      }),
-    };
+    const userView = await this.userService.create(
+      seedInput.users.view.username,
+      seedInput.users.view.password,
+    );
 
-    if (!userView.user) {
-      userView = await this.userService.create(
-        seedInput.users.view.username,
-        seedInput.users.view.password,
-      );
-    }
-    await this.userService.assign({
+    this.userService.assign({
       userName: userView.user.userName,
       role: UserRoleEnum.view,
       programId: program.id,
     });
 
-    let userEdit;
-    userEdit = {
-      user: await this.userRepository.findOne({
-        where: { userName: seedInput.users.edit.username },
-      }),
-    };
-    if (!userEdit.user) {
-      userEdit = await this.userService.create(
-        seedInput.users.edit.username,
-        seedInput.users.edit.password,
-      );
-    }
-    await this.userService.assign({
+    const userEdit = await this.userService.create(
+      seedInput.users.edit.username,
+      seedInput.users.edit.password,
+    );
+
+    this.userService.assign({
       userName: userEdit.user.userName,
       role: UserRoleEnum.edit,
       programId: program.id,

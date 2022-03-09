@@ -26,6 +26,7 @@ async function bootstrap() {
       persistAuthorization: true,
     },
   });
-  await app.listen(PORT);
+  const server = await app.listen(PORT);
+  server.setTimeout(60 * 60 * 1000);
 }
 bootstrap();
