@@ -13,6 +13,7 @@ import { ConnectionStatusComponent } from './connection-status/connection-status
 import { FiltersComponent } from './filters/filters.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NavProgressComponent } from './nav-progress/nav-progress.component';
+import { PolygonInputComponent } from './polygon-input/polygon-input.component';
 import { ProgramPhaseComponent } from './program-phase/program-phase.component';
 import { QuestionInputComponent } from './question-input/question-input.component';
 import { QuestionSectionComponent } from './question-section/question-section.component';
@@ -39,6 +40,7 @@ import { UserStateComponent } from './user-state/user-state.component';
     LoginFormComponent,
     NavProgressComponent,
     OnlyAllowedInputDirective,
+    PolygonInputComponent,
     ProgramPhaseComponent,
     QuestionInputComponent,
     QuestionSectionComponent,
@@ -59,6 +61,7 @@ import { UserStateComponent } from './user-state/user-state.component';
     LoginFormComponent,
     MarkdownModule,
     NavProgressComponent,
+    PolygonInputComponent,
     ProgramPhaseComponent,
     QuestionInputComponent,
     QuestionSectionComponent,
