@@ -37,6 +37,7 @@ class ResetDto {
   })
   @IsEnum(SeedScript)
   public readonly script: string;
+  @ApiProperty({ example: 50 })
   public readonly stagingAmount: number;
 }
 
