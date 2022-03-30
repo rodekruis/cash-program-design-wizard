@@ -125,7 +125,8 @@
   },
   "phases": {
     "overview": "Program overview",
-    "report": "Narrative report"
+    "report": "Narrative report",
+    "appendix": "Appendix"
   },
   "program": {
     "page-title": "Program: {{name}}"

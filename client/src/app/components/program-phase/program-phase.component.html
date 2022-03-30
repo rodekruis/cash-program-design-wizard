@@ -22,4 +22,13 @@
   >
     {{ 'phases.report' | translate }}
   </ion-button>
+  <ion-button
+    [routerLink]="['/program', programId, 'report']"
+    fragment="appendix"
+    color="medium"
+    size="small"
+    fill="clear"
+  >
+    {{ 'phases.appendix' | translate }}
+  </ion-button>
 </div>
