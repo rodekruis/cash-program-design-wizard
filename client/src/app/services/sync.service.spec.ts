@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApiService } from './api.service';
 import { PubSubService } from './pub-sub.service';
@@ -10,7 +11,11 @@ describe('SyncService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        TranslateModule.forRoot(),
+      ],
       providers: [PubSubService, ApiService],
     });
     service = TestBed.inject(SyncService);
