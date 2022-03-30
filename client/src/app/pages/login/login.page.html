@@ -1,33 +1,63 @@
 <ion-content>
+  <app-header
+    class="no-print"
+    title="{{ 'login-page.page-title' | translate }}"
+  >
+  </app-header>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="12" size-sm="10" size-md="8" size-lg="6" size-xl="4">
-        <div class="ion-margin-vertical ion-text-center">
-          <h1>{{ '_common.app-name' | translate }}</h1>
-        </div>
-        <div class="ion-margin-vertical">
-          <p>{{ 'login-page.introduction' | translate }}</p>
+      <ion-col size-xs="8" size-sm="6" size-md="5" size-lg="4" size-xl="2">
+        <ion-row
+          class="ion-justify-content-between ion-align-items-center ion-padding"
+        >
+          <ion-text color="dark">
+            <h2>
+              <strong>TODAY</strong>
+            </h2>
+          </ion-text>
+          <ion-text class="ion-text-right" color="dark">
+            <strong>{{ todayTop }}</strong> <br />
+            <strong>{{ todayBottom }}</strong>
+          </ion-text>
+        </ion-row>
 
-          <h2>{{ 'login-page.requirements.label' | translate }}</h2>
-          <p markdown>
-            {{ 'login-page.requirements.browser.explanation' | translate }}
-          </p>
-          <p markdown>
-            {{ 'login-page.requirements.connectivity.explanation' | translate }}
-          </p>
+        <ion-card class="ion-padding" color="light">
+          <ion-text class="ion-margin-vertical" color="dark">
+            <p>
+              <strong>{{ 'login-page.introduction' | translate }}</strong>
+            </p>
 
-          <h2>{{ 'login-page.contact.label' | translate }}</h2>
-          <p markdown>
-            {{ 'login-page.contact.intro' | translate }}
-          </p>
-          <p markdown>
-            {{ 'login-page.contact.github' | translate }}
-          </p>
+            <p>
+              <strong>{{ '_common.app-name' | translate }}</strong>
+            </p>
 
-          <br />
-        </div>
-        <app-login-form></app-login-form>
+            <p>
+              {{ 'login-page.cta.message' | translate }}
+              <br />
+              {{ 'login-page.cta.login' | translate }}
+            </p>
 
+            <p>
+              <strong>{{
+                'login-page.requirements.browser.note' | translate
+              }}</strong
+              >: {{ 'login-page.requirements.browser.explanation' | translate }}
+            </p>
+
+            <br />
+          </ion-text>
+          <ion-row class="ion-justify-content-evenly">
+            <ion-button color="dark" size="small" class="rounded-sides">
+              {{ 'login-page.cta.video-guide-button' | translate }}
+            </ion-button>
+            <ion-button color="dark" size="small" class="rounded-sides">
+              {{ 'login-page.cta.manual-button' | translate }}
+            </ion-button>
+          </ion-row>
+        </ion-card>
+        <ion-card class="ion-padding" color="light">
+          <app-login-form></app-login-form>
+        </ion-card>
         <br /><br /><br /><br /><br />
       </ion-col>
     </ion-row>

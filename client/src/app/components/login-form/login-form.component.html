@@ -1,6 +1,6 @@
 <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
   <input type="submit" hidden /><!-- Make ENTER-to-submit work -->
-  <ion-item>
+  <ion-item lines="none" class="ion-margin-bottom">
     <ion-label position="stacked">{{
       'login-form.e-mail.label' | translate
     }}</ion-label>
@@ -16,9 +16,10 @@
       [disabled]="inProgress"
       enterkeyhint="next"
       (keyup.enter)="passwordInput.setFocus()"
+      class="login-input"
     ></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item lines="none" class="ion-margin-bottom">
     <ion-label position="stacked">{{
       'login-form.password.label' | translate
     }}</ion-label>
@@ -35,12 +36,16 @@
       [disabled]="inProgress"
       enterkeyhint="go"
       (keyup.enter)="onSubmit()"
+      class="login-input"
     ></ion-input>
   </ion-item>
   <ion-button
     type="submit"
     expand="block"
     [disabled]="loginForm.invalid || inProgress"
+    class="rounded-sides ion-margin-horizontal"
+    color="dark"
+    size="small"
   >
     {{ 'login-form.submit.label' | translate }}
     <ion-icon slot="end" name="enter" aria-hidden="true"></ion-icon>

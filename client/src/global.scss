@@ -72,6 +72,18 @@ ion-alert.select-alert {
   }
 }
 
+ion-input.login-input {
+  margin-top: 12px;
+  background: #fff;
+  border-radius: 4px;
+
+  input {
+    --padding-start: 8px;
+    --padding-end: 8px;
+    height: 28px;
+  }
+}
+
 // Fix scrollbar in <ion-select>'s radio-group
 // See: https://github.com/ionic-team/ionic-framework/issues/18487
 .plt-desktop .select-alert {
@@ -116,6 +128,16 @@ input[type='number'] {
   top: 0;
   left: 0;
   right: 0;
+}
+
+.rounded-sides {
+  --border-radius: 17px 17px 17px 17px / 50% 50% 50% 50%;
+  &[size='small'] {
+    --border-radius: 12px 12px 12px 12px / 50% 50% 50% 50%;
+  }
+  &[size='large'] {
+    --border-radius: 24px 24px 24px 24px / 50% 50% 50% 50%;
+  }
 }
 
 /****************************************************************************
