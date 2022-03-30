@@ -4,62 +4,50 @@
       {{ 'program.page-title' | translate: { name: name || '' } }}
     </ion-title>
   </app-header>
-  <div class="frame">
-    <div class="frame--sidebar">
-      <app-sidebar></app-sidebar>
+
+  <ion-progress-bar
+    *ngIf="!id"
+    type="indeterminate"
+    class="ion-margin"
+  ></ion-progress-bar>
+
+  <ng-container *ngIf="id">
+    <div class="ion-margin">
+      <app-program-phase [programId]="id"></app-program-phase>
     </div>
-    <div class="frame--contents">
-      <!--
 
-      -->
-      <ion-progress-bar
-        *ngIf="!id"
-        type="indeterminate"
-        class="ion-margin"
-      ></ion-progress-bar>
+    <ion-progress-bar
+      *ngIf="state?.isLoading || !state?.activeSection"
+      type="indeterminate"
+      class="ion-margin"
+    ></ion-progress-bar>
 
-      <ng-container *ngIf="id">
-        <div class="ion-margin">
-          <app-program-phase [programId]="id"></app-program-phase>
-        </div>
-
-        <ion-progress-bar
-          *ngIf="state?.isLoading || !state?.activeSection"
-          type="indeterminate"
-          class="ion-margin"
-        ></ion-progress-bar>
-
-        <div
-          *ngIf="state?.activeSection"
-          class="toolbar-sticky ion-padding-horizontal"
-        >
-          <ion-row class="ion-align-items-end ion-justify-content-between">
-            <ion-col [size]="12" [sizeLg]="7" [sizeXl]="'auto'">
-              <app-filters
-                style="display: inline-block; max-width: 100%"
-              ></app-filters>
-            </ion-col>
-            <ion-col [size]="12" [sizeLg]="5" [sizeXl]="'auto'">
-              <app-nav-progress></app-nav-progress>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col class="ion-padding-top">
-              <h3>
-                #{{ state?.activeSection?.sectionNr }}:&nbsp;
-                <span [innerHTML]="state?.activeSection?.label"></span>
-              </h3>
-            </ion-col>
-          </ion-row>
-        </div>
-
-        <app-question-section
-          [section]="state?.activeSection"
-        ></app-question-section>
-      </ng-container>
-      <!--
-
-      -->
+    <div
+      *ngIf="state?.activeSection"
+      class="toolbar-sticky ion-padding-horizontal"
+    >
+      <ion-row class="ion-align-items-end ion-justify-content-between">
+        <ion-col [size]="12" [sizeLg]="7" [sizeXl]="'auto'">
+          <app-filters
+            style="display: inline-block; max-width: 100%"
+          ></app-filters>
+        </ion-col>
+        <ion-col [size]="12" [sizeLg]="5" [sizeXl]="'auto'">
+          <app-nav-progress></app-nav-progress>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-padding-top">
+          <h3>
+            #{{ state?.activeSection?.sectionNr }}:&nbsp;
+            <span [innerHTML]="state?.activeSection?.label"></span>
+          </h3>
+        </ion-col>
+      </ion-row>
     </div>
-  </div>
+
+    <app-question-section
+      [section]="state?.activeSection"
+    ></app-question-section>
+  </ng-container>
 </ion-content>

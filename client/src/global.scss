@@ -28,28 +28,6 @@
 /****************************************************************************
  * Generic Lay-out:
  */
-.frame {
-  min-height: 100%;
-}
-.frame--sidebar {
-  display: inline-block;
-}
-// Hard-coded to Ionic breakpoint "small"
-// See: https://ionicframework.com/docs/layout/grid#default-breakpoints
-@media (min-width: 576px) {
-  .frame {
-    display: flex;
-    justify-content: stretch;
-    align-content: stretch;
-    align-items: stretch;
-  }
-  .frame--sidebar {
-    flex: 0 0 auto;
-  }
-  .frame--contents {
-    flex: 1 1 auto;
-  }
-}
 
 /****************************************************************************
  * Overrides to Ionic elements:
@@ -128,7 +106,6 @@ input[type='number'] {
   // Force content to be rendered over multiple pages, not scrolled
   body,
   .ion-page:not(.ion-page-hidden),
-  .frame,
   ion-router-outlet,
   ion-content {
     position: initial;

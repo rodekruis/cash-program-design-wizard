@@ -4,54 +4,42 @@
       {{ 'report.page-title' | translate: { name: name } }}
     </ion-title>
   </app-header>
-  <div class="frame">
-    <div class="frame--sidebar no-print">
-      <app-sidebar></app-sidebar>
+
+  <ion-card *ngIf="!id">
+    <ion-card-header>
+      <ion-card-title>{{ 'report.not-found' | translate }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ng-container *ngIf="id">
+    <div class="ion-margin no-print">
+      <app-program-phase [programId]="id"></app-program-phase>
     </div>
-    <div class="frame--contents">
-      <!--
 
-       -->
-      <ion-card *ngIf="!id">
-        <ion-card-header>
-          <ion-card-title>{{ 'report.not-found' | translate }}</ion-card-title>
-        </ion-card-header>
-      </ion-card>
+    <div class="ion-padding">
+      <h2>{{ 'report.title' | translate }}: {{ name }}</h2>
 
-      <ng-container *ngIf="id">
-        <div class="ion-margin no-print">
-          <app-program-phase [programId]="id"></app-program-phase>
-        </div>
+      <app-report-narrative></app-report-narrative>
 
-        <div class="ion-padding">
-          <h2>{{ 'report.title' | translate }}: {{ name }}</h2>
+      <br />
 
-          <app-report-narrative></app-report-narrative>
+      <hr style="border-top: 1px dashed var(--ion-color-medium)" />
 
-          <br />
+      <section *ngIf="sections?.length" id="appendix" tabindex="-1">
+        <h2 class="only-print--page-break-before">
+          {{ 'report.appendix' | translate }}
+        </h2>
 
-          <hr style="border-top: 1px dashed var(--ion-color-medium)" />
-
-          <section *ngIf="sections?.length" id="appendix" tabindex="-1">
-            <h2 class="only-print--page-break-before">
-              {{ 'report.appendix' | translate }}
-            </h2>
-
-            <ng-container
-              *ngFor="let section of sections; index as sectionNr"
-              class="ion-margin-vertical ion-padding-vertical"
-            >
-              <app-report-section
-                [section]="section"
-                [sectionNr]="sectionNr + 1"
-              ></app-report-section>
-            </ng-container>
-          </section>
-        </div>
-      </ng-container>
-      <!--
-
-       -->
+        <ng-container
+          *ngFor="let section of sections; index as sectionNr"
+          class="ion-margin-vertical ion-padding-vertical"
+        >
+          <app-report-section
+            [section]="section"
+            [sectionNr]="sectionNr + 1"
+          ></app-report-section>
+        </ng-container>
+      </section>
     </div>
-  </div>
+  </ng-container>
 </ion-content>
