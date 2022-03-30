@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { SyncService } from 'src/app/services/sync.service';
@@ -18,6 +19,7 @@ describe('ConnectionStatusComponent', () => {
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
           HttpClientTestingModule,
+          RouterTestingModule,
           SharedModule,
         ],
         providers: [SyncService],

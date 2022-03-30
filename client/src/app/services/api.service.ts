@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { JwtService } from './jwt.service';
 
@@ -21,7 +22,11 @@ export enum ApiPath {
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private jwtService: JwtService, private http: HttpClient) {}
+  constructor(
+    private jwtService: JwtService,
+    private http: HttpClient,
+    private router: Router,
+  ) {}
 
   public get(
     path: ApiPath | string,
@@ -44,6 +49,12 @@ export class ApiService {
         tap((response) =>
           console.log(`ApiService GET: ${path}`, `\nResponse:`, response),
         ),
+        catchError((error) => {
+          if (error.error && error.error.statusCode === 401) {
+            this.router.navigate(['/login']);
+          }
+          return of(error);
+        }),
       );
   }
 
