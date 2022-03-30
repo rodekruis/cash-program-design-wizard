@@ -15,9 +15,7 @@ import { QuestionSection } from 'src/app/types/question-section.type';
 export class FiltersComponent implements OnInit, OnDestroy {
   public tags: Tag[] = Object.values(Tag);
 
-  public tagCount: Map<Tag, number> = new Map(
-    Object.values(Tag).map((t) => [t, 0]), // Initiate with 0-values for all Tags:
-  );
+  public tagCount: Map<Tag, number>;
   public tagLabels: { [tag: string]: string };
 
   private sectionUpdates: Subscription;
@@ -27,7 +25,9 @@ export class FiltersComponent implements OnInit, OnDestroy {
     public state: StateService,
     private router: Router,
     private translate: TranslateService,
-  ) {}
+  ) {
+    this.resetTagCount();
+  }
 
   public ngOnInit() {
     this.triggerTranslations();
@@ -64,8 +64,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     if (!sections.length) {
       return;
     }
-    // Start counting from 0
-    this.tagCount.clear();
+    this.resetTagCount();
 
     const allQuestions: QuestionInput[] = [];
 
@@ -83,5 +82,11 @@ export class FiltersComponent implements OnInit, OnDestroy {
     allTags.forEach((tag) => {
       this.tagCount.set(tag, (this.tagCount.get(tag) || 0) + 1);
     });
+  }
+
+  private resetTagCount() {
+    this.tagCount = new Map(
+      this.tags.map((t) => [t, 0]), // Initiate with 0-values for all Tags:
+    );
   }
 }
