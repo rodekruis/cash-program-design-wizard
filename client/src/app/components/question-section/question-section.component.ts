@@ -62,6 +62,15 @@ export class QuestionSectionComponent implements OnInit, OnDestroy {
     return false;
   }
 
+  public isSectionEmpty(section: QuestionSection): boolean {
+    return (
+      section &&
+      section.subsections.every((subsection) =>
+        this.isSubSectionEmpty(subsection),
+      )
+    );
+  }
+
   public userCanEdit(): boolean {
     return this.authService.hasUserRole([UserRole.edit], this.state.programId);
   }

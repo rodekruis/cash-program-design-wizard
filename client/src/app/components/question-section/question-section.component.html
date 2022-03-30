@@ -1,75 +1,82 @@
 <ion-grid>
   <ion-row class="ion-align-items-stretch ion-margin-bottom">
-    <ion-col
-      *ngFor="let subsection of section?.subsections; let subSectionNr = index"
-      [sizeXs]="12"
-      [sizeMd]="6"
-      [sizeLg]="4"
-    >
-      <ion-card class="ion-padding question-card">
-        <div *ngIf="isSubSectionEmpty(subsection)">
-          <ion-note>
-            {{ 'question-section.no-questions' | translate }}
-          </ion-note>
-        </div>
-        <div
-          *ngFor="
-            let question of subsection?.questions;
-            let questionNr = index;
-            let isLastQuestion = last
-          "
-          [hidden]="!shouldShowQuestion(question.tags)"
-        >
-          <app-question-input
-            [question]="question"
-            [questionNr]="
-              section?.sectionNr +
-              '.' +
-              (subSectionNr + 1) +
-              '.' +
-              (questionNr + 1)
-            "
-            [canEdit]="canEdit"
-          ></app-question-input>
+    <div *ngIf="section && isSectionEmpty(section)" class="ion-padding">
+      <ion-note>
+        {{ 'question-section.no-questions' | translate }}
+      </ion-note>
+    </div>
 
-          <details *ngIf="isLastQuestion" class="ion-margin-vertical">
-            <summary>
-              <div style="display: flex; align-items: center">
-                <div style="flex: 1 1 auto">
-                  <ion-label color="tertiary">
-                    <strong
-                      *ngIf="question.comments && question.comments?.length > 0"
-                    >
-                      {{ 'question-section.comments' | translate }}
-                      {{ question.comments?.length }}
-                    </strong>
-                    <strong
-                      *ngIf="!question.comments || !question.comments?.length"
-                    >
-                      {{ 'question-section.no-comments' | translate }}
-                    </strong>
-                  </ion-label>
+    <ng-container
+      *ngFor="let subsection of section?.subsections; let subSectionNr = index"
+    >
+      <ion-col
+        *ngIf="!isSubSectionEmpty(subsection)"
+        [sizeXs]="12"
+        [sizeMd]="6"
+        [sizeLg]="4"
+      >
+        <ion-card class="ion-padding question-card">
+          <div
+            *ngFor="
+              let question of subsection?.questions;
+              let questionNr = index;
+              let isLastQuestion = last
+            "
+            [hidden]="!shouldShowQuestion(question.tags)"
+          >
+            <app-question-input
+              [question]="question"
+              [questionNr]="
+                section?.sectionNr +
+                '.' +
+                (subSectionNr + 1) +
+                '.' +
+                (questionNr + 1)
+              "
+              [canEdit]="canEdit"
+            ></app-question-input>
+
+            <details *ngIf="isLastQuestion" class="ion-margin-vertical">
+              <summary>
+                <div style="display: flex; align-items: center">
+                  <div style="flex: 1 1 auto">
+                    <ion-label color="tertiary">
+                      <strong
+                        *ngIf="
+                          question.comments && question.comments?.length > 0
+                        "
+                      >
+                        {{ 'question-section.comments' | translate }}
+                        {{ question.comments?.length }}
+                      </strong>
+                      <strong
+                        *ngIf="!question.comments || !question.comments?.length"
+                      >
+                        {{ 'question-section.no-comments' | translate }}
+                      </strong>
+                    </ion-label>
+                  </div>
+                  <ion-icon
+                    name="chevron-down"
+                    color="tertiary"
+                    class="details-closed"
+                  ></ion-icon>
+                  <ion-icon
+                    name="chevron-up"
+                    color="tertiary"
+                    class="details-open"
+                  ></ion-icon>
                 </div>
-                <ion-icon
-                  name="chevron-down"
-                  color="tertiary"
-                  class="details-closed"
-                ></ion-icon>
-                <ion-icon
-                  name="chevron-up"
-                  color="tertiary"
-                  class="details-open"
-                ></ion-icon>
-              </div>
-            </summary>
-            <app-comments-list
-              *ngIf="question.comments"
-              [comments]="question.comments"
-            ></app-comments-list>
-            <app-comment-input [question]="question"></app-comment-input>
-          </details>
-        </div>
-      </ion-card>
-    </ion-col>
+              </summary>
+              <app-comments-list
+                *ngIf="question.comments"
+                [comments]="question.comments"
+              ></app-comments-list>
+              <app-comment-input [question]="question"></app-comment-input>
+            </details>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ng-container>
   </ion-row>
 </ion-grid>
