@@ -18,6 +18,7 @@ import { QuestionInputComponent } from './question-input/question-input.componen
 import { QuestionSectionComponent } from './question-section/question-section.component';
 import { ReportNarrativeComponent } from './report-narrative/report-narrative.component';
 import { ReportSectionComponent } from './report-section/report-section.component';
+import { StatusComponent } from './status/status.component';
 import { UserStateComponent } from './user-state/user-state.component';
 
 @NgModule({
@@ -43,6 +44,7 @@ import { UserStateComponent } from './user-state/user-state.component';
     QuestionSectionComponent,
     ReportNarrativeComponent,
     ReportSectionComponent,
+    StatusComponent,
     UserStateComponent,
   ],
   exports: [
@@ -63,6 +65,7 @@ import { UserStateComponent } from './user-state/user-state.component';
     ReportNarrativeComponent,
     ReportSectionComponent,
     RouterModule,
+    StatusComponent,
     TranslateModule,
     UserStateComponent,
   ],

@@ -1,33 +1,54 @@
 <div>
   <ion-button
     [routerLink]="['/program', programId, 'overview']"
-    routerLinkActive
+    [routerLinkActive]="'is-active'"
+    [routerLinkActiveOptions]="{
+      matrixParams: 'exact',
+      queryParams: 'ignored',
+      paths: 'exact',
+      fragment: 'exact'
+    }"
     #rlaPhaseOverview="routerLinkActive"
-    color="medium"
-    size="small"
-    [fill]="
-      rlaPhaseOverview.isActive && !rlaPhaseReport.isActive ? 'solid' : 'clear'
-    "
+    color="dark"
+    fill="clear"
+    [attr.aria-current]="rlaPhaseOverview.isActive ? 'page' : null"
+    class="fake-tab-button ion-no-margin"
   >
     {{ 'phases.overview' | translate }}
   </ion-button>
 
   <ion-button
     [routerLink]="['/program', programId, 'report']"
-    routerLinkActive
+    [routerLinkActive]="'is-active'"
+    [routerLinkActiveOptions]="{
+      matrixParams: 'exact',
+      queryParams: 'exact',
+      paths: 'exact',
+      fragment: 'exact'
+    }"
     #rlaPhaseReport="routerLinkActive"
-    color="medium"
-    size="small"
-    [fill]="rlaPhaseReport.isActive ? 'solid' : 'clear'"
+    color="dark"
+    fill="clear"
+    [attr.aria-current]="rlaPhaseReport.isActive ? 'page' : null"
+    class="fake-tab-button ion-no-margin"
   >
     {{ 'phases.report' | translate }}
   </ion-button>
   <ion-button
     [routerLink]="['/program', programId, 'report']"
+    [routerLinkActive]="'is-active'"
+    [routerLinkActiveOptions]="{
+      matrixParams: 'exact',
+      queryParams: 'exact',
+      paths: 'exact',
+      fragment: 'exact'
+    }"
+    #rlaPhaseAppendix="routerLinkActive"
     fragment="appendix"
-    color="medium"
-    size="small"
+    color="dark"
     fill="clear"
+    [attr.aria-current]="rlaPhaseAppendix.isActive ? 'page' : null"
+    class="fake-tab-button ion-no-margin"
   >
     {{ 'phases.appendix' | translate }}
   </ion-button>

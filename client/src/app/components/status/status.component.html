@@ -1,0 +1,23 @@
+<span class="ion-nowrap" style="display: inline-block; vertical-align: middle">
+  {{ 'nav-progress.last-saved.label' | translate }}
+  <br />
+  <span *ngIf="!lastSaved">
+    ({{ 'nav-progress.last-saved.not-yet' | translate }})
+  </span>
+  <span *ngIf="lastSaved">
+    <strong>{{ lastSaved | date: 'EEE d MMM' }}</strong>
+    {{ lastSaved | date: 'Y HH:mm' }}
+  </span>
+</span>
+
+<ion-button
+  (click)="state.saveAnswersActiveSection()"
+  fill="outline"
+  color="tertiary"
+  shape="round"
+  class="ion-margin-horizontal"
+>
+  {{ 'nav-progress.save-answers.label' | translate }}
+</ion-button>
+
+<app-connection-status></app-connection-status>

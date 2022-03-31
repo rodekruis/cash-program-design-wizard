@@ -132,9 +132,9 @@
     "sync-done": "Your locally saved answers are stored on the server."
   },
   "phases": {
-    "overview": "Program overview",
-    "report": "Narrative report",
-    "appendix": "Appendix"
+    "overview": "Design Guide",
+    "report": "Narrative Report",
+    "appendix": "Answer Index"
   },
   "program": {
     "page-title": "Program: {{name}}"

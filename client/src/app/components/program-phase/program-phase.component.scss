@@ -1,0 +1,27 @@
+.fake-tab-button {
+  position: relative;
+  border-bottom: 1px solid transparent;
+  font-weight: normal;
+
+  --background: transparent !important;
+  --background-hover: transparent !important;
+  --background-hover-opacity: 0 !important;
+
+  &.is-active {
+    border-bottom-color: var(--ion-color-tertiary);
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: -0.5rem;
+      left: -0.5rem;
+      right: -0.5rem;
+      bottom: -1rem;
+
+      background: #f6f7f8;
+      pointer-events: none;
+    }
+  }
+}
