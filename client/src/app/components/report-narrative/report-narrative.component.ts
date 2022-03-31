@@ -33,6 +33,7 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
   public report: string;
 
   public lastUpdate: string | Date;
+  public programName: string;
 
   private reportTemplate: string;
   private questions: QuestionInput[];
@@ -101,7 +102,9 @@ export class ReportNarrativeComponent implements OnInit, OnDestroy {
         this.goToQuestionTitle = label;
         this.renderTemplate();
       });
+
     this.programUpdates = this.state.programMetaData$.subscribe((program) => {
+      this.programName = program.name as string;
       this.reportTemplate = program.narrativeReportTemplate;
       this.renderTemplate();
     });
