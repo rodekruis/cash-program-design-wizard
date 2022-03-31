@@ -1,8 +1,5 @@
 <ion-content>
-  <app-header
-    title="{{ 'program.page-title' | translate: { name: name || '' } }}"
-  >
-  </app-header>
+  <app-header [programName]="name"> </app-header>
 
   <ion-progress-bar
     *ngIf="!id"
