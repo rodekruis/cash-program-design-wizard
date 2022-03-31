@@ -119,6 +119,10 @@ input[type='number'] {
   --max-width: 33rem;
 }
 
+ion-button {
+  text-transform: capitalize;
+}
+
 /****************************************************************************
  * Utilities:
  */
@@ -128,16 +132,6 @@ input[type='number'] {
   top: 0;
   left: 0;
   right: 0;
-}
-
-.rounded-sides {
-  --border-radius: 17px 17px 17px 17px / 50% 50% 50% 50%;
-  &[size='small'] {
-    --border-radius: 12px 12px 12px 12px / 50% 50% 50% 50%;
-  }
-  &[size='large'] {
-    --border-radius: 24px 24px 24px 24px / 50% 50% 50% 50%;
-  }
 }
 
 /****************************************************************************
