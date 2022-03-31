@@ -30,7 +30,7 @@
   },
   "filters": {
     "tags": {
-      "all": "All",
+      "all": "Show All",
       "people": "People",
       "registration": "Registration",
       "validation": "Validation",
