@@ -3,18 +3,17 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
-import { StateService } from 'src/app/services/state.service';
 import { SharedModule } from '../shared.module';
-import { NavProgressComponent } from './nav-progress.component';
+import { StatusComponent } from './status.component';
 
-describe('NavProgressComponent', () => {
-  let component: NavProgressComponent;
-  let fixture: ComponentFixture<NavProgressComponent>;
+describe('StatusComponent', () => {
+  let component: StatusComponent;
+  let fixture: ComponentFixture<StatusComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [NavProgressComponent],
+        declarations: [StatusComponent],
         imports: [
           IonicModule.forRoot(),
           TranslateModule.forRoot(),
@@ -22,10 +21,9 @@ describe('NavProgressComponent', () => {
           HttpClientTestingModule,
           SharedModule,
         ],
-        providers: [StateService],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(NavProgressComponent);
+      fixture = TestBed.createComponent(StatusComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     }),
