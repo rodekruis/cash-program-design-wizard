@@ -13,9 +13,11 @@
               </strong>
             </h2>
           </ion-text>
-          <ion-text class="ion-text-right" color="dark">
-            <strong>{{ todayTop }}</strong> <br />
-            <strong>{{ todayBottom }}</strong>
+          <ion-text class="ion-text-right ion-text-uppercase" color="dark">
+            <strong>
+              {{ today | date: 'EEE d' }} <br />
+              {{ today | date: 'MMM Y' }}
+            </strong>
           </ion-text>
         </ion-row>
 
