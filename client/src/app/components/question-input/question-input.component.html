@@ -11,7 +11,9 @@
   <div class="ion-padding-vertical">
     <ion-badge
       *ngFor="let tag of question.tags"
-      class="ion-margin-start ion-float-end tag-label"
+      class="ion-margin-start ion-float-end"
+      mode="ios"
+      [color]="state?.filters?.tag === tag ? 'tertiary' : 'light'"
       >{{ tagLabels[tag] }}</ion-badge
     >
 

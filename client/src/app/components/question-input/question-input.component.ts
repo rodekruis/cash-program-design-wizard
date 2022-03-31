@@ -33,7 +33,7 @@ export class QuestionInputComponent implements OnInit, OnDestroy {
 
   constructor(
     private translate: TranslateService,
-    private state: StateService,
+    public state: StateService,
     private programData: ProgramDataService,
     private route: ActivatedRoute,
     private markdownService: MarkdownService,

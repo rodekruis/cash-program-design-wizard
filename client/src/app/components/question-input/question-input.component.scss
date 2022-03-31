@@ -71,7 +71,3 @@ ion-item.is-readonly {
     border-inline-end-style: solid; // `is-pending` is always applied together with `is-in-progress`
   }
 }
-
-.tag-label {
-  --background: rgba(var(--ion-color-dark-rgb), 0.5);
-}
