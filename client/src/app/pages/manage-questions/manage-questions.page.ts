@@ -45,7 +45,9 @@ export class ManageQuestionsPage implements OnInit {
         (response) => {
           const csvData = this.arrayToCsv(response, ';');
           saveAs(
-            new Blob([csvData], { type: 'text/csv' }),
+            new Blob([new Uint8Array([0xef, 0xbb, 0xbf]), csvData], {
+              type: 'text/csv;charset=utf-8',
+            }),
             `cpdw-export-all_${new Date().toISOString().substring(0, 10)}.csv`,
           );
           this.exportSecret = '';
