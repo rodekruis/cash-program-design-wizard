@@ -154,7 +154,7 @@
     "no-questions": "No questions available with the current filters."
   },
   "report": {
-    "appendix": "Appendix",
+    "appendix": "Answer Index",
     "not-found": "No report found.",
     "page-title": "Report for program: {{name}}",
     "title": "Narrative Report"
