@@ -2,7 +2,12 @@
   <ion-button
     [routerLink]="['/program', programId, 'overview']"
     [routerLinkActive]="'is-active'"
-    [routerLinkActiveOptions]="{ exact: true }"
+    [routerLinkActiveOptions]="{
+      matrixParams: 'exact',
+      queryParams: 'ignored',
+      paths: 'exact',
+      fragment: 'exact'
+    }"
     #rlaPhaseOverview="routerLinkActive"
     color="dark"
     fill="clear"
@@ -16,7 +21,6 @@
     [routerLink]="['/program', programId, 'report']"
     [routerLinkActive]="'is-active'"
     [routerLinkActiveOptions]="{
-      exact: true,
       matrixParams: 'exact',
       queryParams: 'exact',
       paths: 'exact',
