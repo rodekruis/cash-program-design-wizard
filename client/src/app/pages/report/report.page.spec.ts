@@ -38,6 +38,7 @@ describe('ReportPage', () => {
               snapshot: {
                 params: { id: 1 },
               },
+              fragment: of(undefined),
               queryParams: of(mockParams),
             },
           },

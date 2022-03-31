@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ViewWillEnter } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { ApiPath, ApiService } from 'src/app/services/api.service';
 import { StateService } from 'src/app/services/state.service';
@@ -9,7 +10,7 @@ import { StateService } from 'src/app/services/state.service';
   templateUrl: './program.page.html',
   styleUrls: ['./program.page.scss'],
 })
-export class ProgramPage implements OnInit, OnDestroy {
+export class ProgramPage implements OnInit, OnDestroy, ViewWillEnter {
   public id: string;
   public name: string;
 
