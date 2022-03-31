@@ -55,12 +55,12 @@
   --ion-color-danger-tint: #ed576b;
 
   /** dark **/
-  --ion-color-dark: #0e294b;
-  --ion-color-dark-rgb: 14, 41, 75;
+  --ion-color-dark: #011e41;
+  --ion-color-dark-rgb: 1, 30, 65;
   --ion-color-dark-contrast: #ffffff;
   --ion-color-dark-contrast-rgb: 255, 255, 255;
-  --ion-color-dark-shade: #0c2442;
-  --ion-color-dark-tint: #263e5d;
+  --ion-color-dark-shade: #011a39;
+  --ion-color-dark-tint: #1a3554;
 
   /** medium **/
   --ion-color-medium: #92949c;
@@ -71,12 +71,12 @@
   --ion-color-medium-tint: #9d9fa6;
 
   /** light **/
-  --ion-color-light: #f4f5f8;
-  --ion-color-light-rgb: 244, 245, 248;
+  --ion-color-light: #e6e9f0;
+  --ion-color-light-rgb: 230, 233, 240;
   --ion-color-light-contrast: #000000;
   --ion-color-light-contrast-rgb: 0, 0, 0;
-  --ion-color-light-shade: #d7d8da;
-  --ion-color-light-tint: #f5f6f9;
+  --ion-color-light-shade: #cacdd3;
+  --ion-color-light-tint: #e9ebf2;
 }
 
 @media (prefers-color-scheme: dark) {

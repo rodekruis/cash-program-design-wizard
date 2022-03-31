@@ -59,16 +59,24 @@
       "intro": "If you have any questions or experience bugs or issues, let us know.",
       "label": "Contact"
     },
-    "introduction": "Welcome to the Cash Program Design Wizard.",
+    "introduction": "Hello! Welcome to the CPDW",
+    "cta": {
+      "message": "You can learn more by watching the Video Guide and reading the CPDW manual.",
+      "login": "Please login below.",
+      "video-guide-button": "Video Guide",
+      "manual-button": "CPDW Manual"
+    },
     "requirements": {
       "label": "Requirements",
       "browser": {
-        "explanation": "To be able to use the app easily and efficiently, a recent version of a browser is required.\n Internet Explorer 11 is unfortunately not supported."
+        "note": "NOTE",
+        "explanation": "This dashboard works best in Chrome, Firefox, Safari, and Microsoft Edge. The dashboard is not compatible with Internet Explorer."
       },
       "connectivity": {
         "explanation": "After log-in it is possible to '_go offline_' and work without an active internet-connection, storing your work locally on you own computer.\n When connected or when '_going online_', changes will be saved to the server automatically."
       }
-    }
+    },
+    "page-title": "CPDW"
   },
   "manage-questions": {
     "pageTitle": "Manage questions",

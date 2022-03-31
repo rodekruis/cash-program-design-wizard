@@ -50,6 +50,18 @@ ion-alert.select-alert {
   }
 }
 
+ion-input.login-input {
+  margin-top: 12px;
+  background: #fff;
+  border-radius: 4px;
+
+  input {
+    --padding-start: 8px;
+    --padding-end: 8px;
+    height: 28px;
+  }
+}
+
 // Fix scrollbar in <ion-select>'s radio-group
 // See: https://github.com/ionic-team/ionic-framework/issues/18487
 .plt-desktop .select-alert {
@@ -83,6 +95,10 @@ input[type='number'] {
   --width: 42%;
   --min-width: 20rem;
   --max-width: 33rem;
+}
+
+ion-button {
+  text-transform: capitalize;
 }
 
 /****************************************************************************

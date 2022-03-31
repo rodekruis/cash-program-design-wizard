@@ -1,8 +1,7 @@
 <ion-content>
-  <app-header>
-    <ion-title>
-      {{ 'program.page-title' | translate: { name: name || '' } }}
-    </ion-title>
+  <app-header
+    title="{{ 'program.page-title' | translate: { name: name || '' } }}"
+  >
   </app-header>
 
   <ion-progress-bar
