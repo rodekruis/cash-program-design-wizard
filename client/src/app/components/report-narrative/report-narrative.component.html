@@ -5,14 +5,21 @@
     <ion-button
       type="button"
       fill="outline"
-      color="primary"
+      color="tertiary"
+      shape="round"
       (click)="copy2Clipboard(rawReport)"
     >
       <ion-icon name="clipboard" aria-hidden="true" slot="start"></ion-icon>
       {{ 'report-narrative.copy-to-clipboard' | translate }}
     </ion-button>
 
-    <ion-button type="button" (click)="print()">
+    <ion-button
+      type="button"
+      (click)="print()"
+      fill="outline"
+      color="tertiary"
+      shape="round"
+    >
       <ion-icon name="print" aria-hidden="true" slot="start"></ion-icon>
       {{ 'report-narrative.print' | translate }}
     </ion-button>
