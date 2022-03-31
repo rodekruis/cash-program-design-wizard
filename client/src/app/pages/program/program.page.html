@@ -5,48 +5,76 @@
   </app-header>
 
   <ion-progress-bar
-    *ngIf="!id"
+    *ngIf="!id || state?.isLoading || !state?.activeSection"
     type="indeterminate"
     class="ion-margin"
   ></ion-progress-bar>
 
   <ng-container *ngIf="id">
-    <div class="ion-margin">
-      <app-program-phase [programId]="id"></app-program-phase>
-    </div>
-
-    <ion-progress-bar
-      *ngIf="state?.isLoading || !state?.activeSection"
-      type="indeterminate"
-      class="ion-margin"
-    ></ion-progress-bar>
-
+    <ion-row>
+      <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+      <ion-col
+        [size]="12"
+        [sizeMd]="5"
+        [pushMd]="7"
+        [sizeLg]="5"
+        [pushLg]="6"
+        class="ion-text-end"
+      >
+        <app-status></app-status>
+      </ion-col>
+      <ion-col
+        [size]="12"
+        [sizeMd]="7"
+        [pullMd]="5"
+        [sizeLg]="6"
+        [pullLg]="5"
+        class="ion-align-self-end"
+      >
+        <app-program-phase [programId]="id"></app-program-phase>
+      </ion-col>
+    </ion-row>
     <div
       *ngIf="state?.activeSection"
-      class="toolbar-sticky ion-padding-horizontal"
+      class="toolbar-sticky ion-padding background--grey"
     >
-      <ion-row class="ion-align-items-end ion-justify-content-between">
-        <ion-col [size]="12" [sizeLg]="7" [sizeXl]="'auto'">
+      <ion-row>
+        <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+        <ion-col>
           <app-filters
             style="display: inline-block; max-width: 100%"
           ></app-filters>
         </ion-col>
-        <ion-col [size]="12" [sizeLg]="5" [sizeXl]="'auto'">
-          <app-nav-progress></app-nav-progress>
-        </ion-col>
+        <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="ion-padding-top">
+        <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+        <ion-col [size]="12" [sizeMd]="9" [sizeLg]="7" class="ion-padding-top">
           <h3>
             #{{ state?.activeSection?.sectionNr }}:&nbsp;
             <span [innerHTML]="state?.activeSection?.label"></span>
           </h3>
         </ion-col>
+        <ion-col
+          [size]="12"
+          [sizeMd]="3"
+          [sizeLg]="3"
+          class="ion-align-self-end ion-text-end"
+        >
+          <app-nav-progress></app-nav-progress>
+        </ion-col>
+        <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
       </ion-row>
     </div>
-
-    <app-question-section
-      [section]="state?.activeSection"
-    ></app-question-section>
+    <ion-row class="background--grey">
+      <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+      <ion-col>
+        <app-question-section
+          [section]="state?.activeSection"
+          style="display: block"
+        ></app-question-section>
+      </ion-col>
+      <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+    </ion-row>
   </ng-container>
 </ion-content>
