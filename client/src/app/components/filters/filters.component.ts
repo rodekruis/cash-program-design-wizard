@@ -18,6 +18,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
   public tagCount: Map<Tag, number>;
   public tagLabels: { [tag: string]: string };
 
+  private selectedTag: string;
+
   private sectionUpdates: Subscription;
   private labelTranslationUpdates: Subscription;
 
@@ -31,6 +33,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.triggerTranslations();
+    this.selectedTag = this.state.filters.tag;
     this.sectionUpdates = this.state.sections$.subscribe((sections) => {
       this.updateTagCount(sections);
     });
@@ -41,8 +44,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
     this.labelTranslationUpdates.unsubscribe();
   }
 
-  public onChange(event: any) {
-    let tag: string = event.detail.value;
+  public onClick(tag: string) {
+    this.selectedTag = tag;
     if (tag === Tag.all) {
       tag = null;
     }
@@ -51,6 +54,10 @@ export class FiltersComponent implements OnInit, OnDestroy {
       queryParams: { tag },
       queryParamsHandling: 'merge',
     });
+  }
+
+  public selectButton(tag): boolean {
+    return tag === this.selectedTag;
   }
 
   private triggerTranslations() {

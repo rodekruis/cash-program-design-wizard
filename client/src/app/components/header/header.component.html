@@ -15,9 +15,13 @@
     </ion-button>
   </ion-buttons>
 
-  <ion-title
-    ><strong>{{ title }}</strong></ion-title
-  >
+  <ion-title>
+    <ion-text color="dark">
+      <strong>{{ 'login-page.page-title' | translate }}</strong>
+    </ion-text>
+    &nbsp;
+    <ion-text color="tertiary" *ngIf="programName">{{ programName }}</ion-text>
+  </ion-title>
 
   <ion-buttons slot="end">
     <ion-button

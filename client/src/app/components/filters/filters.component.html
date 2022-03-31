@@ -1,25 +1,18 @@
-<ion-segment
-  [value]="state?.filters?.tag || ''"
-  (ionChange)="onChange($event)"
-  [scrollable]="true"
-  [swipeGesture]="false"
-  [selectOnFocus]="false"
-  style="
-    --margin-top: 0;
-    --margin-end: 0;
-    --margin-bottom: 0;
-    --margin-start: 0;
-  "
-  color="dark"
->
-  <ion-segment-button *ngFor="let tag of tags" [value]="tag">
-    <span *ngIf="tag === ''">
-      {{ 'filters.tags.all' | translate }}
-    </span>
+<ng-container *ngFor="let tag of tags">
+  <ion-button
+    shape="round"
+    (click)="onClick(tag)"
+    [fill]="selectButton(tag) ? 'solid' : 'clear'"
+    [color]="selectButton(tag) ? 'tertiary' : 'dark'"
+    shape="round"
+    size="small"
+  >
+    <span *ngIf="tag === ''"> {{ 'filters.tags.all' | translate }}</span>
     <span *ngIf="tag !== ''">
       {{ tagLabels[tag] }}
     </span>
 
-    <ion-note class="filters--counter">{{ tagCount.get(tag) }}</ion-note>
-  </ion-segment-button>
-</ion-segment>
+    <span class="filters--counter">&nbsp;({{ tagCount.get(tag) }})</span>
+  </ion-button>
+  <br *ngIf="tag === ''" />
+</ng-container>
