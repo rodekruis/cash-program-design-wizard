@@ -59,6 +59,7 @@
       "intro": "If you have any questions or experience bugs or issues, let us know.",
       "label": "Contact"
     },
+    "today": "Today",
     "introduction": "Hello! Welcome to the CPDW",
     "cta": {
       "message": "You can learn more by watching the Video Guide and reading the CPDW manual.",
@@ -153,7 +154,7 @@
     "no-questions": "No questions available with the current filters."
   },
   "report": {
-    "appendix": "Appendix",
+    "appendix": "Answer Index",
     "not-found": "No report found.",
     "page-title": "Report for program: {{name}}",
     "title": "Narrative Report"

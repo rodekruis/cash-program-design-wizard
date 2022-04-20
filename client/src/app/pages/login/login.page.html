@@ -2,18 +2,22 @@
   <app-header class="no-print"> </app-header>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
-      <ion-col size-xs="8" size-sm="6" size-md="5" size-lg="4" size-xl="2">
+      <ion-col style="max-width: 350px">
         <ion-row
           class="ion-justify-content-between ion-align-items-center ion-padding"
         >
           <ion-text color="dark">
             <h2>
-              <strong>TODAY</strong>
+              <strong class="ion-text-uppercase">
+                {{ 'login-page.today' | translate }}
+              </strong>
             </h2>
           </ion-text>
-          <ion-text class="ion-text-right" color="dark">
-            <strong>{{ todayTop }}</strong> <br />
-            <strong>{{ todayBottom }}</strong>
+          <ion-text class="ion-text-right ion-text-uppercase" color="dark">
+            <strong>
+              {{ today | date: 'EEE d' }} <br />
+              {{ today | date: 'MMM Y' }}
+            </strong>
           </ion-text>
         </ion-row>
 
@@ -24,12 +28,10 @@
             </p>
 
             <p>
-              <strong>{{ '_common.app-name' | translate }}</strong>
+              {{ 'login-page.cta.message' | translate }}
             </p>
 
             <p>
-              {{ 'login-page.cta.message' | translate }}
-              <br />
               {{ 'login-page.cta.login' | translate }}
             </p>
 

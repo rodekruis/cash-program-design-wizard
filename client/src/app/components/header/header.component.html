@@ -14,14 +14,23 @@
       ></ion-icon>
     </ion-button>
   </ion-buttons>
-
-  <ion-title>
-    <ion-text color="dark">
-      <strong>{{ 'login-page.page-title' | translate }}</strong>
-    </ion-text>
-    &nbsp;
-    <ion-text color="tertiary" *ngIf="programName">{{ programName }}</ion-text>
-  </ion-title>
+  <ion-row class="ion-align-items-center">
+    <ion-img
+      style="width: 16px; height: 16px"
+      src="assets/img/navy-logo.svg"
+      alt=""
+      loading="lazy"
+    ></ion-img>
+    <ion-title>
+      <ion-text color="dark">
+        <strong>{{ 'login-page.page-title' | translate }}</strong>
+      </ion-text>
+      &nbsp;
+      <ion-text color="tertiary" *ngIf="programName">
+        {{ programName }}
+      </ion-text>
+    </ion-title>
+  </ion-row>
 
   <ion-buttons slot="end">
     <ion-button

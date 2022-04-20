@@ -20,8 +20,7 @@ export const environment = {
   defaultLanguage: 'en',
 
   // URLS:
-  // apiUrl: 'http://localhost:3001',
-  apiUrl: 'https://cpdw-development.azurewebsites.net',
+  apiUrl: 'http://localhost:3001',
 };
 
 /*

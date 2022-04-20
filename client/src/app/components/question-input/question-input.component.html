@@ -13,17 +13,20 @@
       *ngFor="let tag of question.tags"
       class="ion-margin-start ion-float-end"
       mode="ios"
-      [color]="state?.filters?.tag === tag ? 'tertiary' : 'medium'"
+      [color]="state?.filters?.tag === tag ? 'tertiary' : 'light'"
       >{{ tagLabels[tag] }}</ion-badge
     >
 
     <small>#{{ questionNr }}</small>
     <br />
-    <strong ngPreserveWhitespaces markdown>
-      {{ question.label }}
-    </strong>
+    <ion-text color="dark">
+      <strong ngPreserveWhitespaces markdown>
+        {{ question.label }}
+      </strong>
+    </ion-text>
   </div>
   <ion-item
+    lines="none"
     [ngClass]="{
       'is-readonly': !canEdit,
       'is-error': question.hasError,

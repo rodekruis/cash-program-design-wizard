@@ -54,7 +54,15 @@ ion-item.is-readonly {
 }
 
 .answer-state {
-  border-inline-end: 4px solid transparent;
+  border: 1px solid var(--ion-color-light);
+  border-radius: 4px;
+
+  &.is-pending,
+  &.is-in-progress,
+  &.is-saved,
+  &.is-error {
+    border-inline-end-width: 4px;
+  }
 
   &.is-error {
     border-inline-end-color: var(--ion-color-danger);
