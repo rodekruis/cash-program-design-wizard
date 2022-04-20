@@ -109,7 +109,7 @@ export class SeedDemoProgram implements InterfaceScript {
               username: process.env.USERCONFIG_EDIT_USERNAME,
               password: process.env.USERCONFIG_EDIT_PASSWORD,
             },
-            view: {
+            viewA: {
               username: process.env.USERCONFIG_VIEW_USERNAME,
               password: process.env.USERCONFIG_VIEW_PASSWORD,
             },
@@ -138,10 +138,16 @@ export class SeedDemoProgram implements InterfaceScript {
               }${i}@${process.env.USERCONFIG_EDIT_USERNAME.split('@')[1]}`,
               password: i === 1 ? 'password' : generatePassword(5),
             },
-            view: {
+            viewA: {
               username: `${
                 process.env.USERCONFIG_VIEW_USERNAME.split('@')[0]
-              }${i}@${process.env.USERCONFIG_VIEW_USERNAME.split('@')[1]}`,
+              }${i}a@${process.env.USERCONFIG_VIEW_USERNAME.split('@')[1]}`,
+              password: i === 1 ? 'password' : generatePassword(5),
+            },
+            viewB: {
+              username: `${
+                process.env.USERCONFIG_VIEW_USERNAME.split('@')[0]
+              }${i}b@${process.env.USERCONFIG_VIEW_USERNAME.split('@')[1]}`,
               password: i === 1 ? 'password' : generatePassword(5),
             },
           },
@@ -161,27 +167,39 @@ export class SeedDemoProgram implements InterfaceScript {
     program: ProgramEntity,
     seedInput: SeedInput,
   ): Promise<void> {
-    const userView = await this.userService.create(
-      seedInput.users.view.username,
-      seedInput.users.view.password,
-    );
-
-    this.userService.assign({
-      userName: userView.user.userName,
-      role: UserRoleEnum.view,
-      programId: program.id,
-    });
-
     const userEdit = await this.userService.create(
       seedInput.users.edit.username,
       seedInput.users.edit.password,
     );
-
     this.userService.assign({
       userName: userEdit.user.userName,
       role: UserRoleEnum.edit,
       programId: program.id,
     });
+
+    if (seedInput.users.viewA) {
+      const userViewA = await this.userService.create(
+        seedInput.users.viewA.username,
+        seedInput.users.viewA.password,
+      );
+      this.userService.assign({
+        userName: userViewA.user.userName,
+        role: UserRoleEnum.view,
+        programId: program.id,
+      });
+    }
+
+    if (seedInput.users.viewB) {
+      const userViewB = await this.userService.create(
+        seedInput.users.viewB.username,
+        seedInput.users.viewB.password,
+      );
+      this.userService.assign({
+        userName: userViewB.user.userName,
+        role: UserRoleEnum.view,
+        programId: program.id,
+      });
+    }
   }
 
   private async seedSections(seedInput: SeedInput) {
