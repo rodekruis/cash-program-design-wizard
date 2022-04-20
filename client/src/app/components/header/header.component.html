@@ -18,16 +18,17 @@
     <ion-img
       style="width: 16px; height: 16px"
       src="assets/img/navy-logo.svg"
-      alt="logo"
+      alt=""
+      loading="lazy"
     ></ion-img>
     <ion-title>
       <ion-text color="dark">
         <strong>{{ 'login-page.page-title' | translate }}</strong>
       </ion-text>
       &nbsp;
-      <ion-text color="tertiary" *ngIf="programName">{{
-        programName
-      }}</ion-text>
+      <ion-text color="tertiary" *ngIf="programName">
+        {{ programName }}
+      </ion-text>
     </ion-title>
   </ion-row>
 
