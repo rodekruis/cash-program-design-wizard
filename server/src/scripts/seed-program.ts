@@ -136,19 +136,28 @@ export class SeedDemoProgram implements InterfaceScript {
               username: `${
                 process.env.USERCONFIG_EDIT_USERNAME.split('@')[0]
               }${i}@${process.env.USERCONFIG_EDIT_USERNAME.split('@')[1]}`,
-              password: i === 1 ? 'password' : generatePassword(5),
+              password:
+                i === 1
+                  ? process.env.USERCONFIG_EDIT_PASSWORD
+                  : generatePassword(5),
             },
             viewA: {
               username: `${
                 process.env.USERCONFIG_VIEW_USERNAME.split('@')[0]
               }${i}a@${process.env.USERCONFIG_VIEW_USERNAME.split('@')[1]}`,
-              password: i === 1 ? 'password' : generatePassword(5),
+              password:
+                i === 1
+                  ? process.env.USERCONFIG_VIEW_PASSWORD
+                  : generatePassword(5),
             },
             viewB: {
               username: `${
                 process.env.USERCONFIG_VIEW_USERNAME.split('@')[0]
               }${i}b@${process.env.USERCONFIG_VIEW_USERNAME.split('@')[1]}`,
-              password: i === 1 ? 'password' : generatePassword(5),
+              password:
+                i === 1
+                  ? process.env.USERCONFIG_VIEW_PASSWORD
+                  : generatePassword(5),
             },
           },
         };
