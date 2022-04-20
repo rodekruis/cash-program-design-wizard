@@ -16,7 +16,6 @@
     "lint": "npm run lint:syntax && ng lint",
     "lint:syntax": "prettier --check .",
     "fix:syntax": "npm run lint:syntax -- --write",
-    "preserve-static": "cp www/index.html www/404.html",
     "serve-static": "http-server ./www/ -c-0 --port 8081 --proxy http://localhost:8081?",
     "start:production": "npm run build:production && npm run serve-static",
     "start": "ng serve",
