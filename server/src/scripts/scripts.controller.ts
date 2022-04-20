@@ -15,7 +15,7 @@ import {
   ApiOperation,
   ApiProperty,
 } from '@nestjs/swagger';
-import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { QuestionNameDto } from './dto/question-name.dto';
 import { QuestionTransferDto } from './dto/question-tranfer.dto';
 import SeedDemoProgram from './seed-program';
@@ -37,6 +37,9 @@ class ResetDto {
   })
   @IsEnum(SeedScript)
   public readonly script: string;
+
+  @ApiProperty({ example: 99, required: false })
+  @IsNumber()
   public readonly stagingAmount: number;
 }
 
