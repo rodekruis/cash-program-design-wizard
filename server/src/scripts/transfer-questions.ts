@@ -104,6 +104,7 @@ export class TransferQuestionsService {
 
     try {
       records = parse(file, {
+        bom: true,
         cast: true,
         columns: true,
         delimiter: [';'],
