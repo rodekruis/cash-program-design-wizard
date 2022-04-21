@@ -72,6 +72,7 @@ export class TransferQuestionsService {
       .orderBy('section.orderPriority', 'ASC')
       .orderBy('subsection.orderPriority', 'ASC')
       .addOrderBy('question.orderPriority', 'ASC')
+      .addOrderBy('question.name', 'ASC')
       .leftJoin('question.tags', 'tags_filter')
       .addGroupBy('tags_filter')
       .groupBy('question.id')
@@ -360,7 +361,7 @@ export class TransferQuestionsService {
   private async findTags(question: QuestionTransferDto): Promise<string> {
     const qb = this.tagRepository
       .createQueryBuilder('tag')
-      .select(['to_json(array_agg(tag.name)) as tags'])
+      .select(['to_json(array_agg(tag.name ORDER BY tag.name ASC)) as tags'])
       .leftJoin('tag.questions', 'questions')
       .where('questions.name = :name', {
         name: question.questionName,
