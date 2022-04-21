@@ -10,12 +10,4 @@ export class HeaderComponent {
   programName: string;
 
   constructor() {}
-
-  public darkModeEnabled(): boolean {
-    return document.body.classList.contains('dark');
-  }
-
-  public toggleDarkMode(): void {
-    document.body.classList.toggle('dark');
-  }
 }
