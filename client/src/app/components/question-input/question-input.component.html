@@ -35,6 +35,7 @@
       'is-saved':
         canEdit &&
         !!question.answer &&
+        question.answer.length !== 0 &&
         question.answer === question.storedAnswer,
       'answer-state': true
     }"
