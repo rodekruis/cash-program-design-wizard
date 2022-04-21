@@ -71,10 +71,11 @@ export class SeedDemoProgram implements InterfaceScript {
   public async run(environment: SeedScript, stagingAmount = 50): Promise<any> {
     const inputArray = this.setInput(environment, stagingAmount);
 
+    console.log(`SeedDemoProgram starting... ${inputArray.length}`);
+
     // Do not await or swagger request times out
     this.seedInput(inputArray);
 
-    console.log('SeedDemoProgram done');
     return inputArray.map((input) => input.users);
   }
 
@@ -120,7 +121,7 @@ export class SeedDemoProgram implements InterfaceScript {
     if (seedScript === SeedScript.staging) {
       const inputArray = [];
       let i = 0;
-      while (i <= stagingAmount) {
+      while (i < stagingAmount) {
         i++;
         const programDemoInput = JSON.parse(JSON.stringify(programDemo));
         const input = {
