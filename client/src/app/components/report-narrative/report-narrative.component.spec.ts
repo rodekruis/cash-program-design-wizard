@@ -11,25 +11,23 @@ describe('ReportNarrativeComponent', () => {
   let component: ReportNarrativeComponent;
   let fixture: ComponentFixture<ReportNarrativeComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [ReportNarrativeComponent],
-        imports: [
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          MarkdownModule.forRoot(),
-          RouterTestingModule,
-          HttpClientTestingModule,
-        ],
-        providers: [StateService],
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ReportNarrativeComponent],
+      imports: [
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        MarkdownModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule,
+      ],
+      providers: [StateService],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(ReportNarrativeComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }),
-  );
+    fixture = TestBed.createComponent(ReportNarrativeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

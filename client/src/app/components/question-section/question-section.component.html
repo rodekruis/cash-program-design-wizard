@@ -1,6 +1,9 @@
 <ion-grid>
   <ion-row class="ion-align-items-stretch ion-margin-bottom">
-    <div *ngIf="section && isSectionEmpty(section)" class="ion-padding">
+    <div
+      *ngIf="section && isSectionEmpty(section)"
+      class="ion-padding"
+    >
       <ion-note>
         {{ 'question-section.no-questions' | translate }}
       </ion-note>
@@ -36,7 +39,10 @@
               [canEdit]="canEdit"
             ></app-question-input>
 
-            <details *ngIf="isLastQuestion" class="ion-margin-vertical">
+            <details
+              *ngIf="isLastQuestion"
+              class="ion-margin-vertical"
+            >
               <summary>
                 <div style="display: flex; align-items: center">
                   <div style="flex: 1 1 auto">

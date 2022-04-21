@@ -19,38 +19,36 @@ describe('ReportPage', () => {
     tag: Tag.validation,
   };
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [ReportPage],
-        imports: [
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          MarkdownModule.forRoot(),
-          RouterTestingModule,
-          HttpClientTestingModule,
-          SharedModule,
-        ],
-        providers: [
-          {
-            provide: ActivatedRoute,
-            useValue: {
-              snapshot: {
-                params: { id: 1 },
-              },
-              fragment: of(undefined),
-              queryParams: of(mockParams),
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ReportPage],
+      imports: [
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        MarkdownModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule,
+        SharedModule,
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              params: { id: 1 },
             },
+            fragment: of(undefined),
+            queryParams: of(mockParams),
           },
-          AuthService,
-        ],
-      }).compileComponents();
+        },
+        AuthService,
+      ],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(ReportPage);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }),
-  );
+    fixture = TestBed.createComponent(ReportPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

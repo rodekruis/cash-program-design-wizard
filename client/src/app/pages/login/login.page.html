@@ -13,7 +13,10 @@
               </strong>
             </h2>
           </ion-text>
-          <ion-text class="ion-text-right ion-text-uppercase" color="dark">
+          <ion-text
+            class="ion-text-right ion-text-uppercase"
+            color="dark"
+          >
             <strong>
               {{ today | date: 'EEE d' }} <br />
               {{ today | date: 'MMM Y' }}
@@ -21,8 +24,14 @@
           </ion-text>
         </ion-row>
 
-        <ion-card class="ion-padding" color="light">
-          <ion-text class="ion-margin-vertical" color="dark">
+        <ion-card
+          class="ion-padding"
+          color="light"
+        >
+          <ion-text
+            class="ion-margin-vertical"
+            color="dark"
+          >
             <p>
               <strong>{{ 'login-page.introduction' | translate }}</strong>
             </p>
@@ -45,15 +54,26 @@
             <br />
           </ion-text>
           <ion-row class="ion-justify-content-evenly">
-            <ion-button color="dark" size="small" shape="round">
+            <ion-button
+              color="dark"
+              size="small"
+              shape="round"
+            >
               {{ 'login-page.cta.video-guide-button' | translate }}
             </ion-button>
-            <ion-button color="dark" size="small" shape="round">
+            <ion-button
+              color="dark"
+              size="small"
+              shape="round"
+            >
               {{ 'login-page.cta.manual-button' | translate }}
             </ion-button>
           </ion-row>
         </ion-card>
-        <ion-card class="ion-padding" color="light">
+        <ion-card
+          class="ion-padding"
+          color="light"
+        >
           <app-login-form></app-login-form>
         </ion-card>
         <br /><br /><br /><br /><br />

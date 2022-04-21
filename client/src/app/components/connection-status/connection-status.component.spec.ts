@@ -11,25 +11,23 @@ describe('ConnectionStatusComponent', () => {
   let component: ConnectionStatusComponent;
   let fixture: ComponentFixture<ConnectionStatusComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [ConnectionStatusComponent],
-        imports: [
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          HttpClientTestingModule,
-          RouterTestingModule,
-          SharedModule,
-        ],
-        providers: [SyncService],
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ConnectionStatusComponent],
+      imports: [
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        HttpClientTestingModule,
+        RouterTestingModule,
+        SharedModule,
+      ],
+      providers: [SyncService],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(ConnectionStatusComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }),
-  );
+    fixture = TestBed.createComponent(ConnectionStatusComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

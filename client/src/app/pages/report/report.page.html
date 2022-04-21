@@ -1,5 +1,9 @@
 <ion-content>
-  <app-header class="no-print" [programName]="name"> </app-header>
+  <app-header
+    class="no-print"
+    [programName]="name"
+  >
+  </app-header>
 
   <ion-card *ngIf="!id">
     <ion-card-header>
@@ -8,8 +12,14 @@
   </ion-card>
 
   <ng-container *ngIf="id">
-    <ion-row class="no-print" style="background-color: #fff">
-      <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+    <ion-row
+      class="no-print"
+      style="background-color: #fff"
+    >
+      <ion-col
+        [sizeLg]="1"
+        class="ion-hide-lg-down"
+      ></ion-col>
       <ion-col
         [size]="12"
         [sizeMd]="5"
@@ -32,14 +42,21 @@
       </ion-col>
     </ion-row>
     <ion-row class="background--grey">
-      <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+      <ion-col
+        [sizeLg]="1"
+        class="ion-hide-lg-down"
+      ></ion-col>
       <ion-col>
         <div class="ion-padding">
           <app-report-narrative></app-report-narrative>
 
           <br />
 
-          <section *ngIf="sections?.length" id="appendix" tabindex="-1">
+          <section
+            *ngIf="sections?.length"
+            id="appendix"
+            tabindex="-1"
+          >
             <div class="fake-page">
               <h2 class="only-print--page-break-before">
                 {{ 'report.appendix' | translate }}
@@ -58,7 +75,10 @@
           </section>
         </div>
       </ion-col>
-      <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+      <ion-col
+        [sizeLg]="1"
+        class="ion-hide-lg-down"
+      ></ion-col>
     </ion-row>
   </ng-container>
 </ion-content>

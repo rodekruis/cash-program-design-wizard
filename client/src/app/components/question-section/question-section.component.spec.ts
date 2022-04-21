@@ -10,24 +10,22 @@ describe('QuestionSectionComponent', () => {
   let component: QuestionSectionComponent;
   let fixture: ComponentFixture<QuestionSectionComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [QuestionSectionComponent],
-        imports: [
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          RouterTestingModule,
-          HttpClientTestingModule,
-        ],
-        providers: [StateService],
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [QuestionSectionComponent],
+      imports: [
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule,
+      ],
+      providers: [StateService],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(QuestionSectionComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }),
-  );
+    fixture = TestBed.createComponent(QuestionSectionComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

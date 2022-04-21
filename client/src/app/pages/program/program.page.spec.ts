@@ -18,36 +18,34 @@ describe('ProgramPage', () => {
     tag: Tag.validation,
   };
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [ProgramPage],
-        imports: [
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          RouterTestingModule,
-          HttpClientTestingModule,
-          SharedModule,
-        ],
-        providers: [
-          {
-            provide: ActivatedRoute,
-            useValue: {
-              snapshot: {
-                params: { id: 1 },
-              },
-              queryParams: of(mockParams),
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ProgramPage],
+      imports: [
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule,
+        SharedModule,
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              params: { id: 1 },
             },
+            queryParams: of(mockParams),
           },
-          StateService,
-        ],
-      }).compileComponents();
+        },
+        StateService,
+      ],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(ProgramPage);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }),
-  );
+    fixture = TestBed.createComponent(ProgramPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

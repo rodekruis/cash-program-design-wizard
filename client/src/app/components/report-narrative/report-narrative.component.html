@@ -9,7 +9,11 @@
       shape="round"
       (click)="copy2Clipboard(rawReport)"
     >
-      <ion-icon name="clipboard" aria-hidden="true" slot="start"></ion-icon>
+      <ion-icon
+        name="clipboard"
+        aria-hidden="true"
+        slot="start"
+      ></ion-icon>
       {{ 'report-narrative.copy-to-clipboard' | translate }}
     </ion-button>
 
@@ -20,7 +24,11 @@
       color="tertiary"
       shape="round"
     >
-      <ion-icon name="print" aria-hidden="true" slot="start"></ion-icon>
+      <ion-icon
+        name="print"
+        aria-hidden="true"
+        slot="start"
+      ></ion-icon>
       {{ 'report-narrative.print' | translate }}
     </ion-button>
   </ion-row>

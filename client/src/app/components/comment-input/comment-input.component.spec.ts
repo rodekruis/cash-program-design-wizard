@@ -20,38 +20,36 @@ describe('CommentInputComponent', () => {
     tag: Tag.validation,
   };
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [CommentInputComponent],
-        imports: [
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          RouterTestingModule,
-          HttpClientTestingModule,
-          SharedModule,
-        ],
-        providers: [
-          {
-            provide: ActivatedRoute,
-            useValue: {
-              snapshot: {
-                params: { id: 1 },
-              },
-              queryParams: of(mockParams),
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [CommentInputComponent],
+      imports: [
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule,
+        SharedModule,
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              params: { id: 1 },
             },
+            queryParams: of(mockParams),
           },
-          ProgramDataService,
-          StateService,
-          AuthService,
-        ],
-      }).compileComponents();
+        },
+        ProgramDataService,
+        StateService,
+        AuthService,
+      ],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(CommentInputComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }),
-  );
+    fixture = TestBed.createComponent(CommentInputComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
