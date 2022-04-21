@@ -8,20 +8,30 @@
   --background-hover-opacity: 0 !important;
 
   &.is-active {
-    border-bottom-color: var(--ion-color-tertiary);
+    z-index: 1;
 
-    &::after {
+    &::after,
+    &::before {
       content: '';
       display: block;
       position: absolute;
+      pointer-events: none;
+    }
+    &::before {
       z-index: -1;
+      top: 100%;
+      left: 0;
+      right: 0;
+      border-bottom: 1px solid var(--ion-color-tertiary);
+    }
+    &::after {
+      z-index: -2;
       top: -0.5rem;
       left: -0.5rem;
       right: -0.5rem;
       bottom: -1rem;
 
       background: #f6f7f8;
-      pointer-events: none;
     }
   }
 }
