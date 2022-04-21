@@ -11,7 +11,10 @@
     [hidden]="rlaLogin.isActive"
   >
     <span class="ion-hide-sm-down">{{ 'user-state.log-in' | translate }}</span>
-    <ion-icon name="log-in" slot="end"></ion-icon>
+    <ion-icon
+      name="log-in"
+      slot="end"
+    ></ion-icon>
   </ion-button>
 </ng-container>
 <ng-container *ngIf="isLoggedIn">
@@ -33,6 +36,9 @@
     shape="round"
   >
     <span class="ion-hide-sm-down">{{ 'user-state.log-out' | translate }}</span>
-    <ion-icon name="log-out" slot="end"></ion-icon>
+    <ion-icon
+      name="log-out"
+      slot="end"
+    ></ion-icon>
   </ion-button>
 </ng-container>

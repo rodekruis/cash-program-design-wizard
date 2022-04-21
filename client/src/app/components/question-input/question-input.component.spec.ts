@@ -31,31 +31,29 @@ describe('QuestionInputComponent', () => {
     tags: [Tag.validation],
   };
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [QuestionInputComponent],
-        imports: [
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          MarkdownModule.forRoot(),
-          RouterTestingModule,
-          HttpClientTestingModule,
-        ],
-        providers: [
-          {
-            provide: StateService,
-            useValue: mockStateService,
-          },
-          ProgramDataService,
-        ],
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [QuestionInputComponent],
+      imports: [
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        MarkdownModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule,
+      ],
+      providers: [
+        {
+          provide: StateService,
+          useValue: mockStateService,
+        },
+        ProgramDataService,
+      ],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(QuestionInputComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }),
-  );
+    fixture = TestBed.createComponent(QuestionInputComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it('should create', () => {
     component.question = mockQuestion;

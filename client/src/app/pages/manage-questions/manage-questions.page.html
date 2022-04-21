@@ -10,9 +10,19 @@
   <h2>
     {{ 'manage-questions.export.header' | translate }}
   </h2>
-  <form method="POST" (ngSubmit)="exportCsv()" class="ion-margin-vertical">
-    <p style="display: flex" class="ion-align-items-center">
-      <label for="exportSecret" class="ion-margin-end">
+  <form
+    method="POST"
+    (ngSubmit)="exportCsv()"
+    class="ion-margin-vertical"
+  >
+    <p
+      style="display: flex"
+      class="ion-align-items-center"
+    >
+      <label
+        for="exportSecret"
+        class="ion-margin-end"
+      >
         <code> {{ 'manage-questions.export.secret.label' | translate }} </code>:
       </label>
       <input
@@ -37,7 +47,10 @@
         "
       />
     </p>
-    <p style="display: flex" class="ion-align-items-center">
+    <p
+      style="display: flex"
+      class="ion-align-items-center"
+    >
       <ion-button
         type="submit"
         color="tertiary"
@@ -48,7 +61,10 @@
         {{ 'manage-questions.export.submit.label' | translate }}
       </ion-button>
 
-      <ion-text *ngIf="exportError" color="warning">
+      <ion-text
+        *ngIf="exportError"
+        color="warning"
+      >
         <ion-icon
           name="warning"
           size="large"
@@ -67,9 +83,19 @@
   <h2>
     {{ 'manage-questions.import.header' | translate }}
   </h2>
-  <form method="POST" (ngSubmit)="importCsv()" class="ion-margin-vertical">
-    <p style="display: flex" class="ion-align-items-center">
-      <label for="importSecret" class="ion-margin-end">
+  <form
+    method="POST"
+    (ngSubmit)="importCsv()"
+    class="ion-margin-vertical"
+  >
+    <p
+      style="display: flex"
+      class="ion-align-items-center"
+    >
+      <label
+        for="importSecret"
+        class="ion-margin-end"
+      >
         <code> {{ 'manage-questions.import.secret.label' | translate }} </code>:
       </label>
       <input
@@ -94,7 +120,10 @@
         "
       />
     </p>
-    <p style="display: flex" class="ion-align-items-center">
+    <p
+      style="display: flex"
+      class="ion-align-items-center"
+    >
       <ion-input
         #importFile
         type="file"
@@ -117,7 +146,10 @@
       </ion-button>
     </p>
     <p>
-      <ion-text *ngIf="importError" color="warning">
+      <ion-text
+        *ngIf="importError"
+        color="warning"
+      >
         <ion-icon
           name="warning"
           size="large"
@@ -127,7 +159,10 @@
         {{ 'manage-questions.error' | translate }}
         <code>{{ importError }}</code>
       </ion-text>
-      <ion-text *ngIf="importResult && !importError" color="success">
+      <ion-text
+        *ngIf="importResult && !importError"
+        color="success"
+      >
         <code>
           {{
             'manage-questions.import.result'
@@ -145,9 +180,19 @@
   <h2>
     {{ 'manage-questions.delete.header' | translate }}
   </h2>
-  <form method="POST" (ngSubmit)="deleteQuestion()" class="ion-margin-vertical">
-    <p style="display: flex" class="ion-align-items-center">
-      <label for="importSecret" class="ion-margin-end">
+  <form
+    method="POST"
+    (ngSubmit)="deleteQuestion()"
+    class="ion-margin-vertical"
+  >
+    <p
+      style="display: flex"
+      class="ion-align-items-center"
+    >
+      <label
+        for="importSecret"
+        class="ion-margin-end"
+      >
         <code> {{ 'manage-questions.delete.secret.label' | translate }} </code>:
       </label>
       <input
@@ -172,8 +217,14 @@
         "
       />
     </p>
-    <p style="display: flex" class="ion-align-items-center">
-      <label for="importSecret" class="ion-margin-end">
+    <p
+      style="display: flex"
+      class="ion-align-items-center"
+    >
+      <label
+        for="importSecret"
+        class="ion-margin-end"
+      >
         <code>
           {{ 'manage-questions.delete.question-name.label' | translate }} </code
         >:
@@ -209,7 +260,10 @@
       </ion-button>
     </p>
     <p>
-      <ion-text *ngIf="deleteError" color="warning">
+      <ion-text
+        *ngIf="deleteError"
+        color="warning"
+      >
         <ion-icon
           name="warning"
           size="large"
@@ -219,7 +273,10 @@
         {{ 'manage-questions.error' | translate }}
         <code>{{ deleteError }}</code>
       </ion-text>
-      <ion-text *ngIf="deleteResult && !deleteError" color="success">
+      <ion-text
+        *ngIf="deleteResult && !deleteError"
+        color="success"
+      >
         <code>
           {{
             'manage-questions.delete.result' | translate: { name: deleteResult }

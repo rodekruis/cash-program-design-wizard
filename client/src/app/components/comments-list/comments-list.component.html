@@ -1,6 +1,12 @@
 <div class="ion-margin-top ion-no-padding">
-  <div *ngFor="let comment of comments" class="ion-padding-bottom">
-    <ion-card *ngIf="comment" class="ion-no-margin">
+  <div
+    *ngFor="let comment of comments"
+    class="ion-padding-bottom"
+  >
+    <ion-card
+      *ngIf="comment"
+      class="ion-no-margin"
+    >
       <ion-card-header>
         <strong>{{ comment.userName }}</strong>
         @

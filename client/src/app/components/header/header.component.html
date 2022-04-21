@@ -26,7 +26,10 @@
         <strong>{{ 'login-page.page-title' | translate }}</strong>
       </ion-text>
       &nbsp;
-      <ion-text color="tertiary" *ngIf="programName">
+      <ion-text
+        color="tertiary"
+        *ngIf="programName"
+      >
         {{ programName }}
       </ion-text>
     </ion-title>

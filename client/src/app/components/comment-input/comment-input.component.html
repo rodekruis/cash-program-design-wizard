@@ -4,7 +4,10 @@
       {{ 'comment-input.add-comment' | translate }}:
     </ion-card-header>
     <ion-card-content>
-      <form #commentForm="ngForm" (ngSubmit)="onSubmit()">
+      <form
+        #commentForm="ngForm"
+        (ngSubmit)="onSubmit()"
+      >
         <textarea
           name="comment"
           [(ngModel)]="comment"
@@ -26,7 +29,10 @@
           >
             {{ 'comment-input.submit' | translate }}
           </ion-button>
-          <ion-note *ngIf="comment?.length" class="ion-margin-start">
+          <ion-note
+            *ngIf="comment?.length"
+            class="ion-margin-start"
+          >
             {{ comment?.length || 0 }}/{{ charLimit }}
           </ion-note>
         </ion-row>

@@ -8,7 +8,10 @@
 
   <ng-container *ngIf="id">
     <ion-row style="background-color: #fff">
-      <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+      <ion-col
+        [sizeLg]="1"
+        class="ion-hide-lg-down"
+      ></ion-col>
       <ion-col
         [size]="12"
         [sizeMd]="5"
@@ -35,17 +38,31 @@
       class="toolbar-sticky ion-padding background--grey"
     >
       <ion-row>
-        <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+        <ion-col
+          [sizeLg]="1"
+          class="ion-hide-lg-down"
+        ></ion-col>
         <ion-col>
           <app-filters
             style="display: inline-block; max-width: 100%"
           ></app-filters>
         </ion-col>
-        <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+        <ion-col
+          [sizeLg]="1"
+          class="ion-hide-lg-down"
+        ></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
-        <ion-col [size]="12" [sizeMd]="9" [sizeLg]="7" class="ion-padding-top">
+        <ion-col
+          [sizeLg]="1"
+          class="ion-hide-lg-down"
+        ></ion-col>
+        <ion-col
+          [size]="12"
+          [sizeMd]="9"
+          [sizeLg]="7"
+          class="ion-padding-top"
+        >
           <h3>
             #{{ state?.activeSection?.sectionNr }}:&nbsp;
             <span [innerHTML]="state?.activeSection?.label"></span>
@@ -59,18 +76,27 @@
         >
           <app-nav-progress></app-nav-progress>
         </ion-col>
-        <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+        <ion-col
+          [sizeLg]="1"
+          class="ion-hide-lg-down"
+        ></ion-col>
       </ion-row>
     </div>
     <ion-row>
-      <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+      <ion-col
+        [sizeLg]="1"
+        class="ion-hide-lg-down"
+      ></ion-col>
       <ion-col>
         <app-question-section
           [section]="state?.activeSection"
           style="display: block"
         ></app-question-section>
       </ion-col>
-      <ion-col [sizeLg]="1" class="ion-hide-lg-down"></ion-col>
+      <ion-col
+        [sizeLg]="1"
+        class="ion-hide-lg-down"
+      ></ion-col>
     </ion-row>
   </ng-container>
 </ion-content>

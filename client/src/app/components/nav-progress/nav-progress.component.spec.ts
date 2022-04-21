@@ -11,25 +11,23 @@ describe('NavProgressComponent', () => {
   let component: NavProgressComponent;
   let fixture: ComponentFixture<NavProgressComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [NavProgressComponent],
-        imports: [
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          RouterTestingModule,
-          HttpClientTestingModule,
-          SharedModule,
-        ],
-        providers: [StateService],
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [NavProgressComponent],
+      imports: [
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        RouterTestingModule,
+        HttpClientTestingModule,
+        SharedModule,
+      ],
+      providers: [StateService],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(NavProgressComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }),
-  );
+    fixture = TestBed.createComponent(NavProgressComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

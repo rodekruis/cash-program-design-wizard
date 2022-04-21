@@ -1,6 +1,15 @@
-<form #loginForm="ngForm" (ngSubmit)="onSubmit()">
-  <input type="submit" hidden /><!-- Make ENTER-to-submit work -->
-  <ion-item lines="none" class="ion-margin-bottom">
+<form
+  #loginForm="ngForm"
+  (ngSubmit)="onSubmit()"
+>
+  <input
+    type="submit"
+    hidden
+  /><!-- Make ENTER-to-submit work -->
+  <ion-item
+    lines="none"
+    class="ion-margin-bottom"
+  >
     <ion-label position="stacked">{{
       'login-form.e-mail.label' | translate
     }}</ion-label>
@@ -19,7 +28,10 @@
       class="login-input"
     ></ion-input>
   </ion-item>
-  <ion-item lines="none" class="ion-margin-bottom">
+  <ion-item
+    lines="none"
+    class="ion-margin-bottom"
+  >
     <ion-label position="stacked">{{
       'login-form.password.label' | translate
     }}</ion-label>
@@ -49,12 +61,24 @@
     size="small"
   >
     {{ 'login-form.submit.label' | translate }}
-    <ion-icon slot="end" name="enter" aria-hidden="true"></ion-icon>
+    <ion-icon
+      slot="end"
+      name="enter"
+      aria-hidden="true"
+    ></ion-icon>
   </ion-button>
 
-  <ion-text *ngIf="logInError" color="warning">
+  <ion-text
+    *ngIf="logInError"
+    color="warning"
+  >
     <p class="ion-text-center">
-      <ion-icon name="warning" size="large" aria-hidden="true"></ion-icon><br />
+      <ion-icon
+        name="warning"
+        size="large"
+        aria-hidden="true"
+      ></ion-icon
+      ><br />
       {{ 'login-form.error' | translate }} <code>{{ statusText }}</code>
     </p>
   </ion-text>

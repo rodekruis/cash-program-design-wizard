@@ -4,15 +4,13 @@ import { AppComponent } from './app.component';
 import { NotificationService } from './services/notification.service';
 
 describe('AppComponent', () => {
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [AppComponent],
-        imports: [TranslateModule.forRoot()],
-        providers: [NotificationService],
-      }).compileComponents();
-    }),
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      imports: [TranslateModule.forRoot()],
+      providers: [NotificationService],
+    }).compileComponents();
+  }));
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

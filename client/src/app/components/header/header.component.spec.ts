@@ -11,25 +11,23 @@ describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [HeaderComponent],
-        imports: [
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          HttpClientTestingModule,
-          RouterTestingModule,
-          SharedModule,
-        ],
-        providers: [AuthService],
-      }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [HeaderComponent],
+      imports: [
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        HttpClientTestingModule,
+        RouterTestingModule,
+        SharedModule,
+      ],
+      providers: [AuthService],
+    }).compileComponents();
 
-      fixture = TestBed.createComponent(HeaderComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    }),
-  );
+    fixture = TestBed.createComponent(HeaderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

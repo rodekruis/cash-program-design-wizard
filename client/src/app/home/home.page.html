@@ -3,7 +3,10 @@
     <ion-title>{{ '_common.app-name' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content *ngIf="isDebug" class="ion-padding">
+<ion-content
+  *ngIf="isDebug"
+  class="ion-padding"
+>
   <!-- ------------------------------------------------------------------------- -->
   <!-- This content is not for production-use, so doesn't need to be translated: -->
   <!-- ------------------------------------------------------------------------- -->
@@ -75,9 +78,15 @@
     </li>
   </ul>
 
-  <hr class="ion-margin-vertical" style="border-top-width: 1px" />
+  <hr
+    class="ion-margin-vertical"
+    style="border-top-width: 1px"
+  />
 
-  <div style="display: flex; max-width: 10em" class="ion-align-items-center">
+  <div
+    style="display: flex; max-width: 10em"
+    class="ion-align-items-center"
+  >
     <strong>Set Language:</strong>
 
     <ion-segment
@@ -97,7 +106,10 @@
 
   <br />
 
-  <ion-button (click)="apiTestGet()" [disabled]="apiTestInProgress">
+  <ion-button
+    (click)="apiTestGet()"
+    [disabled]="apiTestInProgress"
+  >
     API: GET /
   </ion-button>
 </ion-content>
