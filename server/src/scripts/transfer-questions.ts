@@ -318,34 +318,35 @@ export class TransferQuestionsService {
 
   private getOptionChoicesFromRow(row: any): any {
     const optionChoices = [];
-    let i = 0;
+    let i = 1;
     let emptyOptionCellCount = 0;
     while (emptyOptionCellCount < 5) {
-      const optionChoiceName = row[`${OptionChoiceNameEnum.name}${i + 1}`];
-      const optionChoiceLabel = row[`${OptionChoiceNameEnum.label}${i + 1}`];
       const questionName = row['questionName'];
-      if (!optionChoiceName && optionChoiceLabel) {
-        const error = `Question '${questionName}': ${
-          OptionChoiceNameEnum.name
-        }${i + 1} is not filled in`;
-        throw new HttpException(error, HttpStatus.BAD_REQUEST);
+      const name = row[`${OptionChoiceNameEnum.name}${i}`];
+      const label = row[`${OptionChoiceNameEnum.label}${i}`];
+
+      if (!name && label) {
+        throw new HttpException(
+          `Question '${questionName}': ${OptionChoiceNameEnum.name}${i} is not filled in`,
+          HttpStatus.BAD_REQUEST,
+        );
       }
-      if (optionChoiceName && !optionChoiceLabel) {
-        const error = `Question '${questionName}': ${
-          OptionChoiceNameEnum.label
-        }${i + 1} is not filled in`;
-        throw new HttpException(error, HttpStatus.BAD_REQUEST);
+      if (name && !label) {
+        throw new HttpException(
+          `Question '${questionName}': ${OptionChoiceNameEnum.label}${i} is not filled in`,
+          HttpStatus.BAD_REQUEST,
+        );
       }
 
       // If a count of 5 options cannot be found break loop
-      if (!optionChoiceName && !optionChoiceLabel) {
+      if (!name && !label) {
         emptyOptionCellCount++;
       }
-      if (optionChoiceName && optionChoiceLabel) {
+      if (name && label) {
         optionChoices.push({
-          name: optionChoiceName,
+          name: name,
           label: {
-            en: optionChoiceLabel,
+            en: label,
           },
           questionName: questionName,
           orderPriority: i,
@@ -356,17 +357,7 @@ export class TransferQuestionsService {
     return optionChoices;
   }
 
-  private extractUniqueProperty(array: any[], property: string) {
-    return array.reduce(
-      (previous, current) => (
-        (previous[current[property]] = ++previous[current[property]] || 1),
-        previous
-      ),
-      {},
-    );
-  }
-
-  private async findTags(question): Promise<string> {
+  private async findTags(question: QuestionTransferDto): Promise<string> {
     const qb = this.tagRepository
       .createQueryBuilder('tag')
       .select(['to_json(array_agg(tag.name)) as tags'])
@@ -378,13 +369,16 @@ export class TransferQuestionsService {
     return result.tags ? result.tags.toString() : '';
   }
 
-  private async findOptionChoices(question): Promise<QuestionTransferDto> {
+  private async findOptionChoices(
+    question: QuestionTransferDto,
+  ): Promise<QuestionTransferDto> {
     const qb = this.optionChoiceRepository
       .createQueryBuilder('optionChoices')
       .select([
         '"optionChoices".label::json AS label',
         '"optionChoices".id AS id',
         '"optionChoices".name AS name',
+        '"optionChoices"."orderPriority" AS orderPriority',
       ])
       .leftJoin('optionChoices.question', 'question')
       .where('question.name = :name', {
@@ -392,10 +386,12 @@ export class TransferQuestionsService {
       })
       .orderBy('optionChoices.orderPriority', 'ASC');
 
-    const optionChoices = await qb.getRawMany();
+    const optionChoices: OptionChoiceEntity[] = await qb.getRawMany();
     for (const [i, choice] of optionChoices.entries()) {
-      question[`optionChoice${i + 1}`] = choice.name;
-      question[`optionChoiceLabelEn${i + 1}`] = choice.label['en'];
+      const optionCount = i + 1;
+      question[`${OptionChoiceNameEnum.name}${optionCount}`] = choice.name;
+      question[`${OptionChoiceNameEnum.label}${optionCount}`] =
+        choice.label['en'];
     }
     return question;
   }
@@ -406,7 +402,8 @@ export class TransferQuestionsService {
     await this.insertUpdateSections(importData.sections, queryRunner);
     await this.insertUpdateSubsections(importData.subsections, queryRunner);
     await this.updateQuestions(importData.questions, queryRunner);
-    queryRunner.commitTransaction();
+    await queryRunner.commitTransaction();
+    await queryRunner.release();
   }
 
   private updateEntityWithImport(
@@ -493,7 +490,6 @@ export class TransferQuestionsService {
         }
       } else {
         const newOptionChoice = new OptionChoiceEntity();
-        dbQuestion.optionChoices.push(newOptionChoice);
         newOptionChoice.label = importedOptionChoice.label;
         newOptionChoice.orderPriority = importedOptionChoice.orderPriority;
         newOptionChoice.name = importedOptionChoice.name;
