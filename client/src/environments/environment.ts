@@ -10,9 +10,6 @@ export const environment = {
   // Load hard-coded test-data from file, instead of from the server
   useMockData: true,
 
-  // Let the interface automatically detect + switch to Dark-mode if a user prefers it
-  autoDarkMode: false,
-
   // Optional label to show which version is used
   envName: '',
 
