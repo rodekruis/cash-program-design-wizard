@@ -101,6 +101,10 @@ ion-button {
   text-transform: capitalize;
 }
 
+ion-content::part(background) {
+  --background: #f6f7f8;
+}
+
 /****************************************************************************
  * Utilities:
  */
