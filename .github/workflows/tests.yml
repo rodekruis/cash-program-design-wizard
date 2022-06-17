@@ -37,6 +37,8 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
 
       - name: Test Repository
+        env:
+          HUSKY: 0
         run: |
           npm install --ignore-scripts
           npm run lint
